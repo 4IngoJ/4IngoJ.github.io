@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TalkRemind — Finally use the dictation app you bought, on macOS</title>
+<meta name="description" content="You already want to dictate more. TalkRemind is the macOS menu-bar app that catches the moment you slip back into typing and nudges you back to the dictation app you already own — right when it matters most.">
+<link rel="canonical" href="https://didact.digital/talkremind/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://didact.digital/talkremind/">
+<meta property="og:title" content="TalkRemind — Finally use the dictation app you bought">
+<meta property="og:description" content="Catches the moment you slip back into typing and nudges you back to dictating. Free for 14 days, then €9.99 once (€5.99 for the first 100 buyers).">
+<meta property="og:image" content="https://didact.digital/talkremind/assets/app-icon.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://didact.digital/talkremind/assets/app-icon.png">
+<link rel="icon" type="image/png" href="assets/app-icon.png">
+<link rel="apple-touch-icon" href="assets/app-icon.png">
+<link rel="preload" href="/assets/fonts/onest-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/fonts.css">
+<style>
+  :root {
+    /* didact brand: monochrome, warm neutral */
+    --paper: #FAF9F7;
+    --band:  #F0EEEA;
+    --stone: #E6E4E0;
+    --ink:   #1A1917;
+    --muted: #5C5A56;
+    --line:  #E6E4E0;
+    --white: #FFFFFF;
+    --accent: #1A1917;
+    --radius: 16px;
+    --sans: "Onest", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  section[id] { scroll-margin-top: 84px; }
+  a:focus-visible, button:focus-visible, summary:focus-visible {
+    outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px;
+  }
+  body {
+    font-family: var(--sans);
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- Nav ---------- */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+  }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; }
+  .wordmark { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 18px; letter-spacing: -.04em; text-decoration: none; color: var(--ink); }
+  .wordmark img { width: 28px; height: 28px; border-radius: 7px; }
+  .nav-links { display: flex; gap: 28px; align-items: center; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 500; transition: color .15s; }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-links a.active { color: var(--ink); font-weight: 700; }
+  @media (max-width: 720px) { .nav-links a:not(.nav-cta) { display: none; } }
+
+  /* ---------- Buttons ---------- */
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 24px; border-radius: 12px; font-size: 15px; font-weight: 600; text-decoration: none; transition: transform .12s ease, box-shadow .12s ease, background .15s; border: 1px solid transparent; }
+  .btn:active { transform: scale(.98); }
+  .btn-primary { background: var(--ink); color: var(--paper); }
+  .btn-primary:hover { background: #33312e; box-shadow: 0 4px 14px rgba(26,25,23,.18); }
+  .btn-secondary { background: var(--white); color: var(--ink); border-color: var(--line); }
+  .btn-secondary:hover { border-color: #cfccc4; box-shadow: 0 2px 10px rgba(20,20,19,.07); }
+  .btn-light { background: var(--paper); color: var(--ink); }
+  .btn-light:hover { background: var(--white); }
+  .btn-outline-light { background: transparent; color: var(--paper); border-color: rgba(250,250,248,.3); }
+  .btn-outline-light:hover { border-color: rgba(250,250,248,.6); }
+
+  /* ---------- Hero ---------- */
+  .hero { padding: 96px 24px 80px; text-align: center; }
+  .hero img.icon { display: block; width: 84px; height: 84px; border-radius: 20px; box-shadow: 0 8px 28px rgba(20,20,19,.14); margin: 0 auto 22px; }
+  h1 { font-size: clamp(36px, 5.6vw, 60px); line-height: 1.05; letter-spacing: -0.04em; font-weight: 700; max-width: 880px; margin: 0 auto 24px; }
+  .hero h1 .punch { display: inline-block; position: relative; }
+  .hero h1 .punch-line {
+    position: absolute; left: -1.5%; bottom: -.13em; width: 103%; height: .28em;
+    overflow: visible; fill: none; stroke: var(--ink);
+    stroke-width: clamp(3px, .38vw, 5px); stroke-linecap: round; stroke-linejoin: round;
+  }
+  .hero p.sub { font-size: clamp(17px, 2.2vw, 20px); color: var(--muted); max-width: 640px; margin: 0 auto 36px; }
+  .cta-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .hero .price-note { margin-top: 22px; font-size: 14px; color: var(--muted); }
+  .hero .price-note a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+  .hero .price-note a:hover { border-color: var(--ink); }
+  @media (max-width: 480px) {
+    .hero { padding: 64px 24px 56px; }
+    .cta-row .btn { width: 100%; justify-content: center; }
+    section { padding: 64px 0; }
+  }
+
+  /* ---------- Sections ---------- */
+  section { padding: 88px 0; }
+  section.band { background: var(--band); }
+  section.ink { background: var(--ink); color: var(--paper); }
+  .section-head { text-align: center; max-width: 640px; margin: 0 auto 56px; }
+  .section-head h2 { font-size: clamp(28px, 4.4vw, 38px); line-height: 1.1; letter-spacing: -0.04em; font-weight: 700; margin-bottom: 12px; }
+  .section-head p { font-size: 18px; color: var(--muted); }
+  section.ink .section-head p { color: rgba(250,250,248,.6); }
+
+  /* ---------- Features ---------- */
+  .feature-grid { display: grid; gap: 16px; grid-template-columns: repeat(3, 1fr); }
+  @media (max-width: 900px) { .feature-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .feature-grid { grid-template-columns: 1fr; } }
+  .card { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px; transition: box-shadow .18s ease, transform .18s ease; }
+  .card:hover { box-shadow: 0 10px 32px rgba(20,20,19,.08); transform: translateY(-2px); }
+  .card h3 { font-size: 17px; font-weight: 700; letter-spacing: -.02em; margin-bottom: 8px; }
+  .card p { font-size: 15px; color: var(--muted); }
+  .card-icon { width: 34px; height: 34px; border-radius: 9px; background: var(--band); color: var(--ink); display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+  .card-icon svg { width: 17px; height: 17px; }
+
+  /* ---------- Nudge style swatches ---------- */
+  .style-grid { display: grid; gap: 16px; grid-template-columns: repeat(4, 1fr); max-width: 960px; margin: 0 auto; }
+  @media (max-width: 760px) { .style-grid { grid-template-columns: repeat(2, 1fr); } }
+  .style-card { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 20px 24px; text-align: center; }
+  .style-card .swatch { height: 84px; border-radius: 10px; background: var(--band); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; overflow: hidden; position: relative; }
+  .style-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+  .style-card p { font-size: 13.5px; color: var(--muted); }
+  .style-card .rec { display: inline-block; margin-top: 8px; font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: .07em; text-transform: uppercase; color: var(--ink); border: 1px solid var(--line); border-radius: 999px; padding: 2px 8px; }
+
+  /* Miniature previews of each nudge style */
+  .mini-bar { position: absolute; top: 0; left: 0; right: 0; height: 14px; background: rgba(20,20,19,.1); display: flex; align-items: center; justify-content: flex-end; gap: 5px; padding-right: 7px; }
+  .mini-bar i { width: 5px; height: 5px; border-radius: 50%; background: rgba(20,20,19,.28); }
+  .mini-bar i.on { background: var(--ink); box-shadow: 0 0 0 3px rgba(26,25,23,.18); }
+  .mini-panel { background: var(--white); border: 1px solid var(--line); border-radius: 8px; padding: 8px 11px; font-size: 10px; font-weight: 700; color: var(--ink); box-shadow: 0 4px 12px rgba(20,20,19,.14); }
+  .mini-caret { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
+  .mini-caret .line { width: 74px; height: 5px; border-radius: 2px; background: rgba(20,20,19,.18); }
+  .mini-caret .line.cursor { width: 34px; position: relative; }
+  .mini-caret .line.cursor::after { content: ''; position: absolute; right: -5px; top: -3px; width: 2px; height: 11px; background: var(--ink); }
+  .mini-hint { font-size: 9px; font-weight: 700; color: var(--paper); background: var(--ink); border-radius: 5px; padding: 3px 7px; align-self: flex-start; }
+  .mini-dim { position: absolute; inset: 0; background: rgba(20,20,19,.84); display: flex; align-items: center; justify-content: center; }
+  .mini-dim span { font-size: 10px; font-weight: 700; color: var(--paper); border: 1px solid rgba(250,250,248,.4); border-radius: 999px; padding: 5px 11px; }
+
+  /* ---------- Screenshots ---------- */
+  .shot-row { display: grid; gap: 24px; grid-template-columns: repeat(2, 1fr); max-width: 960px; margin: 0 auto; align-items: center; }
+  .shot-row + .shot-row { margin-top: 56px; }
+  @media (max-width: 760px) { .shot-row { grid-template-columns: 1fr; } }
+  .shot-row figure { margin: 0; text-align: center; }
+  .shot-row img { max-width: 100%; height: auto; }
+  .shot-row img.framed { border-radius: 12px; border: 1px solid var(--line); box-shadow: 0 14px 40px rgba(26,25,23,.10); background: var(--white); }
+  .shot-row figcaption, .shot-text .label { font-family: var(--mono); text-transform: uppercase; font-size: 11.5px; letter-spacing: .07em; color: var(--muted); margin-top: 14px; }
+  .shot-text h3 { font-size: 24px; font-weight: 700; letter-spacing: -.04em; line-height: 1.15; margin: 8px 0 10px; }
+  .shot-text p { font-size: 16px; color: var(--muted); }
+
+  /* ---------- Onboarding gallery ---------- */
+  .gallery { max-width: 460px; margin: 0 auto; }
+  .gallery-viewport { position: relative; aspect-ratio: 712 / 722; overflow: hidden; border-radius: 14px; }
+  .gallery-slide {
+    position: absolute; inset: 0; opacity: 0; pointer-events: none;
+    transform: translateX(0);
+    transition: opacity .35s ease, transform .35s ease;
+  }
+  .gallery-slide img { display: block; width: 100%; height: 100%; object-fit: contain; }
+  .gallery-slide.is-active { opacity: 1; pointer-events: auto; z-index: 1; }
+  .gallery-slide.dir-in-next { transform: translateX(28px); }
+  .gallery-slide.dir-in-prev { transform: translateX(-28px); }
+  @media (prefers-reduced-motion: reduce) {
+    .gallery-slide { transition: opacity .01s linear; transform: none; }
+  }
+  .gallery-arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--line); background: rgba(250,249,247,.92); display: flex; align-items: center; justify-content: center; cursor: pointer; color: #000; z-index: 2; box-shadow: 0 4px 12px rgba(26,25,23,.12); font-size: 16px; padding: 0; }
+  .gallery-prev { left: 10px; } .gallery-next { right: 10px; }
+  .gallery-arrow svg { width: 16px; height: 16px; }
+  .gallery-caption { text-align: center; font-family: var(--mono); text-transform: uppercase; font-size: 11.5px; letter-spacing: .07em; color: var(--muted); margin-top: 16px; }
+  .gallery-dots { display: flex; justify-content: center; gap: 8px; margin-top: 14px; }
+  .gallery-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--stone); border: none; cursor: pointer; padding: 0; transition: width .18s ease, border-radius .18s ease; }
+  .gallery-dot.is-active { background: var(--ink); width: 22px; border-radius: 5px; }
+
+  /* ---------- The math (claims) ---------- */
+  .claim-grid { display: grid; gap: 16px; grid-template-columns: repeat(3, 1fr); max-width: 900px; margin: 0 auto 40px; }
+  @media (max-width: 760px) { .claim-grid { grid-template-columns: 1fr; } }
+  .claim { background: rgba(250,250,248,.05); border: 1px solid rgba(250,250,248,.14); border-radius: var(--radius); padding: 26px 24px; text-align: center; }
+  .claim .multiple { font-size: 46px; font-weight: 700; letter-spacing: -.04em; color: var(--paper); line-height: 1; margin-bottom: 12px; }
+  .claim .who { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+  .claim .what { font-size: 13.5px; color: rgba(250,250,248,.6); }
+  .math-punch { max-width: 700px; margin: 0 auto; text-align: center; font-size: 18px; line-height: 1.6; color: rgba(250,250,248,.75); }
+  .math-punch strong { color: var(--paper); font-weight: 600; }
+  .claim-note { max-width: 700px; margin: 30px auto 0; text-align: center; font-size: 13px; line-height: 1.6; color: rgba(250,250,248,.4); }
+  .claim-note a { color: rgba(250,250,248,.62); text-decoration: none; border-bottom: 1px solid rgba(250,250,248,.22); }
+  .claim-note a:hover { color: var(--paper); border-color: rgba(250,250,248,.6); }
+
+  /* ---------- Supported apps ---------- */
+  .app-grid { display: grid; gap: 10px; grid-template-columns: repeat(4, 1fr); max-width: 840px; margin: 0 auto; }
+  @media (max-width: 760px) { .app-grid { grid-template-columns: repeat(2, 1fr); } }
+  .app-chip { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 13px 16px; font-size: 14.5px; font-weight: 600; display: flex; align-items: center; gap: 11px; }
+  .app-chip img, .app-chip .app-glyph { width: 28px; height: 28px; border-radius: 7px; flex-shrink: 0; object-fit: cover; }
+  .app-chip .app-glyph { background: var(--band); display: flex; align-items: center; justify-content: center; color: var(--ink); }
+  .app-chip .app-glyph svg { width: 15px; height: 15px; }
+  .app-chip.custom { background: transparent; border-style: dashed; border-color: #cfccc4; }
+  .app-chip.custom .app-glyph { background: transparent; border: 1px dashed #cfccc4; color: var(--muted); }
+  .app-chip.custom .chip-label { display: flex; flex-direction: column; gap: 1px; }
+  .app-chip.custom .chip-label small { font-size: 11.5px; font-weight: 500; color: var(--muted); }
+  .app-note { text-align: center; font-size: 14px; color: var(--muted); margin-top: 30px; max-width: 620px; margin-left: auto; margin-right: auto; }
+
+  /* ---------- How it works ---------- */
+  .how-steps { max-width: 960px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
+  .how-step { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: stretch; }
+  @media (max-width: 760px) { .how-step { grid-template-columns: 1fr; } }
+  .how-text { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px; display: flex; flex-direction: column; justify-content: center; }
+  .how-text .how-num { font-family: var(--mono); display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 50%; background: var(--ink); color: var(--paper); font-size: 13px; font-weight: 700; margin-bottom: 16px; }
+  .how-text h3 { font-size: 16px; font-weight: 700; letter-spacing: -.01em; margin-bottom: 8px; }
+  .how-text p { font-size: 14.5px; color: var(--muted); }
+  .how-text p strong { color: var(--ink); }
+  .how-illus { background: var(--ink); color: var(--paper); border-radius: var(--radius); padding: 28px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; text-align: center; }
+  .how-illus .illus-caption { font-size: 13px; color: rgba(250,250,248,.6); max-width: 340px; margin: 0; }
+
+  /* Illustrations */
+  .illus-nudge { display: flex; flex-direction: column; gap: 8px; width: 100%; max-width: 280px; }
+  .illus-line { height: 9px; border-radius: 3px; background: rgba(250,250,248,.16); }
+  .illus-line.short { width: 60%; }
+  .illus-chips { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+  .illus-chip { border: 1px solid rgba(250,250,248,.25); border-radius: 999px; padding: 5px 13px; font-size: 11.5px; font-weight: 600; color: rgba(250,250,248,.75); }
+  .illus-chip.app { background: var(--paper); color: var(--ink); border-color: var(--paper); }
+  .illus-donut { width: 88px; height: 88px; border-radius: 50%; background: conic-gradient(var(--paper) 0% 38%, rgba(250,250,248,.14) 38% 100%); display: flex; align-items: center; justify-content: center; }
+  .illus-donut span { width: 56px; height: 56px; border-radius: 50%; background: var(--ink); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; color: var(--paper); }
+
+  /* ---------- Pricing ---------- */
+  .pricing-grid { display: grid; gap: 16px; max-width: 780px; margin: 0 auto; grid-template-columns: repeat(2, 1fr); }
+  @media (max-width: 640px) { .pricing-grid { grid-template-columns: 1fr; } }
+  .price-card { border-radius: var(--radius); padding: 36px 32px; border: 1px solid rgba(250,250,248,.14); background: rgba(250,250,248,.04); }
+  .price-card.highlight { background: var(--paper); color: var(--ink); border-color: var(--paper); }
+  .price-card .tier { font-family: var(--mono); font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: .07em; color: rgba(250,250,248,.5); margin-bottom: 10px; }
+  .price-card.highlight .tier { color: var(--muted); }
+  .price-card .amount { font-size: 34px; font-weight: 700; letter-spacing: -0.04em; margin-bottom: 14px; }
+  .price-card p { font-size: 15px; color: rgba(250,250,248,.65); margin-bottom: 26px; }
+  .price-card.highlight p { color: var(--muted); }
+  .price-card .note { font-size: 13px; margin-top: -14px; margin-bottom: 26px; color: rgba(250,250,248,.45); }
+  .price-card.highlight .note { color: var(--muted); }
+  .maker-note { text-align: center; margin: 32px auto 0; font-size: 14px; color: rgba(250,250,248,.45); max-width: 560px; }
+  .maker-note a { color: rgba(250,250,248,.8); text-decoration: none; border-bottom: 1px solid rgba(250,250,248,.25); }
+  .maker-note a:hover { border-color: rgba(250,250,248,.7); }
+
+  /* ---------- Callout ---------- */
+  .callout { max-width: 680px; margin: 0 auto 48px; background: var(--white); border: 1px solid var(--line); border-left: 3px solid var(--ink); border-radius: 12px; padding: 20px 24px; font-size: 15px; color: var(--muted); text-align: center; }
+  .callout strong { color: var(--ink); }
+
+  /* ---------- Install ---------- */
+  .steps { display: grid; gap: 16px; grid-template-columns: repeat(3, 1fr); max-width: 960px; margin: 0 auto; }
+  @media (max-width: 760px) { .steps { grid-template-columns: 1fr; } }
+  .step { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 30px; }
+  .step .num { font-family: var(--mono); font-size: 12px; font-weight: 500; letter-spacing: .07em; color: var(--muted); display: block; margin-bottom: 14px; }
+  .step h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; letter-spacing: -.01em; }
+  .step p { font-size: 15px; color: var(--muted); }
+  .step code { font-family: var(--mono); font-size: 13px; background: var(--band); padding: 2px 6px; border-radius: 6px; }
+  .step a { color: var(--ink); text-decoration: none; font-weight: 600; border-bottom: 1px solid var(--line); }
+  .step a:hover { border-color: var(--ink); }
+  .install-note { max-width: 960px; margin: 24px auto 0; font-size: 14px; color: var(--muted); text-align: center; }
+
+  /* ---------- FAQ ---------- */
+  .faq-list { max-width: 720px; margin: 0 auto; }
+  .faq-item { background: var(--white); border: 1px solid var(--line); border-radius: 14px; margin-bottom: 12px; overflow: hidden; }
+  .faq-item summary { list-style: none; cursor: pointer; padding: 20px 24px; font-size: 16px; font-weight: 600; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; font-size: 20px; font-weight: 400; color: var(--muted); transition: transform .25s ease; }
+  .faq-item[open] summary::after { transform: rotate(45deg); }
+  .faq-item .faq-body-inner { padding: 0 24px 20px; font-size: 15px; color: var(--muted); overflow: hidden; }
+  .faq-item .faq-body-inner.animating { transition: height .28s cubic-bezier(.4,0,.2,1), opacity .22s ease; }
+
+  footer { padding: 48px 0; border-top: 1px solid var(--line); }
+  footer .wrap { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  footer .foot-links { display: flex; gap: 20px; flex-wrap: wrap; }
+  footer a { color: var(--muted); text-decoration: none; font-size: 14px; }
+  footer a:hover { color: var(--ink); }
+  footer .foot-brand { font-size: 14px; color: var(--muted); display: flex; align-items: center; gap: 8px; }
+  footer .foot-brand img { width: 20px; height: 20px; border-radius: 5px; }
+
+  /* ---------- Scroll reveal ---------- */
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      opacity: 0; transform: translateY(18px);
+      transition: opacity .6s cubic-bezier(.16,.8,.3,1), transform .6s cubic-bezier(.16,.8,.3,1);
+    }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+    .feature-grid > .reveal:nth-child(1), .shot-row.reveal, .style-grid > .reveal:nth-child(1), .claim-grid > .reveal:nth-child(1), .steps > .reveal:nth-child(1), .how-steps > .reveal:nth-child(1), .pricing-grid > .reveal:nth-child(1) { transition-delay: 0ms; }
+    .feature-grid > .reveal:nth-child(2), .style-grid > .reveal:nth-child(2), .claim-grid > .reveal:nth-child(2), .steps > .reveal:nth-child(2), .how-steps > .reveal:nth-child(2), .pricing-grid > .reveal:nth-child(2) { transition-delay: 80ms; }
+    .feature-grid > .reveal:nth-child(3), .style-grid > .reveal:nth-child(3), .claim-grid > .reveal:nth-child(3), .steps > .reveal:nth-child(3), .how-steps > .reveal:nth-child(3) { transition-delay: 160ms; }
+    .feature-grid > .reveal:nth-child(4), .style-grid > .reveal:nth-child(4) { transition-delay: 240ms; }
+    .feature-grid > .reveal:nth-child(5) { transition-delay: 320ms; }
+    .feature-grid > .reveal:nth-child(6) { transition-delay: 400ms; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#" class="wordmark"><img src="assets/app-icon-small.png" width="28" height="28" alt=""> TalkRemind</a>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#tour">Tour</a>
+      <a href="#works-with">Works with</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#install">Install</a>
+      <a href="#faq">FAQ</a>
+      <a href="https://github.com/4IngoJ/TalkRemind-releases/releases" class="nav-cta btn btn-secondary" style="padding:8px 16px;font-size:13px;">Download</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero wrap">
+  <img class="icon" src="assets/app-icon-small.png" width="84" height="84" alt="TalkRemind app icon">
+  <h1>
+    You bought a dictation app.<br>
+    But you're still typing?<br>
+    <span class="punch">
+      Not anymore.
+      <svg class="punch-line" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M4 8.6c21-3.6 50-5.5 85-5.7 34-.2 69 1.4 107 4.8" vector-effect="non-scaling-stroke"/>
+      </svg>
+    </span>
+  </h1>
+  <p class="sub">You wanted to dictate more. You set it up and meant to use it, then kept typing anyway. TalkRemind catches that moment and nudges you back, right where it costs you the most: AI prompts and long emails.</p>
+  <div class="cta-row">
+    <a href="https://github.com/4IngoJ/TalkRemind-releases/releases/latest/download/TalkRemind.dmg" class="btn btn-primary">Download for macOS</a>
+    <a href="#pricing" class="btn btn-secondary">See pricing</a>
+  </div>
+  <p class="price-note">Free for 14 days, then <a href="#pricing">€9.99 once</a>. Launch price: €5.99 for the first 100 buyers.</p>
+</header>
+
+<section class="ink" id="math">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2>Your dictation app promised 4×. Are you getting 4×?</h2>
+      <p>These are the numbers the dictation apps put on their own front pages.</p>
+    </div>
+    <div class="claim-grid">
+      <div class="claim reveal">
+        <div class="multiple">4×</div>
+        <div class="who">Wispr Flow</div>
+        <div class="what">&ldquo;4x faster than typing&rdquo; — 220 wpm spoken against a 45 wpm keyboard.</div>
+      </div>
+      <div class="claim reveal">
+        <div class="multiple">5×</div>
+        <div class="who">Aqua Voice</div>
+        <div class="what">&ldquo;5x faster than typing and twice as accurate&rdquo; — 230 wpm against 40 wpm.</div>
+      </div>
+      <div class="claim reveal">
+        <div class="multiple">5×</div>
+        <div class="who">VoiceInk</div>
+        <div class="what">&ldquo;Reply to emails 5× faster. Chat with AI apps 5× faster.&rdquo;</div>
+      </div>
+    </div>
+    <p class="math-punch">Those numbers are probably right — <strong>for the words you actually speak.</strong> A multiplier only applies to the share you dictate. Speak a fifth of what you write, and you collect a fifth of what you were sold. <strong>Raising that share is the only thing TalkRemind does.</strong></p>
+    <p class="claim-note">Claims as published by each vendor on their own site, checked September 2026 — their assertions, not measurements of ours. The independent number is lower and still large: a Stanford study clocked speech at <a href="https://news.stanford.edu/stories/2016/08/stanford-study-speech-recognition-faster-texting">2.93× faster than a keyboard</a> (153 vs 52 wpm, English, mobile text entry).</p>
+  </div>
+</section>
+
+<section class="band" id="works-with">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2>It works with the one you already have</h2>
+      <p>TalkRemind doesn't transcribe anything. It shows <em>your</em> dictation app's hotkey in the nudge. Seventeen are recognised automatically, the rest you enter once.</p>
+    </div>
+    <div class="app-grid">
+      <div class="app-chip"><img src="assets/apps/wisprflow.png" alt="" loading="lazy">Wispr Flow</div>
+      <div class="app-chip"><img src="assets/apps/superwhisper.png" alt="" loading="lazy">superwhisper</div>
+      <div class="app-chip"><img src="assets/apps/aquavoice.png" alt="" loading="lazy">Aqua Voice</div>
+      <div class="app-chip"><img src="assets/apps/voiceink.png" alt="" loading="lazy">VoiceInk</div>
+      <div class="app-chip"><img src="assets/apps/macwhisper.png" alt="" loading="lazy">MacWhisper</div>
+      <div class="app-chip"><span class="app-glyph"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.365 1.43c0 1.14-.493 2.27-1.177 3.08-.744.9-1.99 1.57-2.987 1.57-.12 0-.23-.02-.3-.03-.01-.06-.04-.22-.04-.39 0-1.15.572-2.27 1.206-2.98.804-.94 2.142-1.64 3.248-1.68.03.13.05.28.05.43zm4.565 15.71c-.03.07-.463 1.58-1.518 3.12-.945 1.34-1.94 2.71-3.43 2.71-1.517 0-1.9-.88-3.63-.88-1.698 0-2.302.91-3.67.91-1.377 0-2.332-1.26-3.428-2.8-1.287-1.82-2.323-4.63-2.323-7.28 0-4.28 2.784-6.55 5.527-6.55 1.5 0 2.75.93 3.658.93.858 0 2.25-.98 3.9-.98.635 0 2.91.06 4.415 2.19-.115.075-2.635 1.542-2.635 4.593 0 3.62 3.18 4.897 3.133 4.913z"/></svg></span>Apple Dictation</div>
+      <div class="app-chip"><img src="assets/apps/lispr.png" alt="" loading="lazy">Lispr</div>
+      <div class="app-chip"><img src="assets/apps/spokenly.png" alt="" loading="lazy">Spokenly</div>
+      <div class="app-chip"><img src="assets/apps/voibe.png" alt="" loading="lazy">Voibe</div>
+      <div class="app-chip"><img src="assets/apps/fluidvoice.png" alt="" loading="lazy">FluidVoice</div>
+      <div class="app-chip"><img src="assets/apps/handy.png" alt="" loading="lazy">Handy</div>
+      <div class="app-chip"><img src="assets/apps/hex.png" alt="" loading="lazy">Hex</div>
+      <div class="app-chip"><img src="assets/apps/willowvoice.png" alt="" loading="lazy">Willow Voice</div>
+      <div class="app-chip"><img src="assets/apps/voicy.png" alt="" loading="lazy">Voicy</div>
+      <div class="app-chip"><img src="assets/apps/betterdictation.png" alt="" loading="lazy">BetterDictation</div>
+      <div class="app-chip"><img src="assets/apps/dictato.png" alt="" loading="lazy">Dictato</div>
+      <div class="app-chip"><img src="assets/apps/weesper.png" alt="" loading="lazy">Weesper</div>
+      <div class="app-chip custom">
+        <span class="app-glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></span>
+        <span class="chip-label">Your custom app<small>Built your own? Works too.</small></span>
+      </div>
+    </div>
+    <p class="app-note">Wrote your own dictation script? Any tool with a hotkey works — enter it once and TalkRemind shows it from then on.</p>
+  </div>
+</section>
+
+<section id="features">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2>It catches the habit slipping, not your typing</h2>
+      <p>Dictation apps wait for a hotkey. TalkRemind remembers it's there, right as you're about to type past it.</p>
+    </div>
+    <div class="callout">
+      <strong>The clearest case: AI prompts.</strong> In Claude or ChatGPT, formatting and typos don't matter. That's exactly where typing costs you the most time. If your prompts are typed, start there.
+    </div>
+    <div class="feature-grid">
+      <div class="card reveal">
+        <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></div>
+        <h3>Four reminder styles</h3>
+        <p>From a quietly changing menu-bar icon to a hint under your text cursor or a brief screen dim. Preview each one before you pick it.</p>
+      </div>
+      <div class="card reveal">
+        <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M10 9v6M14 9v6"/></svg></div>
+        <h3>Waits for your next pause</h3>
+        <p>Optional: the reminder holds back until you stop typing for a moment, so it never cuts into a sentence. Or show it the instant the threshold is hit.</p>
+      </div>
+      <div class="card reveal">
+        <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 21v-6M4 11V3M12 21v-9M12 8V3M20 21v-4M20 13V3"/><path d="M1.5 15h5M9.5 8h5M17.5 17h5"/></svg></div>
+        <h3>Learns your typing</h3>
+        <p>A 24-hour calibration reads your actual typing and suggests a starting sensitivity. Four presets, from relaxed to strict, if you'd rather choose.</p>
+      </div>
+      <div class="card reveal">
+        <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 7l-8.5 8.5-4-4L2 19"/><path d="M16 7h6v6"/></svg></div>
+        <h3>Stats that show the habit forming</h3>
+        <p>Today's dictation share, a 7-day trend, and which apps you get reminded in most. A weekly summary arrives on its own.</p>
+      </div>
+      <div class="card reveal">
+        <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></div>
+        <h3>Quiet where it should be</h3>
+        <p>Exempt apps like your code editor or password manager, set quiet hours, or pause with one click when you need to. After five ignored reminders in one app, it offers to leave that app alone.</p>
+      </div>
+      <div class="card reveal">
+        <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19a4.5 4.5 0 1 0-1.3-8.8A6 6 0 0 0 4.5 12 3.5 3.5 0 0 0 6 19z"/></svg></div>
+        <h3>Your Macs, in sync</h3>
+        <p>Optional iCloud sync keeps stats and settings the same on every Mac, through your private iCloud. Only numbers, times and app names travel, never text.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2>Choose how it interrupts you</h2>
+      <p>Every style is a click away in Settings — pick when it appears, right away or at your next short pause.</p>
+    </div>
+    <div class="style-grid">
+      <div class="style-card reveal">
+        <div class="swatch" aria-hidden="true">
+          <div class="mini-bar"><i></i><i></i><i class="on"></i></div>
+        </div>
+        <h3>Subtle</h3>
+        <p>Only the menu-bar icon briefly changes.</p>
+      </div>
+      <div class="style-card reveal">
+        <div class="swatch" aria-hidden="true">
+          <div class="mini-bar"><i></i><i></i><i></i></div>
+          <div class="mini-panel" style="margin-top:14px;">Say it instead — Fn Fn</div>
+        </div>
+        <h3>Notable</h3>
+        <p>A small panel appears for 3 seconds.</p>
+        <span class="rec">Recommended</span>
+      </div>
+      <div class="style-card reveal">
+        <div class="swatch" aria-hidden="true">
+          <div class="mini-caret">
+            <div class="line"></div>
+            <div class="line cursor"></div>
+            <div class="mini-hint">Fn Fn to dictate</div>
+          </div>
+        </div>
+        <h3>Textfield</h3>
+        <p>A hint directly beneath your text cursor.</p>
+      </div>
+      <div class="style-card reveal">
+        <div class="swatch" aria-hidden="true">
+          <div class="mini-caret"><div class="line"></div><div class="line cursor"></div></div>
+          <div class="mini-dim"><span>Speak instead</span></div>
+        </div>
+        <h3>ScreenBlock</h3>
+        <p>The screen briefly dims — a reminder you'll actually notice.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="tour">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2>Set up in two minutes</h2>
+      <p>A short guided setup: pick your dictation app, choose a reminder style, mark the apps where you never dictate. Then try it in a practice field before it goes live.</p>
+    </div>
+  </div>
+  <div class="gallery" data-gallery>
+    <div class="gallery-viewport">
+      <picture class="gallery-slide is-active" data-caption="Welcome" aria-hidden="false"><source type="image/webp" srcset="assets/screens/onb-welcome.webp"><img src="assets/screens/onb-welcome.png" width="712" height="722" alt="Welcome screen: TalkRemind counts keystrokes, never content"></picture>
+      <picture class="gallery-slide" data-caption="Your dictation app" aria-hidden="true"><source type="image/webp" srcset="assets/screens/onb-dictation.webp"><img src="assets/screens/onb-dictation.png" width="712" height="722" alt="Choose your dictation app, detected automatically, with a 20-second test" loading="lazy"></picture>
+      <picture class="gallery-slide" data-caption="Reminder style" aria-hidden="true"><source type="image/webp" srcset="assets/screens/onb-style.webp"><img src="assets/screens/onb-style.png" width="712" height="722" alt="Pick a reminder style and whether to wait for your next pause" loading="lazy"></picture>
+      <picture class="gallery-slide" data-caption="Quiet apps" aria-hidden="true"><source type="image/webp" srcset="assets/screens/onb-exempt.webp"><img src="assets/screens/onb-exempt.png" width="712" height="722" alt="Tick apps where TalkRemind should stay quiet" loading="lazy"></picture>
+      <picture class="gallery-slide" data-caption="How it reminds you" aria-hidden="true"><source type="image/webp" srcset="assets/screens/onb-timing.webp"><img src="assets/screens/onb-timing.png" width="712" height="722" alt="Writing block, nudge and quiet-time timing, with drag handles to adjust each" loading="lazy"></picture>
+      <picture class="gallery-slide" data-caption="Try it" aria-hidden="true"><source type="image/webp" srcset="assets/screens/onb-tryout.webp"><img src="assets/screens/onb-tryout.png" width="712" height="722" alt="A practice text field showing the writing block, nudge and dictated counters live" loading="lazy"></picture>
+      <button class="gallery-arrow gallery-prev" aria-label="Previous screenshot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+      <button class="gallery-arrow gallery-next" aria-label="Next screenshot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+    </div>
+    <p class="gallery-caption" data-caption-text>Welcome</p>
+    <div class="gallery-dots" role="tablist" aria-label="Onboarding screenshots">
+      <button class="gallery-dot is-active" data-index="0" aria-label="Slide 1"></button>
+      <button class="gallery-dot" data-index="1" aria-label="Slide 2"></button>
+      <button class="gallery-dot" data-index="2" aria-label="Slide 3"></button>
+      <button class="gallery-dot" data-index="3" aria-label="Slide 4"></button>
+      <button class="gallery-dot" data-index="4" aria-label="Slide 5"></button>
+      <button class="gallery-dot" data-index="5" aria-label="Slide 6"></button>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="shot-row reveal">
+      <div class="shot-text">
+        <span class="label">Menu bar</span>
+        <h3>Pause without opening Settings</h3>
+        <p>In a meeting or a focus block? One click pauses reminders for 30 minutes, 2 hours, this evening, tomorrow morning, or indefinitely.</p>
+      </div>
+      <figure><img src="assets/screens/pause-menu.png" width="441" height="293" alt="Pause menu: 30 Minutes, 2 Hours, Until This Evening, Until Tomorrow Morning, Until Further Notice" loading="lazy"></figure>
+    </div>
+    <div class="shot-row reveal">
+      <figure><img class="framed" src="assets/screens/settings-style-dark.png" width="639" height="185" alt="Settings: four reminder styles, Textfield selected, a hint directly beneath the text cursor" loading="lazy"></figure>
+      <div class="shot-text">
+        <span class="label">Settings</span>
+        <h3>Change your mind any time</h3>
+        <p>Style, timing, sensitivity, exempt apps and quiet hours all sit on one scrolling page. Hit preview to see the reminder before you keep it.</p>
+      </div>
+    </div>
+    <div class="shot-row reveal">
+      <div class="shot-text">
+        <span class="label">Settings</span>
+        <h3>Quiet on your terms</h3>
+        <p>Set a window (say, 10 pm to 7 am) and no reminder arrives inside it, no matter what you're typing.</p>
+      </div>
+      <figure><img class="framed" src="assets/screens/settings-quiet.png" width="627" height="136" alt="Settings: Quiet Hours toggle with a from/to time window" loading="lazy"></figure>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2>How it works</h2>
+      <p>Reads keystroke timing, not keystroke content.</p>
+    </div>
+    <div class="how-steps">
+      <div class="how-step reveal">
+        <div class="how-text">
+          <span class="how-num">1</span>
+          <h3>It watches the rhythm, not the words</h3>
+          <p>One Accessibility permission lets TalkRemind observe <strong>when</strong> and <strong>how much</strong> you're typing in a stretch — never the text itself.</p>
+        </div>
+        <div class="how-illus">
+          <div class="illus-nudge">
+            <div class="illus-line"></div>
+            <div class="illus-line short"></div>
+            <div class="illus-line"></div>
+          </div>
+          <p class="illus-caption">Read-only keystroke timing. No text ever leaves the keyboard event.</p>
+        </div>
+      </div>
+      <div class="how-step reveal">
+        <div class="how-text">
+          <span class="how-num">2</span>
+          <h3>It notices when dictating would already be faster</h3>
+          <p>Past your chosen threshold, in an app that isn't exempt, outside quiet hours. That's when a reminder is worth showing, either right away or at your next pause.</p>
+        </div>
+        <div class="how-illus">
+          <div class="illus-chips">
+            <span class="illus-chip">Slack</span>
+            <span class="illus-chip">Mail</span>
+            <span class="illus-chip app">Claude / ChatGPT</span>
+          </div>
+          <p class="illus-caption">Per-app thresholds, quiet hours, and a hard cap on nudges per hour.</p>
+        </div>
+      </div>
+      <div class="how-step reveal">
+        <div class="how-text">
+          <span class="how-num">3</span>
+          <h3>It nudges once, then gets out of the way</h3>
+          <p>The nudge names your dictation app's own hotkey. Switch, or don't — either way TalkRemind logs it and keeps the stats honest.</p>
+        </div>
+        <div class="how-illus">
+          <div class="illus-donut"><span>38%</span></div>
+          <p class="illus-caption">Today's dictation share, straight from your own recorded events.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ink" id="pricing">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2>The money bit</h2>
+      <p>You already paid real money to dictate more. This makes sure that wasn't wasted.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card reveal">
+        <div class="tier">Trial</div>
+        <div class="amount">Free for 14 days</div>
+        <p>Every reminder style and the full stats, unlocked. No account, no card.</p>
+        <a href="https://github.com/4IngoJ/TalkRemind-releases/releases/latest/download/TalkRemind.dmg" class="btn btn-outline-light">Download the trial</a>
+      </div>
+      <div class="price-card highlight reveal">
+        <div class="tier">License</div>
+        <div class="amount">€5.99 once</div>
+        <p>Launch price for the first 100 buyers, then €9.99. After the trial, nudges stop. Your stats keep recording for free, so you can watch your dictation share as the nudges go quiet. Buying turns them back on, for good.</p>
+        <a href="https://4ingoj.lemonsqueezy.com/checkout/buy/e41d805f-da5a-44f1-b200-539884c56627?checkout%5Bdiscount_code%5D=EARLY100" class="btn btn-light">Buy a licence</a>
+      </div>
+    </div>
+    <p class="maker-note">Built and maintained by one person. Questions before buying? Write to <a href="mailto:hello@didact.digital">hello@didact.digital</a>.</p>
+  </div>
+</section>
+
+<section id="install">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2>First launch</h2>
+      <p>Two minutes, no App Store.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <span class="num">01</span>
+        <h3>Download &amp; drag to Applications</h3>
+        <p>Grab the latest release from <a href="https://github.com/4IngoJ/TalkRemind-releases/releases">GitHub</a>. Open the disk image, drag TalkRemind into Applications, done.</p>
+      </div>
+      <div class="step reveal">
+        <span class="num">02</span>
+        <h3>Allow Accessibility access</h3>
+        <p>One prompt under <code>System Settings → Privacy &amp; Security</code>. Read-only keystroke timing — that's the whole ask.</p>
+      </div>
+      <div class="step reveal">
+        <span class="num">03</span>
+        <h3>Pick your dictation app</h3>
+        <p>Wispr Flow, superwhisper, VoiceInk, macOS Dictation — whichever you already use. TalkRemind shows its hotkey right in the nudge.</p>
+      </div>
+    </div>
+    <p class="install-note">Signed and notarized by Apple — Gatekeeper lets it straight through.</p>
+  </div>
+</section>
+
+<section class="band" id="faq">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2>Questions</h2>
+      <p>The ones that actually come up.</p>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>I already have a dictation app — why do I need this too?</summary>
+        <div class="faq-body-inner">Because owning it isn't the same as using it. Most people who buy a dictation app reach for it a fraction of the time they meant to, then fall back into typing out of habit. TalkRemind is the reminder that gets you to actually open it.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Does it read what I'm typing?</summary>
+        <div class="faq-body-inner">No. TalkRemind only observes keystroke timing through the macOS Accessibility API — when you type and how much, never the characters themselves.</div>
+      </details>
+      <details class="faq-item">
+        <summary>What happens after the 14-day trial?</summary>
+        <div class="faq-body-inner">The nudges stop. Recording keeps running for free. Your dictation share and the 7-day trend stay visible, so you can watch the effect fade before deciding to buy.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Which dictation apps does it work with?</summary>
+        <div class="faq-body-inner">Seventeen are recognised on sight (<a href="#works-with" style="color:inherit;">full list above</a>) and show their hotkey in the nudge automatically. Any other app with a hotkey works too — you enter its hotkey once and TalkRemind remembers it from then on. TalkRemind never transcribes anything itself — it only points you at the app that does.</div>
+      </details>
+      <details class="faq-item">
+        <summary>How much time will this actually save me?</summary>
+        <div class="faq-body-inner">That depends on how much more you end up dictating — the app measures it instead of promising it. The short version is in &ldquo;Your dictation app promised 4×&rdquo; above: the speed-up only applies to what you actually speak. The stats screen shows your real share, so you can check it against your own week.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Can I turn it off for specific apps or times?</summary>
+        <div class="faq-body-inner">Yes. Exempt individual apps permanently, set a quiet-hours window, or pause everything for 30 minutes up to indefinitely, right from the menu bar.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Is my data sent anywhere?</summary>
+        <div class="faq-body-inner">No. Typing and dictation events stay on your Mac. The only network calls are license validation and update checks — no analytics, no tracking.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Can I get a refund?</summary>
+        <div class="faq-body-inner">Lemon Squeezy handles the payment as merchant of record and follows standard consumer refund rules. Reach out via the email on your receipt if something's wrong.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-brand"><img src="assets/app-icon-small.png" width="20" height="20" alt=""> TalkRemind <span aria-hidden="true">·</span> <a href="https://didact.digital">by didact.</a></div>
+    <div class="foot-links">
+      <a href="https://github.com/4IngoJ/TalkRemind-releases/releases">Releases</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="impressum.html">Legal notice</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Scroll reveal: fade+rise content blocks into view once, never re-hide.
+  if (!reduceMotion && 'IntersectionObserver' in window) {
+    var revealItems = document.querySelectorAll('.reveal');
+    var revealObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    revealItems.forEach(function (el) { revealObserver.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('is-visible'); });
+  }
+
+  // Scrollspy: highlight the nav link for the section currently in view.
+  var navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+  var sections = Array.prototype.slice.call(document.querySelectorAll('section[id]'));
+  if (navLinks.length && sections.length && 'IntersectionObserver' in window) {
+    var spyObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        var link = document.querySelector('.nav-links a[href="#' + entry.target.id + '"]');
+        if (!link) return;
+        if (entry.isIntersecting) {
+          navLinks.forEach(function (a) { a.classList.remove('active'); });
+          link.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+    sections.forEach(function (s) { spyObserver.observe(s); });
+
+    // Above the first tracked section (still in the hero) — nothing should read as active.
+    var firstSectionTop = sections[0].getBoundingClientRect().top + window.scrollY;
+    var clearIfAboveAll = function () {
+      if (window.scrollY < firstSectionTop - 84) {
+        navLinks.forEach(function (a) { a.classList.remove('active'); });
+      }
+    };
+    window.addEventListener('scroll', clearIfAboveAll, { passive: true });
+    clearIfAboveAll();
+  }
+
+  // FAQ: animate <details> open/close instead of the native instant snap.
+  document.querySelectorAll('.faq-item').forEach(function (item) {
+    var summary = item.querySelector('summary');
+    var body = item.querySelector('.faq-body-inner');
+    if (!summary || !body) return;
+
+    summary.addEventListener('click', function (e) {
+      if (reduceMotion) return; // let the native toggle handle it instantly
+      e.preventDefault();
+      if (item.open) {
+        collapse();
+      } else {
+        item.open = true;
+        expand();
+      }
+    });
+
+    function expand() {
+      body.classList.add('animating');
+      var target = body.scrollHeight;
+      body.style.height = '0px';
+      body.style.opacity = '0';
+      requestAnimationFrame(function () {
+        body.style.height = target + 'px';
+        body.style.opacity = '1';
+      });
+      body.addEventListener('transitionend', function onEnd() {
+        body.style.height = '';
+        body.classList.remove('animating');
+        body.removeEventListener('transitionend', onEnd);
+      }, { once: true });
+    }
+
+    function collapse() {
+      body.classList.add('animating');
+      body.style.height = body.scrollHeight + 'px';
+      body.style.opacity = '1';
+      requestAnimationFrame(function () {
+        body.style.height = '0px';
+        body.style.opacity = '0';
+      });
+      body.addEventListener('transitionend', function onEnd() {
+        item.open = false;
+        body.style.height = '';
+        body.style.opacity = '';
+        body.classList.remove('animating');
+        body.removeEventListener('transitionend', onEnd);
+      }, { once: true });
+    }
+  });
+
+  // Onboarding gallery: dot indicators + prev/next, click or keyboard.
+  // Slides are always in the DOM, stacked via CSS (.gallery-slide.is-active);
+  // switching crossfades the outgoing slide out and slides the incoming one
+  // in from the direction of travel.
+  (function () {
+    var root = document.querySelector('[data-gallery]');
+    if (!root) return;
+    var slides = Array.prototype.slice.call(root.querySelectorAll('.gallery-slide'));
+    var dots = Array.prototype.slice.call(root.querySelectorAll('.gallery-dot'));
+    var caption = root.querySelector('[data-caption-text]');
+    var prev = root.querySelector('.gallery-prev');
+    var next = root.querySelector('.gallery-next');
+    var index = 0;
+
+    function show(i, direction) {
+      var newIndex = (i + slides.length) % slides.length;
+      if (newIndex === index) return;
+      var dir = direction || (newIndex > index ? 1 : -1);
+      var outgoing = slides[index];
+      var incoming = slides[newIndex];
+      index = newIndex;
+
+      dots.forEach(function (d, n) { d.classList.toggle('is-active', n === index); });
+      if (caption) caption.textContent = incoming.dataset.caption;
+
+      outgoing.classList.remove('is-active');
+      outgoing.setAttribute('aria-hidden', 'true');
+      incoming.classList.remove('dir-in-next', 'dir-in-prev');
+      incoming.classList.add(dir > 0 ? 'dir-in-next' : 'dir-in-prev');
+      // Force a reflow so the starting transform above is committed before
+      // the next frame removes it — otherwise the browser coalesces both
+      // states and there's nothing to transition from.
+      void incoming.offsetWidth;
+      incoming.classList.add('is-active');
+      incoming.setAttribute('aria-hidden', 'false');
+      requestAnimationFrame(function () {
+        incoming.classList.remove('dir-in-next', 'dir-in-prev');
+      });
+    }
+
+    dots.forEach(function (dot, i) { dot.addEventListener('click', function () { show(i); }); });
+    if (prev) prev.addEventListener('click', function () { show(index - 1, -1); });
+    if (next) next.addEventListener('click', function () { show(index + 1, 1); });
+    root.setAttribute('tabindex', '0');
+    root.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft') show(index - 1, -1);
+      if (e.key === 'ArrowRight') show(index + 1, 1);
+    });
+  })();
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "@id": "https://didact.digital/talkremind/#app",
+  "name": "TalkRemind",
+  "operatingSystem": "macOS 14 or later",
+  "applicationCategory": "ProductivityApplication",
+  "description": "A macOS menu-bar app that notices when you type a long stretch and nudges you to use the dictation app you already own. It never transcribes anything and never reads the characters you type.",
+  "url": "https://didact.digital/talkremind/",
+  "downloadUrl": "https://github.com/4IngoJ/TalkRemind-releases/releases/latest/download/TalkRemind.dmg",
+  "installUrl": "https://github.com/4IngoJ/TalkRemind-releases/releases/latest",
+  "image": "https://didact.digital/talkremind/assets/app-icon.png",
+  "inLanguage": ["en", "de", "fr", "es", "it", "pt"],
+  "author": {"@type": "Person", "name": "Ingo Jurz", "url": "https://didact.digital/"},
+  "offers": {"@type": "Offer", "price": "9.99", "priceCurrency": "EUR", "url": "https://4ingoj.lemonsqueezy.com/checkout/buy/e41d805f-da5a-44f1-b200-539884c56627"}
+}
+</script>
+<script src="https://lmsqueezy.com/affiliate.js" defer></script>
+</body>
+</html>

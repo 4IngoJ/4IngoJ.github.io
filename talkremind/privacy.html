@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy · TalkRemind</title>
+<meta name="description" content="What TalkRemind and its website do with data: typing events stay on your Mac, there is no analytics, and the network calls are license checks and update checks.">
+<link rel="canonical" href="https://didact.digital/talkremind/privacy.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://didact.digital/talkremind/privacy.html">
+<meta property="og:title" content="Privacy · TalkRemind">
+<meta property="og:description" content="What TalkRemind and its website do with data: typing events stay on your Mac, there is no analytics, and the network calls are license checks and update checks.">
+<meta property="og:image" content="https://didact.digital/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon-180.png">
+<link rel="preload" href="/assets/fonts/onest-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/fonts.css">
+<style>
+  :root{--paper:#FAF9F7;--ink:#1A1917;--graphite:#5C5A56;--stone:#E6E4E0;--white:#fff;
+    --sans:"Onest",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --mono:"Geist Mono",ui-monospace,"SF Mono",Menlo,monospace}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:var(--sans);background:var(--paper);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:880px;margin:0 auto;padding:0 24px}
+  a{color:var(--ink)}
+  nav{border-bottom:1px solid var(--stone)}
+  nav .wrap{display:flex;align-items:center;height:64px}
+  nav img{height:22px;width:auto;display:block}
+  h1{font-size:clamp(34px,6vw,56px);font-weight:700;letter-spacing:-.04em;line-height:1.08}
+  h2{font-size:24px;font-weight:600;letter-spacing:-.01em;margin:40px 0 12px}
+  .label{font-family:var(--mono);font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.07em;color:var(--graphite)}
+  main{padding:72px 0 96px}
+  .lede{font-size:19px;color:var(--graphite);margin-top:20px;max-width:560px}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;margin-top:56px}
+  .card{background:var(--white);border:1px solid var(--stone);border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:12px;text-decoration:none}
+  .card:hover,.card:focus-visible{border-color:var(--ink)}
+  .card img{width:56px;height:56px;border-radius:13px}
+  .card h3{font-size:22px;font-weight:600;letter-spacing:-.01em}
+  .card p{color:var(--graphite)}
+  .card .label{margin-top:auto;padding-top:8px}
+  p{margin-bottom:12px;color:#3d3b37}
+  footer{border-top:1px solid var(--stone);padding:28px 0;font-size:14px;color:var(--graphite)}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px}
+  footer a{color:var(--graphite)}
+</style>
+</head>
+<body>
+<nav><div class="wrap"><a href="/" aria-label="didact home"><img src="/assets/didact-wordmark-ink.svg" alt="didact."></a></div></nav>
+<main class="wrap">
+  <h1 style="font-size:40px">Privacy</h1>
+  <p class="label">Last updated: 3 October 2026</p>
+  <p style="margin-top:16px">TalkRemind is a macOS app made by Ingo Jurz, Graz, Austria. This page explains what data the app touches, what leaves your Mac, and what never does.</p>
+  <h2>The short version</h2>
+  <p>Typing and dictation events stay on your Mac. TalkRemind observes when you type and how much, never the characters. The app has no analytics and no tracking. Its only network calls are license validation (Lemon Squeezy) and update checks (Sparkle, via GitHub).</p>
+  <h2>Keystroke timing and Accessibility access</h2>
+  <p>TalkRemind uses the macOS Accessibility API to see the timing and amount of your typing. It does not record or store the characters you type and does not read window contents. Your statistics (for example your dictation share and the seven-day trend) are stored locally on your Mac.</p>
+  <h2>Optional iCloud sync</h2>
+  <p>If you switch on iCloud sync, your statistics and settings (numbers, times, app names) are stored in your own iCloud account through Apple's CloudKit. They are not sent to us.</p>
+  <h2>License activation and validation</h2>
+  <p>When you enter a license key, TalkRemind contacts Lemon Squeezy to activate and validate it. The key is stored in the macOS Keychain. A network error never locks out a paying customer.</p>
+  <h2>Updates</h2>
+  <p>TalkRemind checks for updates through the Sparkle framework, which fetches an appcast file hosted on GitHub. GitHub may log your IP address as part of serving that file; see GitHub's privacy statement.</p>
+  <h2>Payments</h2>
+  <p>Purchases are handled by Lemon Squeezy as merchant of record. We receive the information Lemon Squeezy passes on for your order, such as your email address and country. Their privacy policy applies to the payment.</p>
+  <h2>This website</h2>
+  <p>The site is hosted on GitHub Pages, so GitHub processes server logs such as your IP address. Fonts are served from this site, not from a third party. The page loads one third-party script, the Lemon Squeezy affiliate script (lmsqueezy.com/affiliate.js). If you arrive through a partner's link (a URL containing <code>?aff=</code>), it tells Lemon Squeezy which partner sent you, so they receive their commission if you later buy. It stores an anonymous identifier, no name and no email. Without such a link the script does nothing. The app itself never loads it. We use no analytics and set no cookies of our own.</p>
+  <h2>Your rights</h2>
+  <p>You can ask for access to, correction of, or deletion of data we hold about you by writing to <a href="mailto:hello@didact.digital">hello@didact.digital</a>. You can also complain to the Austrian data protection authority (Datenschutzbehörde, dsb.gv.at).</p>
+  <h2>Controller</h2>
+  <p>Ingo Jurz, Unterer Breitenweg 9, 8042 Graz, Austria. <a href="mailto:hello@didact.digital">hello@didact.digital</a></p>
+</main>
+<footer><div class="wrap"><a href="/talkremind/">TalkRemind</a> <a href="/talkremind/privacy.html">Privacy</a> <a href="/talkremind/impressum.html">Legal notice</a> <a href="/">by didact.</a></div></footer>
+</body>
+</html>
