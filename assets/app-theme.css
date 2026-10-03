@@ -1,0 +1,145 @@
+/* didact app pages: shared theme. Loaded after each page's own <style>, so it wins on equal specificity.
+   Tokens, nav, dot-field hero, ledger sections, footer. Content and i18n stay in the pages. */
+:root{
+  --paper:#FAF9F7; --band:#F2F0EC; --ink:#1A1917; --muted:#5C5A56; --line:#E6E4E0; --white:#fff;
+  --accent:#1A1917; --radius:14px; --mist:#B7B4AE; --gutter:clamp(20px,5vw,64px);
+  --sans:"Onest",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --mono:"Geist Mono",ui-monospace,"SF Mono",Menlo,monospace;
+}
+html{color-scheme:light;scrollbar-color:#9C9992 var(--paper);scroll-padding-top:72px}
+body{font-family:var(--sans);line-height:1.55;text-rendering:optimizeLegibility}
+::selection{background:var(--ink);color:var(--paper)}
+.hero ::selection,footer ::selection,section.ink ::selection{background:var(--paper);color:var(--ink)}
+:focus-visible{outline:2px solid currentColor;outline-offset:3px;border-radius:4px}
+.wrap{max-width:1200px;padding:0 var(--gutter)}
+
+/* nav: solid Ink, didact first, then the app */
+nav{background:var(--ink);border-bottom:1px solid rgba(250,249,247,.12);-webkit-backdrop-filter:none;backdrop-filter:none}
+nav .wrap{height:64px;gap:24px}
+.nav-left{display:flex;align-items:center;gap:14px;min-width:0}
+.didact-mark img{height:20px;width:auto;display:block}
+.nav-left .sep{color:#6F6C67}
+nav .wordmark{color:var(--paper);font-size:16px;font-weight:600;letter-spacing:-.02em}
+nav .wordmark img{width:26px;height:26px;border-radius:6px}
+nav .nav-links a{color:var(--mist);font-size:14.5px}
+nav .nav-links a:hover,nav .nav-links a.active{color:var(--paper)}
+nav .nav-links a.nav-cta{color:var(--paper);background:transparent;border:1px solid rgba(250,249,247,.35);box-shadow:none}
+nav .nav-links a.nav-cta:hover{background:var(--paper);color:var(--ink)}
+.lang-toggle{color:var(--mist);border-color:rgba(250,249,247,.28)}
+.lang-toggle:hover{color:var(--paper);border-color:rgba(250,249,247,.6)}
+.lang-menu{border-radius:12px}
+@media (max-width:720px){.nav-left .sep,.nav-left .wordmark{display:none}}
+
+/* buttons */
+.btn{border-radius:10px;min-height:46px;padding:0 22px;font-weight:600}
+.btn-primary:hover{box-shadow:none;background:#34322F}
+.btn-secondary:hover{box-shadow:none}
+
+/* hero: Ink with the dot field */
+.hero{position:relative;background:var(--ink);color:var(--paper);padding:clamp(64px,11vh,128px) 0 clamp(56px,9vh,96px);text-align:left;overflow:hidden;isolation:isolate}
+#field{position:absolute;inset:0;width:100%;height:100%;z-index:-1}
+.hero .hero-body{display:flex;flex-direction:column;align-items:flex-start}
+.hero img.icon,.hero h1 .punch-line{display:none}
+.hero h1{font-size:clamp(2.4rem,6.4vw,5rem);line-height:1.04;letter-spacing:-.04em;font-weight:700;max-width:12.5em;margin:0 0 clamp(18px,3vh,28px);text-align:left;text-wrap:balance}
+.hero p.sub{color:var(--mist);max-width:34em;margin:0 0 clamp(24px,4vh,36px);font-size:clamp(1.05rem,1.6vw,1.25rem);text-align:left}
+.hero .cta-row{justify-content:flex-start}
+.hero .btn-primary{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.hero .btn-primary:hover{background:var(--white)}
+.hero .btn-secondary{background:transparent;color:var(--paper);border-color:rgba(250,249,247,.35)}
+.hero .btn-secondary:hover{border-color:var(--paper)}
+.hero .price-note{color:var(--mist);text-align:left;margin-top:20px;font-size:14.5px}
+.hero .price-note a{color:var(--paper);border-bottom:1px solid rgba(250,249,247,.4)}
+.hero .price-note a:hover{border-color:var(--paper)}
+.hero-meta{order:10;margin-top:22px}
+.hero .eyebrow{border:0;background:none;padding:0;margin:0;letter-spacing:0;font-weight:400;font-size:14px;color:var(--mist)}
+.hero .brew-box{margin:28px 0 0;border-color:rgba(250,249,247,.2);color:var(--mist);text-align:left;border-radius:12px}
+.hero .brew-box code{background:rgba(250,249,247,.08);color:var(--paper)}
+.hero .brew-copy-btn{background:rgba(250,249,247,.08);border-color:rgba(250,249,247,.2);color:var(--mist)}
+.hero .brew-copy-btn:hover{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+@media (max-width:480px){.hero .cta-row .btn{width:100%;justify-content:center}}
+
+/* sections: hairlines instead of card grids */
+section{padding:clamp(72px,10vw,128px) 0}
+section.band{background:var(--white);border-block:1px solid var(--line)}
+.section-head{text-align:left;max-width:none;margin:0 0 clamp(36px,5vw,64px)}
+.section-head h2{font-size:clamp(2rem,4.6vw,3.25rem);line-height:1.08;letter-spacing:-.035em;font-weight:700;max-width:16em;margin-bottom:14px;text-wrap:balance}
+.section-head p{max-width:36em;font-size:1.0625rem}
+.section-head p{color:var(--muted)}
+section.ink .section-head p{color:var(--mist)}
+.feature-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 clamp(28px,5vw,72px);border-top:1px solid var(--ink)}
+@media (max-width:760px){.feature-grid{grid-template-columns:1fr}}
+.card{background:none;border:0;border-bottom:1px solid var(--line);border-radius:0;padding:24px 0;box-shadow:none;transform:none}
+.card:hover{box-shadow:none;transform:none}
+.card-icon{display:none}
+.card h3{font-size:1.2rem;letter-spacing:-.02em;margin-bottom:6px}
+.card p{font-size:1rem}
+.how-steps{max-width:none;gap:clamp(28px,4vw,56px)}
+.how-text{background:none;border:0;border-top:1px solid var(--ink);border-radius:0;padding:24px 0 0}
+.how-text h3{font-size:1.2rem;letter-spacing:-.02em}
+.how-text p{font-size:1rem}
+.how-illus{border-radius:var(--radius)}
+.steps{max-width:none;gap:clamp(24px,4vw,56px)}
+.step{background:none;border:0;border-top:1px solid var(--ink);border-radius:0;padding:24px 0 0}
+.step h3{font-size:1.2rem;letter-spacing:-.02em}
+.install-note,.compare-note,.app-note,.roadmap-ask,.maker-note,.merchant-note,.claim-note,.math-punch{text-align:left;margin-left:0;margin-right:0;max-width:44em}
+.pricing-grid{margin:0;max-width:860px}
+.price-card{border-radius:var(--radius)}
+.price-card .amount{letter-spacing:-.035em}
+.video-frame{box-shadow:none}
+.shot-row img.framed{box-shadow:none}
+
+/* compare table (SideSchedule) */
+.table-scroll{max-width:none;margin:0;border-radius:0}
+.compare-table{background:none;border:0;border-top:1px solid var(--ink);border-radius:0}
+.compare-table th{background:none;font-family:var(--mono);font-weight:500;letter-spacing:.04em}
+.compare-table tr.self td{background:var(--white)}
+
+/* roadmap (SideSchedule) and callout (TalkRemind): no side stripes */
+.roadmap-note,.callout{border-left:1px solid var(--line);border-radius:0;background:none;max-width:44em;margin-left:0;text-align:left}
+.roadmap-cols{gap:clamp(24px,4vw,56px)}
+.roadmap-col{background:none;border:0;border-top:1px solid var(--ink);border-radius:0;padding:24px 0 0}
+
+/* faq as a hairline list */
+.faq-list{max-width:820px;margin:0;border-top:1px solid var(--ink)}
+.faq-item{background:none;border:0;border-bottom:1px solid var(--line);border-radius:0;margin:0}
+.faq-item summary{padding:22px 0}
+.faq-item .faq-body-inner{padding:0 0 22px}
+
+/* TalkRemind: the vendor claims as ledger rows, not metric cards */
+.claim-grid{display:block;max-width:none;margin:0 0 36px;border-top:1px solid rgba(250,249,247,.4)}
+.claim{display:grid;grid-template-columns:120px minmax(0,220px) minmax(0,1fr);gap:24px;align-items:baseline;text-align:left;background:none;border:0;border-bottom:1px solid rgba(250,249,247,.14);border-radius:0;padding:22px 0}
+.claim .multiple{font-family:var(--mono);font-size:2.1rem;letter-spacing:-.04em;margin:0}
+.claim .who{margin:0}
+@media (max-width:760px){.claim{grid-template-columns:1fr;gap:4px}}
+.app-chip{border-radius:10px}
+
+/* footer */
+footer{background:var(--ink);color:var(--mist);border-top:0;padding:56px 0 44px}
+footer a,footer .links a,footer .foot-links a{color:var(--mist);font-size:14.5px}
+footer a:hover{color:var(--paper)}
+footer .brand,footer .foot-brand{color:var(--paper)}
+footer .brand span.ver{color:var(--mist)}
+footer .didact-line{display:flex;align-items:center;gap:10px;color:var(--mist);font-size:14.5px}
+footer .didact-line img{height:18px;width:auto}
+
+/* motion: the home page owns the one authored moment; no repeated section entrances here */
+html.reveal-on .reveal,.reveal{opacity:1!important;transform:none!important;transition:none!important}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+.brew-box code,.step code,.illus-note pre,code{font-family:var(--mono)}
+
+.hero + section.ink{border-top:1px solid rgba(250,249,247,.12)}
+
+/* left-aligned leftovers */
+[data-i18n="compare.lead"]{text-align:left!important;margin:-32px 0 40px!important;max-width:44em!important}
+#cta-final .wrap{text-align:left!important}
+#cta-final .cta-row,#cta-final .btn-row{justify-content:flex-start}
+.style-grid,.shot-row,.app-grid,.gallery{max-width:none;margin-left:0;margin-right:0}
+.style-grid{max-width:960px}
+.shot-row{max-width:1000px}
+.gallery{max-width:460px}
+.style-card{text-align:left;border-radius:12px}
+@media (max-width:640px){
+  .hero .brew-box{display:flex;flex-direction:column;align-items:flex-start;width:100%;max-width:100%}
+  .hero .brew-box code{max-width:100%}
+}
