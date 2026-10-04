@@ -135,13 +135,13 @@
   /* subscribe */
   .subscribe{background:var(--ink);color:var(--paper);padding:clamp(64px,9vw,120px) 0}
   .subscribe ::selection{background:var(--paper);color:var(--ink)}
-  .subscribe .inner{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(28px,5vw,72px);align-items:center}
+  .subscribe .inner{display:grid;grid-template-columns:minmax(0,1fr) 540px;gap:clamp(28px,5vw,72px);align-items:start}
   .subscribe h2{font-size:clamp(2.2rem,5.4vw,4rem);max-width:10em}
   .subscribe .why{margin-top:16px;max-width:30em;color:var(--mist);font-size:1.1rem}
-  .subscribe .cta{display:flex;flex-direction:column;align-items:flex-start;gap:16px}
-  .btn.invert{background:var(--paper);color:var(--ink);border-color:var(--paper);min-height:60px;padding:0 36px;font-size:18px}
-  .btn.invert:hover{background:var(--white)}
-  .subscribe .fine{font-size:14px;color:var(--mist);max-width:28em}
+  .signup-wrap{--h:1044px;position:relative;width:100%;max-width:540px;height:var(--h);border-radius:16px;overflow:hidden;background:#fff}
+  .signup{position:absolute;left:-20px;top:-40px;width:calc(100% + 40px);height:calc(var(--h) + 80px);border:0;display:block}
+  .subscribe .fine{margin-top:20px;font-size:14px;color:var(--mist);max-width:30em}
+  .subscribe .fine a{color:var(--paper)}
 
   /* partners */
   .partners{background:var(--stone)}
@@ -169,7 +169,7 @@
   .bar nav a.pill:hover{color:var(--ink);background:var(--white)}
 
   @media (max-width:900px){
-    .releases,.subscribe .inner{grid-template-columns:1fr}
+    .releases{grid-template-columns:1fr}
     .app .media,.app .text,.app.flip .media,.app.flip .text{grid-column:1 / -1;grid-row:auto}
     .app .media{order:1}.app .text{order:2}
     .cols>div:first-child,.cols>div:last-child{grid-column:1 / -1}
@@ -184,6 +184,21 @@
     .bar nav a[href="#partners"]{display:none}
     .bar nav a.pill{padding:6px 14px}
   }
+  @media (max-width:1099px){.subscribe .inner{grid-template-columns:1fr}}
+  @media (max-width:339px){.signup-wrap{--h:1492px}}
+  @media (min-width:340px) and (max-width:359px){.signup-wrap{--h:1402px}}
+  @media (min-width:360px) and (max-width:379px){.signup-wrap{--h:1355px}}
+  @media (min-width:380px) and (max-width:399px){.signup-wrap{--h:1312px}}
+  @media (min-width:400px) and (max-width:419px){.signup-wrap{--h:1288px}}
+  @media (min-width:420px) and (max-width:439px){.signup-wrap{--h:1288px}}
+  @media (min-width:440px) and (max-width:459px){.signup-wrap{--h:1288px}}
+  @media (min-width:460px) and (max-width:479px){.signup-wrap{--h:1222px}}
+  @media (min-width:480px) and (max-width:499px){.signup-wrap{--h:1199px}}
+  @media (min-width:500px) and (max-width:519px){.signup-wrap{--h:1127px}}
+  @media (min-width:520px) and (max-width:539px){.signup-wrap{--h:1097px}}
+  @media (min-width:540px) and (max-width:559px){.signup-wrap{--h:1076px}}
+  @media (min-width:560px) and (max-width:579px){.signup-wrap{--h:1076px}}
+  @media (min-width:580px) and (max-width:599px){.signup-wrap{--h:1038px}}
   @media (prefers-reduced-motion:reduce){
     html{scroll-behavior:auto}
     *{transition:none!important;animation:none!important}
@@ -341,11 +356,11 @@
   <div class="wrap inner">
     <div>
       <h2 id="subscribe-h">Get every release in your inbox.</h2>
-      <p class="why">One short email when an app ships something worth reading about, or when there&rsquo;s a launch price. At most once a month, written by me.</p>
+      <p class="why">One short email when an app ships something worth reading about, when there&rsquo;s a launch price, or when a new app is on the way. At most once a month, written by me.</p>
+      <p class="fine">The form is loaded from Brevo (EU) and uses Cloudflare Turnstile as a spam check. Not showing up? <a href="https://4dd93bf3.sibforms.com/serve/MUIFAAxjfk4SfjnsBviBPjfD2lXFaBbc07ge-hCp-v-i32R0TJzwtsyn46msoyZ4GVzC-1AWjzPUMPJWJvwPIz3d_H61Hr7h7PUrjsj-6_3DT0PyXnd7CvP_5ujypIz3x0rl4al8Qrxy7F-H8hW1Uf9ylu_ANFW9Bz7yyCx3rvOcYIwegZYb4Tt2k1jm3GIvDcFaE_lX8iHTPA12rA==" rel="noopener">Open it in its own tab</a>.</p>
     </div>
-    <div class="cta">
-      <a class="btn invert" href="https://4dd93bf3.sibforms.com/serve/MUIFAAxjfk4SfjnsBviBPjfD2lXFaBbc07ge-hCp-v-i32R0TJzwtsyn46msoyZ4GVzC-1AWjzPUMPJWJvwPIz3d_H61Hr7h7PUrjsj-6_3DT0PyXnd7CvP_5ujypIz3x0rl4al8Qrxy7F-H8hW1Uf9ylu_ANFW9Bz7yyCx3rvOcYIwegZYb4Tt2k1jm3GIvDcFaE_lX8iHTPA12rA==" rel="noopener">Subscribe for updates</a>
-      <p class="fine">You confirm by email first and can unsubscribe in every mail. The form opens on Brevo, which stores your address on servers in the EU.</p>
+    <div class="signup-wrap">
+      <iframe class="signup" src="https://4dd93bf3.sibforms.com/serve/MUIFAAxjfk4SfjnsBviBPjfD2lXFaBbc07ge-hCp-v-i32R0TJzwtsyn46msoyZ4GVzC-1AWjzPUMPJWJvwPIz3d_H61Hr7h7PUrjsj-6_3DT0PyXnd7CvP_5ujypIz3x0rl4al8Qrxy7F-H8hW1Uf9ylu_ANFW9Bz7yyCx3rvOcYIwegZYb4Tt2k1jm3GIvDcFaE_lX8iHTPA12rA==" title="Subscribe to didact news" loading="lazy" scrolling="no"></iframe>
     </div>
   </div>
 </section>
@@ -396,7 +411,7 @@
         <li><a href="/newsletter/abmelden.html">Newsletter unsubscribe</a></li>
       </ul>
     </div>
-    <p class="fine">&copy; 2026 didact. This site sets no cookies and runs no analytics.</p>
+    <p class="fine">&copy; 2026 didact. This site sets no cookies and runs no analytics. The newsletter form is loaded from Brevo.</p>
   </div>
 </footer>
 
