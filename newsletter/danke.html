@@ -6,6 +6,7 @@
 <title>Check your inbox · didact</title>
 <meta name="description" content="One more click to confirm your didact newsletter subscription.">
 <meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#FAF9F7">
 <link rel="canonical" href="https://didact.digital/newsletter/danke.html">
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
@@ -15,33 +16,60 @@
 <style>
   :root{--paper:#FAF9F7;--ink:#1A1917;--graphite:#5C5A56;--stone:#E6E4E0;--white:#fff;
     --sans:"Onest",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    --mono:"Geist Mono",ui-monospace,"SF Mono",Menlo,monospace}
+    --mono:"Geist Mono",ui-monospace,"SF Mono",Menlo,monospace;
+    --ease:cubic-bezier(.16,1,.3,1)}
   *{margin:0;padding:0;box-sizing:border-box}
-  body{font-family:var(--sans);background:var(--paper);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased}
-  .wrap{max-width:880px;margin:0 auto;padding:0 24px}
-  a{color:var(--ink)}
+  html{color-scheme:light}
+  body{font-family:var(--sans);background:var(--paper);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased;min-height:100dvh;display:flex;flex-direction:column}
+  ::selection{background:var(--ink);color:var(--paper)}
+  .wrap{max-width:880px;margin:0 auto;padding-inline:24px;width:100%}
+  a{color:var(--ink);text-decoration-thickness:1px;text-underline-offset:3px}
+  a:hover{text-decoration-thickness:2px}
+  a:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:4px}
   nav{border-bottom:1px solid var(--stone)}
   nav .wrap{display:flex;align-items:center;height:64px}
+  nav a{display:inline-flex;align-items:center;min-height:44px}
   nav img{height:22px;width:auto;display:block}
-  h1{font-size:clamp(34px,6vw,56px);font-weight:700;letter-spacing:-.04em;line-height:1.08;margin-top:12px}
-  .label{font-family:var(--mono);font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.07em;color:var(--graphite)}
-  main{padding:72px 0 96px}
-  .lede{font-size:19px;color:var(--graphite);margin-top:20px;max-width:560px}
-  .note{margin-top:32px;max-width:560px;background:var(--white);border:1px solid var(--stone);border-radius:16px;padding:20px 24px;color:var(--graphite);font-size:15px}
-  .btn{display:inline-block;margin-top:32px;padding:14px 28px;border-radius:10px;background:var(--ink);color:var(--paper);font-weight:600;text-decoration:none}
-  .btn:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+  main.wrap{flex:1;padding-block:clamp(56px,11vh,120px) 96px}
+  .steps{list-style:none;display:flex;align-items:center;gap:12px;margin-bottom:32px;font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--graphite)}
+  .step{display:flex;align-items:center;gap:8px}
+  .step[aria-current]{color:var(--ink)}
+  .step svg{width:20px;height:20px;flex:none}
+  .link{width:32px;height:1px;background:var(--stone)}
+  .check{stroke-dasharray:14;stroke-dashoffset:0;animation:draw .6s var(--ease) .15s backwards}
+  @keyframes draw{from{stroke-dashoffset:14}}
+  h1{font-size:clamp(36px,6.4vw,60px);font-weight:700;letter-spacing:-.04em;line-height:1.05;text-wrap:balance;margin-bottom:20px}
+  .lede{font-size:19px;line-height:1.55;color:var(--graphite);max-width:34em;text-wrap:pretty}
+  .help{margin-top:48px;padding-top:20px;border-top:1px solid var(--stone);max-width:34em;font-size:15px;line-height:1.55;color:var(--graphite);text-wrap:pretty}
+  .help strong{color:var(--ink);font-weight:600}
+  .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;margin-top:40px;padding:0 28px;border-radius:10px;background:var(--ink);color:var(--paper);font-weight:600;text-decoration:none;transition:background-color .15s var(--ease),transform .15s var(--ease)}
+  .btn:hover{background:color-mix(in srgb,var(--ink) 86%,var(--paper))}
+  .btn:active{transform:translateY(1px)}
+  .btn:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:10px}
   footer{border-top:1px solid var(--stone);padding:28px 0;font-size:14px;color:var(--graphite)}
-  footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px}
+  footer .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:0 24px}
+  footer .wrap>*{display:inline-flex;align-items:center;min-height:36px}
   footer a{color:var(--graphite)}
+  .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  @media (max-width:520px){
+    .wrap{padding-inline:20px}
+    .btn{width:100%}
+    .steps{margin-bottom:24px}
+  }
+  @media (prefers-reduced-motion:reduce){.check{animation:none}.btn{transition:none}}
 </style>
 </head>
 <body>
 <nav><div class="wrap"><a href="/" aria-label="didact home"><img src="/assets/didact-wordmark-ink.svg" alt="didact."></a></div></nav>
 <main class="wrap">
-  <p class="label">Newsletter · Step 1 of 2</p>
+  <ol class="steps" aria-label="Newsletter sign-up progress">
+    <li class="step"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#1A1917"/><path class="check" d="M5.8 10.4l2.9 2.9 5.5-6" fill="none" stroke="#FAF9F7" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Sign up<span class="sr"> (done)</span></span></li>
+    <li class="link" aria-hidden="true"></li>
+    <li class="step" aria-current="step"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9.1" fill="none" stroke="#1A1917" stroke-width="1.75"/><circle cx="10" cy="10" r="3" fill="#1A1917"/></svg><span>Confirm<span class="sr"> (current step)</span></span></li>
+  </ol>
   <h1>Check your inbox.</h1>
   <p class="lede">I just sent you one mail with a confirmation link. Click it and you're on the list. Until you do, nothing happens and I won't write again.</p>
-  <p class="note">No mail after a few minutes? Look in your spam folder first. Still nothing: write to <a href="mailto:hello@didact.digital">hello@didact.digital</a> and I'll sort it out by hand.</p>
+  <p class="help"><strong>No mail after a few minutes?</strong> Look in your spam folder first. Still nothing: write to <a href="mailto:hello@didact.digital">hello@didact.digital</a> and I'll sort it out by hand.</p>
   <a class="btn" href="/">Back to didact</a>
 </main>
 <footer><div class="wrap">
