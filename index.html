@@ -112,17 +112,36 @@
   .ledger dd{color:var(--graphite);max-width:40em}
   .ledger code{font-family:var(--mono);font-size:14px;background:var(--paper);border:1px solid var(--stone);padding:2px 7px;border-radius:6px;color:var(--ink)}
 
-  /* timeline */
-  .timeline{list-style:none;margin-top:clamp(36px,5vw,64px);position:relative;max-width:820px}
-  .timeline::before{content:"";position:absolute;left:5px;top:10px;bottom:10px;width:1px;background:var(--stone)}
-  .timeline li{position:relative;padding:0 0 38px 40px}
-  .timeline li::before{content:"";position:absolute;left:0;top:7px;width:11px;height:11px;border-radius:50%;background:var(--paper);border:1.5px solid var(--graphite)}
-  .timeline li:first-child::before{background:var(--ink);border-color:var(--ink);box-shadow:0 0 0 5px var(--stone)}
-  .timeline time{font-family:var(--mono);font-size:13px;color:var(--graphite)}
-  .timeline h3{font-size:1.2rem;font-weight:600;letter-spacing:-.015em;margin-top:2px}
-  .timeline h3 .mono{font-weight:500;font-size:.9em;color:var(--graphite);margin-left:6px}
-  .timeline p{color:var(--graphite);margin-top:4px;max-width:38em}
-  .more{margin-top:8px;font-size:15.5px;color:var(--graphite)}
+  /* releases */
+  .releases{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(28px,4vw,56px);margin-top:clamp(36px,5vw,64px)}
+  .release{border-top:1px solid var(--ink);padding-top:24px}
+  .release header{display:flex;align-items:center;gap:14px}
+  .release header img{width:44px;height:44px;border-radius:10px;flex:none}
+  .release h3{font-size:1.35rem;font-weight:700;letter-spacing:-.02em;line-height:1.2}
+  .release h3 .mono{font-weight:500;font-size:.8em;color:var(--graphite);margin-left:6px}
+  .release time{display:block;font-family:var(--mono);font-size:13px;color:var(--graphite)}
+  .notes{list-style:none;margin-top:18px}
+  .notes li{position:relative;padding-left:20px;margin-top:8px}
+  .notes li::before{content:"";position:absolute;left:0;top:.82em;width:9px;height:1.5px;background:var(--ink)}
+  .before{margin-top:28px}
+  .before h4{font-family:var(--mono);font-size:12.5px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--graphite)}
+  .before ul{list-style:none;margin-top:8px;border-top:1px solid var(--stone)}
+  .before li{padding:10px 0;border-bottom:1px solid var(--stone);font-size:15.5px;color:var(--graphite)}
+  .before li b{font-weight:600;color:var(--ink)}
+  .all{margin-top:14px;font-size:15.5px}
+  .all a{color:var(--graphite)}
+  .all a:hover{color:var(--ink)}
+
+  /* subscribe */
+  .subscribe{background:var(--ink);color:var(--paper);padding:clamp(64px,9vw,120px) 0}
+  .subscribe ::selection{background:var(--paper);color:var(--ink)}
+  .subscribe .inner{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(28px,5vw,72px);align-items:center}
+  .subscribe h2{font-size:clamp(2.2rem,5.4vw,4rem);max-width:10em}
+  .subscribe .why{margin-top:16px;max-width:30em;color:var(--mist);font-size:1.1rem}
+  .subscribe .cta{display:flex;flex-direction:column;align-items:flex-start;gap:16px}
+  .btn.invert{background:var(--paper);color:var(--ink);border-color:var(--paper);min-height:60px;padding:0 36px;font-size:18px}
+  .btn.invert:hover{background:var(--white)}
+  .subscribe .fine{font-size:14px;color:var(--mist);max-width:28em}
 
   /* partners */
   .partners{background:var(--stone)}
@@ -146,7 +165,11 @@
   footer a:hover{color:var(--paper);text-decoration:underline}
   footer .fine{margin-top:40px;padding-top:20px;border-top:1px solid rgba(250,249,247,.14);font-family:var(--mono);font-size:12.5px}
 
+  .bar nav a.pill{color:var(--ink);background:var(--paper);padding:6px 16px;border-radius:999px}
+  .bar nav a.pill:hover{color:var(--ink);background:var(--white)}
+
   @media (max-width:900px){
+    .releases,.subscribe .inner{grid-template-columns:1fr}
     .app .media,.app .text,.app.flip .media,.app.flip .text{grid-column:1 / -1;grid-row:auto}
     .app .media{order:1}.app .text{order:2}
     .cols>div:first-child,.cols>div:last-child{grid-column:1 / -1}
@@ -157,7 +180,9 @@
     .hero-apps li+li{border-left:0;border-top:1px solid rgba(250,249,247,.18)}
     .hero-apps li+li a{padding-left:0}
     .kit div{grid-template-columns:1fr;gap:2px}
-    .bar nav{font-size:14px}
+    .bar nav{font-size:14px;align-items:center;white-space:nowrap;gap:14px}
+    .bar nav a[href="#partners"]{display:none}
+    .bar nav a.pill{padding:6px 14px}
   }
   @media (prefers-reduced-motion:reduce){
     html{scroll-behavior:auto}
@@ -180,6 +205,7 @@
       <a href="#apps">Apps</a>
       <a href="#new">What&rsquo;s new</a>
       <a href="#partners">Partners</a>
+      <a class="pill" href="#subscribe">Subscribe</a>
     </nav>
   </div>
   <div class="hero-body">
@@ -262,18 +288,65 @@
 <section id="new">
   <div class="wrap">
     <h2>What&rsquo;s new.</h2>
-    <p class="sec-sub">The latest changes across both apps, newest first.</p>
-    <ol class="timeline">
-      <li><time datetime="2026-09-29">29 Sep 2026</time><h3>SideSchedule<span class="mono">0.15.1</span></h3><p>The all-day list folds into a row of colored dots, long titles wrap instead of being cut off, and a short window shows what changed after an update.</p></li>
-      <li><time datetime="2026-09-28">28 Sep 2026</time><h3>SideSchedule<span class="mono">0.15.0</span></h3><p>Apple Reminders in the sidebar. Click an empty spot in the timeline to add an event or reminder, and dragging an event is smooth now.</p></li>
-      <li><time datetime="2026-09-26">26 Sep 2026</time><h3>TalkRemind<span class="mono">0.12.0</span></h3><p>&ldquo;At the next pause&rdquo; works as a timing option for any reminder style, and the Settings controls are clearer.</p></li>
-      <li><time datetime="2026-09-26">26 Sep 2026</time><h3>TalkRemind<span class="mono">0.11.0</span></h3><p>A new &ldquo;At a pause&rdquo; style, a new onboarding with a practice field, and every timing rule adjustable in Settings.</p></li>
-      <li><time datetime="2026-09-24">24 Sep 2026</time><h3>TalkRemind<span class="mono">0.10.0</span></h3><p>Optional iCloud sync for statistics and settings across your Macs, off by default.</p></li>
-      <li><time datetime="2026-09-23">23 Sep 2026</time><h3>TalkRemind<span class="mono">0.8.1</span></h3><p>Notable nudges are a real macOS notification now, the stats show how often each app got nudged, and five more dictation apps are recognised.</p></li>
-      <li><time datetime="2026-09-22">22 Sep 2026</time><h3>TalkRemind<span class="mono">0.8.0</span></h3><p>A stats popover with a donut for today&rsquo;s dictation share and a seven-day trend, and Settings rebuilt as one scrolling page.</p></li>
-      <li><time datetime="2026-09-07">7 Sep 2026</time><h3>SideSchedule<span class="mono">0.14.0</span></h3><p>Full-screen apps are left alone, and the collapsed strip uses a real macOS material so the hours stay legible over any wallpaper.</p></li>
-    </ol>
-    <p class="more">Every release with its full notes: <a href="https://github.com/4IngoJ/sideschedule/releases">SideSchedule</a> &middot; <a href="https://github.com/4IngoJ/TalkRemind-releases/releases">TalkRemind</a></p>
+    <p class="sec-sub">The latest release of each app, and what came before it.</p>
+
+    <div class="releases">
+      <article class="release">
+        <header>
+          <img src="/assets/sideschedule-icon.png" alt="" width="44" height="44">
+          <div><h3>SideSchedule<span class="mono">0.15.1</span></h3><time datetime="2026-09-29">29 Sep 2026</time></div>
+        </header>
+        <ul class="notes">
+          <li>The all-day list folds into a row of colored dots.</li>
+          <li>Long titles wrap instead of being cut off.</li>
+          <li>After an update, a short window shows what changed.</li>
+        </ul>
+        <div class="before">
+          <h4>Before that</h4>
+          <ul>
+            <li><b>0.15</b> Apple Reminders in the sidebar, click an empty spot to add an event, smooth dragging.</li>
+            <li><b>0.14</b> Full-screen apps are left alone, and the collapsed strip stays readable over any wallpaper.</li>
+            <li><b>0.10 to 0.13</b> One-click Join for meeting links, drag-and-drop rescheduling, Markdown notes on any event.</li>
+            <li><b>Fixed</b> Calendar access on macOS 15 and later, onboarding that kept coming back, the day not rolling over at midnight.</li>
+          </ul>
+        </div>
+        <p class="all"><a href="https://github.com/4IngoJ/sideschedule/releases">All SideSchedule releases</a></p>
+      </article>
+
+      <article class="release">
+        <header>
+          <img src="/assets/talkremind-icon.png" alt="" width="44" height="44">
+          <div><h3>TalkRemind<span class="mono">0.12.0</span></h3><time datetime="2026-09-26">26 Sep 2026</time></div>
+        </header>
+        <ul class="notes">
+          <li>&ldquo;At the next pause&rdquo; works as a timing option for any reminder style.</li>
+          <li>Clearer controls for every timing rule in Settings.</li>
+          <li>A new closing page in onboarding.</li>
+        </ul>
+        <div class="before">
+          <h4>Before that</h4>
+          <ul>
+            <li><b>0.11</b> A new &ldquo;At a pause&rdquo; style, onboarding with a practice field, every timing rule adjustable.</li>
+            <li><b>0.10</b> Optional iCloud sync for statistics and settings, off by default.</li>
+            <li><b>0.8</b> A stats popover with today&rsquo;s dictation share and a seven-day trend, plus real macOS notifications and five more recognised dictation apps.</li>
+          </ul>
+        </div>
+        <p class="all"><a href="https://github.com/4IngoJ/TalkRemind-releases/releases">All TalkRemind releases</a></p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="subscribe" id="subscribe" aria-labelledby="subscribe-h">
+  <div class="wrap inner">
+    <div>
+      <h2 id="subscribe-h">Get every release in your inbox.</h2>
+      <p class="why">One short email when an app ships something worth reading about, or when there&rsquo;s a launch price. At most once a month, written by me.</p>
+    </div>
+    <div class="cta">
+      <a class="btn invert" href="https://4dd93bf3.sibforms.com/serve/MUIFAAxjfk4SfjnsBviBPjfD2lXFaBbc07ge-hCp-v-i32R0TJzwtsyn46msoyZ4GVzC-1AWjzPUMPJWJvwPIz3d_H61Hr7h7PUrjsj-6_3DT0PyXnd7CvP_5ujypIz3x0rl4al8Qrxy7F-H8hW1Uf9ylu_ANFW9Bz7yyCx3rvOcYIwegZYb4Tt2k1jm3GIvDcFaE_lX8iHTPA12rA==" rel="noopener">Subscribe for updates</a>
+      <p class="fine">You confirm by email first and can unsubscribe in every mail. The form opens on Brevo, which stores your address on servers in the EU.</p>
+    </div>
   </div>
 </section>
 
