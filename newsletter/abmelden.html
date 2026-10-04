@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Check your inbox · didact</title>
-<meta name="description" content="One more click to confirm your didact newsletter subscription.">
+<title>Unsubscribe · didact</title>
+<meta name="description" content="Unsubscribe from the didact newsletter.">
 <meta name="robots" content="noindex, follow">
 <meta name="theme-color" content="#FAF9F7">
-<link rel="canonical" href="https://didact.digital/newsletter/danke.html">
+<link rel="canonical" href="https://didact.digital/newsletter/abmelden.html">
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon-180.png">
@@ -31,14 +31,8 @@
   nav a{display:inline-flex;align-items:center;min-height:44px}
   nav img{height:22px;width:auto;display:block}
   main.wrap{flex:1;padding-block:clamp(56px,11vh,120px) 96px}
-  .steps{list-style:none;display:flex;align-items:center;gap:12px;margin-bottom:32px;font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--graphite)}
-  .step{display:flex;align-items:center;gap:8px}
-  .step[aria-current]{color:var(--ink)}
-  .step svg{width:20px;height:20px;flex:none}
-  .link{width:32px;height:1px;background:var(--stone)}
-  .check{stroke-dasharray:14;stroke-dashoffset:0;animation:draw .6s var(--ease) .15s backwards}
-  @keyframes draw{from{stroke-dashoffset:14}}
   h1{font-size:clamp(36px,6.4vw,60px);font-weight:700;letter-spacing:-.04em;line-height:1.05;text-wrap:balance;margin-bottom:20px}
+  .form{display:block;width:100%;max-width:540px;height:760px;border:0;margin:0 auto}
   .lede{font-size:19px;line-height:1.55;color:var(--graphite);max-width:34em;text-wrap:pretty}
   .help{margin-top:48px;padding-top:20px;border-top:1px solid var(--stone);max-width:34em;font-size:15px;line-height:1.55;color:var(--graphite);text-wrap:pretty}
   .help strong{color:var(--ink);font-weight:600}
@@ -50,27 +44,18 @@
   footer .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:0 24px}
   footer .wrap>*{display:inline-flex;align-items:center;min-height:36px}
   footer a{color:var(--graphite)}
-  .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
   @media (max-width:520px){
     .wrap{padding-inline:20px}
     .btn{width:100%}
-    .steps{margin-bottom:24px}
-  }
-  @media (prefers-reduced-motion:reduce){.check{animation:none}.btn{transition:none}}
+    }
+  @media (prefers-reduced-motion:reduce){.btn{transition:none}}
 </style>
 </head>
 <body>
 <nav><div class="wrap"><a href="/" aria-label="didact home"><img src="/assets/didact-wordmark-ink.svg" alt="didact."></a></div></nav>
 <main class="wrap">
-  <ol class="steps" aria-label="Newsletter sign-up progress">
-    <li class="step"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#1A1917"/><path class="check" d="M5.8 10.4l2.9 2.9 5.5-6" fill="none" stroke="#FAF9F7" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Sign up<span class="sr"> (done)</span></span></li>
-    <li class="link" aria-hidden="true"></li>
-    <li class="step" aria-current="step"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9.1" fill="none" stroke="#1A1917" stroke-width="1.75"/><circle cx="10" cy="10" r="3" fill="#1A1917"/></svg><span>Confirm<span class="sr"> (current step)</span></span></li>
-  </ol>
-  <h1>Check your inbox.</h1>
-  <p class="lede">I just sent you one mail with a confirmation link. Click it and you're on the list. Until you do, nothing happens and I won't write again.</p>
-  <p class="help"><strong>No mail after a few minutes?</strong> Look in your spam folder first. Still nothing: write to <a href="mailto:hello@didact.digital">hello@didact.digital</a> and I'll sort it out by hand.</p>
-  <a class="btn" href="/">Back to didact</a>
+  <iframe class="form" src="https://4dd93bf3.sibforms.com/v2/serve/MUIFAHWjvj_Jp1Z1F_qIhJF-hbYXF9_TjbCrTj8OAJVRY-ph-5-CeMHM0iqIDfLJxQ70AAHNZXATd16p-KBGzMALfJjAGRuy9g5Fm9wqjKibp6V67vFi-fP_EkV1tQMqQVLblfO5NJGMUU89XadIK-9CP9lo-EWjDkWzERjd5KI13O4Sus-sAAshr3wTf2q_3ESA58qk40g37C-9Kg==" title="Unsubscribe from the didact newsletter"></iframe>
+  <p class="help"><strong>Form not loading?</strong> Some privacy extensions block it. Write to <a href="mailto:hello@didact.digital">hello@didact.digital</a> and I'll take you off the list by hand.</p>
 </main>
 <footer><div class="wrap">
   <span>didact. · Graz, Austria</span>
