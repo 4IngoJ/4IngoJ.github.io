@@ -1,0 +1,8 @@
+{
+  "root": "../tonecue",
+  "site_url": "https://didact.digital/tonecue/",
+  "local_pages": ["index.html"],
+  "pages": [
+    {"src": "index.html", "dict": "i18n/tonecue.json", "mode": "html"}
+  ]
+}

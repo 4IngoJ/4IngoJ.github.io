@@ -6,6 +6,15 @@
 <title>ToneCue: the right mic and speakers for what you're doing, on macOS</title>
 <meta name="description" content="ToneCue is a macOS menu bar app that picks your microphone and speakers by situation (a dock, a calendar meeting, an open app), tells you why it switched and lets you undo it. 14 days free, then €9.99 once.">
 <link rel="canonical" href="https://didact.digital/tonecue/">
+<!--hreflang-->
+<link rel="alternate" hreflang="en" href="https://didact.digital/tonecue/">
+<link rel="alternate" hreflang="de" href="https://didact.digital/tonecue/de/">
+<link rel="alternate" hreflang="fr" href="https://didact.digital/tonecue/fr/">
+<link rel="alternate" hreflang="es" href="https://didact.digital/tonecue/es/">
+<link rel="alternate" hreflang="it" href="https://didact.digital/tonecue/it/">
+<link rel="alternate" hreflang="pt" href="https://didact.digital/tonecue/pt/">
+<link rel="alternate" hreflang="x-default" href="https://didact.digital/tonecue/">
+<!--/hreflang-->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://didact.digital/tonecue/">
 <meta property="og:title" content="ToneCue: your Mac, with the microphone you meant">
@@ -301,9 +310,9 @@
   .lang-switcher.open .lang-toggle .caret { transform: rotate(180deg); }
   .lang-menu { position: absolute; right: 0; top: calc(100% + 10px); background: var(--white); border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 12px 32px rgba(20,20,19,.18); padding: 6px; min-width: 170px; z-index: 200; display: none; }
   .lang-switcher.open .lang-menu { display: block; }
-  .lang-menu button { display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%; text-align: left; background: none; border: none; border-radius: 8px; padding: 9px 12px; cursor: pointer; font-family: var(--sans); font-size: 14px; color: var(--ink); }
-  .lang-menu button:hover, .lang-menu button.active { background: var(--band); }
-  .lang-menu button.active { font-weight: 600; }
+  .lang-switcher .lang-menu a { text-decoration: none; display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%; text-align: left; background: none; border: none; border-radius: 8px; padding: 9px 12px; cursor: pointer; font-family: var(--sans); font-size: 14px; color: var(--ink); }
+  .lang-switcher .lang-menu a:hover, .lang-switcher .lang-menu a.active { background: var(--band); }
+  .lang-switcher .lang-menu a.active { font-weight: 600; }
   .lang-menu .lang-code { font-size: 11px; font-weight: 700; color: var(--muted); letter-spacing: .05em; }
   @media (max-width: 720px) { .lang-switcher { display: block; } }
 
@@ -437,7 +446,7 @@
           <span id="lang-current">EN</span>
           <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
         </button>
-        <div class="lang-menu" role="menu" id="lang-menu"></div>
+        <div class="lang-menu" role="menu" id="lang-menu"><a role="menuitem" href="https://didact.digital/tonecue/" hreflang="en" lang="en" class="active" aria-current="true"><span>English</span><span class="lang-code">EN</span></a><a role="menuitem" href="https://didact.digital/tonecue/de/" hreflang="de" lang="de"><span>Deutsch</span><span class="lang-code">DE</span></a><a role="menuitem" href="https://didact.digital/tonecue/fr/" hreflang="fr" lang="fr"><span>Français</span><span class="lang-code">FR</span></a><a role="menuitem" href="https://didact.digital/tonecue/es/" hreflang="es" lang="es"><span>Español</span><span class="lang-code">ES</span></a><a role="menuitem" href="https://didact.digital/tonecue/it/" hreflang="it" lang="it"><span>Italiano</span><span class="lang-code">IT</span></a><a role="menuitem" href="https://didact.digital/tonecue/pt/" hreflang="pt" lang="pt"><span>Português</span><span class="lang-code">PT</span></a></div>
       </div>
       <a class="nav-cta btn btn-secondary" href="https://github.com/4IngoJ/tonecue/releases" style="padding:8px 16px;font-size:13px;" data-i18n="nav.download">Download</a>
     </div>
@@ -907,7 +916,17 @@
   })();
 })();
 </script>
-<script src="i18n.js"></script>
+<script>
+(function() {
+  var s = document.getElementById('lang-switcher');
+  if (!s) return;
+  var t = s.querySelector('.lang-toggle');
+  function close() { s.classList.remove('open'); t.setAttribute('aria-expanded', 'false'); }
+  t.addEventListener('click', function(e) { e.stopPropagation(); t.setAttribute('aria-expanded', s.classList.toggle('open')); });
+  document.addEventListener('click', function(e) { if (!s.contains(e.target)) close(); });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') close(); });
+})();
+</script>
 <script src="fx.js" defer></script>
 <script type="application/ld+json">
 {
