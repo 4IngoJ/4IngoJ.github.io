@@ -1,8 +1,20 @@
 {
   "root": "../tonecue",
   "site_url": "https://didact.digital/tonecue/",
-  "local_pages": ["index.html"],
+  "local_pages": [
+    "index.html",
+    "privacy.html"
+  ],
   "pages": [
-    {"src": "index.html", "dict": "i18n/tonecue.json", "mode": "html"}
+    {
+      "src": "index.html",
+      "dict": "i18n/tonecue.json",
+      "mode": "html"
+    },
+    {
+      "src": "privacy.html",
+      "dict": "i18n/tonecue_privacy.json",
+      "mode": "html"
+    }
   ]
 }

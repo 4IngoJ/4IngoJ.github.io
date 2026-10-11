@@ -62,6 +62,8 @@ def apply_text(t, d, mode, lang):
         return re.sub(r'<\w+\b[^>]*?\s' + src_attr + r'="[^"]+"[^>]*>', rep, t)
     t = attr(t, "data-i18n-aria-label", "aria-label")
     t = attr(t, "data-caption-key", "data-caption")
+    t = attr(t, "data-i18n-alt", "alt")
+    t = attr(t, "data-i18n-title", "title")
     # gallery caption text mirrors the active slide's caption
     m = re.search(r'<picture[^>]*is-active[^>]*data-caption="([^"]*)"', t) or re.search(r'<picture[^>]*data-caption="([^"]*)"[^>]*is-active', t)
     if m:
@@ -150,6 +152,13 @@ def rewrite_urls(t):
     def attr(m):
         return m.group(0) if keep(m.group(3)) else f'{m.group(1)}{m.group(2)}="../{m.group(3)}"'
     t = re.sub(r'(\s)(src|href|poster|data-src)="([^"]*)"', attr, t)
+    def srcset(m):
+        parts = []
+        for p in m.group(1).split(","):
+            u, _, rest = p.strip().partition(" ")
+            parts.append(u if keep(u) else "../" + u + (" " + rest if rest else ""))
+        return ' srcset="' + ", ".join(parts) + '"'
+    t = re.sub(r'\ssrcset="([^"]*)"', srcset, t)
     t = re.sub(r"url\((['\"]?)(?!/|#|data:|https?:)([^)'\"]+)\1\)", lambda m: f"url({m.group(1)}../{m.group(2)}{m.group(1)})", t)
     return t
 
@@ -160,6 +169,41 @@ def runtime_script(lang, d):
         return ""
     payload = {lang: {k: d[k] for k in keys if k in d}}
     return f'<script>window.{cfg["runtime_var"]}={json.dumps(payload, ensure_ascii=False)};</script>\n'
+
+
+HINT = {"en": ("This page is also available in English.", "View in English", "Dismiss"),
+        "de": ("Diese Seite gibt es auch auf Deutsch.", "Auf Deutsch ansehen", "Schließen"),
+        "fr": ("Cette page existe aussi en français.", "Voir en français", "Fermer"),
+        "es": ("Esta página también está disponible en español.", "Ver en español", "Cerrar"),
+        "it": ("Questa pagina è disponibile anche in italiano.", "Vai alla versione italiana", "Chiudi"),
+        "pt": ("Esta página também está disponível em português.", "Ver em português", "Fechar")}
+HINT_CSS = ("<style>.lang-hint{position:fixed;left:16px;right:16px;bottom:16px;max-width:560px;margin:0 auto;z-index:300;"
+            "display:flex;align-items:center;gap:14px;padding:12px 14px 12px 18px;border-radius:14px;background:#1A1917;color:#FAF9F7;"
+            "font:500 14px/1.4 system-ui,-apple-system,sans-serif;box-shadow:0 12px 32px rgba(0,0,0,.28)}"
+            ".lang-hint span{flex:1}.lang-hint a{color:#FAF9F7;font-weight:700;text-decoration:underline;white-space:nowrap}"
+            ".lang-hint button{background:none;border:0;color:#B7B4AE;font-size:22px;line-height:1;cursor:pointer;padding:2px 6px}"
+            ".lang-hint button:hover{color:#FAF9F7}</style>")
+
+
+def set_hint(t, lang, page):
+    """Offer, never force: a banner in the visitor's browser language when that language has a page."""
+    urls = {c: page_url(c, page) for c in CODES}
+    js = ("(function(){var K='lang-hint-dismissed',U=%s,T=%s,C=%s;"
+          "function st(){try{localStorage.setItem(K,'1')}catch(e){}}"
+          "document.querySelectorAll('#lang-menu a').forEach(function(a){a.addEventListener('click',st)});"
+          "try{if(localStorage.getItem(K))return}catch(e){}"
+          "var l=String((navigator.languages&&navigator.languages[0])||navigator.language||'en').slice(0,2).toLowerCase();"
+          "if(l===C||!U[l])return;"
+          "var b=document.createElement('div');b.className='lang-hint';b.setAttribute('role','region');b.lang=l;b.setAttribute('aria-label',T[l][0]);"
+          "var s=document.createElement('span');s.textContent=T[l][0];"
+          "var a=document.createElement('a');a.href=U[l];a.hreflang=l;a.textContent=T[l][1];a.addEventListener('click',st);"
+          "var x=document.createElement('button');x.type='button';x.setAttribute('aria-label',T[l][2]);x.textContent='\\u00d7';"
+          "x.addEventListener('click',function(){st();b.remove()});"
+          "b.append(s,a,x);document.body.appendChild(b)})();") % (
+        json.dumps(urls), json.dumps(HINT, ensure_ascii=False), json.dumps(lang))
+    block = "<!--lang-hint-->" + HINT_CSS + "<script>" + js + "</script><!--/lang-hint-->\n"
+    t = re.sub(r"<!--lang-hint-->.*?<!--/lang-hint-->\n?", "", t, flags=re.S)
+    return t.replace("</body>", block + "</body>", 1)
 
 
 def build():
@@ -175,6 +219,7 @@ def build():
             t = set_head(t, lang, p["src"], d)
             if p.get("switcher", True):
                 t = set_switcher(t, lang, p["src"])
+            t = set_hint(t, lang, p["src"])
             if lang != "en":
                 t = set_jsonld(t, lang, p["src"])
                 t = rewrite_urls(t)

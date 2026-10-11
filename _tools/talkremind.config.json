@@ -1,0 +1,20 @@
+{
+  "root": "../talkremind",
+  "site_url": "https://didact.digital/talkremind/",
+  "local_pages": [
+    "index.html",
+    "privacy.html"
+  ],
+  "pages": [
+    {
+      "src": "index.html",
+      "dict": "i18n/talkremind.json",
+      "mode": "html"
+    },
+    {
+      "src": "privacy.html",
+      "dict": "i18n/talkremind_privacy.json",
+      "mode": "html"
+    }
+  ]
+}

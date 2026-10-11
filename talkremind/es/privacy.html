@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacidad · TalkRemind</title>
+<meta name="description" content="Qué hacen TalkRemind y su web con los datos: los eventos de escritura se quedan en tu Mac, no hay analíticas y las llamadas de red son la validación de la licencia y la búsqueda de actualizaciones.">
+<link rel="canonical" href="https://didact.digital/talkremind/es/privacy.html">
+<!--hreflang-->
+<link rel="alternate" hreflang="en" href="https://didact.digital/talkremind/privacy.html">
+<link rel="alternate" hreflang="de" href="https://didact.digital/talkremind/de/privacy.html">
+<link rel="alternate" hreflang="fr" href="https://didact.digital/talkremind/fr/privacy.html">
+<link rel="alternate" hreflang="es" href="https://didact.digital/talkremind/es/privacy.html">
+<link rel="alternate" hreflang="it" href="https://didact.digital/talkremind/it/privacy.html">
+<link rel="alternate" hreflang="pt" href="https://didact.digital/talkremind/pt/privacy.html">
+<link rel="alternate" hreflang="x-default" href="https://didact.digital/talkremind/privacy.html">
+<!--/hreflang-->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:url" content="https://didact.digital/talkremind/es/privacy.html">
+<meta property="og:title" content="Privacidad · TalkRemind">
+<meta property="og:description" content="Qué hacen TalkRemind y su web con los datos: los eventos de escritura se quedan en tu Mac, no hay analíticas y las llamadas de red son la validación de la licencia y la búsqueda de actualizaciones.">
+<meta property="og:image" content="https://didact.digital/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon-180.png">
+<link rel="preload" href="/assets/fonts/onest-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/fonts.css">
+<style>
+  :root{--paper:#FAF9F7;--ink:#1A1917;--graphite:#5C5A56;--stone:#E6E4E0;--white:#fff;
+    --sans:"Onest",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --mono:"Geist Mono",ui-monospace,"SF Mono",Menlo,monospace}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:var(--sans);background:var(--paper);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:880px;margin:0 auto;padding:0 24px}
+  a{color:var(--ink)}
+  nav{border-bottom:1px solid var(--stone)}
+  nav .wrap{display:flex;align-items:center;height:64px}
+  nav img{height:22px;width:auto;display:block}
+  h1{font-size:clamp(34px,6vw,56px);font-weight:700;letter-spacing:-.04em;line-height:1.08}
+  h2{font-size:24px;font-weight:600;letter-spacing:-.01em;margin:40px 0 12px}
+  .label{font-family:var(--mono);font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.07em;color:var(--graphite)}
+  main{padding:72px 0 96px}
+  .lede{font-size:19px;color:var(--graphite);margin-top:20px;max-width:560px}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;margin-top:56px}
+  .card{background:var(--white);border:1px solid var(--stone);border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:12px;text-decoration:none}
+  .card:hover,.card:focus-visible{border-color:var(--ink)}
+  .card img{width:56px;height:56px;border-radius:13px}
+  .card h3{font-size:22px;font-weight:600;letter-spacing:-.01em}
+  .card p{color:var(--graphite)}
+  .card .label{margin-top:auto;padding-top:8px}
+  p{margin-bottom:12px;color:#3d3b37}
+  footer{border-top:1px solid var(--stone);padding:28px 0;font-size:14px;color:var(--graphite)}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px}
+  footer a{color:var(--graphite)}
+  nav .wrap{justify-content:space-between}
+  .lang-switcher{position:relative}
+  .lang-toggle{display:inline-flex;align-items:center;gap:6px;background:none;border:1px solid var(--stone);border-radius:999px;padding:6px 12px;cursor:pointer;font-family:var(--sans);font-size:13px;font-weight:600;color:var(--graphite)}
+  .lang-toggle:hover{color:var(--ink);border-color:#cfccc4}
+  .lang-toggle svg{width:14px;height:14px;display:block}
+  .lang-toggle .caret{width:10px;height:10px;transition:transform .2s}
+  .lang-switcher.open .lang-toggle .caret{transform:rotate(180deg)}
+  .lang-menu{position:absolute;right:0;top:calc(100% + 8px);background:var(--white);border:1px solid var(--stone);border-radius:12px;box-shadow:0 12px 32px rgba(20,20,19,.12);padding:6px;min-width:170px;z-index:200;display:none}
+  .lang-switcher.open .lang-menu{display:block}
+  .lang-switcher .lang-menu a{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:9px 12px;border-radius:8px;font-size:14px;color:var(--ink);text-decoration:none}
+  .lang-switcher .lang-menu a:hover,.lang-switcher .lang-menu a.active{background:#F0EEEA}
+  .lang-switcher .lang-menu a.active{font-weight:600}
+  .lang-menu .lang-code{font-size:11px;font-weight:700;color:var(--graphite);letter-spacing:.05em}
+</style>
+</head>
+<body>
+<nav><div class="wrap"><a href="/" aria-label="didact home"><img src="/assets/didact-wordmark-ink.svg" alt="didact." data-i18n-alt="pa027"></a>
+<div class="lang-switcher" id="lang-switcher">
+    <button class="lang-toggle" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Cambiar de idioma">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      <span id="lang-current">ES</span>
+      <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="lang-menu" role="menu" id="lang-menu"><a role="menuitem" href="https://didact.digital/talkremind/privacy.html" hreflang="en" lang="en"><span>English</span><span class="lang-code">EN</span></a><a role="menuitem" href="https://didact.digital/talkremind/de/privacy.html" hreflang="de" lang="de"><span>Deutsch</span><span class="lang-code">DE</span></a><a role="menuitem" href="https://didact.digital/talkremind/fr/privacy.html" hreflang="fr" lang="fr"><span>Français</span><span class="lang-code">FR</span></a><a role="menuitem" href="https://didact.digital/talkremind/es/privacy.html" hreflang="es" lang="es" class="active" aria-current="true"><span>Español</span><span class="lang-code">ES</span></a><a role="menuitem" href="https://didact.digital/talkremind/it/privacy.html" hreflang="it" lang="it"><span>Italiano</span><span class="lang-code">IT</span></a><a role="menuitem" href="https://didact.digital/talkremind/pt/privacy.html" hreflang="pt" lang="pt"><span>Português</span><span class="lang-code">PT</span></a></div>
+  </div>
+</div></nav>
+<main class="wrap">
+  <h1 style="font-size:40px" data-i18n="p001">Privacidad</h1>
+  <p class="label" data-i18n="p002">Última actualización: 3 de octubre de 2026</p>
+  <p style="margin-top:16px" data-i18n="p003">TalkRemind es una app de macOS desarrollada por Ingo Jurz, Graz, Austria. Esta página explica qué datos toca la app, qué sale de tu Mac y qué no sale nunca.</p>
+  <h2 data-i18n="p004">La versión corta</h2>
+  <p data-i18n="p005">Los eventos de escritura y dictado se quedan en tu Mac. TalkRemind observa cuándo escribes y cuánto, nunca los caracteres. La app no tiene analíticas ni seguimiento. Sus únicas llamadas de red son la validación de la licencia (Lemon Squeezy) y la búsqueda de actualizaciones (Sparkle, a través de GitHub).</p>
+  <h2 data-i18n="p006">Ritmo de pulsaciones y acceso de Accesibilidad</h2>
+  <p data-i18n="p007">TalkRemind usa la API de Accesibilidad de macOS para ver el momento y la cantidad de lo que escribes. No graba ni almacena los caracteres que escribes y no lee el contenido de las ventanas. Tus estadísticas (por ejemplo, tu porcentaje de dictado y la tendencia de siete días) se guardan localmente en tu Mac.</p>
+  <h2 data-i18n="p008">Sincronización opcional con iCloud</h2>
+  <p data-i18n="p009">Si activas la sincronización con iCloud, tus estadísticas y ajustes (números, horas, nombres de apps) se guardan en tu propia cuenta de iCloud mediante CloudKit de Apple. No se nos envían.</p>
+  <h2 data-i18n="p010">Activación y validación de la licencia</h2>
+  <p data-i18n="p011">Cuando introduces una clave de licencia, TalkRemind contacta con Lemon Squeezy para activarla y validarla. La clave se guarda en el llavero de macOS. Un error de red nunca deja fuera a un cliente de pago.</p>
+  <h2 data-i18n="p012">Actualizaciones</h2>
+  <p data-i18n="p013">TalkRemind busca actualizaciones mediante el framework Sparkle, que descarga un archivo appcast alojado en GitHub. GitHub puede registrar tu dirección IP al servir ese archivo; consulta la declaración de privacidad de GitHub.</p>
+  <h2 data-i18n="p014">Pagos</h2>
+  <p data-i18n="p015">Las compras las gestiona Lemon Squeezy como merchant of record. Recibimos la información que Lemon Squeezy nos pasa sobre tu pedido, como tu correo electrónico y tu país. Para el pago se aplica su política de privacidad.</p>
+  <h2 data-i18n="p016">Este sitio web</h2>
+  <p data-i18n="p017">El sitio está alojado en GitHub Pages, así que GitHub procesa registros del servidor como tu dirección IP. Las fuentes se sirven desde este sitio, no desde un tercero. La página carga un script de terceros, el script de afiliados de Lemon Squeezy (lmsqueezy.com/affiliate.js). Si llegas a través del enlace de un socio (una URL con <code>?aff=</code>), le indica a Lemon Squeezy qué socio te envió para que reciba su comisión si compras más tarde. Guarda un identificador anónimo, sin nombre ni correo. Sin un enlace así, el script no hace nada. La app en sí nunca lo carga. No usamos analíticas ni establecemos cookies propias.</p>
+  <h2 data-i18n="p018">Tus derechos</h2>
+  <p data-i18n="p019">Puedes solicitar el acceso, la rectificación o la supresión de los datos que tenemos sobre ti escribiendo a <a href="mailto:hello@didact.digital">hello@didact.digital</a>. También puedes presentar una reclamación ante la autoridad austriaca de protección de datos (Datenschutzbehörde, dsb.gv.at).</p>
+  <h2 data-i18n="p020">Responsable del tratamiento</h2>
+  <p data-i18n="p021">Ingo Jurz, Unterer Breitenweg 9, 8042 Graz, Austria. <a href="mailto:hello@didact.digital">hello@didact.digital</a></p>
+</main>
+<footer><div class="wrap"><a href="/talkremind/" data-i18n="p022">TalkRemind</a> <a href="/talkremind/privacy.html" data-i18n="p023">Privacidad</a> <a href="/talkremind/impressum.html" data-i18n="p024">Aviso legal</a> <a href="/newsletter/abmelden.html" data-i18n="p025">Cancelar la suscripción al boletín</a> <a href="/" data-i18n="p026">de didact.</a></div></footer>
+<script>
+(function() {
+  var s = document.getElementById('lang-switcher');
+  if (!s) return;
+  var t = s.querySelector('.lang-toggle');
+  function close() { s.classList.remove('open'); t.setAttribute('aria-expanded', 'false'); }
+  t.addEventListener('click', function(e) { e.stopPropagation(); t.setAttribute('aria-expanded', s.classList.toggle('open')); });
+  document.addEventListener('click', function(e) { if (!s.contains(e.target)) close(); });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') close(); });
+})();
+</script>
+<!--lang-hint--><style>.lang-hint{position:fixed;left:16px;right:16px;bottom:16px;max-width:560px;margin:0 auto;z-index:300;display:flex;align-items:center;gap:14px;padding:12px 14px 12px 18px;border-radius:14px;background:#1A1917;color:#FAF9F7;font:500 14px/1.4 system-ui,-apple-system,sans-serif;box-shadow:0 12px 32px rgba(0,0,0,.28)}.lang-hint span{flex:1}.lang-hint a{color:#FAF9F7;font-weight:700;text-decoration:underline;white-space:nowrap}.lang-hint button{background:none;border:0;color:#B7B4AE;font-size:22px;line-height:1;cursor:pointer;padding:2px 6px}.lang-hint button:hover{color:#FAF9F7}</style><script>(function(){var K='lang-hint-dismissed',U={"en": "https://didact.digital/talkremind/privacy.html", "de": "https://didact.digital/talkremind/de/privacy.html", "fr": "https://didact.digital/talkremind/fr/privacy.html", "es": "https://didact.digital/talkremind/es/privacy.html", "it": "https://didact.digital/talkremind/it/privacy.html", "pt": "https://didact.digital/talkremind/pt/privacy.html"},T={"en": ["This page is also available in English.", "View in English", "Dismiss"], "de": ["Diese Seite gibt es auch auf Deutsch.", "Auf Deutsch ansehen", "Schließen"], "fr": ["Cette page existe aussi en français.", "Voir en français", "Fermer"], "es": ["Esta página también está disponible en español.", "Ver en español", "Cerrar"], "it": ["Questa pagina è disponibile anche in italiano.", "Vai alla versione italiana", "Chiudi"], "pt": ["Esta página também está disponível em português.", "Ver em português", "Fechar"]},C="es";function st(){try{localStorage.setItem(K,'1')}catch(e){}}document.querySelectorAll('#lang-menu a').forEach(function(a){a.addEventListener('click',st)});try{if(localStorage.getItem(K))return}catch(e){}var l=String((navigator.languages&&navigator.languages[0])||navigator.language||'en').slice(0,2).toLowerCase();if(l===C||!U[l])return;var b=document.createElement('div');b.className='lang-hint';b.setAttribute('role','region');b.lang=l;b.setAttribute('aria-label',T[l][0]);var s=document.createElement('span');s.textContent=T[l][0];var a=document.createElement('a');a.href=U[l];a.hreflang=l;a.textContent=T[l][1];a.addEventListener('click',st);var x=document.createElement('button');x.type='button';x.setAttribute('aria-label',T[l][2]);x.textContent='\u00d7';x.addEventListener('click',function(){st();b.remove()});b.append(s,a,x);document.body.appendChild(b)})();</script><!--/lang-hint-->
+</body>
+</html>
