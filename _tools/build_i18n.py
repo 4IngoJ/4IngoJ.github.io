@@ -163,6 +163,13 @@ def rewrite_urls(t):
     return t
 
 
+def localize_links(t, lang):
+    """Point links to other translated pages at the same language."""
+    for src, dst in cfg.get("localize", {}).items():
+        t = t.replace(f'href="{src}"', f'href="{dst.format(lang=lang)}"')
+    return t
+
+
 def runtime_script(lang, d):
     keys = cfg.get("runtime_keys", [])
     if not keys or lang == "en":
@@ -223,6 +230,7 @@ def build():
             if lang != "en":
                 t = set_jsonld(t, lang, p["src"])
                 t = rewrite_urls(t)
+                t = localize_links(t, lang)
                 rs = runtime_script(lang, d)
                 if rs:
                     t = t.replace("</head>", rs + "</head>", 1)

@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://didact.digital/</loc><lastmod>2026-10-11</lastmod><priority>1.0</priority></url>
+  <url><loc>https://didact.digital/de/</loc><lastmod>2026-10-11</lastmod><priority>0.9</priority></url>
+  <url><loc>https://didact.digital/fr/</loc><lastmod>2026-10-11</lastmod><priority>0.9</priority></url>
+  <url><loc>https://didact.digital/es/</loc><lastmod>2026-10-11</lastmod><priority>0.9</priority></url>
+  <url><loc>https://didact.digital/it/</loc><lastmod>2026-10-11</lastmod><priority>0.9</priority></url>
+  <url><loc>https://didact.digital/pt/</loc><lastmod>2026-10-11</lastmod><priority>0.9</priority></url>
   <url><loc>https://didact.digital/sideschedule/</loc><lastmod>2026-10-11</lastmod><priority>0.9</priority></url>
   <url><loc>https://didact.digital/sideschedule/de/</loc><lastmod>2026-10-11</lastmod><priority>0.8</priority></url>
   <url><loc>https://didact.digital/sideschedule/fr/</loc><lastmod>2026-10-11</lastmod><priority>0.8</priority></url>
@@ -8,6 +13,11 @@
   <url><loc>https://didact.digital/sideschedule/it/</loc><lastmod>2026-10-11</lastmod><priority>0.8</priority></url>
   <url><loc>https://didact.digital/sideschedule/pt/</loc><lastmod>2026-10-11</lastmod><priority>0.8</priority></url>
   <url><loc>https://didact.digital/talkremind/</loc><lastmod>2026-10-11</lastmod><priority>0.9</priority></url>
+  <url><loc>https://didact.digital/talkremind/de/</loc><lastmod>2026-10-11</lastmod><priority>0.8</priority></url>
+  <url><loc>https://didact.digital/talkremind/fr/</loc><lastmod>2026-10-11</lastmod><priority>0.8</priority></url>
+  <url><loc>https://didact.digital/talkremind/es/</loc><lastmod>2026-10-11</lastmod><priority>0.8</priority></url>
+  <url><loc>https://didact.digital/talkremind/it/</loc><lastmod>2026-10-11</lastmod><priority>0.8</priority></url>
+  <url><loc>https://didact.digital/talkremind/pt/</loc><lastmod>2026-10-11</lastmod><priority>0.8</priority></url>
   <url><loc>https://didact.digital/impressum.html</loc><lastmod>2026-10-03</lastmod><priority>0.2</priority></url>
   <url><loc>https://didact.digital/sideschedule/privacy.html</loc><lastmod>2026-10-03</lastmod><priority>0.2</priority></url>
   <url><loc>https://didact.digital/sideschedule/de/privacy.html</loc><lastmod>2026-10-11</lastmod><priority>0.2</priority></url>
@@ -17,6 +27,11 @@
   <url><loc>https://didact.digital/sideschedule/pt/privacy.html</loc><lastmod>2026-10-11</lastmod><priority>0.2</priority></url>
   <url><loc>https://didact.digital/sideschedule/impressum.html</loc><lastmod>2026-10-03</lastmod><priority>0.2</priority></url>
   <url><loc>https://didact.digital/talkremind/privacy.html</loc><lastmod>2026-10-03</lastmod><priority>0.2</priority></url>
+  <url><loc>https://didact.digital/talkremind/de/privacy.html</loc><lastmod>2026-10-11</lastmod><priority>0.2</priority></url>
+  <url><loc>https://didact.digital/talkremind/fr/privacy.html</loc><lastmod>2026-10-11</lastmod><priority>0.2</priority></url>
+  <url><loc>https://didact.digital/talkremind/es/privacy.html</loc><lastmod>2026-10-11</lastmod><priority>0.2</priority></url>
+  <url><loc>https://didact.digital/talkremind/it/privacy.html</loc><lastmod>2026-10-11</lastmod><priority>0.2</priority></url>
+  <url><loc>https://didact.digital/talkremind/pt/privacy.html</loc><lastmod>2026-10-11</lastmod><priority>0.2</priority></url>
   <url><loc>https://didact.digital/talkremind/impressum.html</loc><lastmod>2026-10-03</lastmod><priority>0.2</priority></url>
   <url><loc>https://didact.digital/tonecue/</loc><lastmod>2026-10-11</lastmod><priority>0.9</priority></url>
   <url><loc>https://didact.digital/tonecue/de/</loc><lastmod>2026-10-11</lastmod><priority>0.8</priority></url>
@@ -25,5 +40,10 @@
   <url><loc>https://didact.digital/tonecue/it/</loc><lastmod>2026-10-11</lastmod><priority>0.8</priority></url>
   <url><loc>https://didact.digital/tonecue/pt/</loc><lastmod>2026-10-11</lastmod><priority>0.8</priority></url>
   <url><loc>https://didact.digital/tonecue/privacy.html</loc><lastmod>2026-10-11</lastmod><priority>0.2</priority></url>
+  <url><loc>https://didact.digital/tonecue/de/privacy.html</loc><lastmod>2026-10-11</lastmod><priority>0.2</priority></url>
+  <url><loc>https://didact.digital/tonecue/fr/privacy.html</loc><lastmod>2026-10-11</lastmod><priority>0.2</priority></url>
+  <url><loc>https://didact.digital/tonecue/es/privacy.html</loc><lastmod>2026-10-11</lastmod><priority>0.2</priority></url>
+  <url><loc>https://didact.digital/tonecue/it/privacy.html</loc><lastmod>2026-10-11</lastmod><priority>0.2</priority></url>
+  <url><loc>https://didact.digital/tonecue/pt/privacy.html</loc><lastmod>2026-10-11</lastmod><priority>0.2</priority></url>
   <url><loc>https://didact.digital/tonecue/impressum.html</loc><lastmod>2026-10-11</lastmod><priority>0.2</priority></url>
 </urlset>

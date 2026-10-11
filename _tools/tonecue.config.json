@@ -16,5 +16,8 @@
       "dict": "i18n/tonecue_privacy.json",
       "mode": "html"
     }
-  ]
+  ],
+  "localize": {
+    "/": "/{lang}/"
+  }
 }

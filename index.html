@@ -4,8 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SideSchedule, TalkRemind &amp; ToneCue: Mac apps by didact</title>
-<meta name="description" content="Three small Mac apps from one person in Graz: SideSchedule, a calendar sidebar; TalkRemind, a nudge to dictate; ToneCue, audio device scenes. One-time purchase, no account, no tracking.">
+<meta name="description" content="Three native Mac apps from Graz: SideSchedule, a calendar sidebar; TalkRemind, a nudge to dictate; ToneCue, audio device scenes. One-time purchase, no account, no tracking.">
 <link rel="canonical" href="https://didact.digital/">
+<!--hreflang-->
+<link rel="alternate" hreflang="en" href="https://didact.digital/">
+<link rel="alternate" hreflang="de" href="https://didact.digital/de/">
+<link rel="alternate" hreflang="fr" href="https://didact.digital/fr/">
+<link rel="alternate" hreflang="es" href="https://didact.digital/es/">
+<link rel="alternate" hreflang="it" href="https://didact.digital/it/">
+<link rel="alternate" hreflang="pt" href="https://didact.digital/pt/">
+<link rel="alternate" hreflang="x-default" href="https://didact.digital/">
+<!--/hreflang-->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://didact.digital/">
 <meta property="og:title" content="SideSchedule, TalkRemind &amp; ToneCue: Mac apps by didact">
@@ -61,6 +70,18 @@
   .bar nav{display:flex;gap:clamp(14px,3vw,32px);font-size:15px;font-weight:500}
   .bar nav a{color:var(--mist);text-decoration:none;padding:6px 0}
   .bar nav a:hover{color:var(--paper)}
+  .bar nav .lang-switcher{position:relative}
+  .bar nav .lang-toggle{display:inline-flex;align-items:center;gap:6px;background:none;border:1px solid rgba(250,249,247,.28);border-radius:999px;padding:5px 12px;cursor:pointer;font-family:var(--sans);font-size:13px;font-weight:600;color:var(--mist)}
+  .bar nav .lang-toggle:hover{color:var(--paper);border-color:rgba(250,249,247,.6)}
+  .bar nav .lang-toggle svg{width:14px;height:14px;display:block}
+  .bar nav .lang-toggle .caret{width:10px;height:10px;transition:transform .2s}
+  .bar nav .lang-switcher.open .lang-toggle .caret{transform:rotate(180deg)}
+  .bar nav .lang-menu{position:absolute;right:0;top:calc(100% + 10px);background:var(--white);border:1px solid var(--stone);border-radius:12px;box-shadow:0 12px 32px rgba(20,20,19,.18);padding:6px;min-width:170px;z-index:200;display:none}
+  .bar nav .lang-switcher.open .lang-menu{display:block}
+  .bar nav .lang-switcher .lang-menu a{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:9px 12px;border-radius:8px;font-size:14px;color:var(--ink);text-decoration:none;white-space:nowrap}
+  .bar nav .lang-switcher .lang-menu a:hover,.bar nav .lang-switcher .lang-menu a.active{background:#F0EEEA;color:var(--ink)}
+  .bar nav .lang-switcher .lang-menu a.active{font-weight:600}
+  .bar nav .lang-menu .lang-code{font-size:11px;font-weight:700;color:var(--graphite);letter-spacing:.05em}
   .hero-body{margin-block:auto;padding:clamp(24px,6vh,72px) var(--gutter) clamp(40px,10vh,120px);max-width:1200px;width:100%;margin-left:auto;margin-right:auto}
   h1{font-weight:700;font-size:clamp(2.6rem,7.4vw,6rem);line-height:1.02;letter-spacing:-.04em;max-width:11.5em;text-wrap:balance}
   .stop{display:inline-block;transform-origin:50% 100%}
@@ -187,7 +208,7 @@
     .hero-apps li+li a{padding-left:0}
     .kit div{grid-template-columns:1fr;gap:2px}
     .bar nav{font-size:14px;align-items:center;white-space:nowrap;gap:14px}
-    .bar nav a[href="#partners"]{display:none}
+    .bar nav a[href="#partners"],.bar nav a[href="#new"]{display:none}
     .bar nav a.pill{padding:6px 14px}
   }
   @media (max-width:1099px){.subscribe .inner{grid-template-columns:1fr}}
@@ -216,28 +237,36 @@
 </style>
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
+<a class="skip" href="#main" data-i18n="h001">Skip to content</a>
 
 <header class="hero" id="top">
   <canvas id="field" aria-hidden="true"></canvas>
   <div class="bar">
-    <a href="/" aria-label="didact home"><img src="/assets/didact-wordmark-paper.svg" alt="didact." width="90" height="22"></a>
-    <nav aria-label="Sections">
-      <a href="#apps">Apps</a>
-      <a href="#new">What&rsquo;s new</a>
-      <a href="#partners">Partners</a>
-      <a class="pill" href="#subscribe">Subscribe</a>
+    <a href="/" aria-label="didact home"><img src="/assets/didact-wordmark-paper.svg" alt="didact." width="90" height="22" data-i18n-alt="ha095"></a>
+    <nav aria-label="Sections" data-i18n-aria-label="ha096">
+      <a href="#apps" data-i18n="h002">Apps</a>
+      <a href="#new" data-i18n="h003">What&rsquo;s new</a>
+      <a href="#partners" data-i18n="h004">Partners</a>
+      <div class="lang-switcher" id="lang-switcher">
+        <button class="lang-toggle" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Change language">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          <span id="lang-current">EN</span>
+          <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="lang-menu" role="menu" id="lang-menu"><a role="menuitem" href="https://didact.digital/" hreflang="en" lang="en" class="active" aria-current="true"><span>English</span><span class="lang-code">EN</span></a><a role="menuitem" href="https://didact.digital/de/" hreflang="de" lang="de"><span>Deutsch</span><span class="lang-code">DE</span></a><a role="menuitem" href="https://didact.digital/fr/" hreflang="fr" lang="fr"><span>Français</span><span class="lang-code">FR</span></a><a role="menuitem" href="https://didact.digital/es/" hreflang="es" lang="es"><span>Español</span><span class="lang-code">ES</span></a><a role="menuitem" href="https://didact.digital/it/" hreflang="it" lang="it"><span>Italiano</span><span class="lang-code">IT</span></a><a role="menuitem" href="https://didact.digital/pt/" hreflang="pt" lang="pt"><span>Português</span><span class="lang-code">PT</span></a></div>
+      </div>
+      <a class="pill" href="#subscribe" data-i18n="h005">Subscribe</a>
     </nav>
   </div>
   <div class="hero-body">
-    <h1>Apps for high performing people<span class="stop" id="stop">.</span></h1>
-    <p class="lede">Small Mac apps from one person in Graz. You pay once, there&rsquo;s no account, and nothing watches what you do.</p>
+    <h1 data-i18n="h006">Apps for high performing people<span class="stop" id="stop">.</span></h1>
+    <p class="lede" data-i18n="h007">Native Mac apps for the way you actually work. Pay once. No account. No tracking.</p>
     <ul class="hero-apps">
-      <li><a href="/sideschedule/"><img src="/assets/sideschedule-icon.png" alt="" width="48" height="48"><span><strong>SideSchedule</strong><span class="meta">Calendar sidebar &middot; <span class="mono">macOS 13+</span></span></span><svg class="arrow" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
-      <li><a href="/talkremind/"><img src="/assets/talkremind-icon.png" alt="" width="48" height="48"><span><strong>TalkRemind</strong><span class="meta">Dictation nudge &middot; <span class="mono">macOS 14+</span></span></span><svg class="arrow" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
-      <li><a href="/tonecue/"><img src="/assets/tonecue-icon.png" alt="" width="48" height="48"><span><strong>ToneCue</strong><span class="meta">Audio device scenes &middot; <span class="mono">macOS 13+</span></span></span><svg class="arrow" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+      <li><a href="/sideschedule/"><img src="/assets/sideschedule-icon.png" alt="" width="48" height="48"><span><strong>SideSchedule</strong><span class="meta" data-i18n="h008">Calendar sidebar &middot; <span class="mono">macOS 13+</span></span></span><svg class="arrow" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+      <li><a href="/talkremind/"><img src="/assets/talkremind-icon.png" alt="" width="48" height="48"><span><strong>TalkRemind</strong><span class="meta" data-i18n="h009">Dictation nudge &middot; <span class="mono">macOS 14+</span></span></span><svg class="arrow" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+      <li><a href="/tonecue/"><img src="/assets/tonecue-icon.png" alt="" width="48" height="48"><span><strong>ToneCue</strong><span class="meta" data-i18n="h010">Audio device scenes &middot; <span class="mono">macOS 13+</span></span></span><svg class="arrow" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
     </ul>
-    <p class="launch">Launch price: the first 100 buyers across all three apps save <span class="mono">&euro;4.00</span>.</p>
+    <p class="launch" data-i18n="h011">Launch price: the first 100 buyers across all three apps save <span class="mono">&euro;4.00</span>.</p>
   </div>
 </header>
 
@@ -245,26 +274,26 @@
 
 <section id="apps">
   <div class="wrap">
-    <h2>Three apps, one maker.</h2>
-    <p class="sec-sub">All three are young and still moving fast. Each one has a 14-day trial with everything unlocked.</p>
+    <h2 data-i18n="h012">Three apps, one maker.</h2>
+    <p class="sec-sub" data-i18n="h013">All three are young and still moving fast. Each one has a 14-day trial with everything unlocked.</p>
 
     <article class="app">
       <div class="media">
-        <div class="pair solo"><img src="/assets/sideschedule-strip.jpg" width="780" height="1006" loading="lazy" alt="SideSchedule's day calendar in a strip on the right edge of the screen, next to the edge of another app window that stops where the strip begins."></div>
+        <div class="pair solo"><img src="/assets/sideschedule-strip.jpg" width="780" height="1006" loading="lazy" alt="SideSchedule's day calendar in a strip on the right edge of the screen, next to the edge of another app window that stops where the strip begins." data-i18n-alt="ha097"></div>
       </div>
       <div class="text">
         <h3>SideSchedule</h3>
-        <p class="line">My calendar kept losing to every other window. Not anymore.</p>
-        <p class="desc">A calendar sidebar that reserves its strip of screen the way the Dock does. Meeting notes become Markdown files, and one click joins your call.</p>
+        <p class="line" data-i18n="h014">My calendar kept losing to every other window. Not anymore.</p>
+        <p class="desc" data-i18n="h015">A calendar sidebar that reserves its strip of screen the way the Dock does. Meeting notes become Markdown files, and one click joins your call.</p>
         <ul class="facts">
-          <li>Reads Apple Calendar, so iCloud, Google, Exchange and CalDAV work.</li>
-          <li>Joins Zoom, Meet, Teams, Webex and FaceTime calls.</li>
-          <li>Six languages, macOS 13 or later.</li>
+          <li data-i18n="h016">Reads Apple Calendar, so iCloud, Google, Exchange and CalDAV work.</li>
+          <li data-i18n="h017">Joins Zoom, Meet, Teams, Webex and FaceTime calls.</li>
+          <li data-i18n="h018">Six languages, macOS 13 or later.</li>
         </ul>
-        <p class="price"><b>Free for 14 days, then <span class="mono">&euro;12.99</span> once.</b> First 100 buyers across all three apps: <span class="mono">&euro;8.99</span>.</p>
+        <p class="price" data-i18n="h019"><b>Free for 14 days, then <span class="mono">&euro;12.99</span> once.</b> First 100 buyers across all three apps: <span class="mono">&euro;8.99</span>.</p>
         <div class="actions">
-          <a class="btn primary" href="/sideschedule/">See SideSchedule</a>
-          <a class="btn ghost" href="https://github.com/4IngoJ/sideschedule/releases/latest/download/SideSchedule.dmg">Try it free</a>
+          <a class="btn primary" href="/sideschedule/" data-i18n="h020">See SideSchedule</a>
+          <a class="btn ghost" href="https://github.com/4IngoJ/sideschedule/releases/latest/download/SideSchedule.dmg" data-i18n="h021">Try it free</a>
         </div>
       </div>
     </article>
@@ -272,44 +301,44 @@
     <article class="app flip">
       <div class="media">
         <div class="pair">
-          <img src="/assets/talkremind-stats.png" width="334" height="554" loading="lazy" alt="TalkRemind's menu-bar popover with a donut showing today's dictation share and a seven-day trend line (demo data).">
-          <img src="/assets/talkremind-nudge.png" width="338" height="556" loading="lazy" alt="The same popover on the second tab, listing how often each app was nudged (demo data).">
+          <img src="/assets/talkremind-stats.png" width="334" height="554" loading="lazy" alt="TalkRemind's menu-bar popover with a donut showing today's dictation share and a seven-day trend line (demo data)." data-i18n-alt="ha098">
+          <img src="/assets/talkremind-nudge.png" width="338" height="556" loading="lazy" alt="The same popover on the second tab, listing how often each app was nudged (demo data)." data-i18n-alt="ha099">
         </div>
       </div>
       <div class="text">
         <h3>TalkRemind</h3>
-        <p class="line">You bought a dictation app. But you&rsquo;re still typing? Not anymore.</p>
-        <p class="desc">A menu-bar app that notices a long stretch of typing and nudges you to use the dictation app you already own. It never transcribes and never reads what you type.</p>
+        <p class="line" data-i18n="h022">You bought a dictation app. But you&rsquo;re still typing? Not anymore.</p>
+        <p class="desc" data-i18n="h023">A menu-bar app that notices a long stretch of typing and nudges you to use the dictation app you already own. It never transcribes and never reads what you type.</p>
         <ul class="facts">
-          <li>Recognises 17 dictation apps; any app with a hotkey works.</li>
-          <li>Four nudge styles, quiet hours and per-app exemptions.</li>
-          <li>macOS 14 or later.</li>
+          <li data-i18n="h024">Recognises 17 dictation apps; any app with a hotkey works.</li>
+          <li data-i18n="h025">Four nudge styles, quiet hours and per-app exemptions.</li>
+          <li data-i18n="h026">macOS 14 or later.</li>
         </ul>
-        <p class="price"><b>Free for 14 days, then <span class="mono">&euro;9.99</span> once.</b> First 100 buyers across all three apps: <span class="mono">&euro;5.99</span>.</p>
+        <p class="price" data-i18n="h027"><b>Free for 14 days, then <span class="mono">&euro;9.99</span> once.</b> First 100 buyers across all three apps: <span class="mono">&euro;5.99</span>.</p>
         <div class="actions">
-          <a class="btn primary" href="/talkremind/">See TalkRemind</a>
-          <a class="btn ghost" href="https://github.com/4IngoJ/TalkRemind-releases/releases/latest/download/TalkRemind.dmg">Try it free</a>
+          <a class="btn primary" href="/talkremind/" data-i18n="h028">See TalkRemind</a>
+          <a class="btn ghost" href="https://github.com/4IngoJ/TalkRemind-releases/releases/latest/download/TalkRemind.dmg" data-i18n="h029">Try it free</a>
         </div>
       </div>
     </article>
 
     <article class="app">
       <div class="media">
-        <div class="pair solo"><img src="/tonecue/assets/screens/popover.png" width="320" height="401" loading="lazy" alt="ToneCue's menu bar popover: input and output tiles, three scene cards (Calls, Recording, Desk) and a default scene."></div>
+        <div class="pair solo"><img src="/tonecue/assets/screens/popover.png" width="320" height="401" loading="lazy" alt="ToneCue's menu bar popover: input and output tiles, three scene cards (Calls, Recording, Desk) and a default scene." data-i18n-alt="ha100"></div>
       </div>
       <div class="text">
         <h3>ToneCue</h3>
-        <p class="line">Your Mac, with the microphone you meant.</p>
-        <p class="desc">A menu-bar app that picks your microphone and speakers by situation: a dock, a calendar meeting, an open app. It tells you why it switched, and you can undo it.</p>
+        <p class="line" data-i18n="h030">Your Mac, with the microphone you meant.</p>
+        <p class="desc" data-i18n="h031">A menu-bar app that picks your microphone and speakers by situation: a dock, a calendar meeting, an open app. It tells you why it switched, and you can undo it.</p>
         <ul class="facts">
-          <li>Scenes with rules; higher scenes win.</li>
-          <li>Pauses when you pick a device by hand.</li>
-          <li>No account, macOS 13 or later.</li>
+          <li data-i18n="h032">Scenes with rules; higher scenes win.</li>
+          <li data-i18n="h033">Pauses when you pick a device by hand.</li>
+          <li data-i18n="h034">No account, macOS 13 or later.</li>
         </ul>
-        <p class="price"><b>Free for 14 days, then <span class="mono">&euro;9.99</span> once.</b> First 100 buyers across all three apps: <span class="mono">&euro;5.99</span>.</p>
+        <p class="price" data-i18n="h035"><b>Free for 14 days, then <span class="mono">&euro;9.99</span> once.</b> First 100 buyers across all three apps: <span class="mono">&euro;5.99</span>.</p>
         <div class="actions">
-          <a class="btn primary" href="/tonecue/">See ToneCue</a>
-          <a class="btn ghost" href="https://github.com/4IngoJ/tonecue/releases/latest/download/ToneCue.dmg">Try it free</a>
+          <a class="btn primary" href="/tonecue/" data-i18n="h036">See ToneCue</a>
+          <a class="btn ghost" href="https://github.com/4IngoJ/tonecue/releases/latest/download/ToneCue.dmg" data-i18n="h037">Try it free</a>
         </div>
       </div>
     </article>
@@ -318,23 +347,23 @@
 
 <section class="promises" id="promise">
   <div class="wrap">
-    <h2>What every app comes with.</h2>
+    <h2 data-i18n="h038">What every app comes with.</h2>
     <dl class="ledger">
-      <div><dt>You pay once</dt><dd>No subscription. After the 14-day trial a license is yours, for two Macs with SideSchedule or ToneCue and three with TalkRemind.</dd></div>
-      <div><dt>No account</dt><dd>Nothing to sign up for. You enter a license key and that&rsquo;s it.</dd></div>
-      <div><dt>Nothing watches you</dt><dd>No analytics, no tracking, no telemetry in any of them. The only network calls are license checks and update checks. Details in the <a href="/sideschedule/privacy.html">SideSchedule</a>, <a href="/talkremind/privacy.html">TalkRemind</a> and <a href="/tonecue/privacy.html">ToneCue</a> privacy notes.</dd></div>
-      <div><dt>Signed and notarized</dt><dd>Apple-notarized builds that update themselves through Sparkle. SideSchedule and ToneCue are also on Homebrew: <code>brew install --cask 4ingoj/tap/sideschedule</code> or <code>brew install --cask 4ingoj/tap/tonecue</code></dd></div>
+      <div><dt data-i18n="h039">You pay once</dt><dd data-i18n="h040">No subscription. After the 14-day trial a license is yours, for two Macs with SideSchedule or ToneCue and three with TalkRemind.</dd></div>
+      <div><dt data-i18n="h041">No account</dt><dd data-i18n="h042">Nothing to sign up for. You enter a license key and that&rsquo;s it.</dd></div>
+      <div><dt data-i18n="h043">Nothing watches you</dt><dd data-i18n="h044">No analytics, no tracking, no telemetry in any of them. The only network calls are license checks and update checks. Details in the <a href="/sideschedule/privacy.html">SideSchedule</a>, <a href="/talkremind/privacy.html">TalkRemind</a> and <a href="/tonecue/privacy.html">ToneCue</a> privacy notes.</dd></div>
+      <div><dt data-i18n="h045">Signed and notarized</dt><dd data-i18n="h046">Apple-notarized builds that update themselves through Sparkle. SideSchedule and ToneCue are also on Homebrew: <code>brew install --cask 4ingoj/tap/sideschedule</code> or <code>brew install --cask 4ingoj/tap/tonecue</code></dd></div>
     </dl>
   </div>
 </section>
 
 <section id="new">
   <div class="wrap">
-    <h2>What&rsquo;s new.</h2>
-    <p class="sec-sub">The latest release of each app, and what came before it.</p>
+    <h2 data-i18n="h047">What&rsquo;s new.</h2>
+    <p class="sec-sub" data-i18n="h048">The latest release of each app, and what came before it.</p>
 
     <div class="releases">
-      <article class="release">
+      <article class="release" lang="en">
         <header>
           <img src="/assets/tonecue-icon-dark.png" alt="" width="44" height="44">
           <div><h3>ToneCue<span class="mono">2.0.0</span></h3><time datetime="2026-10-11">11 Oct 2026</time></div>
@@ -347,7 +376,7 @@
         <p class="all"><a href="https://github.com/4IngoJ/tonecue/releases">All ToneCue releases</a></p>
       </article>
 
-      <article class="release">
+      <article class="release" lang="en">
         <header>
           <img src="/assets/sideschedule-icon.png" alt="" width="44" height="44">
           <div><h3>SideSchedule<span class="mono">1.1.0</span></h3><time datetime="2026-10-07">7 Oct 2026</time></div>
@@ -369,7 +398,7 @@
         <p class="all"><a href="https://github.com/4IngoJ/sideschedule/releases">All SideSchedule releases</a></p>
       </article>
 
-      <article class="release">
+      <article class="release" lang="en">
         <header>
           <img src="/assets/talkremind-icon.png" alt="" width="44" height="44">
           <div><h3>TalkRemind<span class="mono">0.12.0</span></h3><time datetime="2026-09-26">26 Sep 2026</time></div>
@@ -396,38 +425,38 @@
 <section class="subscribe" id="subscribe" aria-labelledby="subscribe-h">
   <div class="wrap inner">
     <div>
-      <h2 id="subscribe-h">Get every release in your inbox.</h2>
-      <p class="why">One short email when an app ships something worth reading about, when there&rsquo;s a launch price, or when a new app is on the way. At most once a month, written by me.</p>
-      <p class="fine">The form is loaded from Brevo (EU) and uses Cloudflare Turnstile as a spam check. Not showing up? <a href="https://4dd93bf3.sibforms.com/serve/MUIFAAxjfk4SfjnsBviBPjfD2lXFaBbc07ge-hCp-v-i32R0TJzwtsyn46msoyZ4GVzC-1AWjzPUMPJWJvwPIz3d_H61Hr7h7PUrjsj-6_3DT0PyXnd7CvP_5ujypIz3x0rl4al8Qrxy7F-H8hW1Uf9ylu_ANFW9Bz7yyCx3rvOcYIwegZYb4Tt2k1jm3GIvDcFaE_lX8iHTPA12rA==" rel="noopener">Open it in its own tab</a>.</p>
+      <h2 id="subscribe-h" data-i18n="h070">Get every release in your inbox.</h2>
+      <p class="why" data-i18n="h071">One short email when an app ships something worth reading about, when there&rsquo;s a launch price, or when a new app is on the way. At most once a month, written by me.</p>
+      <p class="fine" data-i18n="h072">The form is loaded from Brevo (EU) and uses Cloudflare Turnstile as a spam check. Not showing up? <a href="https://4dd93bf3.sibforms.com/serve/MUIFAAxjfk4SfjnsBviBPjfD2lXFaBbc07ge-hCp-v-i32R0TJzwtsyn46msoyZ4GVzC-1AWjzPUMPJWJvwPIz3d_H61Hr7h7PUrjsj-6_3DT0PyXnd7CvP_5ujypIz3x0rl4al8Qrxy7F-H8hW1Uf9ylu_ANFW9Bz7yyCx3rvOcYIwegZYb4Tt2k1jm3GIvDcFaE_lX8iHTPA12rA==" rel="noopener">Open it in its own tab</a>.</p>
     </div>
     <div class="signup-wrap">
-      <iframe class="signup" src="https://4dd93bf3.sibforms.com/serve/MUIFAAxjfk4SfjnsBviBPjfD2lXFaBbc07ge-hCp-v-i32R0TJzwtsyn46msoyZ4GVzC-1AWjzPUMPJWJvwPIz3d_H61Hr7h7PUrjsj-6_3DT0PyXnd7CvP_5ujypIz3x0rl4al8Qrxy7F-H8hW1Uf9ylu_ANFW9Bz7yyCx3rvOcYIwegZYb4Tt2k1jm3GIvDcFaE_lX8iHTPA12rA==" title="Subscribe to didact news" loading="lazy" scrolling="no"></iframe>
+      <iframe class="signup" data-i18n-title="ha102" src="https://4dd93bf3.sibforms.com/serve/MUIFAAxjfk4SfjnsBviBPjfD2lXFaBbc07ge-hCp-v-i32R0TJzwtsyn46msoyZ4GVzC-1AWjzPUMPJWJvwPIz3d_H61Hr7h7PUrjsj-6_3DT0PyXnd7CvP_5ujypIz3x0rl4al8Qrxy7F-H8hW1Uf9ylu_ANFW9Bz7yyCx3rvOcYIwegZYb4Tt2k1jm3GIvDcFaE_lX8iHTPA12rA==" title="Subscribe to didact news" loading="lazy" scrolling="no"></iframe>
     </div>
   </div>
 </section>
 
 <section class="partners" id="partners">
   <div class="wrap">
-    <h2>Partners, press and reviewers.</h2>
+    <h2 data-i18n="h073">Partners, press and reviewers.</h2>
     <div class="cols">
       <div>
-        <h3>Affiliate program</h3>
-        <p>Share an app and earn 30 percent of each sale. Tracking runs for 30 days, payouts start at &euro;10, and Lemon Squeezy handles the paperwork.</p>
-        <p>Want to review an app first? Write to me and I&rsquo;ll send you a license.</p>
+        <h3 data-i18n="h074">Affiliate program</h3>
+        <p data-i18n="h075">Share an app and earn 30 percent of each sale. Tracking runs for 30 days, payouts start at &euro;10, and Lemon Squeezy handles the paperwork.</p>
+        <p data-i18n="h076">Want to review an app first? Write to me and I&rsquo;ll send you a license.</p>
         <div class="actions">
-          <a class="btn primary" href="https://4ingoj.lemonsqueezy.com/affiliates">Apply as an affiliate</a>
-          <a class="btn ghost" href="mailto:hello@didact.digital?subject=Partnership">Write to me</a>
+          <a class="btn primary" href="https://4ingoj.lemonsqueezy.com/affiliates" data-i18n="h077">Apply as an affiliate</a>
+          <a class="btn ghost" href="mailto:hello@didact.digital?subject=Partnership" data-i18n="h078">Write to me</a>
         </div>
       </div>
       <div>
-        <h3>Facts to copy</h3>
+        <h3 data-i18n="h079">Facts to copy</h3>
         <dl class="kit">
-          <div><dt>Maker</dt><dd>didact, Graz, Austria</dd></div>
-          <div><dt>SideSchedule</dt><dd>A Mac calendar sidebar that keeps its strip of screen, like the Dock.</dd></div>
-          <div><dt>TalkRemind</dt><dd>A menu-bar nudge that gets you to dictate instead of type.</dd></div>
-          <div><dt>ToneCue</dt><dd>A menu-bar app that picks your microphone and speakers by situation.</dd></div>
-          <div><dt>Selling</dt><dd>One-time purchase through Lemon Squeezy, 14-day trial, no Mac App Store.</dd></div>
-          <div><dt>Logo</dt><dd><a href="/assets/didact-wordmark-ink.svg">Wordmark as SVG</a>. Screenshots on request.</dd></div>
+          <div><dt data-i18n="h080">Maker</dt><dd data-i18n="h081">didact, Graz, Austria</dd></div>
+          <div><dt>SideSchedule</dt><dd data-i18n="h082">A Mac calendar sidebar that keeps its strip of screen, like the Dock.</dd></div>
+          <div><dt>TalkRemind</dt><dd data-i18n="h083">A menu-bar nudge that gets you to dictate instead of type.</dd></div>
+          <div><dt>ToneCue</dt><dd data-i18n="h084">A menu-bar app that picks your microphone and speakers by situation.</dd></div>
+          <div><dt data-i18n="h085">Selling</dt><dd data-i18n="h086">One-time purchase through Lemon Squeezy, 14-day trial, no Mac App Store.</dd></div>
+          <div><dt data-i18n="h087">Logo</dt><dd data-i18n="h088"><a href="/assets/didact-wordmark-ink.svg">Wordmark as SVG</a>. Screenshots on request.</dd></div>
         </dl>
       </div>
     </div>
@@ -440,19 +469,19 @@
   <div class="wrap">
     <div class="row">
       <div>
-        <img src="/assets/didact-wordmark-paper.svg" alt="didact." width="90" height="22">
-        <p>Apps for high performing people. Built and maintained by one person in Graz.</p>
+        <img src="/assets/didact-wordmark-paper.svg" alt="didact." width="90" height="22" data-i18n-alt="ha101">
+        <p data-i18n="h089">Apps for high performing people. Built and maintained by one person in Graz.</p>
       </div>
       <ul>
         <li><a href="/sideschedule/">SideSchedule</a></li>
         <li><a href="/talkremind/">TalkRemind</a></li>
         <li><a href="/tonecue/">ToneCue</a></li>
         <li><a href="mailto:hello@didact.digital">hello@didact.digital</a></li>
-        <li><a href="/impressum.html">Legal notice</a></li>
-        <li><a href="/sideschedule/privacy.html">SideSchedule privacy</a></li>
-        <li><a href="/talkremind/privacy.html">TalkRemind privacy</a></li>
-        <li><a href="/tonecue/privacy.html">ToneCue privacy</a></li>
-        <li><a href="/newsletter/abmelden.html">Newsletter unsubscribe</a></li>
+        <li><a href="/impressum.html" data-i18n="h090">Legal notice</a></li>
+        <li><a href="/sideschedule/privacy.html" data-i18n="h091">SideSchedule privacy</a></li>
+        <li><a href="/talkremind/privacy.html" data-i18n="h092">TalkRemind privacy</a></li>
+        <li><a href="/tonecue/privacy.html" data-i18n="h093">ToneCue privacy</a></li>
+        <li><a href="/newsletter/abmelden.html" data-i18n="h094">Newsletter unsubscribe</a></li>
       </ul>
     </div>
     <p class="fine">&copy; 2026 didact. This site sets no cookies and runs no analytics. The newsletter form is loaded from Brevo.</p>
@@ -460,6 +489,18 @@
 </footer>
 
 <script src="/assets/hero-field.js" defer></script>
+<script>
+(function() {
+  var s = document.getElementById('lang-switcher');
+  if (!s) return;
+  var t = s.querySelector('.lang-toggle');
+  function close() { s.classList.remove('open'); t.setAttribute('aria-expanded', 'false'); }
+  t.addEventListener('click', function(e) { e.stopPropagation(); t.setAttribute('aria-expanded', s.classList.toggle('open')); });
+  document.addEventListener('click', function(e) { if (!s.contains(e.target)) close(); });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') close(); });
+})();
+</script>
 
+<!--lang-hint--><style>.lang-hint{position:fixed;left:16px;right:16px;bottom:16px;max-width:560px;margin:0 auto;z-index:300;display:flex;align-items:center;gap:14px;padding:12px 14px 12px 18px;border-radius:14px;background:#1A1917;color:#FAF9F7;font:500 14px/1.4 system-ui,-apple-system,sans-serif;box-shadow:0 12px 32px rgba(0,0,0,.28)}.lang-hint span{flex:1}.lang-hint a{color:#FAF9F7;font-weight:700;text-decoration:underline;white-space:nowrap}.lang-hint button{background:none;border:0;color:#B7B4AE;font-size:22px;line-height:1;cursor:pointer;padding:2px 6px}.lang-hint button:hover{color:#FAF9F7}</style><script>(function(){var K='lang-hint-dismissed',U={"en": "https://didact.digital/", "de": "https://didact.digital/de/", "fr": "https://didact.digital/fr/", "es": "https://didact.digital/es/", "it": "https://didact.digital/it/", "pt": "https://didact.digital/pt/"},T={"en": ["This page is also available in English.", "View in English", "Dismiss"], "de": ["Diese Seite gibt es auch auf Deutsch.", "Auf Deutsch ansehen", "Schließen"], "fr": ["Cette page existe aussi en français.", "Voir en français", "Fermer"], "es": ["Esta página también está disponible en español.", "Ver en español", "Cerrar"], "it": ["Questa pagina è disponibile anche in italiano.", "Vai alla versione italiana", "Chiudi"], "pt": ["Esta página também está disponível em português.", "Ver em português", "Fechar"]},C="en";function st(){try{localStorage.setItem(K,'1')}catch(e){}}document.querySelectorAll('#lang-menu a').forEach(function(a){a.addEventListener('click',st)});try{if(localStorage.getItem(K))return}catch(e){}var l=String((navigator.languages&&navigator.languages[0])||navigator.language||'en').slice(0,2).toLowerCase();if(l===C||!U[l])return;var b=document.createElement('div');b.className='lang-hint';b.setAttribute('role','region');b.lang=l;b.setAttribute('aria-label',T[l][0]);var s=document.createElement('span');s.textContent=T[l][0];var a=document.createElement('a');a.href=U[l];a.hreflang=l;a.textContent=T[l][1];a.addEventListener('click',st);var x=document.createElement('button');x.type='button';x.setAttribute('aria-label',T[l][2]);x.textContent='\u00d7';x.addEventListener('click',function(){st();b.remove()});b.append(s,a,x);document.body.appendChild(b)})();</script><!--/lang-hint-->
 </body>
 </html>

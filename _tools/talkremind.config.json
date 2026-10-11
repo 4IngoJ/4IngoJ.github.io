@@ -16,5 +16,8 @@
       "dict": "i18n/talkremind_privacy.json",
       "mode": "html"
     }
-  ]
+  ],
+  "localize": {
+    "/": "/{lang}/"
+  }
 }

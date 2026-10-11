@@ -1,0 +1,22 @@
+{
+  "root": "..",
+  "site_url": "https://didact.digital/",
+  "local_pages": [
+    "index.html"
+  ],
+  "localize": {
+    "/sideschedule/": "/sideschedule/{lang}/",
+    "/talkremind/": "/talkremind/{lang}/",
+    "/tonecue/": "/tonecue/{lang}/",
+    "/sideschedule/privacy.html": "/sideschedule/{lang}/privacy.html",
+    "/talkremind/privacy.html": "/talkremind/{lang}/privacy.html",
+    "/tonecue/privacy.html": "/tonecue/{lang}/privacy.html"
+  },
+  "pages": [
+    {
+      "src": "index.html",
+      "dict": "i18n/home.json",
+      "mode": "html"
+    }
+  ]
+}
