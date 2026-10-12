@@ -99,12 +99,11 @@
   var click = null;
   try {
     var a = JSON.parse(localStorage.getItem('didact_aff') || 'null');
-    if (a && Date.parse(a.expires) > Date.now()) click = a.click;
+    if (a && Date.parse(a.expires) > Date.now()) click = a.id;
   } catch (e) {}
-  if (!click) { var m = document.cookie.match(/(?:^|; )ls_aff_ref=([^;]+)/); if (m) click = decodeURIComponent(m[1]); }
-  var ok = click && SCHEMES[app] && /^[A-Za-z0-9_-]{8,64}$/.test(click);
+  var ok = click && SCHEMES[app] && /^[A-Za-z0-9_-]{1,64}$/.test(click);
   document.getElementById(ok ? 'aff-found' : 'aff-none').hidden = false;
-  if (ok) location.href = app + '://affiliate?click=' + click;
+  if (ok) location.href = app + '://affiliate?aff=' + click;
 })();
 </script>
 
