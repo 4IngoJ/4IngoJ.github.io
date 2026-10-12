@@ -1,0 +1,17 @@
+{
+  "root": "../welcome",
+  "site_url": "https://didact.digital/welcome/",
+  "local_pages": [
+    "index.html"
+  ],
+  "pages": [
+    {
+      "src": "index.html",
+      "dict": "i18n/welcome.json",
+      "mode": "html"
+    }
+  ],
+  "localize": {
+    "/": "/{lang}/"
+  }
+}
