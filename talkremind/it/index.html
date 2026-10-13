@@ -144,41 +144,91 @@
   .card-icon svg { width: 17px; height: 17px; }
 
   /* ---------- Nudge style swatches ---------- */
-  .style-grid { display: grid; gap: 16px; grid-template-columns: repeat(4, 1fr); max-width: 960px; margin: 0 auto; }
-  @media (max-width: 760px) { .style-grid { grid-template-columns: repeat(2, 1fr); } }
+  .style-grid { display: grid; gap: 16px; grid-template-columns: repeat(2, 1fr); max-width: 960px; margin: 0 auto; }
+  @media (max-width: 640px) { .style-grid { grid-template-columns: 1fr; } }
   .style-card { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 20px 24px; text-align: center; }
-  .style-card .swatch { height: 84px; border-radius: 10px; background: var(--band); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; overflow: hidden; position: relative; }
+  .style-card .swatch { height: 200px; border-radius: 10px; background: var(--band); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; overflow: hidden; position: relative; }
+  .style-card .swatch { height: 230px; }
+
+  /* Mock Mac screens around the real nudge screenshots */
+  .mac-screen { position: absolute; background: radial-gradient(120% 90% at 80% 0%, #6b6660 0%, #3d3a36 45%, #201f1d 100%); overflow: hidden; }
+  .mac-screen.corner { left: -12px; bottom: -12px; top: 22px; right: 22px; border: 9px solid #121211; border-radius: 0 22px 0 0; }
+  .mac-menubar { height: 24px; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 0 10px 0 12px; background: rgba(28,27,25,.42); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); color: #fff; font: 500 11px/1 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif; white-space: nowrap; }
+  .mac-menubar .mb-left, .mac-menubar .mb-right { display: flex; align-items: center; gap: 12px; min-width: 0; overflow: hidden; }
+  .mac-menubar .mb-right { flex-shrink: 0; gap: 11px; }
+  .mac-menubar b { font-weight: 700; }
+  .mac-menubar svg { flex-shrink: 0; width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .mac-menubar svg.mb-apple { width: 12px; height: 12px; fill: currentColor; stroke: none; }
+  .mac-menubar svg.mb-batt { width: 20px; }
+  .mac-menubar svg.tr { width: 13px; height: 13px; fill: currentColor; stroke: none; }
+  .mac-menubar svg.tr.on { box-sizing: content-box; padding: 3px 6px; margin: 0 -3px; border-radius: 5px; background: rgba(255,255,255,.28); animation: tr-pulse 2.4s ease-in-out infinite; }
+  @keyframes tr-pulse { 0%, 100% { background: rgba(255,255,255,.28); } 50% { background: rgba(255,255,255,.08); } }
+  @media (prefers-reduced-motion: reduce) { .mac-menubar svg.tr.on { animation: none; } }
+  @media (max-width: 640px) { .mac-menubar .mb-hide { display: none; } }
+  .style-card .mac-menubar { justify-content: flex-end; }
+  .style-card .mac-menubar .mb-left, .style-card .mac-menubar .mb-hide { display: none; }
+  .mac-screen .notif { position: absolute; top: 28px; right: -6px; width: 84%; max-width: 440px; height: auto; }
+  .mac-window { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -62%); width: min(380px, 90%); background: var(--white); border: 1px solid var(--line); border-radius: 10px; box-shadow: 0 12px 30px rgba(20,20,19,.14); text-align: left; }
+  .mac-window .bar { display: flex; gap: 5px; padding: 8px 10px; border-bottom: 1px solid var(--line); }
+  .mac-window .bar i { width: 8px; height: 8px; border-radius: 50%; background: var(--stone); }
+  .mac-window .body { padding: 12px 14px 60px; font-size: 13px; line-height: 1.55; color: var(--ink); }
+  .mac-window .caret { position: relative; display: inline-block; width: 1.5px; height: 15px; margin-left: 1px; vertical-align: -2px; }
+  .mac-window .caret::before { content: ''; position: absolute; inset: 0; background: var(--ink); animation: caret-blink 1.1s steps(1) infinite; }
+  @keyframes caret-blink { 50% { opacity: 0; } }
+  @media (prefers-reduced-motion: reduce) { .mac-window .caret::before { animation: none; } }
+  .mac-window .caret img { position: absolute; top: 19px; left: -41px; width: 310px; max-width: none; height: auto; }
+  @media (max-width: 640px) { .mac-window .caret img { width: 240px; left: -32px; } }
+  .macbook { position: relative; width: min(300px, 86%); aspect-ratio: 16 / 10; border: 7px solid #121211; border-bottom-width: 9px; border-radius: 12px 12px 4px 4px; }
+  .macbook .mac-screen { inset: 0; border-radius: 3px; }
+  .macbook .mac-screen img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .macbook::after { content: ''; position: absolute; left: -9%; right: -9%; bottom: -16px; height: 7px; border-radius: 0 0 8px 8px; background: #9c9a95; }
+  .style-card .swatch.screen { padding-bottom: 12px; }
+
+  /* Demo video slot (poster until the video exists) */
+  #demo .section-head, #story .section-head { text-align: center; margin-left: auto; margin-right: auto; }
+  #demo .section-head > *, #story .section-head > * { margin-left: auto; margin-right: auto; }
+  .demo-frame { position: relative; max-width: 960px; margin: 0 auto; border-radius: 16px; overflow: hidden; background: #1b1918; box-shadow: 0 24px 60px rgba(20,20,19,.18); }
+  .demo-frame img { display: block; width: 100%; height: auto; }
+  .demo-play { position: absolute; left: 50%; top: 50%; width: 76px; height: 76px; transform: translate(-50%, -50%); border-radius: 50%; background: rgba(250,249,247,.94); color: #1a1917; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,.3); }
+  .demo-play svg { width: 26px; height: 26px; margin-left: 4px; fill: currentColor; }
+  .demo-soon { position: absolute; left: 50%; bottom: 18px; transform: translateX(-50%); font-family: var(--mono); font-size: 11.5px; letter-spacing: .07em; text-transform: uppercase; color: #faf9f7; background: rgba(20,20,19,.55); padding: 6px 12px; border-radius: 999px; white-space: nowrap; }
+
+  .unit { padding: 10px; border-radius: 14px; background: #1b1918; }
+  .unit img { display: block; width: 100%; height: auto; }
+
+  /* Story: one Mac screen stays put, only the window on it changes */
+  .gallery.story-a { max-width: 960px; margin: 0 auto; }
+  .story-a .gallery-viewport { aspect-ratio: auto; height: 460px; border-radius: var(--radius); background: var(--band); }
+  .story-a .gallery-slide { position: absolute; inset: 24px 0 0 0; transition: opacity .5s ease; }
+  .story-a .gallery-slide.dir-in-next, .story-a .gallery-slide.dir-in-prev { transform: none; }
+  .story-a .win { position: absolute; width: auto; height: auto; filter: drop-shadow(0 18px 30px rgba(0,0,0,.35)); }
+  .story-a .win-center { left: 50%; top: 50%; transform: translate(-50%, -50%); max-height: 92%; max-width: 80%; }
+  .story-a .unit.win-center { width: min(560px, 80%); }
+  .story-a .win-pop { top: -4px; right: 84px; height: 90%; }
+  .story-a .gallery-slide .notif { top: 6px; }
+  .story-a .gallery-dots { gap: 6px; flex-wrap: wrap; margin-top: 18px; }
+  .story-a .gallery-dot span { display: none; }
+  .story-a .gallery-dot { width: 36px; height: 36px; padding: 0; border-radius: 50%; background: transparent; border: 1px solid var(--line); color: var(--muted); font: 600 13px/1 inherit; font-family: inherit; }
+  .story-a .gallery-dot.is-active { width: 36px; border-radius: 50%; background: var(--ink); border-color: var(--ink); color: var(--paper); }
+  .story-progress { width: 120px; height: 2px; margin: 14px auto 0; border-radius: 1px; background: var(--line); overflow: hidden; }
+  .story-progress i { display: block; height: 100%; width: 100%; background: var(--ink); transform-origin: left; transform: scaleX(0); }
+  .story-progress.run i { animation: story-fill 6s linear forwards; }
+  .story-progress.off { visibility: hidden; }
+  @keyframes story-fill { to { transform: scaleX(1); } }
+  .story-a .story-cap { max-width: 620px; margin: 14px auto 0; text-align: center; min-height: 5.4em; }
+  .story-a .story-cap h3 { font-size: 20px; font-weight: 700; letter-spacing: -.03em; margin: 4px 0 4px; }
+  .story-a .story-cap p { font-size: 15.5px; color: var(--muted); }
+  .story-a .story-cap > div { display: none; }
+  .story-a .story-cap > div.is-active { display: block; }
+  @media (max-width: 640px) { .story-a .gallery-viewport { height: 320px; } .story-a .win-pop { right: 40px; height: 84%; } .story-a .win-center { max-width: 88%; } }
+
   .style-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
   .style-card p { font-size: 13.5px; color: var(--muted); }
   .style-card .rec { display: inline-block; margin-top: 8px; font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: .07em; text-transform: uppercase; color: var(--ink); border: 1px solid var(--line); border-radius: 999px; padding: 2px 8px; }
 
-  /* Miniature previews of each nudge style */
-  .mini-bar { position: absolute; top: 0; left: 0; right: 0; height: 14px; background: rgba(20,20,19,.1); display: flex; align-items: center; justify-content: flex-end; gap: 5px; padding-right: 7px; }
-  .mini-bar i { width: 5px; height: 5px; border-radius: 50%; background: rgba(20,20,19,.28); }
-  .mini-bar i.on { background: var(--ink); box-shadow: 0 0 0 3px rgba(26,25,23,.18); }
-  .mini-panel { background: var(--white); border: 1px solid var(--line); border-radius: 8px; padding: 8px 11px; font-size: 10px; font-weight: 700; color: var(--ink); box-shadow: 0 4px 12px rgba(20,20,19,.14); }
-  .mini-caret { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
-  .mini-caret .line { width: 74px; height: 5px; border-radius: 2px; background: rgba(20,20,19,.18); }
-  .mini-caret .line.cursor { width: 34px; position: relative; }
-  .mini-caret .line.cursor::after { content: ''; position: absolute; right: -5px; top: -3px; width: 2px; height: 11px; background: var(--ink); }
-  .mini-hint { font-size: 9px; font-weight: 700; color: var(--paper); background: var(--ink); border-radius: 5px; padding: 3px 7px; align-self: flex-start; }
-  .mini-dim { position: absolute; inset: 0; background: rgba(20,20,19,.84); display: flex; align-items: center; justify-content: center; }
-  .mini-dim span { font-size: 10px; font-weight: 700; color: var(--paper); border: 1px solid rgba(250,250,248,.4); border-radius: 999px; padding: 5px 11px; }
-
-  /* ---------- Screenshots ---------- */
-  .shot-row { display: grid; gap: 24px; grid-template-columns: repeat(2, 1fr); max-width: 960px; margin: 0 auto; align-items: center; }
-  .shot-row + .shot-row { margin-top: 56px; }
-  @media (max-width: 760px) { .shot-row { grid-template-columns: 1fr; } }
-  .shot-row figure { margin: 0; text-align: center; }
-  .shot-row img { max-width: 100%; height: auto; }
-  .shot-row img.framed { border-radius: 12px; border: 1px solid var(--line); box-shadow: 0 14px 40px rgba(26,25,23,.10); background: var(--white); }
-  .shot-row figcaption, .shot-text .label { font-family: var(--mono); text-transform: uppercase; font-size: 11.5px; letter-spacing: .07em; color: var(--muted); margin-top: 14px; }
-  .shot-text h3 { font-size: 24px; font-weight: 700; letter-spacing: -.04em; line-height: 1.15; margin: 8px 0 10px; }
-  .shot-text p { font-size: 16px; color: var(--muted); }
-
-  /* ---------- Onboarding gallery ---------- */
+  /* ---------- Gallery (story variant A) ---------- */
   .gallery { max-width: 460px; margin: 0 auto; }
-  .gallery-viewport { position: relative; aspect-ratio: 712 / 722; overflow: hidden; border-radius: 14px; }
+  .gallery-viewport { position: relative; aspect-ratio: 920 / 946; overflow: hidden; border-radius: 14px; }
   .gallery-slide {
     position: absolute; inset: 0; opacity: 0; pointer-events: none;
     transform: translateX(0);
@@ -226,26 +276,6 @@
   .app-note { text-align: center; font-size: 14px; color: var(--muted); margin-top: 30px; max-width: 620px; margin-left: auto; margin-right: auto; }
 
   /* ---------- How it works ---------- */
-  .how-steps { max-width: 960px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
-  .how-step { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: stretch; }
-  @media (max-width: 760px) { .how-step { grid-template-columns: 1fr; } }
-  .how-text { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px; display: flex; flex-direction: column; justify-content: center; }
-  .how-text .how-num { font-family: var(--mono); display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 50%; background: var(--ink); color: var(--paper); font-size: 13px; font-weight: 700; margin-bottom: 16px; }
-  .how-text h3 { font-size: 16px; font-weight: 700; letter-spacing: -.01em; margin-bottom: 8px; }
-  .how-text p { font-size: 14.5px; color: var(--muted); }
-  .how-text p strong { color: var(--ink); }
-  .how-illus { background: var(--ink); color: var(--paper); border-radius: var(--radius); padding: 28px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; text-align: center; }
-  .how-illus .illus-caption { font-size: 13px; color: rgba(250,250,248,.6); max-width: 340px; margin: 0; }
-
-  /* Illustrations */
-  .illus-nudge { display: flex; flex-direction: column; gap: 8px; width: 100%; max-width: 280px; }
-  .illus-line { height: 9px; border-radius: 3px; background: rgba(250,250,248,.16); }
-  .illus-line.short { width: 60%; }
-  .illus-chips { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
-  .illus-chip { border: 1px solid rgba(250,250,248,.25); border-radius: 999px; padding: 5px 13px; font-size: 11.5px; font-weight: 600; color: rgba(250,250,248,.75); }
-  .illus-chip.app { background: var(--paper); color: var(--ink); border-color: var(--paper); }
-  .illus-donut { width: 88px; height: 88px; border-radius: 50%; background: conic-gradient(var(--paper) 0% 38%, rgba(250,250,248,.14) 38% 100%); display: flex; align-items: center; justify-content: center; }
-  .illus-donut span { width: 56px; height: 56px; border-radius: 50%; background: var(--ink); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; color: var(--paper); }
 
   /* ---------- Pricing ---------- */
   .pricing-grid { display: grid; gap: 16px; max-width: 780px; margin: 0 auto; grid-template-columns: repeat(2, 1fr); }
@@ -321,7 +351,7 @@
     <div class="nav-left"><a class="didact-mark" href="/it/" aria-label="didact home"><img src="/assets/didact-wordmark-paper.svg" alt="didact." width="82" height="20" data-i18n-alt="ta108"></a><span class="sep" aria-hidden="true">/</span><a href="#top" class="wordmark"><img src="../assets/app-icon-small.png" width="26" height="26" alt=""> TalkRemind</a></div>
     <div class="nav-links">
       <a href="#features" data-i18n="t001">Funzioni</a>
-      <a href="#tour" data-i18n="t002">Tour</a>
+      <a href="#demo" data-i18n="t002">Tour</a>
       <a href="#works-with" data-i18n="t003">Compatibile con</a>
       <a href="#pricing" data-i18n="t004">Prezzo</a>
       <a href="#install" data-i18n="t005">Installazione</a>
@@ -339,6 +369,7 @@
   </div>
 </nav>
 
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="mb-apple" viewBox="0 0 24 24"><path d="M16.365 1.43c0 1.14-.493 2.27-1.177 3.08-.744.9-1.99 1.57-2.987 1.57-.12 0-.23-.02-.3-.03-.01-.06-.04-.22-.04-.39 0-1.15.572-2.27 1.206-2.98.804-.94 2.142-1.64 3.248-1.68.03.13.05.28.05.43zm4.565 15.71c-.03.07-.463 1.58-1.518 3.12-.945 1.34-1.94 2.71-3.43 2.71-1.517 0-1.9-.88-3.63-.88-1.698 0-2.302.91-3.67.91-1.377 0-2.332-1.26-3.428-2.8-1.287-1.82-2.323-4.63-2.323-7.28 0-4.28 2.784-6.55 5.527-6.55 1.5 0 2.75.93 3.658.93.858 0 2.25-.98 3.9-.98.635 0 2.91.06 4.415 2.19-.115.075-2.635 1.542-2.635 4.593 0 3.62 3.18 4.897 3.133 4.913z"/></symbol><symbol id="mb-batt" viewBox="0 0 28 14"><rect x="1" y="2" width="22" height="10" rx="3"/><rect x="3.5" y="4.5" width="14" height="5" rx="1.2" fill="currentColor" stroke="none"/><path d="M25.5 5.5v3"/></symbol><symbol id="mb-wifi" viewBox="0 0 24 24"><path d="M2.5 9a14 14 0 0 1 19 0M5.5 12.5a9.5 9.5 0 0 1 13 0M8.6 16a5 5 0 0 1 6.8 0"/><circle cx="12" cy="19.3" r="1.3" fill="currentColor" stroke="none"/></symbol><symbol id="mb-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></symbol><symbol id="mb-cc" viewBox="0 0 24 24"><rect x="2.5" y="4" width="19" height="7" rx="3.5"/><circle cx="7" cy="7.5" r="1.6" fill="currentColor" stroke="none"/><rect x="2.5" y="13" width="19" height="7" rx="3.5"/><circle cx="17" cy="16.5" r="1.6" fill="currentColor" stroke="none"/></symbol><symbol id="tr-mark" viewBox="0 0 917 917"><path d="M220.1 0h110.05v915.6H220.1zM428.1 0h110.05v915.6H428.1zM647.09 0v541.46c147.06 0 266.27-121.21 266.27-270.73C913.36 121.21 794.15 0 647.09 0zM781.5 915.59 648.2 779.01l-.01-157.74 265.17 271.61v22.71zM41.67 0l68.38 70.04v157.6L0 114.88V0z"/></symbol></svg>
 <header class="hero" id="top">
   <canvas id="field" aria-hidden="true"></canvas>
   <div class="wrap hero-body">
@@ -361,6 +392,56 @@
   <p class="price-note" data-i18n="t011">Gratis per 14 giorni, poi <a href="#pricing">9,99 € una tantum</a>. Offerta di lancio: 50% di sconto per i primi 100 acquirenti.</p>
   </div>
 </header>
+
+<section id="demo">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2 data-i18n="t160">TalkRemind in azione</h2>
+      <p data-i18n="t161">Una breve demo, dalla prima frase digitata fino al promemoria.</p>
+    </div>
+    <!-- Demo video: swap the img + play badge for <video controls poster="../assets/screens/demo-poster.webp"> once it exists. -->
+    <figure class="demo-frame">
+      <img src="../assets/screens/demo-poster.webp" width="1600" height="900" alt="Promemoria ScreenBlock di TalkRemind su uno schermo Mac oscurato" data-i18n-alt="ta163">
+      <span class="demo-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></span>
+      <figcaption class="demo-soon" data-i18n="t162">Video demo in arrivo</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="band" id="story">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2 data-i18n="t148">Dalla tastiera alla voce, in cinque passi</h2>
+      <p data-i18n="t149">Cosa fa TalkRemind dal momento in cui lo installi.</p>
+    </div>
+    <div class="gallery story-a" data-gallery>
+      <div class="gallery-viewport">
+        <div class="mac-screen corner"><div class="mac-menubar" aria-hidden="true"><div class="mb-left"><svg class="mb-apple"><use href="#mb-apple"/></svg><b>Mail</b><span>File</span><span>Edit</span><span class="mb-hide">View</span><span class="mb-hide">Mailbox</span><span class="mb-hide">Message</span><span class="mb-hide">Format</span><span class="mb-hide">Window</span><span class="mb-hide">Help</span></div><div class="mb-right"><svg class="tr" viewBox="0 0 917 917"><use href="#tr-mark"/></svg><svg class="mb-batt mb-hide"><use href="#mb-batt"/></svg><svg><use href="#mb-wifi"/></svg><svg class="mb-hide"><use href="#mb-search"/></svg><svg class="mb-hide"><use href="#mb-cc"/></svg><span>Tue 13 Oct&nbsp;&nbsp;14:32</span></div></div>
+          <div class="gallery-slide is-active" aria-hidden="false"><img class="win win-center" src="../assets/screens/settings-general.webp" width="1040" height="1040" alt="Impostazioni, scheda Generale: accessibilità concessa, app di dettatura FluidVoice, la sua scorciatoia, avvio al login, lingua e icona della barra dei menu" loading="lazy" data-i18n-alt="ta144"></div>
+          <div class="gallery-slide" aria-hidden="true"><img class="win win-center" src="../assets/screens/onb-timing.webp" width="920" height="946" alt="Tempi del blocco di scrittura, dell’invito e della quiete, con maniglie da trascinare per regolarli" loading="lazy" data-i18n-alt="ta119"></div>
+          <div class="gallery-slide" aria-hidden="true"><img class="notif" src="../assets/screens/nudge-notable.webp" width="856" height="240" alt="Un promemoria di TalkRemind: la tua app di dettatura ti aspetta, con la scorciatoia mostrata come tasti" loading="lazy" data-i18n-alt="ta130"></div>
+          <div class="gallery-slide" aria-hidden="true" data-tr-on><img class="win win-pop" src="../assets/screens/popover-trend.webp" width="784" height="844" alt="Popover della barra dei menu: quota di dettatura di oggi al 60 % e andamento di 7 giorni" loading="lazy" data-i18n-alt="ta142"></div>
+          <div class="gallery-slide" aria-hidden="true"><div class="unit win win-center"><img src="../assets/screens/settings-exclusions.webp" width="1284" height="330" alt="Impostazioni: elenco delle app escluse con Terminale e Xcode, e un menu per aggiungere app aperte" loading="lazy" data-i18n-alt="ta145"><img src="../assets/screens/settings-quiet.webp" width="1284" height="256" alt="Impostazioni: interruttore delle ore di silenzio con una fascia dall’ora di inizio a quella di fine" loading="lazy" data-i18n-alt="ta127"></div></div>
+        </div>
+      </div>
+      <div class="gallery-dots" role="tablist" aria-label="Schermate della configurazione iniziale" data-i18n-aria-label="ta124">
+      <button class="gallery-dot is-active" data-index="0">1<span>&nbsp;·&nbsp;<span data-i18n="t140">La tua app di dettatura, la tua scorciatoia</span></span></button>
+      <button class="gallery-dot" data-index="1">2<span>&nbsp;·&nbsp;<span data-i18n="t150">Scrivi come hai sempre fatto</span></span></button>
+      <button class="gallery-dot" data-index="2">3<span>&nbsp;·&nbsp;<span data-i18n="t153">Un promemoria quando parlare sarebbe più veloce</span></span></button>
+      <button class="gallery-dot" data-index="3">4<span>&nbsp;·&nbsp;<span data-i18n="t138">Guarda l'abitudine prendere forma</span></span></button>
+      <button class="gallery-dot" data-index="4">5<span>&nbsp;·&nbsp;<span data-i18n="t051">Silenzio alle tue condizioni</span></span></button>
+      </div>
+      <div class="story-progress" aria-hidden="true"><i></i></div>
+      <div class="story-cap" aria-live="polite">
+      <div class="is-active"><span class="step-num">01 / 05</span><h3 data-i18n="t140">La tua app di dettatura, la tua scorciatoia</h3><p data-i18n="t155">Sceglila una volta. Ogni promemoria mostra la sua scorciatoia.</p></div>
+      <div><span class="step-num">02 / 05</span><h3 data-i18n="t150">Scrivi come hai sempre fatto</h3><p data-i18n="t156">Conta il ritmo di battitura per app, mai le parole.</p></div>
+      <div><span class="step-num">03 / 05</span><h3 data-i18n="t153">Un promemoria quando parlare sarebbe più veloce</h3><p data-i18n="t157">Oltre la tua soglia, un promemoria indica la scorciatoia.</p></div>
+      <div><span class="step-num">04 / 05</span><h3 data-i18n="t138">Guarda l'abitudine prendere forma</h3><p data-i18n="t158">La quota di oggi e l'andamento di 7 giorni, a un clic.</p></div>
+      <div><span class="step-num">05 / 05</span><h3 data-i18n="t051">Silenzio alle tue condizioni</h3><p data-i18n="t159">Escludi app, imposta ore di silenzio, metti in pausa con un clic.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section class="ink" id="math">
   <div class="wrap">
@@ -468,146 +549,30 @@
     <div class="style-grid">
       <div class="style-card reveal">
         <div class="swatch" aria-hidden="true">
-          <div class="mini-bar"><i></i><i></i><i class="on"></i></div>
+          <div class="mac-screen corner"><div class="mac-menubar" aria-hidden="true"><div class="mb-left"><svg class="mb-apple"><use href="#mb-apple"/></svg><b>Mail</b><span>File</span><span>Edit</span><span class="mb-hide">View</span><span class="mb-hide">Mailbox</span><span class="mb-hide">Message</span><span class="mb-hide">Format</span><span class="mb-hide">Window</span><span class="mb-hide">Help</span></div><div class="mb-right"><svg class="tr on" viewBox="0 0 917 917"><use href="#tr-mark"/></svg><svg class="mb-batt mb-hide"><use href="#mb-batt"/></svg><svg><use href="#mb-wifi"/></svg><svg class="mb-hide"><use href="#mb-search"/></svg><svg class="mb-hide"><use href="#mb-cc"/></svg><span>Tue 13 Oct&nbsp;&nbsp;14:32</span></div></div></div>
         </div>
         <h3>Subtle</h3>
         <p data-i18n="t040">Cambia brevemente solo l’icona nella barra dei menu.</p>
       </div>
       <div class="style-card reveal">
-        <div class="swatch" aria-hidden="true">
-          <div class="mini-bar"><i></i><i></i><i></i></div>
-          <div class="mini-panel" style="margin-top:14px;">Say it instead — Fn Fn</div>
+        <div class="swatch">
+          <div class="mac-screen corner"><div class="mac-menubar" aria-hidden="true"><div class="mb-left"><svg class="mb-apple"><use href="#mb-apple"/></svg><b>Mail</b><span>File</span><span>Edit</span><span class="mb-hide">View</span><span class="mb-hide">Mailbox</span><span class="mb-hide">Message</span><span class="mb-hide">Format</span><span class="mb-hide">Window</span><span class="mb-hide">Help</span></div><div class="mb-right"><svg class="tr" viewBox="0 0 917 917"><use href="#tr-mark"/></svg><svg class="mb-batt mb-hide"><use href="#mb-batt"/></svg><svg><use href="#mb-wifi"/></svg><svg class="mb-hide"><use href="#mb-search"/></svg><svg class="mb-hide"><use href="#mb-cc"/></svg><span>Tue 13 Oct&nbsp;&nbsp;14:32</span></div></div><img class="notif" src="../assets/screens/nudge-notable.webp" width="856" height="240" alt="Evidente: un pannello che dice che la tua app di dettatura ti aspetta, con la scorciatoia e una barra del conto alla rovescia" loading="lazy" data-i18n-alt="ta131"></div>
         </div>
         <h3>Notable</h3>
         <p data-i18n="t041">Compare un piccolo pannello per 3 secondi.</p>
         <span class="rec" data-i18n="t042">Consigliato</span>
       </div>
       <div class="style-card reveal">
-        <div class="swatch" aria-hidden="true">
-          <div class="mini-caret">
-            <div class="line"></div>
-            <div class="line cursor"></div>
-            <div class="mini-hint">Fn Fn to dictate</div>
-          </div>
+        <div class="swatch">
+          <div class="mac-window"><div class="bar" aria-hidden="true"><i></i><i></i><i></i></div><div class="body"><span aria-hidden="true">Hi Anna,<br>the beta is</span><span class="caret"><img src="../assets/screens/nudge-textfield.webp" width="628" height="124" alt="Campo di testo: un piccolo chip sotto il cursore che ricorda l&#x27;app di dettatura e la sua scorciatoia" loading="lazy" data-i18n-alt="ta132"></span></div></div>
         </div>
         <h3>Textfield</h3>
         <p data-i18n="t043">Un suggerimento proprio sotto il cursore di testo.</p>
       </div>
       <div class="style-card reveal">
-        <div class="swatch" aria-hidden="true">
-          <div class="mini-caret"><div class="line"></div><div class="line cursor"></div></div>
-          <div class="mini-dim"><span>Speak instead</span></div>
-        </div>
+        <div class="swatch screen"><div class="macbook"><div class="mac-screen"><img src="../assets/screens/nudge-screenblock.webp" width="920" height="575" alt="ScreenBlock: lo schermo si scurisce dietro una scheda che chiede Voce invece della tastiera? e si chiude da sola dopo 10 secondi" loading="lazy" data-i18n-alt="ta133"></div></div></div>
         <h3>ScreenBlock</h3>
         <p data-i18n="t044">Lo schermo si oscura per un attimo — un promemoria che noterai davvero.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="tour">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <h2 data-i18n="t045">Pronto in due minuti</h2>
-      <p data-i18n="t046">Una breve configurazione guidata: scegli la tua app di dettatura, uno stile di promemoria e segna le app in cui non detti mai. Poi provi in un campo di prova prima di attivarlo.</p>
-    </div>
-  </div>
-  <div class="gallery" data-gallery>
-    <div class="gallery-viewport">
-      <picture class="gallery-slide is-active" data-caption="Benvenuto" aria-hidden="false" data-caption-key="tg110"><source type="image/webp" srcset="../assets/screens/onb-welcome.webp"><img src="../assets/screens/onb-welcome.png" width="712" height="722" alt="Schermata di benvenuto: TalkRemind conta i tasti, mai i contenuti" data-i18n-alt="ta111"></picture>
-      <picture class="gallery-slide" data-caption="La tua app di dettatura" aria-hidden="true" data-caption-key="tg112"><source type="image/webp" srcset="../assets/screens/onb-dictation.webp"><img src="../assets/screens/onb-dictation.png" width="712" height="722" alt="Scegli la tua app di dettatura, rilevata automaticamente, con un test di 20 secondi" loading="lazy" data-i18n-alt="ta113"></picture>
-      <picture class="gallery-slide" data-caption="Stile di promemoria" aria-hidden="true" data-caption-key="tg114"><source type="image/webp" srcset="../assets/screens/onb-style.webp"><img src="../assets/screens/onb-style.png" width="712" height="722" alt="Scegli uno stile di promemoria e se aspettare la tua prossima pausa" loading="lazy" data-i18n-alt="ta115"></picture>
-      <picture class="gallery-slide" data-caption="App silenziose" aria-hidden="true" data-caption-key="tg116"><source type="image/webp" srcset="../assets/screens/onb-exempt.webp"><img src="../assets/screens/onb-exempt.png" width="712" height="722" alt="Seleziona le app in cui TalkRemind deve restare in silenzio" loading="lazy" data-i18n-alt="ta117"></picture>
-      <picture class="gallery-slide" data-caption="Come ti avvisa" aria-hidden="true" data-caption-key="tg118"><source type="image/webp" srcset="../assets/screens/onb-timing.webp"><img src="../assets/screens/onb-timing.png" width="712" height="722" alt="Tempi del blocco di scrittura, dell’invito e della quiete, con maniglie da trascinare per regolarli" loading="lazy" data-i18n-alt="ta119"></picture>
-      <picture class="gallery-slide" data-caption="Provalo" aria-hidden="true" data-caption-key="tg120"><source type="image/webp" srcset="../assets/screens/onb-tryout.webp"><img src="../assets/screens/onb-tryout.png" width="712" height="722" alt="Un campo di testo di prova che mostra dal vivo il blocco di scrittura, l’invito e i contatori della dettatura" loading="lazy" data-i18n-alt="ta121"></picture>
-      <button class="gallery-arrow gallery-prev" aria-label="Schermata precedente" data-i18n-aria-label="ta122"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
-      <button class="gallery-arrow gallery-next" aria-label="Schermata successiva" data-i18n-aria-label="ta123"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
-    </div>
-    <p class="gallery-caption" data-caption-text>Benvenuto</p>
-    <div class="gallery-dots" role="tablist" aria-label="Schermate della configurazione iniziale" data-i18n-aria-label="ta124">
-      <button class="gallery-dot is-active" data-index="0" aria-label="Slide 1"></button>
-      <button class="gallery-dot" data-index="1" aria-label="Slide 2"></button>
-      <button class="gallery-dot" data-index="2" aria-label="Slide 3"></button>
-      <button class="gallery-dot" data-index="3" aria-label="Slide 4"></button>
-      <button class="gallery-dot" data-index="4" aria-label="Slide 5"></button>
-      <button class="gallery-dot" data-index="5" aria-label="Slide 6"></button>
-    </div>
-  </div>
-</section>
-
-<section class="band">
-  <div class="wrap">
-    <div class="shot-row reveal">
-      <div class="shot-text">
-        <h3 data-i18n="t047">Pausa senza aprire le Impostazioni</h3>
-        <p data-i18n="t048">In riunione o in un blocco di concentrazione? Un clic mette in pausa i promemoria per 30 minuti, 2 ore, fino a stasera, fino a domani mattina o a tempo indeterminato.</p>
-      </div>
-      <figure><img src="../assets/screens/pause-menu.png" width="441" height="293" alt="Menu di pausa: 30 minuti, 2 ore, fino a stasera, fino a domani mattina, fino a nuovo avviso" loading="lazy" data-i18n-alt="ta125"></figure>
-    </div>
-    <div class="shot-row reveal">
-      <figure><img class="framed" src="../assets/screens/settings-style-dark.png" width="639" height="185" alt="Impostazioni: quattro stili di promemoria, Textfield selezionato, un suggerimento proprio sotto il cursore di testo" loading="lazy" data-i18n-alt="ta126"></figure>
-      <div class="shot-text">
-        <h3 data-i18n="t049">Cambia idea quando vuoi</h3>
-        <p data-i18n="t050">Stile, tempistica, sensibilità, app escluse e ore di silenzio stanno in un’unica pagina scorrevole. Con l’anteprima vedi il promemoria prima di tenerlo.</p>
-      </div>
-    </div>
-    <div class="shot-row reveal">
-      <div class="shot-text">
-        <h3 data-i18n="t051">Silenzio alle tue condizioni</h3>
-        <p data-i18n="t052">Imposta una fascia (per esempio dalle 22 alle 7) e al suo interno non arriva nessun promemoria, qualunque cosa tu stia scrivendo.</p>
-      </div>
-      <figure><img class="framed" src="../assets/screens/settings-quiet.png" width="627" height="136" alt="Impostazioni: interruttore delle ore di silenzio con una fascia dall’ora di inizio a quella di fine" loading="lazy" data-i18n-alt="ta127"></figure>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <div class="section-head reveal">
-      <h2 data-i18n="t053">Come funziona</h2>
-      <p data-i18n="t054">Legge il ritmo dei tasti, non il loro contenuto.</p>
-    </div>
-    <div class="how-steps">
-      <div class="how-step reveal">
-        <div class="how-text">
-          <span class="how-num">1</span>
-          <h3 data-i18n="t055">Osserva il ritmo, non le parole</h3>
-          <p data-i18n="t056">Un solo permesso di Accessibilità permette a TalkRemind di osservare <strong>quando</strong> e <strong>quanto</strong> scrivi di seguito — mai il testo in sé.</p>
-        </div>
-        <div class="how-illus">
-          <div class="illus-nudge">
-            <div class="illus-line"></div>
-            <div class="illus-line short"></div>
-            <div class="illus-line"></div>
-          </div>
-          <p class="illus-caption" data-i18n="t057">Sola lettura del ritmo dei tasti. Nessun testo lascia mai l’evento della tastiera.</p>
-        </div>
-      </div>
-      <div class="how-step reveal">
-        <div class="how-text">
-          <span class="how-num">2</span>
-          <h3 data-i18n="t058">Capisce quando dettare sarebbe già più veloce</h3>
-          <p data-i18n="t059">Oltre la soglia scelta, in un’app non esclusa, fuori dalle ore di silenzio. Lì vale la pena di mostrare un promemoria, subito o alla tua prossima pausa.</p>
-        </div>
-        <div class="how-illus">
-          <div class="illus-chips">
-            <span class="illus-chip">Slack</span>
-            <span class="illus-chip">Mail</span>
-            <span class="illus-chip app">Claude / ChatGPT</span>
-          </div>
-          <p class="illus-caption" data-i18n="t060">Soglie per app, ore di silenzio e un tetto rigido di inviti all’ora.</p>
-        </div>
-      </div>
-      <div class="how-step reveal">
-        <div class="how-text">
-          <span class="how-num">3</span>
-          <h3 data-i18n="t061">Ti avvisa una volta e poi si toglie di mezzo</h3>
-          <p data-i18n="t062">L’invito indica la scorciatoia della tua app di dettatura. Passi o no — in entrambi i casi TalkRemind lo registra e tiene oneste le statistiche.</p>
-        </div>
-        <div class="how-illus">
-          <div class="illus-donut"><span>38%</span></div>
-          <p class="illus-caption" data-i18n="t063">La quota di dettatura di oggi, direttamente dai tuoi eventi registrati.</p>
-        </div>
       </div>
     </div>
   </div>
@@ -828,6 +793,11 @@
     var slides = Array.prototype.slice.call(root.querySelectorAll('.gallery-slide'));
     var dots = Array.prototype.slice.call(root.querySelectorAll('.gallery-dot'));
     var caption = root.querySelector('[data-caption-text]');
+    var caps = Array.prototype.slice.call(root.querySelectorAll('.story-cap > div'));
+    var tr = root.querySelector('.mac-menubar svg.tr');
+    var bar = root.querySelector('.story-progress');
+    var timer = null, stopped = false;
+    var calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var prev = root.querySelector('.gallery-prev');
     var next = root.querySelector('.gallery-next');
     var index = 0;
@@ -842,6 +812,9 @@
 
       dots.forEach(function (d, n) { d.classList.toggle('is-active', n === index); });
       if (caption) caption.textContent = incoming.dataset.caption;
+      caps.forEach(function (c, n) { c.classList.toggle('is-active', n === index); });
+      if (tr) tr.classList.toggle('on', incoming.hasAttribute('data-tr-on'));
+      if (timer) restartBar();
 
       outgoing.classList.remove('is-active');
       outgoing.setAttribute('aria-hidden', 'true');
@@ -858,13 +831,24 @@
       });
     }
 
-    dots.forEach(function (dot, i) { dot.addEventListener('click', function () { show(i); }); });
-    if (prev) prev.addEventListener('click', function () { show(index - 1, -1); });
-    if (next) next.addEventListener('click', function () { show(index + 1, 1); });
+    // Autoplay: one step every 6 s while visible; any click or key hands control to the reader.
+    function restartBar() { if (!bar) return; bar.classList.remove('run'); void bar.offsetWidth; bar.classList.add('run'); }
+    function start() { if (stopped || timer || calm) return; timer = setInterval(function () { show(index + 1, 1); }, 6000); restartBar(); }
+    function pause() { clearInterval(timer); timer = null; if (bar) bar.classList.remove('run'); }
+    function stop() { stopped = true; pause(); if (bar) bar.classList.add('off'); }
+    if (!bar || calm) { if (bar) bar.classList.add('off'); }
+    else {
+      root.addEventListener('mouseenter', pause);
+      root.addEventListener('mouseleave', start);
+      new IntersectionObserver(function (e) { e[0].isIntersecting ? start() : pause(); }, { threshold: .5 }).observe(root);
+    }
+    dots.forEach(function (dot, i) { dot.addEventListener('click', function () { stop(); show(i); }); });
+    if (prev) prev.addEventListener('click', function () { stop(); show(index - 1, -1); });
+    if (next) next.addEventListener('click', function () { stop(); show(index + 1, 1); });
     root.setAttribute('tabindex', '0');
     root.addEventListener('keydown', function (e) {
-      if (e.key === 'ArrowLeft') show(index - 1, -1);
-      if (e.key === 'ArrowRight') show(index + 1, 1);
+      if (e.key === 'ArrowLeft') { stop(); show(index - 1, -1); }
+      if (e.key === 'ArrowRight') { stop(); show(index + 1, 1); }
     });
   })();
 })();
