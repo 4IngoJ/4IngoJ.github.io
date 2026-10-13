@@ -875,7 +875,7 @@
     var v = document.querySelector('#demo video'), b = document.querySelector('.demo-unmute');
     if (!v || !b) return;
     function unmuted() { return !v.muted && v.volume > 0; }
-    b.addEventListener('click', function () { v.muted = false; v.currentTime = 0; v.play(); });
+    b.addEventListener('click', function () { v.muted = false; v.currentTime = 0; v.play().catch(function () {}); });
     v.addEventListener('volumechange', function () { b.hidden = unmuted(); });
     if (reduceMotion || !('IntersectionObserver' in window)) return;
     new IntersectionObserver(function (e) {
