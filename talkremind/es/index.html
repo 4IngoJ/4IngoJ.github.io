@@ -194,6 +194,12 @@
   #demo .section-head > *, #story .section-head > * { margin-left: auto; margin-right: auto; }
   .demo-frame { position: relative; max-width: 960px; margin: 0 auto; border-radius: 16px; overflow: hidden; background: #1b1918; box-shadow: 0 24px 60px rgba(20,20,19,.18); }
   .demo-frame video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; background: #000; }
+  .demo-unmute { position: absolute; top: 16px; right: 16px; display: flex; align-items: center; gap: 8px; padding: 10px 16px 10px 13px; border: 0; border-radius: 999px; background: rgba(250,249,247,.94); color: #1a1917; font-family: inherit; font-size: 14px; font-weight: 600; line-height: 1; cursor: pointer; box-shadow: 0 8px 24px rgba(0,0,0,.35); }
+  .demo-unmute svg { width: 20px; height: 20px; flex: none; }
+  .demo-unmute:hover { background: #fff; }
+  .demo-unmute:focus-visible { outline: 3px solid #faf9f7; outline-offset: 3px; }
+  .demo-unmute[hidden] { display: none; }
+  @media (prefers-reduced-motion: no-preference) { .demo-unmute { animation: demo-nudge 2.4s ease-in-out infinite; } @keyframes demo-nudge { 0%, 70%, 100% { transform: scale(1); } 80% { transform: scale(1.07); } 90% { transform: scale(.98); } } }
   .demo-sound { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 14px auto 0; font-family: var(--mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
   .demo-sound svg { width: 16px; height: 16px; flex: none; }
 
@@ -407,9 +413,10 @@
       <p data-i18n="t161">Una demo corta, desde la primera frase tecleada hasta el aviso.</p>
     </div>
     <figure class="demo-frame">
-      <video controls playsinline preload="none" width="1280" height="720" poster="../assets/screens/explainer-poster.webp" aria-label="Vídeo explicativo de TalkRemind" data-i18n-aria="ta163">
+      <video controls muted playsinline preload="none" width="1280" height="720" poster="../assets/screens/explainer-poster.webp" aria-label="Vídeo explicativo de TalkRemind" data-i18n-aria="ta163">
         <source src="../assets/talkremind-explainer.mp4" type="video/mp4">
       </video>
+      <button type="button" class="demo-unmute" data-i18n="t164"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor"/><path d="M16.5 9.5l5 5M21.5 9.5l-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>Activar sonido</span></button>
     </figure>
     <p class="demo-sound" data-i18n="t162"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor"/><path d="M16 9a4 4 0 0 1 0 6M18.5 6.5a7.5 7.5 0 0 1 0 11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>Con narración, así que activa el sonido.</span></p>
   </div>
@@ -859,6 +866,20 @@
       if (e.key === 'ArrowLeft') { stop(); show(index - 1, -1); }
       if (e.key === 'ArrowRight') { stop(); show(index + 1, 1); }
     });
+  })();
+  // Explainer video: nothing loads until the section is in view, then it plays muted
+  // (browsers only autoplay without sound); the button restarts it with sound.
+  (function () {
+    var v = document.querySelector('#demo video'), b = document.querySelector('.demo-unmute');
+    if (!v || !b) return;
+    function unmuted() { return !v.muted && v.volume > 0; }
+    b.addEventListener('click', function () { v.muted = false; v.currentTime = 0; v.play(); });
+    v.addEventListener('volumechange', function () { b.hidden = unmuted(); });
+    if (reduceMotion || !('IntersectionObserver' in window)) return;
+    new IntersectionObserver(function (e) {
+      if (!e[0].isIntersecting) v.pause();
+      else if (!unmuted() && !v.ended) v.play().catch(function () {});
+    }, { threshold: .5 }).observe(v);
   })();
 })();
 </script>
