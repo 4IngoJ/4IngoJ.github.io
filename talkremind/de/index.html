@@ -189,14 +189,13 @@
   .macbook::after { content: ''; position: absolute; left: -9%; right: -9%; bottom: -16px; height: 7px; border-radius: 0 0 8px 8px; background: #9c9a95; }
   .style-card .swatch.screen { padding-bottom: 12px; }
 
-  /* Demo video slot (poster until the video exists) */
+  /* Demo video */
   #demo .section-head, #story .section-head { text-align: center; margin-left: auto; margin-right: auto; }
   #demo .section-head > *, #story .section-head > * { margin-left: auto; margin-right: auto; }
   .demo-frame { position: relative; max-width: 960px; margin: 0 auto; border-radius: 16px; overflow: hidden; background: #1b1918; box-shadow: 0 24px 60px rgba(20,20,19,.18); }
-  .demo-frame img { display: block; width: 100%; height: auto; }
-  .demo-play { position: absolute; left: 50%; top: 50%; width: 76px; height: 76px; transform: translate(-50%, -50%); border-radius: 50%; background: rgba(250,249,247,.94); color: #1a1917; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,.3); }
-  .demo-play svg { width: 26px; height: 26px; margin-left: 4px; fill: currentColor; }
-  .demo-soon { position: absolute; left: 50%; bottom: 18px; transform: translateX(-50%); font-family: var(--mono); font-size: 11.5px; letter-spacing: .07em; text-transform: uppercase; color: #faf9f7; background: rgba(20,20,19,.55); padding: 6px 12px; border-radius: 999px; white-space: nowrap; }
+  .demo-frame video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; background: #000; }
+  .demo-sound { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 14px auto 0; font-family: var(--mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+  .demo-sound svg { width: 16px; height: 16px; flex: none; }
 
   .unit { padding: 10px; border-radius: 14px; background: #1b1918; }
   .unit img { display: block; width: 100%; height: auto; }
@@ -407,12 +406,12 @@
       <h2 data-i18n="t160">TalkRemind in Aktion</h2>
       <p data-i18n="t161">Eine kurze Demo, vom ersten getippten Satz bis zum Hinweis.</p>
     </div>
-    <!-- Demo video: swap the img + play badge for <video controls poster="../assets/screens/demo-poster.webp"> once it exists. -->
     <figure class="demo-frame">
-      <img src="../assets/screens/demo-poster.webp" width="1600" height="900" alt="TalkRemind-ScreenBlock-Hinweis auf einem abgedunkelten Mac-Bildschirm" data-i18n-alt="ta163">
-      <span class="demo-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></span>
-      <figcaption class="demo-soon" data-i18n="t162">Demo-Video folgt in Kürze</figcaption>
+      <video controls playsinline preload="none" width="1280" height="720" poster="../assets/screens/explainer-poster.webp" aria-label="TalkRemind-Erklärvideo" data-i18n-aria="ta163">
+        <source src="../assets/talkremind-explainer.mp4" type="video/mp4">
+      </video>
     </figure>
+    <p class="demo-sound" data-i18n="t162"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor"/><path d="M16 9a4 4 0 0 1 0 6M18.5 6.5a7.5 7.5 0 0 1 0 11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>Mit Sprecherstimme, also Ton an.</span></p>
   </div>
 </section>
 
