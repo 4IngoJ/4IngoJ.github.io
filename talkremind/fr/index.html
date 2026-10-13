@@ -104,6 +104,9 @@
 
   /* ---------- Hero ---------- */
   .hero { padding: 96px 24px 80px; text-align: center; }
+  /* Taller hero on this page; the shared theme sets the base values */
+  header.hero#top { padding: clamp(104px, 18vh, 200px) 0 clamp(92px, 15vh, 168px); }
+  header.hero#top h1 { font-size: clamp(2.6rem, 7vw, 5.75rem); }
   .hero img.icon { display: block; width: 84px; height: 84px; border-radius: 20px; box-shadow: 0 8px 28px rgba(20,20,19,.14); margin: 0 auto 22px; }
   h1 { font-size: clamp(36px, 5.6vw, 60px); line-height: 1.05; letter-spacing: -0.04em; font-weight: 700; max-width: 880px; margin: 0 auto 24px; }
   .hero h1 .punch { display: inline-block; position: relative; }
@@ -152,7 +155,9 @@
 
   /* Mock Mac screens around the real nudge screenshots */
   .mac-screen { position: absolute; background: radial-gradient(120% 90% at 80% 0%, #6b6660 0%, #3d3a36 45%, #201f1d 100%); overflow: hidden; }
-  .mac-screen.corner { left: -12px; bottom: -12px; top: 22px; right: 22px; border: 9px solid #121211; border-radius: 0 22px 0 0; }
+  .mac-screen.corner { left: -12px; bottom: -12px; top: 22px; right: 22px; border: 9px solid #121211; border-radius: 0 30px 0 0; }
+  /* backdrop-filter escapes the parent's rounded clip, so the bar carries the inner radius itself */
+  .mac-screen.corner .mac-menubar { border-top-right-radius: 21px; }
   .mac-menubar { height: 24px; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 0 10px 0 12px; background: rgba(28,27,25,.42); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); color: #fff; font: 500 11px/1 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif; white-space: nowrap; }
   .mac-menubar .mb-left, .mac-menubar .mb-right { display: flex; align-items: center; gap: 12px; min-width: 0; overflow: hidden; }
   .mac-menubar .mb-right { flex-shrink: 0; gap: 11px; }
@@ -198,6 +203,11 @@
 
   /* Story: one Mac screen stays put, only the window on it changes */
   .gallery.story-a { max-width: 960px; margin: 0 auto; }
+  .gallery.story-a { position: relative; }
+  .story-a .gallery-arrow { top: 230px; width: 44px; height: 44px; }
+  .story-a .gallery-prev { left: -64px; } .story-a .gallery-next { right: -64px; }
+  @media (max-width: 1100px) { .story-a .gallery-prev { left: 10px; } .story-a .gallery-next { right: 10px; } }
+  @media (max-width: 640px) { .story-a .gallery-arrow { top: 160px; width: 36px; height: 36px; } }
   .story-a .gallery-viewport { aspect-ratio: auto; height: 460px; border-radius: var(--radius); background: var(--band); }
   .story-a .gallery-slide { position: absolute; inset: 24px 0 0 0; transition: opacity .5s ease; }
   .story-a .gallery-slide.dir-in-next, .story-a .gallery-slide.dir-in-prev { transform: none; }
@@ -422,6 +432,8 @@
           <div class="gallery-slide" aria-hidden="true"><div class="unit win win-center"><img src="../assets/screens/settings-exclusions.webp" width="1284" height="330" alt="Réglages : liste des apps exclues avec Terminal et Xcode, et un menu pour ajouter des apps ouvertes" loading="lazy" data-i18n-alt="ta145"><img src="../assets/screens/settings-quiet.webp" width="1284" height="256" alt="Réglages : interrupteur des heures calmes avec une plage de début à fin" loading="lazy" data-i18n-alt="ta127"></div></div>
         </div>
       </div>
+      <button class="gallery-arrow gallery-prev" aria-label="Étape précédente" data-i18n-aria-label="ta122"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+      <button class="gallery-arrow gallery-next" aria-label="Étape suivante" data-i18n-aria-label="ta123"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
       <div class="gallery-dots" role="tablist" aria-label="Captures d’écran de la configuration" data-i18n-aria-label="ta124">
       <button class="gallery-dot is-active" data-index="0">1<span>&nbsp;·&nbsp;<span data-i18n="t140">Votre app de dictée, votre raccourci</span></span></button>
       <button class="gallery-dot" data-index="1">2<span>&nbsp;·&nbsp;<span data-i18n="t150">Tapez comme d'habitude</span></span></button>
