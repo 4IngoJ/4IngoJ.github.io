@@ -68,6 +68,8 @@
     background: var(--paper);
     border-bottom: 1px solid var(--line);
   }
+  /* Backstop: never pan sideways on phones even if a translated string runs wide (real fixes stay in each grid). */
+  html, body { overflow-x: clip; }
   nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; }
   .wordmark { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 18px; letter-spacing: -.04em; text-decoration: none; color: var(--ink); }
   .wordmark img { width: 28px; height: 28px; border-radius: 7px; }
@@ -75,7 +77,9 @@
   .nav-links a { color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 500; transition: color .15s; }
   .nav-links a:hover { color: var(--ink); }
   .nav-links a.active { color: var(--ink); font-weight: 700; }
-  @media (max-width: 720px) { .nav-links a:not(.nav-cta) { display: none; } }
+  .nav-links a { white-space: nowrap; }
+  @media (max-width: 1024px) { .nav-links { gap: 16px; } }
+  @media (max-width: 900px) { .nav-links a:not(.nav-cta) { display: none; } }
   .lang-switcher { position: relative; }
   .lang-toggle { display: inline-flex; align-items: center; gap: 6px; background: none; border: 1px solid rgba(250,249,247,.28); border-radius: 999px; padding: 6px 12px; cursor: pointer; font-family: var(--sans); font-size: 13px; font-weight: 600; color: var(--mist); transition: color .15s, border-color .15s; }
   .lang-toggle:hover { color: var(--paper); border-color: rgba(250,249,247,.6); }
@@ -278,9 +282,9 @@
   .claim-note a:hover { color: var(--paper); border-color: rgba(250,250,248,.6); }
 
   /* ---------- Supported apps ---------- */
-  .app-grid { display: grid; gap: 10px; grid-template-columns: repeat(4, 1fr); max-width: 840px; margin: 0 auto; }
-  @media (max-width: 760px) { .app-grid { grid-template-columns: repeat(2, 1fr); } }
-  .app-chip { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 13px 16px; font-size: 14.5px; font-weight: 600; display: flex; align-items: center; gap: 11px; }
+  .app-grid { display: grid; gap: 10px; grid-template-columns: repeat(4, minmax(0, 1fr)); max-width: 840px; margin: 0 auto; }
+  @media (max-width: 760px) { .app-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  .app-chip { min-width: 0; overflow-wrap: anywhere; background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 13px 16px; font-size: 14.5px; font-weight: 600; display: flex; align-items: center; gap: 11px; }
   .app-chip img, .app-chip .app-glyph { width: 28px; height: 28px; border-radius: 7px; flex-shrink: 0; object-fit: cover; }
   .app-chip .app-glyph { background: var(--band); display: flex; align-items: center; justify-content: center; color: var(--ink); }
   .app-chip .app-glyph svg { width: 15px; height: 15px; }
@@ -288,6 +292,11 @@
   .app-chip.custom .app-glyph { background: transparent; border: 1px dashed #cfccc4; color: var(--muted); }
   .app-chip.custom .chip-label { display: flex; flex-direction: column; gap: 1px; }
   .app-chip.custom .chip-label small { font-size: 11.5px; font-weight: 500; color: var(--muted); }
+  @media (max-width: 560px) {
+    .app-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+    .app-chip { padding: 8px 13px 8px 9px; gap: 9px; font-size: 14px; overflow-wrap: normal; }
+    .app-chip img, .app-chip .app-glyph { width: 24px; height: 24px; border-radius: 6px; }
+  }
   .app-note { text-align: center; font-size: 14px; color: var(--muted); margin-top: 30px; max-width: 620px; margin-left: auto; margin-right: auto; }
 
   /* ---------- Pricing ---------- */
@@ -389,7 +398,7 @@
   <img class="icon" src="../assets/app-icon-small.png" width="84" height="84" alt="Icône de l’app TalkRemind" data-i18n-alt="ta109">
   <h1>
     <span data-i18n="h1a">Vous avez acheté une app de dictée.</span><br>
-    <span data-i18n="h1b">Et vous tapez quand même ?</span><br>
+    <span data-i18n="h1b">Et vous tapez quand même ?</span><br>
     <span class="punch">
       <span data-i18n="h1c">Plus maintenant.</span>
       <svg class="punch-line" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true">
@@ -397,12 +406,12 @@
       </svg>
     </span>
   </h1>
-  <p class="sub" data-i18n="t008">Vous vouliez dicter davantage. Vous l’avez installé, vous aviez l’intention de vous y mettre, puis vous avez continué à taper. TalkRemind repère ce moment et vous relance, là où cela coûte le plus : les prompts d’IA et les longs e-mails.</p>
+  <p class="sub" data-i18n="t008">Vous vouliez dicter davantage. Vous l’avez installé, vous aviez l’intention de vous y mettre, puis vous avez continué à taper. TalkRemind repère ce moment et vous relance, là où cela coûte le plus : les prompts d’IA et les longs e-mails.</p>
   <div class="cta-row">
     <a href="https://github.com/4IngoJ/TalkRemind/releases/latest/download/TalkRemind.dmg" class="btn btn-primary" data-i18n="t009">Télécharger pour macOS</a>
     <a href="#pricing" class="btn btn-secondary" data-i18n="t010">Voir les tarifs</a>
   </div>
-  <p class="price-note" data-i18n="t011">Gratuit pendant 14 jours, puis <a href="#pricing">9,99 € une seule fois</a>. Offre de lancement : 50 % de réduction pour les 100 premiers acheteurs.</p>
+  <p class="price-note" data-i18n="t011">Gratuit pendant 14 jours, puis <a href="#pricing">9,99 € une seule fois</a>. Offre de lancement : 50 % de réduction pour les 100 premiers acheteurs.</p>
   </div>
 </header>
 
@@ -462,7 +471,7 @@
 <section class="ink" id="math">
   <div class="wrap">
     <div class="section-head reveal">
-      <h2 data-i18n="t012">Votre app de dictée promettait 4×. Les obtenez-vous ?</h2>
+      <h2 data-i18n="t012">Votre app de dictée promettait 4×. Les obtenez-vous ?</h2>
       <p data-i18n="t013">Voici les chiffres que les apps de dictée affichent sur leurs propres pages d’accueil.</p>
     </div>
     <div class="claim-grid">
@@ -483,7 +492,7 @@
       </div>
     </div>
     <p class="math-punch" data-i18n="t017">Ces chiffres sont probablement justes — <strong>pour les mots que vous prononcez réellement.</strong> Un multiplicateur ne s’applique qu’à la part que vous dictez. Si vous dictez un cinquième de ce que vous écrivez, vous obtenez un cinquième de ce qu’on vous a vendu. <strong>Augmenter cette part est la seule chose que fait TalkRemind.</strong></p>
-    <p class="claim-note" data-i18n="t018">Affirmations telles que publiées par chaque éditeur sur son propre site, vérifiées en septembre 2026 — leurs déclarations, pas nos mesures. Le chiffre indépendant est plus bas, mais reste élevé : une étude de Stanford a mesuré une parole <a href="https://news.stanford.edu/stories/2016/08/stanford-study-speech-recognition-faster-texting">2,93× plus rapide qu’un clavier</a> (153 contre 52 mots par minute, en anglais, saisie de texte sur mobile).</p>
+    <p class="claim-note" data-i18n="t018">Affirmations telles que publiées par chaque éditeur sur son propre site, vérifiées en septembre 2026 — leurs déclarations, pas nos mesures. Le chiffre indépendant est plus bas, mais reste élevé : une étude de Stanford a mesuré une parole <a href="https://news.stanford.edu/stories/2016/08/stanford-study-speech-recognition-faster-texting">2,93× plus rapide qu’un clavier</a> (153 contre 52 mots par minute, en anglais, saisie de texte sur mobile).</p>
   </div>
 </section>
 
@@ -513,10 +522,10 @@
       <div class="app-chip"><img src="../assets/apps/weesper.png" alt="" loading="lazy">Weesper</div>
       <div class="app-chip custom">
         <span class="app-glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></span>
-        <span class="chip-label" data-i18n="t021">Votre propre app<small>Vous avez créé la vôtre ? Ça marche aussi.</small></span>
+        <span class="chip-label" data-i18n="t021">Votre propre app<small>Vous avez créé la vôtre ? Ça marche aussi.</small></span>
       </div>
     </div>
-    <p class="app-note" data-i18n="t022">Vous avez écrit votre propre script de dictée ? Tout outil doté d’un raccourci fonctionne — saisissez-le une fois et TalkRemind l’affichera ensuite.</p>
+    <p class="app-note" data-i18n="t022">Vous avez écrit votre propre script de dictée ? Tout outil doté d’un raccourci fonctionne — saisissez-le une fois et TalkRemind l’affichera ensuite.</p>
   </div>
 </section>
 
@@ -526,7 +535,7 @@
       <h2 data-i18n="t023">Il détecte l’habitude qui se relâche, pas votre frappe</h2>
       <p data-i18n="t024">Les apps de dictée attendent un raccourci. TalkRemind vous rappelle qu’il existe, juste au moment où vous passez devant en tapant.</p>
     </div>
-    <div class="callout" data-i18n="t025"><strong>Le cas le plus évident : les prompts d’IA.</strong> Dans Claude ou ChatGPT, la mise en forme et les fautes de frappe n’ont pas d’importance. C’est précisément là que taper vous coûte le plus de temps. Si vous tapez vos prompts, commencez par là.</div>
+    <div class="callout" data-i18n="t025"><strong>Le cas le plus évident : les prompts d’IA.</strong> Dans Claude ou ChatGPT, la mise en forme et les fautes de frappe n’ont pas d’importance. C’est précisément là que taper vous coûte le plus de temps. Si vous tapez vos prompts, commencez par là.</div>
     <div class="feature-grid">
       <div class="card reveal">
         <h3 data-i18n="t026">Quatre styles de rappel</h3>
@@ -534,7 +543,7 @@
       </div>
       <div class="card reveal">
         <h3 data-i18n="t028">Attend votre prochaine pause</h3>
-        <p data-i18n="t029">En option : le rappel attend que vous cessiez de taper un instant, pour ne jamais couper une phrase. Ou il s’affiche dès que le seuil est atteint.</p>
+        <p data-i18n="t029">En option : le rappel attend que vous cessiez de taper un instant, pour ne jamais couper une phrase. Ou il s’affiche dès que le seuil est atteint.</p>
       </div>
       <div class="card reveal">
         <h3 data-i18n="t030">Apprend votre façon de taper</h3>
@@ -560,7 +569,7 @@
   <div class="wrap">
     <div class="section-head reveal">
       <h2 data-i18n="t038">Choisissez comment il vous interrompt</h2>
-      <p data-i18n="t039">Chaque style est à un clic dans les Réglages — choisissez quand il apparaît : tout de suite ou à votre prochaine courte pause.</p>
+      <p data-i18n="t039">Chaque style est à un clic dans les Réglages — choisissez quand il apparaît : tout de suite ou à votre prochaine courte pause.</p>
     </div>
     <div class="style-grid">
       <div class="style-card reveal">
@@ -610,11 +619,11 @@
       <div class="price-card highlight reveal">
         <div class="tier" data-i18n="t070">Licence</div>
         <div class="amount" data-i18n="t071">9,99 € une seule fois</div>
-        <p data-i18n="t072">Offre de lancement : 50 % de réduction pour les 100 premiers acheteurs des trois apps. Après l’essai, les relances s’arrêtent. Vos statistiques continuent gratuitement, pour que vous puissiez suivre votre part de dictée pendant que les relances se taisent. L’achat les réactive pour de bon.</p>
+        <p data-i18n="t072">Offre de lancement : 50 % de réduction pour les 100 premiers acheteurs des trois apps. Après l’essai, les relances s’arrêtent. Vos statistiques continuent gratuitement, pour que vous puissiez suivre votre part de dictée pendant que les relances se taisent. L’achat les réactive pour de bon.</p>
         <a href="https://4ingoj.lemonsqueezy.com/checkout/buy/e41d805f-da5a-44f1-b200-539884c56627?checkout%5Bdiscount_code%5D=EARLY100" class="btn btn-light" data-i18n="t073">Acheter une licence</a>
       </div>
     </div>
-    <p class="maker-note" data-i18n="t074">Conçu et maintenu en Autriche. Des questions avant d’acheter ? Écrivez à <a href="mailto:hello@didact.digital">hello@didact.digital</a>.</p>
+    <p class="maker-note" data-i18n="t074">Conçu et maintenu en Autriche. Des questions avant d’acheter ? Écrivez à <a href="mailto:hello@didact.digital">hello@didact.digital</a>.</p>
   </div>
 </section>
 
@@ -653,35 +662,35 @@
     </div>
     <div class="faq-list">
       <details class="faq-item">
-        <summary data-i18n="t086">J’ai déjà une app de dictée — pourquoi en ai-je aussi besoin ?</summary>
+        <summary data-i18n="t086">J’ai déjà une app de dictée — pourquoi en ai-je aussi besoin ?</summary>
         <div class="faq-body-inner" data-i18n="t087">Parce que posséder n’est pas utiliser. La plupart de ceux qui achètent une app de dictée s’en servent bien moins qu’ils ne l’avaient prévu, puis retombent dans la frappe par habitude. TalkRemind est le rappel qui vous pousse à vraiment l’ouvrir.</div>
       </details>
       <details class="faq-item">
-        <summary data-i18n="t088">Lit-il ce que je tape ?</summary>
+        <summary data-i18n="t088">Lit-il ce que je tape ?</summary>
         <div class="faq-body-inner" data-i18n="t089">Non. TalkRemind n’observe que le rythme des frappes via l’API d’accessibilité de macOS — quand vous tapez et combien, jamais les caractères eux-mêmes.</div>
       </details>
       <details class="faq-item">
-        <summary data-i18n="t090">Que se passe-t-il après l’essai de 14 jours ?</summary>
+        <summary data-i18n="t090">Que se passe-t-il après l’essai de 14 jours ?</summary>
         <div class="faq-body-inner" data-i18n="t091">Les relances s’arrêtent. L’enregistrement continue gratuitement. Votre part de dictée et la tendance sur 7 jours restent visibles, pour que vous voyiez l’effet s’estomper avant de décider d’acheter.</div>
       </details>
       <details class="faq-item">
-        <summary data-i18n="t092">Avec quelles apps de dictée fonctionne-t-il ?</summary>
+        <summary data-i18n="t092">Avec quelles apps de dictée fonctionne-t-il ?</summary>
         <div class="faq-body-inner" data-i18n="t093">Dix-sept sont reconnues d’emblée (<a href="#works-with" style="color:inherit;">liste complète ci-dessus</a>) et affichent automatiquement leur raccourci dans la relance. Toute autre app dotée d’un raccourci fonctionne aussi — vous saisissez son raccourci une fois et TalkRemind s’en souvient. TalkRemind ne transcrit jamais rien lui-même — il vous renvoie seulement vers l’app qui le fait.</div>
       </details>
       <details class="faq-item">
-        <summary data-i18n="t094">Combien de temps cela me fera-t-il vraiment gagner ?</summary>
-        <div class="faq-body-inner" data-i18n="t095">Cela dépend de combien vous dicterez en plus — l’app le mesure au lieu de le promettre. La version courte figure plus haut dans &ldquo;Votre app de dictée promettait 4×&rdquo; : le gain de vitesse ne s’applique qu’à ce que vous dites réellement. L’écran de statistiques montre votre vraie part, que vous pouvez vérifier sur votre propre semaine.</div>
+        <summary data-i18n="t094">Combien de temps cela me fera-t-il vraiment gagner ?</summary>
+        <div class="faq-body-inner" data-i18n="t095">Cela dépend de combien vous dicterez en plus — l’app le mesure au lieu de le promettre. La version courte figure plus haut dans &ldquo;Votre app de dictée promettait 4×&rdquo; : le gain de vitesse ne s’applique qu’à ce que vous dites réellement. L’écran de statistiques montre votre vraie part, que vous pouvez vérifier sur votre propre semaine.</div>
       </details>
       <details class="faq-item">
-        <summary data-i18n="t096">Puis-je le désactiver pour certaines apps ou certaines heures ?</summary>
+        <summary data-i18n="t096">Puis-je le désactiver pour certaines apps ou certaines heures ?</summary>
         <div class="faq-body-inner" data-i18n="t097">Oui. Exemptez des apps de façon permanente, définissez une plage d’heures calmes ou mettez tout en pause de 30 minutes à une durée indéfinie, directement depuis la barre des menus.</div>
       </details>
       <details class="faq-item">
-        <summary data-i18n="t098">Mes données sont-elles envoyées quelque part ?</summary>
+        <summary data-i18n="t098">Mes données sont-elles envoyées quelque part ?</summary>
         <div class="faq-body-inner" data-i18n="t099">Non. Les événements de frappe et de dictée restent sur votre Mac. Les seuls appels réseau sont la validation de la licence et la recherche de mises à jour — pas d’analytique, pas de suivi.</div>
       </details>
       <details class="faq-item">
-        <summary data-i18n="t100">Puis-je être remboursé ?</summary>
+        <summary data-i18n="t100">Puis-je être remboursé ?</summary>
         <div class="faq-body-inner" data-i18n="t101">Lemon Squeezy gère le paiement en tant que merchant of record et applique les règles de remboursement habituelles pour les consommateurs. Écrivez à l’adresse figurant sur votre reçu si quelque chose ne va pas.</div>
       </details>
     </div>
