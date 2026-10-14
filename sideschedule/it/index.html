@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SideSchedule – Calendario laterale per Mac con note di riunione</title>
+<meta name="description" content="Un calendario laterale per Mac che mantiene la sua striscia di schermo come il Dock, salva le note di riunione in Markdown e ti porta nelle chiamate con un clic. 14 giorni gratis, 12,99 € una tantum.">
+<link rel="canonical" href="https://didact.digital/sideschedule/it/">
+<!--hreflang-->
+<link rel="alternate" hreflang="en" href="https://didact.digital/sideschedule/">
+<link rel="alternate" hreflang="de" href="https://didact.digital/sideschedule/de/">
+<link rel="alternate" hreflang="fr" href="https://didact.digital/sideschedule/fr/">
+<link rel="alternate" hreflang="es" href="https://didact.digital/sideschedule/es/">
+<link rel="alternate" hreflang="it" href="https://didact.digital/sideschedule/it/">
+<link rel="alternate" hreflang="pt" href="https://didact.digital/sideschedule/pt/">
+<link rel="alternate" hreflang="x-default" href="https://didact.digital/sideschedule/">
+<!--/hreflang-->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://didact.digital/sideschedule/it/">
+<meta property="og:title" content="SideSchedule – Calendario laterale per Mac con note di riunione">
+<meta property="og:description" content="Un calendario laterale per Mac che mantiene la sua striscia di schermo come il Dock, salva le note di riunione in Markdown e ti porta nelle chiamate con un clic. 14 giorni gratis, 12,99 € una tantum.">
+<meta property="og:image" content="https://didact.digital/sideschedule/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://didact.digital/sideschedule/assets/og-image.png">
+<meta property="og:site_name" content="SideSchedule">
+<meta property="og:locale" content="it_IT">
+<meta property="og:image:alt" content="SideSchedule calendar sidebar docked to the edge of a Mac desktop">
+<meta name="twitter:image:alt" content="SideSchedule calendar sidebar docked to the edge of a Mac desktop">
+<link rel="icon" type="image/png" href="../assets/app-icon.png">
+<link rel="apple-touch-icon" href="../assets/app-icon.png">
+<link rel="preload" href="/assets/fonts/onest-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/onest-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/fonts.css">
+<style>
+  @font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../assets/fonts/inter-400.woff2') format('woff2');
+  }
+  @font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url('../assets/fonts/inter-600.woff2') format('woff2');
+  }
+  @font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('../assets/fonts/inter-700.woff2') format('woff2');
+  }
+  :root {
+    --paper: #FAFAF8;
+    --band:  #F0EEE9;
+    --ink:   #141413;
+    --muted: #6B6B68;
+    --line:  #E3E0DA;
+    --white: #FFFFFF;
+    --accent: #2B5AE4;
+    --radius: 16px;
+    --sans: 'Inter', -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans);
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- Nav ---------- */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(250,250,248,.85);
+    backdrop-filter: saturate(180%) blur(12px);
+    -webkit-backdrop-filter: saturate(180%) blur(12px);
+    border-bottom: 1px solid var(--line);
+  }
+  nav .wrap {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 60px;
+  }
+  .wordmark {
+    display: flex; align-items: center; gap: 10px;
+    font-weight: 700; font-size: 17px; letter-spacing: -.01em;
+    text-decoration: none; color: var(--ink);
+  }
+  .wordmark img { width: 28px; height: 28px; border-radius: 7px; }
+  .nav-links { display: flex; gap: 28px; align-items: center; }
+  .nav-links a {
+    color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 500;
+    transition: color .15s;
+  }
+  .nav-links a:hover { color: var(--ink); }
+  @media (max-width: 720px) { .nav-links a:not(.nav-cta) { display: none; } }
+
+  /* ---------- Language switcher ---------- */
+  .lang-switcher { position: relative; }
+  .lang-toggle {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: none; border: 1px solid var(--line); border-radius: 999px;
+    padding: 6px 12px; cursor: pointer;
+    font-family: var(--sans); font-size: 13px; font-weight: 600; color: var(--muted);
+    transition: color .15s, border-color .15s;
+  }
+  .lang-toggle:hover { color: var(--ink); border-color: #cfccc4; }
+  .lang-toggle svg { width: 14px; height: 14px; }
+  .lang-toggle .caret { width: 10px; height: 10px; transition: transform .2s; }
+  .lang-switcher.open .lang-toggle .caret { transform: rotate(180deg); }
+  .lang-menu {
+    position: absolute; right: 0; top: calc(100% + 8px);
+    background: var(--white); border: 1px solid var(--line); border-radius: 12px;
+    box-shadow: 0 12px 32px rgba(20,20,19,.12);
+    padding: 6px; min-width: 170px; z-index: 200;
+    display: none;
+  }
+  .lang-switcher.open .lang-menu { display: block; }
+  .lang-switcher .lang-menu a {
+    text-decoration: none;
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    width: 100%; text-align: left;
+    background: none; border: none; border-radius: 8px;
+    padding: 9px 12px; cursor: pointer;
+    font-family: var(--sans); font-size: 14px; color: var(--ink);
+  }
+  .lang-switcher .lang-menu a:hover { background: var(--band); }
+  .lang-switcher .lang-menu a .lang-code { font-size: 11px; font-weight: 700; color: var(--muted); letter-spacing: .05em; }
+  .lang-switcher .lang-menu a.active { background: var(--band); font-weight: 600; }
+  .lang-switcher .lang-menu a.active .lang-code { color: var(--ink); }
+
+  /* ---------- Buttons ---------- */
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 13px 24px; border-radius: 12px;
+    font-size: 15px; font-weight: 600; text-decoration: none;
+    transition: transform .12s ease, box-shadow .12s ease, background .15s;
+    border: 1px solid transparent;
+  }
+  .btn:active { transform: scale(.98); }
+  .btn-primary { background: var(--ink); color: var(--paper); }
+  .btn-primary:hover { background: #2a2a28; box-shadow: 0 4px 14px rgba(20,20,19,.18); }
+  .btn-secondary { background: var(--white); color: var(--ink); border-color: var(--line); }
+  .btn-secondary:hover { border-color: #cfccc4; box-shadow: 0 2px 10px rgba(20,20,19,.07); }
+  .btn-light { background: var(--paper); color: var(--ink); }
+  .btn-light:hover { background: var(--white); }
+  .btn-outline-light { background: transparent; color: var(--paper); border-color: rgba(250,250,248,.3); }
+  .btn-outline-light:hover { border-color: rgba(250,250,248,.6); }
+
+  /* ---------- Hero ---------- */
+  .hero { padding: 96px 0 80px; text-align: center; }
+  .hero h1 .punch { display: inline-block; position: relative; }
+  .hero h1 .punch-line {
+    position: absolute; left: -1.5%; bottom: -.13em; width: 103%; height: .28em;
+    overflow: visible; fill: none; stroke: var(--ink);
+    stroke-width: clamp(3px, .38vw, 5px); stroke-linecap: round; stroke-linejoin: round;
+  }
+
+  .hero img.icon {
+    width: 84px; height: 84px; border-radius: 20px;
+    box-shadow: 0 8px 28px rgba(20,20,19,.14);
+    margin-bottom: 28px;
+  }
+  .eyebrow {
+    display: inline-block;
+    font-size: 13px; font-weight: 600; letter-spacing: .04em;
+    color: var(--muted);
+    border: 1px solid var(--line); border-radius: 999px;
+    padding: 6px 14px; margin-bottom: 24px;
+    background: var(--white);
+  }
+  h1 {
+    font-family: var(--sans);
+    font-size: clamp(38px, 6vw, 64px);
+    line-height: 1.05; letter-spacing: -0.02em; font-weight: 700;
+    max-width: 820px; margin: 0 auto 24px;
+  }
+  .hero p.sub {
+    font-size: clamp(17px, 2.2vw, 20px); color: var(--muted);
+    max-width: 640px; margin: 0 auto 36px;
+  }
+  .cta-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .hero .price-note { margin-top: 22px; font-size: 14px; color: var(--muted); }
+  @media (max-width: 480px) {
+    .hero { padding: 64px 0 56px; }
+    .cta-row .btn { width: 100%; justify-content: center; }
+    section { padding: 64px 0; }
+  }
+
+  /* ---------- Sections ---------- */
+  section { padding: 88px 0; }
+  section.band { background: var(--band); }
+  section.ink { background: var(--ink); color: var(--paper); }
+  .section-head { text-align: center; max-width: 640px; margin: 0 auto 56px; }
+  .section-head h2 {
+    font-family: var(--sans);
+    font-size: clamp(28px, 4.4vw, 36px);
+    line-height: 1.15; letter-spacing: -0.015em; font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .section-head p { font-size: 18px; color: var(--muted); }
+  section.ink .section-head p { color: rgba(250,250,248,.6); }
+
+  /* ---------- Demo ---------- */
+  .video-frame {
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--line);
+    box-shadow: 0 24px 64px rgba(20,20,19,.14);
+    background: var(--ink);
+  }
+  .video-frame video { display: block; width: 100%; height: auto; }
+
+  /* ---------- Features ---------- */
+  .feature-grid {
+    display: grid; gap: 16px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media (max-width: 900px) { .feature-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .feature-grid { grid-template-columns: 1fr; } }
+  .card {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 28px;
+    transition: box-shadow .18s ease, transform .18s ease;
+  }
+  .card:hover { box-shadow: 0 10px 32px rgba(20,20,19,.08); transform: translateY(-2px); }
+  .card-wide { grid-column: span 2; }
+  @media (max-width: 600px) { .card-wide { grid-column: auto; } }
+  .card h3 { font-size: 17px; font-weight: 700; letter-spacing: -.01em; margin-bottom: 8px; }
+  .card p { font-size: 15px; color: var(--muted); }
+  .card-icon {
+    width: 34px; height: 34px; border-radius: 9px;
+    background: var(--band); color: var(--ink);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 14px;
+  }
+  .card-icon svg { width: 17px; height: 17px; }
+
+  /* ---------- Pricing ---------- */
+  .pricing-grid {
+    display: grid; gap: 16px; max-width: 780px; margin: 0 auto;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (max-width: 640px) { .pricing-grid { grid-template-columns: 1fr; } }
+  .price-card {
+    border-radius: var(--radius);
+    padding: 36px 32px;
+    border: 1px solid rgba(250,250,248,.14);
+    background: rgba(250,250,248,.04);
+  }
+  .price-card.highlight { background: var(--paper); color: var(--ink); border-color: var(--paper); }
+  .price-card .tier { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: rgba(250,250,248,.5); margin-bottom: 10px; }
+  .price-card.highlight .tier { color: var(--muted); }
+  .price-card .amount { font-family: var(--sans); font-size: 32px; font-weight: 600; letter-spacing: -0.015em; margin-bottom: 14px; }
+  .price-card p { font-size: 15px; color: rgba(250,250,248,.65); margin-bottom: 26px; }
+  .price-card.highlight p { color: var(--muted); }
+  .merchant-note {
+    text-align: center; margin-top: 32px;
+    font-size: 14px; color: rgba(250,250,248,.45);
+    max-width: 560px; margin-left: auto; margin-right: auto;
+  }
+
+  /* ---------- How it works: steps with side illustrations ---------- */
+  .how-steps {
+    max-width: 960px; margin: 0 auto;
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  .how-step {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+    align-items: stretch;
+  }
+  @media (max-width: 760px) { .how-step { grid-template-columns: 1fr; } }
+  .how-text {
+    background: var(--white); border: 1px solid var(--line);
+    border-radius: var(--radius); padding: 28px;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .how-text .how-num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 30px; height: 30px; border-radius: 50%;
+    background: var(--ink); color: var(--paper);
+    font-size: 13px; font-weight: 700; margin-bottom: 16px;
+  }
+  .how-text h3 { font-size: 16px; font-weight: 700; letter-spacing: -.01em; margin-bottom: 8px; }
+  .how-text p { font-size: 14.5px; color: var(--muted); }
+  .how-text p strong { color: var(--ink); }
+  .how-illus {
+    background: var(--ink); color: var(--paper);
+    border-radius: var(--radius); padding: 28px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 14px; text-align: center;
+  }
+  .how-illus .illus-caption {
+    font-size: 13px; color: rgba(250,250,248,.6);
+    max-width: 340px; margin: 0;
+  }
+
+  /* Illustrations */
+  .illus-screen {
+    display: flex; width: 100%; max-width: 300px; height: 104px;
+    border: 1px solid rgba(250,250,248,.22); border-radius: 8px;
+    overflow: hidden; flex-shrink: 0;
+  }
+  .illus-screen .win-area {
+    flex: 1; background: rgba(250,250,248,.08);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10.5px; font-weight: 600; color: rgba(250,250,248,.5);
+    letter-spacing: .02em; text-align: center; padding: 0 8px;
+  }
+  .illus-screen .sidebar-strip {
+    width: 46px; background: rgba(250,250,248,.16);
+    display: flex; flex-direction: column; justify-content: flex-start;
+    gap: 4px; padding: 9px 8px; flex-shrink: 0;
+  }
+  .illus-screen .sidebar-strip .ev {
+    height: 7px; border-radius: 2px; background: rgba(250,250,248,.35);
+  }
+  .illus-screen .sidebar-strip .ev.live { background: #7DA2FF; height: 11px; }
+  .illus-chips { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+  .illus-chip {
+    border: 1px solid rgba(250,250,248,.25);
+    border-radius: 999px; padding: 5px 13px;
+    font-size: 11.5px; font-weight: 600; color: rgba(250,250,248,.75);
+  }
+  .illus-chip.app { background: var(--paper); color: var(--ink); border-color: var(--paper); }
+  .illus-shield { width: 44px; height: 44px; color: #7DA2FF; flex-shrink: 0; }
+  .illus-shield svg { width: 100%; height: 100%; }
+  .illus-note {
+    width: 100%; max-width: 340px;
+    background: rgba(250,250,248,.06);
+    border: 1px solid rgba(250,250,248,.14);
+    border-radius: 10px; padding: 14px 18px;
+    text-align: left; overflow-x: auto;
+  }
+  .illus-note pre {
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 11px; line-height: 1.65; color: rgba(250,250,248,.7);
+    white-space: pre-wrap; word-break: break-word; margin: 0;
+  }
+  .illus-note .fm { color: #9BB8FF; }
+  .illus-note .fm-key { color: #7DA2FF; }
+
+  /* ---------- Inline links ---------- */
+  .step a, .install-note a {
+    color: var(--ink); text-decoration: none; font-weight: 600;
+    border-bottom: 1px solid var(--line);
+    transition: border-color .15s;
+  }
+  .step a:hover, .install-note a:hover { border-color: var(--ink); }
+
+  /* ---------- Brew box (hero) ---------- */
+  .brew-box {
+    max-width: 640px; margin: 32px auto 0;
+    text-align: center;
+    border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 14px 20px;
+    font-size: 14px; color: var(--muted);
+    display: inline-flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: center;
+  }
+  .brew-box code {
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 13px; color: var(--ink);
+    background: var(--band); padding: 6px 12px; border-radius: 8px;
+    white-space: nowrap; overflow-x: auto; max-width: 100%;
+  }
+  .brew-copy-btn {
+    background: var(--band); border: 1px solid var(--line); border-radius: 8px;
+    padding: 5px 12px; font-size: 12px; font-weight: 600; color: var(--muted);
+    cursor: pointer; transition: background .15s, color .15s;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .brew-copy-btn:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .brew-copy-btn svg { width: 13px; height: 13px; }
+  .brew-copy-btn .copied-msg { display: none; }
+  .brew-copy-btn.copied .copied-msg { display: inline; }
+  .brew-copy-btn.copied .copy-icon { display: none; }
+  .brew-box .sr-only {
+    position: absolute; width: 1px; height: 1px;
+    overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap;
+  }
+
+  /* ---------- Install ---------- */
+  .steps { display: grid; gap: 16px; grid-template-columns: repeat(3, 1fr); max-width: 960px; margin: 0 auto; }
+  @media (max-width: 760px) { .steps { grid-template-columns: 1fr; } }
+  .step { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 30px; }
+  .step .num {
+    font-family: var(--sans); font-size: 15px; font-weight: 600;
+    color: var(--muted); display: block; margin-bottom: 14px;
+  }
+  .step h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; letter-spacing: -.01em; }
+  .step p { font-size: 15px; color: var(--muted); }
+  .step code {
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 13px; background: var(--band); padding: 2px 6px; border-radius: 6px;
+  }
+  .install-note {
+    max-width: 960px; margin: 24px auto 0;
+    font-size: 14px; color: var(--muted); text-align: center;
+  }
+  /* ---------- FAQ animation ---------- */
+  .faq-item summary::after {
+    content: '+'; font-size: 20px; font-weight: 400; color: var(--muted);
+    transition: transform .25s ease;
+  }
+  .faq-item[open] summary::after { transform: rotate(45deg); }
+  .faq-item .faq-body {
+    overflow: hidden;
+    transition: height .3s cubic-bezier(.4, 0, .2, 1);
+  }
+  .faq-item .faq-body-inner {
+    padding: 0 24px 20px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .faq-item .faq-body { transition: none; }
+    .faq-item summary::after { transition: none; }
+  }
+
+  /* ---------- Compare ---------- */
+  .table-scroll {
+    max-width: 780px; margin: 0 auto;
+    overflow-x: auto; -webkit-overflow-scrolling: touch;
+    border-radius: var(--radius);
+  }
+  .compare-table {
+    width: 100%; min-width: 560px;
+    border-collapse: separate; border-spacing: 0;
+    background: var(--white); border: 1px solid var(--line);
+    border-radius: var(--radius); overflow: hidden;
+    font-size: 15px;
+  }
+  .compare-table th, .compare-table td {
+    padding: 15px 20px; text-align: left;
+    border-bottom: 1px solid var(--line);
+  }
+  .compare-table th {
+    font-size: 12px; text-transform: uppercase; letter-spacing: .07em;
+    color: var(--muted); background: var(--band); font-weight: 700;
+  }
+  .compare-table tr:last-child td { border-bottom: none; }
+  .compare-table tr.self td { background: #F4F7FF; font-weight: 600; }
+  .compare-table td:not(:first-child), .compare-table th:not(:first-child) { text-align: center; }
+  .check { color: var(--ink); font-weight: 700; }
+  .cross { color: #C9C6BF; }
+  .compare-note { text-align: center; font-size: 13px; color: var(--muted); margin-top: 20px; }
+
+  .hero .price-note a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+  .hero .price-note a:hover { border-color: var(--ink); }
+  .seat-note { font-size: 13px; margin-top: -14px; margin-bottom: 26px; }
+  .price-card .seat-note { color: rgba(250,250,248,.45); }
+  .price-card.highlight .seat-note { color: var(--muted); }
+  .maker-note {
+    text-align: center; margin: 14px auto 0;
+    font-size: 14px; color: rgba(250,250,248,.45); max-width: 560px;
+  }
+  .maker-note a { color: rgba(250,250,248,.8); text-decoration: none; border-bottom: 1px solid rgba(250,250,248,.25); }
+  .maker-note a:hover { border-color: rgba(250,250,248,.7); }
+
+  /* ---------- Roadmap ---------- */
+  .roadmap-note {
+    max-width: 720px; margin: -16px auto 44px;
+    background: var(--white); border: 1px solid var(--line);
+    border-left: 3px solid var(--ink); border-radius: 12px;
+    padding: 20px 24px; font-size: 15px; color: var(--muted); line-height: 1.6;
+  }
+  .roadmap-note strong { color: var(--ink); font-weight: 600; }
+  .roadmap-cols { display: grid; gap: 16px; grid-template-columns: repeat(3, 1fr); }
+  @media (max-width: 900px) { .roadmap-cols { grid-template-columns: 1fr; } }
+  .roadmap-col {
+    background: var(--white); border: 1px solid var(--line);
+    border-radius: var(--radius); padding: 26px 24px;
+  }
+  .stage {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 12px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .08em; color: var(--muted); margin-bottom: 20px;
+  }
+  .stage::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+  .roadmap-col.later .stage::before { background: #B4B1AA; }
+  .roadmap-col.maybe .stage::before { background: transparent; box-shadow: inset 0 0 0 1.5px #C9C6BF; }
+  .roadmap-item + .roadmap-item { margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--line); }
+  .roadmap-item h3 { font-size: 16px; font-weight: 700; letter-spacing: -.01em; margin-bottom: 6px; }
+  .roadmap-item p { font-size: 14.5px; color: var(--muted); }
+  .roadmap-ask { text-align: center; font-size: 14px; color: var(--muted); margin-top: 30px; }
+  .roadmap-ask a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+  .roadmap-ask a:hover { border-color: var(--ink); }
+
+  /* ---------- FAQ ---------- */
+  .faq-list { max-width: 720px; margin: 0 auto; }
+  .faq-item {
+    background: var(--white); border: 1px solid var(--line);
+    border-radius: 12px; margin-bottom: 10px;
+    overflow: hidden;
+  }
+  .faq-item summary {
+    padding: 20px 24px; cursor: pointer;
+    font-weight: 600; font-size: 16px; letter-spacing: -0.005em;
+    list-style: none; display: flex; align-items: center; justify-content: space-between;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+
+  /* ---------- Footer ---------- */
+  footer { border-top: 1px solid var(--line); padding: 48px 0; }
+  footer .wrap {
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 20px;
+  }
+  footer .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 15px; }
+  footer .brand img { width: 24px; height: 24px; border-radius: 6px; }
+  footer .brand span.ver { color: var(--muted); font-weight: 500; font-size: 13px; }
+  footer .links { display: flex; gap: 24px; flex-wrap: wrap; }
+  footer .links a { color: var(--muted); text-decoration: none; font-size: 14px; }
+  footer .links a:hover { color: var(--ink); }
+
+  /* ---------- Scroll reveal (only hidden once JS confirms it can animate) ---------- */
+  html.reveal-on .reveal {
+    opacity: 0; transform: translateY(22px);
+    transition: opacity .6s cubic-bezier(.2, .6, .2, 1), transform .6s cubic-bezier(.2, .6, .2, 1);
+    transition-delay: var(--reveal-delay, 0s);
+    will-change: opacity, transform;
+  }
+  html.reveal-on .reveal.revealed { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    html.reveal-on .reveal { opacity: 1; transform: none; transition: none; }
+  }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://didact.digital/sideschedule/#app",
+      "name": "SideSchedule",
+      "operatingSystem": "macOS 13 or later",
+      "applicationCategory": "ProductivityApplication",
+      "applicationSubCategory": "Calendar",
+      "description": "A macOS day-calendar sidebar that reserves a strip of screen the way the Dock does — so nothing else sits on top of it. Meeting notes save as Markdown files, and Zoom, Meet, Teams, Webex and FaceTime calls join in one click.",
+      "url": "https://didact.digital/sideschedule/",
+      "downloadUrl": "https://github.com/4IngoJ/sideschedule/releases/latest/download/SideSchedule.dmg",
+      "installUrl": "https://github.com/4IngoJ/sideschedule/releases/latest",
+      "softwareVersion": "1.1.0",
+      "image": "https://didact.digital/sideschedule/assets/app-icon.png",
+      "screenshot": "https://didact.digital/sideschedule/assets/og-image.png",
+      "inLanguage": [
+        "en",
+        "de",
+        "fr",
+        "es",
+        "it",
+        "pt"
+      ],
+      "featureList": [
+        "Calendar sidebar that reserves screen space like the Dock",
+        "Works with iCloud, Google, Exchange and CalDAV calendars via Apple Calendar",
+        "Meeting notes saved as Markdown files with YAML frontmatter for Obsidian and Logseq",
+        "One-click join for Zoom, Google Meet, Microsoft Teams, Webex and FaceTime",
+        "Runs a shortcut from the Shortcuts app when a meeting starts and another when it ends (off by default)",
+        "Next free 30 minutes shown in the header",
+        "Drag to reschedule, drop a file or text to time-block",
+        "Auto-hide to a thin strip with join button and countdown",
+        "Local-first: no account, no analytics, no telemetry"
+      ],
+      "author": {
+        "@type": "Organization",
+        "@id": "https://didact.digital/#org",
+        "name": "didact",
+        "email": "hello@didact.digital"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "12.99",
+        "priceCurrency": "EUR",
+        "availability": "https://schema.org/InStock",
+        "url": "https://4ingoj.lemonsqueezy.com/checkout/buy/e72e0987-c650-42d1-a936-908168e003f5"
+      }
+    },
+    {
+      "@type": "VideoObject",
+      "name": "SideSchedule in action",
+      "description": "The SideSchedule sidebar showing a real day of calendar events on a Mac.",
+      "thumbnailUrl": "https://didact.digital/sideschedule/assets/demo-poster.jpg",
+      "contentUrl": "https://didact.digital/sideschedule/assets/demo-web.mp4",
+      "uploadDate": "2026-09-04"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Funziona con il mio calendario?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "SideSchedule legge Apple Calendar tramite EventKit. Tutto ciò che Apple Calendar può vedere — iCloud, Google, Exchange o CalDAV — appare nella barra laterale. Nessuna sincronizzazione aggiuntiva e nessun account."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Perché richiede l’accesso ad Accessibilità?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "È l’unico modo con cui macOS permette a un’app di impedire alle altre finestre di scivolare sotto la barra laterale. Il Dock riceve la sua fascia riservata direttamente dal sistema; una normale app non dispone di questa API. SideSchedule non legge mai il contenuto delle finestre: ne riposiziona solo i riquadri."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Cosa succede dopo i 14 giorni di prova?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "La barra laterale smette di apparire e l’app apre la finestra di attivazione. Non viene eliminato nulla: note, impostazioni e file .md esportati restano dove sono. La barra torna non appena inserisci una chiave, senza reinstallazione."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "I miei dati vengono inviati da qualche parte?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "L’app: no. Eventi e note restano sul tuo Mac. Le uniche connessioni di rete sono la convalida della licenza (Lemon Squeezy) e gli aggiornamenti (GitHub). Nessuna analisi, nessun tracciamento, nessuna telemetria. Questo sito conta le visite con GoatCounter, senza cookie, e non carica altri script di terze parti; se arrivi tramite il link di un partner, il suo ID viene aggiunto ai link di acquisto così che venga accreditato — dettagli nell’informativa sulla privacy."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Posso ottenere un rimborso?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Lemon Squeezy gestisce i pagamenti come rivenditore ufficiale. Se qualcosa è davvero rotto, scrivi a hello@didact.digital e troviamo una soluzione — ma la prova di 14 giorni serve proprio a farti decidere prima di pagare."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Funziona con più monitor?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sì. Scegli su quale display deve stare la barra laterale e lei lo seguirà. Se scolleghi il monitor, passa automaticamente a quello successivo."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Per quanti Mac vale una licenza?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Per due. Attivala su entrambi, per esempio un fisso e un portatile. «Disattiva questo Mac» nelle impostazioni libera di nuovo il posto, quindi cambiare computer non ti costa un’attivazione."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Funziona con le app a schermo intero?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Non ancora del tutto. Una finestra a schermo intero nativo occupa tutto lo schermo e la barra viene disegnata sopra invece di ridurla. Il punto è in roadmap, da valutare. In tutto il resto, anche con una finestra ingrandita a mano, la fascia resta riservata."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Che fine fanno le mie note se smetto di usarlo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nessuna. Sono normali file .md nella cartella che hai scelto, leggibili con Obsidian, Logseq o qualsiasi editor di testo. Non serve esportare, perché non c’è nulla da cui esportare."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "didact",
+      "item": "https://didact.digital/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "SideSchedule",
+      "item": "https://didact.digital/sideschedule/it/"
+    }
+  ]
+}
+</script>
+<script src="/assets/aff.js"></script>
+<link rel="stylesheet" href="/assets/app-theme.css">
+<script>window.sidescheduleTranslations={"it": {"brew.copiedStatus": "Copiato negli appunti"}};</script>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="nav-left"><a class="didact-mark" href="/it/" aria-label="didact home"><img src="/assets/didact-wordmark-paper.svg" alt="didact." width="82" height="20"></a><span class="sep" aria-hidden="true">/</span><a class="wordmark" href="#top">
+      <img src="../assets/app-icon.png" alt="" width="26" height="26">
+      SideSchedule
+    </a></div>
+    <div class="nav-links">
+      <a href="#features" data-i18n="nav.features">Funzionalità</a>
+      <a href="#pricing" data-i18n="nav.pricing">Prezzi</a>
+      <a href="#install" data-i18n="nav.install">Installazione</a>
+      <a href="#faq" data-i18n="nav.faq">FAQ</a>
+      <a href="#roadmap" data-i18n="nav.roadmap">Roadmap</a>
+      <a href="https://github.com/4IngoJ/sideschedule/releases" data-i18n="nav.changelog">Changelog</a>
+      <div class="lang-switcher" id="lang-switcher">
+        <button class="lang-toggle" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Cambia lingua" data-i18n-aria-label="lang.ariaLabel">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          <span id="lang-current">IT</span>
+          <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="lang-menu" role="menu" id="lang-menu"><a role="menuitem" href="https://didact.digital/sideschedule/" hreflang="en" lang="en"><span>English</span><span class="lang-code">EN</span></a><a role="menuitem" href="https://didact.digital/sideschedule/de/" hreflang="de" lang="de"><span>Deutsch</span><span class="lang-code">DE</span></a><a role="menuitem" href="https://didact.digital/sideschedule/fr/" hreflang="fr" lang="fr"><span>Français</span><span class="lang-code">FR</span></a><a role="menuitem" href="https://didact.digital/sideschedule/es/" hreflang="es" lang="es"><span>Español</span><span class="lang-code">ES</span></a><a role="menuitem" href="https://didact.digital/sideschedule/it/" hreflang="it" lang="it" class="active" aria-current="true"><span>Italiano</span><span class="lang-code">IT</span></a><a role="menuitem" href="https://didact.digital/sideschedule/pt/" hreflang="pt" lang="pt"><span>Português</span><span class="lang-code">PT</span></a></div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <canvas id="field" aria-hidden="true"></canvas>
+  <div class="wrap hero-body">
+    <img class="icon" src="../assets/app-icon.png" alt="SideSchedule app icon" width="84" height="84">
+    <div class="hero-meta">
+      <span class="eyebrow" data-i18n="hero.eyebrow">Calendario laterale per Mac · macOS 13+</span>
+    </div>
+    <h1>
+      <span data-i18n="hero.h1">Il mio calendario perdeva sempre contro ogni altra finestra.</span><br>
+      <span class="punch">
+        <span data-i18n="hero.h1b">Non più.</span>
+        <svg class="punch-line" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M4 8.6c21-3.6 50-5.5 85-5.7 34-.2 69 1.4 107 4.8" vector-effect="non-scaling-stroke"/>
+        </svg>
+      </span>
+    </h1>
+    <p class="sub" data-i18n="hero.sub">SideSchedule riserva una fascia dello schermo come il Dock, così nient’altro può passarci sopra. Pensato per le quindici volte al giorno in cui devi sapere cosa viene dopo, senza doverlo cercare.</p>
+    <div class="cta-row">
+      <a data-goatcounter-click="dl-sideschedule-hero" class="btn btn-primary" href="https://github.com/4IngoJ/sideschedule/releases/latest/download/SideSchedule.dmg" data-i18n="cta.download">Scarica per macOS</a>
+    </div>
+    <p class="price-note">
+      <span data-i18n="hero.priceNote">Gratis per 14 giorni, poi 12,99 € una tantum. Offerta di lancio: 50% di sconto per i primi 100 acquirenti.</span>
+      <a data-goatcounter-click="buy-sideschedule-hero" href="https://4ingoj.lemonsqueezy.com/checkout/buy/e72e0987-c650-42d1-a936-908168e003f5?checkout%5Bdiscount_code%5D=EARLY100" data-i18n="hero.buyLink">Oppure acquista subito una licenza</a>
+    </p>
+    <div class="brew-box">
+      <span data-i18n="hero.brew">Preferisci Homebrew?</span>
+      <code id="brew-cmd">brew install --cask 4ingoj/tap/sideschedule</code>
+      <button data-goatcounter-click="brew-sideschedule" class="brew-copy-btn" type="button" aria-label="Copia comando Homebrew" data-i18n-aria-label="brew.copyAria" onclick="copyBrewCmd(this)">
+        <svg class="copy-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="5" width="9" height="9" rx="1.5"/><path d="M11 5V3.5A1.5 1.5 0 0 0 9.5 2h-6A1.5 1.5 0 0 0 2 3.5v6A1.5 1.5 0 0 0 3.5 11H5"/></svg>
+        <span class="copied-msg" data-i18n="brew.copied">Copiato</span>
+      </button>
+      <span class="sr-only" aria-live="polite" id="brew-status"></span>
+    </div>
+  </div>
+</header>
+
+<section id="demo">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 data-i18n="demo.h2">Guardalo in azione</h2>
+      <p data-i18n="demo.sub">Più veloce da guardare che da spiegare.</p>
+    </div>
+    <div class="video-frame reveal">
+      <video data-src="../assets/demo-web.mp4" poster="../assets/demo-poster.jpg" width="1600" height="1006" preload="none" muted loop playsinline controls aria-label="SideSchedule sidebar showing a real day of calendar events"></video>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="features">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 data-i18n="features.h2">La versione breve</h2>
+      <p data-i18n="features.sub">Ecco cosa ottieni davvero.</p>
+    </div>
+    <div class="feature-grid reveal-stagger">
+      <div class="card">
+        <h3 data-i18n="f1.h3">Note che finiscono nel tuo vault</h3>
+        <p data-i18n="f1.p">Scrivi durante la chiamata, proprio accanto all’invito. Ogni nota diventa un vero file .md con frontmatter YAML, pronto per Obsidian. Le riunioni ricorrenti hanno una nota per ogni occorrenza, così lo stand-up della settimana scorsa non sovrascrive mai quello di questa settimana.</p>
+      </div>
+      <div class="card">
+        <h3 data-i18n="f2.h3">Si prende il suo spazio</h3>
+        <p data-i18n="f2.p">Ogni finestra aperta dall’app in primo piano viene spinta fuori dalla propria zona, non solo quella su cui fai clic. Lo spazio è riservato, non è una finestra sovrapposta. Fa parte della scrivania, proprio come il Dock.</p>
+      </div>
+      <div class="card">
+        <h3 data-i18n="f3.h3">Si nasconde, ma resta utile</h3>
+        <p data-i18n="f3.p">L’auto-nascondimento riduce la barra a una sottile striscia che mostra ancora il pulsante per partecipare alla riunione attiva e il conto alla rovescia. Non sparisce mai del tutto: sempre visibile e utile, senza clic.</p>
+      </div>
+      <div class="card">
+        <h3 data-i18n="f4.h3">Partecipa alla riunione con un tocco</h3>
+        <p data-i18n="f4.p">Rileva i link di Zoom, Meet, Teams, Webex e FaceTime nel luogo, nell’URL o nelle note. Se l’app nativa è installata, usa direttamente il relativo schema, senza passare dal browser.</p>
+      </div>
+      <div class="card card-wide">
+        <h3 data-i18n="f10.h3">I tuoi comandi rapidi partono con le tue riunioni</h3>
+        <p data-i18n="f10.p">Un comando rapido all’inizio della riunione, uno alla fine. Focus attivo, musica in pausa, qualunque cosa tu abbia creato: SideSchedule lo esegue. Di default solo per eventi con un link di riunione.</p>
+      </div>
+      <div class="card">
+        <h3 data-i18n="f5.h3">È il tuo vero calendario</h3>
+        <p data-i18n="f5.p">Legge, crea, rinomina ed elimina eventi reali tramite EventKit. Trascina per riprogrammare. Trascina un file o una selezione di testo per bloccare del tempo. Gli eventi di un’intera giornata hanno una riga dedicata.</p>
+      </div>
+      <div class="card">
+        <h3 data-i18n="f6.h3">Sa sempre cosa viene dopo</h3>
+        <p data-i18n="f6.p">I prossimi 30 minuti liberi: 14:30, direttamente nell’intestazione, così non devi scorrere tutta la giornata per trovare uno spazio.</p>
+      </div>
+      <div class="card">
+        <h3 data-i18n="f7.h3">Parla la lingua del tuo Mac</h3>
+        <p data-i18n="f7.p">Tedesco, inglese, francese, spagnolo, italiano e portoghese, automaticamente.</p>
+      </div>
+      <div class="card">
+        <h3 data-i18n="f8.h3">Si adatta alla tua configurazione</h3>
+        <p data-i18n="f8.p">A sinistra o a destra, sul display che preferisci: sceglilo nelle Preferenze. Scollega un monitor e la barra passerà a quello successivo.</p>
+      </div>
+      <div class="card card-wide">
+        <h3 data-i18n="f9.h3">Prima di tutto locale, senza account</h3>
+        <p data-i18n="f9.p">Eventi e note del calendario restano sul tuo Mac. Le uniche chiamate di rete servono a verificare la licenza e controllare gli aggiornamenti. Nessuna analisi, nessun tracciamento, nessuna telemetria.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="compare">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 data-i18n="compare.h2">Il confronto</h2>
+      <p data-i18n="compare.sub">Dove SideSchedule è davvero diverso.</p>
+    </div>
+    <p style="text-align:center; max-width:640px; margin:-32px auto 40px; color:var(--muted); font-size:16px;" data-i18n="compare.lead">La maggior parte delle app calendario ti mostra la giornata e poi si fa da parte. SideSchedule resta lì, ed è l’unica che trasforma una riunione in una nota nei tuoi file mentre la riunione è in corso.</p>
+    <div class="table-scroll reveal">
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>App</th>
+          <th data-i18n="cmp.price">Prezzo</th>
+          <th data-i18n="cmp.reserves">Riserva spazio</th>
+          <th data-i18n="cmp.notes">Note nei tuoi file</th>
+          <th data-i18n="cmp.account">Senza account</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="self">
+          <td>SideSchedule</td>
+          <td data-i18n="cmp.selfPrice">12,99 € una tantum</td>
+          <td class="check">✓</td>
+          <td class="check">✓</td>
+          <td class="check">✓</td>
+        </tr>
+        <tr>
+          <td>Sidebar (sidebarapp.net)</td>
+          <td data-i18n="cmp.sidebarPrice">19,99 € una tantum o 1,25 €/mese</td>
+          <td class="check">✓</td>
+          <td data-i18n="cmp.notListed">Non indicato</td>
+          <td data-i18n="cmp.notListed">Non indicato</td>
+        </tr>
+        <tr>
+          <td>Sidebar Calendar</td>
+          <td data-i18n="cmp.sbcPrice">4,99 $ (Mac App Store)</td>
+          <td data-i18n="cmp.sbcReserves">Può restare sopra le finestre</td>
+          <td data-i18n="cmp.notListed">Non indicato</td>
+          <td data-i18n="cmp.notListed">Non indicato</td>
+        </tr>
+        <tr>
+          <td>Notion Calendar</td>
+          <td data-i18n="cmp.free">Gratis</td>
+          <td class="cross">✕</td>
+          <td class="cross">✕</td>
+          <td class="cross">✕</td>
+        </tr>
+        <tr>
+          <td>Dato</td>
+          <td data-i18n="cmp.datoPrice">18 $ una tantum</td>
+          <td class="cross">✕</td>
+          <td class="cross">✕</td>
+          <td class="check">✓</td>
+        </tr>
+        <tr>
+          <td>Itsycal</td>
+          <td data-i18n="cmp.free">Gratis</td>
+          <td class="cross">✕</td>
+          <td class="cross">✕</td>
+          <td class="check">✓</td>
+        </tr>
+        <tr>
+          <td>Fantastical</td>
+          <td data-i18n="cmp.fantasticalPrice">Gratis / da 4,75 $ al mese</td>
+          <td class="cross">✕</td>
+          <td class="cross">✕</td>
+          <td class="cross">✕</td>
+        </tr>
+        <tr>
+          <td>Meeter</td>
+          <td data-i18n="cmp.free">Gratis</td>
+          <td class="cross">✕</td>
+          <td class="cross">✕</td>
+          <td class="check">✓</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="compare-note" data-i18n="compare.note">Prezzi e funzionalità pubblicati da ogni app. Sidebar e Sidebar Calendar verificati a ottobre 2026, le altre a settembre 2026. Prima di acquistare, verifica sempre sul sito dello sviluppatore.</p>
+  </div>
+</section>
+
+<section class="band" id="how">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 data-i18n="how.h2">Come funziona</h2>
+      <p data-i18n="how.sub">Sempre presente, così non devi mai passare a un’altra app.</p>
+    </div>
+    <div class="how-steps reveal-stagger">
+      <div class="how-step">
+        <div class="how-text">
+          <span class="how-num">1</span>
+          <h3 data-i18n="how1.h3">Riserva lo spazio</h3>
+          <p data-i18n="how1.p">Apple non ha mai dato alle app normali un modo per riservare spazio sullo schermo come fa il Dock. SideSchedule aggira il problema: ogni finestra che prova a scivolare sotto la barra laterale viene spinta indietro. Non te ne accorgerai nemmeno.</p>
+        </div>
+        <div class="how-illus">
+          <div class="illus-screen">
+            <div class="win-area" data-i18n="how1.win">Le tue finestre sono qui</div>
+            <div class="sidebar-strip">
+              <div class="ev"></div>
+              <div class="ev live"></div>
+              <div class="ev"></div>
+              <div class="ev"></div>
+              <div class="ev"></div>
+            </div>
+          </div>
+          <div class="illus-chips">
+            <span class="illus-chip">Dock</span>
+            <span class="illus-chip" data-i18n="how1.menuBar">Barra dei menu</span>
+            <span class="illus-chip app">SideSchedule</span>
+          </div>
+          <p class="illus-caption" data-i18n="how1.cap">Le altre finestre non possono coprire fisicamente la striscia: lo spazio è riservato, non è una finestra sovrapposta.</p>
+        </div>
+      </div>
+      <div class="how-step">
+        <div class="how-text">
+          <span class="how-num">2</span>
+          <h3 data-i18n="how2.h3">Basta un’autorizzazione</h3>
+          <p data-i18n="how2.p">In Impostazioni di Sistema → Privacy e sicurezza, attiva Accessibilità. È l’unica autorizzazione richiesta da SideSchedule oltre all’accesso al calendario, ed è ciò che fa funzionare tutto il meccanismo.</p>
+        </div>
+        <div class="how-illus">
+          <div class="illus-shield">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-3.6 8-10V5l-8-3-8 3v7c0 6.4 8 10 8 10z"/><path d="M9 11.5l2 2 4-4.5"/></svg>
+          </div>
+          <div class="illus-chips">
+            <span class="illus-chip" data-i18n="how2.systemSettings">Impostazioni di Sistema</span>
+            <span class="illus-chip" data-i18n="how2.privacySecurity">Privacy e sicurezza</span>
+            <span class="illus-chip app" data-i18n="how2.accessibility">Accessibilità</span>
+          </div>
+          <p class="illus-caption" data-i18n="how2.cap">Un interruttore, una volta sola. Nessun demone in background e nessuna estensione del kernel.</p>
+        </div>
+      </div>
+      <div class="how-step">
+        <div class="how-text">
+          <span class="how-num">3</span>
+          <h3 data-i18n="how3.h3">Le note diventano file</h3>
+          <p data-i18n="how3.p">Poiché la barra laterale è sempre presente, è il posto giusto per prendere note senza lasciare la chiamata. Ogni nota viene salvata come file .md indipendente nella cartella che scegli.</p>
+        </div>
+        <div class="how-illus">
+          <div class="illus-note">
+<pre><span class="fm">---</span>
+<span class="fm-key">title:</span>    "Weekly sync"
+<span class="fm-key">event_date:</span> 2026-09-04
+<span class="fm-key">event_time:</span> 14:00–14:30
+<span class="fm-key">calendar:</span> Work
+<span class="fm-key">tags:</span>     [meeting]
+<span class="fm-key">source:</span>   sideschedule
+<span class="fm">---</span>
+
+Typed during the call. Read by Obsidian, Logseq, or any local AI tool.</pre>
+          </div>
+          <p class="illus-caption" data-i18n="how3.cap">Markdown semplice con frontmatter YAML, senza codice di collegamento.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ink" id="pricing">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 data-i18n="pricing.h2">La parte economica</h2>
+      <p data-i18n="pricing.sub">Provalo gratis. Tienilo per sempre a poco prezzo.</p>
+    </div>
+    <div class="pricing-grid reveal-stagger">
+      <div class="price-card">
+        <div class="tier" data-i18n="pricing.trialTier">Prova</div>
+        <div class="amount" data-i18n="pricing.trialAmount">Gratis per 14 giorni</div>
+        <p data-i18n="pricing.trialP">Tutto sbloccato. Nessun account, nessuna carta di credito e nessuna e-mail che ti faccia sentire in colpa per l’acquisto.</p>
+        <a data-goatcounter-click="dl-sideschedule-mid" class="btn btn-light" href="https://github.com/4IngoJ/sideschedule/releases/latest/download/SideSchedule.dmg" data-i18n="pricing.trialCta">Scarica la versione di prova</a>
+      </div>
+      <div class="price-card highlight">
+        <div class="tier" data-i18n="pricing.licenseTier">Licenza</div>
+        <div class="amount" data-i18n="pricing.licenseAmount">12,99 € una tantum</div>
+        <p data-i18n="pricing.licenseP">Offerta di lancio: 50% di sconto per i primi 100 acquirenti. Paghi una volta e conservi tutti gli aggiornamenti. Non lo trasformerò in un abbonamento più avanti. Questo trucco è ormai superato.</p>
+        <p class="seat-note" data-i18n="pricing.licenseSeats">Due Mac per licenza. Cambiando computer il posto torna libero.</p>
+        <a data-goatcounter-click="buy-sideschedule-mid" class="btn btn-primary" href="https://4ingoj.lemonsqueezy.com/checkout/buy/e72e0987-c650-42d1-a936-908168e003f5?checkout%5Bdiscount_code%5D=EARLY100" data-i18n="cta.buy">Acquista la licenza</a>
+      </div>
+    </div>
+    <p class="maker-note">
+      <span data-i18n="pricing.maker">Creata e supportata in Austria. Domande prima di acquistare?</span>
+      <a href="mailto:hello@didact.digital">hello@didact.digital</a>
+    </p>
+    <p class="merchant-note" data-i18n="pricing.merchant">Lemon Squeezy gestisce il pagamento come venditore ufficiale: non serve un account aggiuntivo e non troverai voci a sorpresa sull’estratto conto.</p>
+  </div>
+</section>
+
+<section id="install">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 data-i18n="install.h2">Primo avvio</h2>
+      <p data-i18n="install.sub">Due minuti, senza App Store.</p>
+    </div>
+    <div class="steps reveal-stagger" style="grid-template-columns: repeat(2, 1fr);">
+      <div class="step">
+        <span class="num">01</span>
+        <h3 data-i18n="install1.h3">Scarica e trascina in Applicazioni</h3>
+        <p data-i18n="install1.p">Scarica l’ultima versione da GitHub. Apri l’immagine disco, trascina SideSchedule in Applicazioni e hai finito.</p>
+      </div>
+      <div class="step">
+        <span class="num">02</span>
+        <h3 data-i18n="install2.h3">Avvia e consenti l’accesso</h3>
+        <p data-i18n="install2.p">Consenti l’accesso al calendario e ad Accessibilità quando richiesto. Quel clic rende possibile la prenotazione dello spazio.</p>
+      </div>
+    </div>
+    <p class="install-note" data-i18n="install.note">Firmato con un Developer ID e autenticato da Apple: Gatekeeper lo lascia passare senza bisogno del clic destro.</p>
+  </div>
+</section>
+
+<section class="band" id="faq">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 data-i18n="faq.h2">Domande</h2>
+      <p data-i18n="faq.sub">Quelle che vengono davvero poste.</p>
+    </div>
+    <div class="faq-list reveal-stagger">
+      <details class="faq-item">
+        <summary data-i18n="faq1.q">Funziona con il mio calendario?</summary>
+        <p data-i18n="faq1.a">SideSchedule legge Apple Calendar tramite EventKit. Tutto ciò che Apple Calendar può vedere — iCloud, Google, Exchange o CalDAV — appare nella barra laterale. Nessuna sincronizzazione aggiuntiva e nessun account.</p>
+      </details>
+      <details class="faq-item">
+        <summary data-i18n="faq2.q">Perché richiede l’accesso ad Accessibilità?</summary>
+        <p data-i18n="faq2.a">È l’unico modo con cui macOS permette a un’app di impedire alle altre finestre di scivolare sotto la barra laterale. Il Dock riceve la sua fascia riservata direttamente dal sistema; una normale app non dispone di questa API. SideSchedule non legge mai il contenuto delle finestre: ne riposiziona solo i riquadri.</p>
+      </details>
+      <details class="faq-item">
+        <summary data-i18n="faq3.q">Cosa succede dopo i 14 giorni di prova?</summary>
+        <p data-i18n="faq3.a">La barra laterale smette di apparire e l’app apre la finestra di attivazione. Non viene eliminato nulla: note, impostazioni e file .md esportati restano dove sono. La barra torna non appena inserisci una chiave, senza reinstallazione.</p>
+      </details>
+      <details class="faq-item">
+        <summary data-i18n="faq4.q">I miei dati vengono inviati da qualche parte?</summary>
+        <p data-i18n="faq4.a">L’app: no. Eventi e note restano sul tuo Mac. Le uniche connessioni di rete sono la convalida della licenza (Lemon Squeezy) e gli aggiornamenti (GitHub). Nessuna analisi, nessun tracciamento, nessuna telemetria. Questo sito conta le visite con GoatCounter, senza cookie, e non carica altri script di terze parti; se arrivi tramite il link di un partner, il suo ID viene aggiunto ai link di acquisto così che venga accreditato — dettagli nell’informativa sulla privacy.</p>
+      </details>
+      <details class="faq-item">
+        <summary data-i18n="faq5.q">Posso ottenere un rimborso?</summary>
+        <p data-i18n="faq5.a">Lemon Squeezy gestisce i pagamenti come rivenditore ufficiale. Se qualcosa è davvero rotto, scrivi a hello@didact.digital e troviamo una soluzione — ma la prova di 14 giorni serve proprio a farti decidere prima di pagare.</p>
+      </details>
+      <details class="faq-item">
+        <summary data-i18n="faq6.q">Funziona con più monitor?</summary>
+        <p data-i18n="faq6.a">Sì. Scegli su quale display deve stare la barra laterale e lei lo seguirà. Se scolleghi il monitor, passa automaticamente a quello successivo.</p>
+      </details>
+      <details class="faq-item">
+        <summary data-i18n="faq7.q">Per quanti Mac vale una licenza?</summary>
+        <p data-i18n="faq7.a">Per due. Attivala su entrambi, per esempio un fisso e un portatile. «Disattiva questo Mac» nelle impostazioni libera di nuovo il posto, quindi cambiare computer non ti costa un’attivazione.</p>
+      </details>
+      <details class="faq-item">
+        <summary data-i18n="faq8.q">Funziona con le app a schermo intero?</summary>
+        <p data-i18n="faq8.a">Non ancora del tutto. Una finestra a schermo intero nativo occupa tutto lo schermo e la barra viene disegnata sopra invece di ridurla. Il punto è in roadmap, da valutare. In tutto il resto, anche con una finestra ingrandita a mano, la fascia resta riservata.</p>
+      </details>
+      <details class="faq-item">
+        <summary data-i18n="faq9.q">Che fine fanno le mie note se smetto di usarlo?</summary>
+        <p data-i18n="faq9.a">Nessuna. Sono normali file .md nella cartella che hai scelto, leggibili con Obsidian, Logseq o qualsiasi editor di testo. Non serve esportare, perché non c’è nulla da cui esportare.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section id="roadmap">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 data-i18n="rm.h2">Cosa arriva dopo</h2>
+      <p data-i18n="rm.sub">Dove sta andando SideSchedule, messo per iscritto.</p>
+    </div>
+    <p class="roadmap-note reveal">
+      <strong data-i18n="rm.noteLead">Compra per quello che c’è oggi, non per questo elenco.</strong>
+      <span data-i18n="rm.note">Niente di quanto segue è una promessa o una data: i piani cambiano e alcune di queste idee si riveleranno sbagliate. Se uno di questi punti è il tuo motivo per comprare, aspetta che sia pronto; ogni licenza già acquistata lo riceverà gratis.</span>
+    </p>
+    <div class="roadmap-cols reveal-stagger">
+      <div class="roadmap-col">
+        <span class="stage" data-i18n="rm.stage1">Prossimi</span>
+        <div class="roadmap-item">
+          <h3 data-i18n="rm.i1.h">Frontmatter più ricco</h3>
+          <p data-i18n="rm.i1.p">Partecipanti, luogo e link alla riunione nell’intestazione YAML. I nomi come [[wiki link]], così il tuo vault costruisce da solo un grafo delle persone.</p>
+        </div>
+        <div class="roadmap-item">
+          <h3 data-i18n="rm.i2.h">La nota della volta scorsa</h3>
+          <p data-i18n="rm.i2.p">Una riunione ricorrente sta per iniziare e accanto compare la nota dell’occorrenza precedente. Le chiavi ci sono già, manca solo mostrarle.</p>
+        </div>
+        <div class="roadmap-item">
+          <h3 data-i18n="rm.i3.h">Attività aperte</h3>
+          <p data-i18n="rm.i3.p">Ogni casella non spuntata di tutte le note in un unico elenco, così niente di deciso in chiamata resta dimenticato in un file.</p>
+        </div>
+      </div>
+      <div class="roadmap-col later">
+        <span class="stage" data-i18n="rm.stage2">In programma</span>
+        <div class="roadmap-item">
+          <h3 data-i18n="rm.i4.h">Modelli di nota per calendario</h3>
+          <p data-i18n="rm.i4.p">Un ordine del giorno fisso per la riunione settimanale e una pagina bianca per il resto, in base al calendario dell’evento.</p>
+        </div>
+        <div class="roadmap-item">
+          <h3 data-i18n="rm.i5.h">Automazioni</h3>
+          <p data-i18n="rm.i5.p">Uno schema URL con cui Raycast, Alfred o Comandi Rapidi inseriscono un blocco di tempo nella barra senza che tu faccia nulla.</p>
+        </div>
+        <div class="roadmap-item">
+          <h3 data-i18n="rm.i6.h">Il resto della settimana</h3>
+          <p data-i18n="rm.i6.p">Domani e i giorni successivi leggibili dalla fascia, senza rinunciare al focus sulla singola giornata che la rende utile.</p>
+        </div>
+      </div>
+      <div class="roadmap-col maybe">
+        <span class="stage" data-i18n="rm.stage3">Da valutare</span>
+        <div class="roadmap-item">
+          <h3 data-i18n="rm.i7.h">Schermo intero nativo</h3>
+          <p data-i18n="rm.i7.p">Oggi la barra si disegna sopra un’app a schermo intero invece di ridurla. Risolverlo davvero richiede un approccio diverso.</p>
+        </div>
+        <div class="roadmap-item">
+          <h3 data-i18n="rm.i8.h">Riassunto sul dispositivo</h3>
+          <p data-i18n="rm.i8.p">Una prima bozza della nota scritta da un modello che gira sul tuo Mac. Arriverà solo se tutto resta locale.</p>
+        </div>
+        <div class="roadmap-item">
+          <h3 data-i18n="rm.i9.h">Dove è finita la settimana</h3>
+          <p data-i18n="rm.i9.p">Un file Markdown settimanale con le ore per calendario, salvato nella stessa cartella delle note.</p>
+        </div>
+      </div>
+    </div>
+    <p class="roadmap-ask">
+      <span data-i18n="rm.ask">Manca qualcosa? L’ordine di questo elenco segue le richieste.</span>
+      <a href="https://github.com/4IngoJ/sideschedule/issues" data-i18n="rm.askLink">Apri una issue su GitHub</a>
+    </p>
+  </div>
+</section>
+
+<section class="ink" id="cta-final">
+  <div class="wrap" style="text-align:center;">
+    <h2 style="font-family:var(--sans); font-size:clamp(28px,4.4vw,36px); font-weight:600; letter-spacing:-0.015em; margin-bottom:16px;" data-i18n="final.h2">Finalmente il tuo calendario vince.</h2>
+    <p style="color:rgba(250,250,248,.6); font-size:17px; max-width:480px; margin:0 auto 32px;" data-i18n="final.sub">14 giorni gratis. Nessun account, nessuna carta di credito e nessuna e-mail colpevolizzante.</p>
+    <div class="cta-row" style="justify-content:center;">
+      <a data-goatcounter-click="dl-sideschedule-end" class="btn btn-light" href="https://github.com/4IngoJ/sideschedule/releases/latest/download/SideSchedule.dmg" data-i18n="cta.download">Scarica per macOS</a>
+      <a data-goatcounter-click="buy-sideschedule-end" class="btn btn-outline-light" href="https://4ingoj.lemonsqueezy.com/checkout/buy/e72e0987-c650-42d1-a936-908168e003f5?checkout%5Bdiscount_code%5D=EARLY100" data-i18n="cta.buy">Acquista la licenza</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="brand">
+      <img src="../assets/app-icon.png" alt="" width="24" height="24">
+      SideSchedule <span class="ver">v1.1.0</span>
+    </div>
+    <div class="links">
+      <a href="/it/">All apps</a>
+      <a href="privacy.html" data-i18n="footer.privacy">Privacy</a>
+      <a href="../impressum.html" data-i18n="footer.legal">Note legali</a>
+      <a href="https://github.com/4IngoJ/sideschedule/releases" data-i18n="footer.releases">Versioni</a>
+      <a data-goatcounter-click="buy-sideschedule-footer" href="https://4ingoj.lemonsqueezy.com/checkout/buy/e72e0987-c650-42d1-a936-908168e003f5?checkout%5Bdiscount_code%5D=EARLY100" data-i18n="footer.buy">Acquista la licenza</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Scroll reveal for selected visual blocks
+(function() {
+  const revealItems = document.querySelectorAll('.reveal, .reveal-stagger');
+  if (!revealItems.length) return;
+  document.documentElement.classList.add('reveal-on');
+
+  revealItems.forEach(group => {
+    if (group.classList.contains('reveal-stagger')) {
+      Array.from(group.children).forEach((item, index) => {
+        item.classList.add('reveal');
+        item.style.setProperty('--reveal-delay', Math.min(index * 0.08, 0.4) + 's');
+      });
+    }
+  });
+
+  // Swap in the demo video's real source only once its block is about to be seen,
+  // so the 2.5MB file isn't fetched on page load.
+  function loadDeferredVideo(item) {
+    const video = item.matches('video') ? item : item.querySelector('video[data-src]');
+    if (!video || !video.dataset.src) return;
+    video.src = video.dataset.src;
+    delete video.dataset.src;
+    video.load();
+    video.play().catch(() => {});
+  }
+
+  // will-change keeps a compositor layer alive; drop it once the one-time
+  // reveal transition has actually finished instead of leaving it forever.
+  function clearWillChangeAfterTransition(item) {
+    item.addEventListener('transitionend', function onEnd(e) {
+      if (e.target !== item) return;
+      item.removeEventListener('transitionend', onEnd);
+      item.style.willChange = 'auto';
+    });
+  }
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    document.querySelectorAll('.reveal').forEach(item => {
+      item.classList.add('revealed');
+      item.style.willChange = 'auto';
+      loadDeferredVideo(item);
+    });
+    return;
+  }
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        clearWillChangeAfterTransition(entry.target);
+        entry.target.classList.add('revealed');
+        loadDeferredVideo(entry.target);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { rootMargin: '0px 0px -10% 0px', threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(item => observer.observe(item));
+})();
+
+// Language switcher: the menu entries are plain links to the language pages
+(function() {
+  var s = document.getElementById('lang-switcher');
+  if (!s) return;
+  var t = s.querySelector('.lang-toggle');
+  function close() { s.classList.remove('open'); t.setAttribute('aria-expanded', 'false'); }
+  t.addEventListener('click', function(e) { e.stopPropagation(); t.setAttribute('aria-expanded', s.classList.toggle('open')); });
+  document.addEventListener('click', function(e) { if (!s.contains(e.target)) close(); });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') close(); });
+})();
+
+// FAQ smooth open/close animation
+(function() {
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const summary = item.querySelector('summary');
+    const body = item.querySelector('p');
+    if (!body) return;
+    // Wrap answer in animatable container
+    const wrapper = document.createElement('div');
+    wrapper.className = 'faq-body';
+    const inner = document.createElement('div');
+    inner.className = 'faq-body-inner';
+    body.parentNode.insertBefore(wrapper, body);
+    inner.appendChild(body);
+    wrapper.appendChild(inner);
+
+    if (reducedMotion) return; // Skip animation for reduced-motion users
+
+    summary.addEventListener('click', function(e) {
+      e.preventDefault();
+      if (item.open) {
+        // Closing: animate height to 0, then remove open
+        const h = inner.offsetHeight;
+        wrapper.style.height = h + 'px';
+        requestAnimationFrame(() => {
+          wrapper.style.height = '0px';
+        });
+        wrapper.addEventListener('transitionend', function onEnd() {
+          wrapper.removeEventListener('transitionend', onEnd);
+          item.open = false;
+          wrapper.style.height = '';
+        }, { once: true });
+      } else {
+        // Opening: set open, measure, animate from 0
+        item.open = true;
+        const h = inner.offsetHeight;
+        wrapper.style.height = '0px';
+        requestAnimationFrame(() => {
+          wrapper.style.height = h + 'px';
+        });
+        wrapper.addEventListener('transitionend', function onEnd() {
+          wrapper.removeEventListener('transitionend', onEnd);
+          wrapper.style.height = '';
+        }, { once: true });
+      }
+    });
+  });
+})();
+
+// Brew command copy button
+function copyBrewCmd(btn) {
+  const cmd = document.getElementById('brew-cmd').textContent;
+  const status = document.getElementById('brew-status');
+  function showCopied() {
+    btn.classList.add('copied');
+    status.textContent = (window.sidescheduleTranslations && window.sidescheduleTranslations[document.documentElement.lang] && window.sidescheduleTranslations[document.documentElement.lang]['brew.copiedStatus']) || 'Copied to clipboard';
+    setTimeout(() => {
+      btn.classList.remove('copied');
+      status.textContent = '';
+    }, 2000);
+  }
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(cmd).then(showCopied).catch(() => fallbackCopy());
+  } else {
+    fallbackCopy();
+  }
+  function fallbackCopy() {
+    const ta = document.createElement('textarea');
+    ta.value = cmd;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); showCopied(); } catch(e) {}
+    document.body.removeChild(ta);
+  }
+}
+</script>
+<script src="/assets/hero-field.js" defer></script>
+<script data-goatcounter="https://didact.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<!--lang-hint--><style>.lang-hint{position:fixed;left:16px;right:16px;bottom:16px;max-width:560px;margin:0 auto;z-index:300;display:flex;align-items:center;gap:14px;padding:12px 14px 12px 18px;border-radius:14px;background:#1A1917;color:#FAF9F7;font:500 14px/1.4 system-ui,-apple-system,sans-serif;box-shadow:0 12px 32px rgba(0,0,0,.28)}.lang-hint span{flex:1}.lang-hint a{color:#FAF9F7;font-weight:700;text-decoration:underline;white-space:nowrap}.lang-hint button{background:none;border:0;color:#B7B4AE;font-size:22px;line-height:1;cursor:pointer;padding:2px 6px}.lang-hint button:hover{color:#FAF9F7}</style><script>(function(){var K='lang-hint-dismissed',U={"en": "https://didact.digital/sideschedule/", "de": "https://didact.digital/sideschedule/de/", "fr": "https://didact.digital/sideschedule/fr/", "es": "https://didact.digital/sideschedule/es/", "it": "https://didact.digital/sideschedule/it/", "pt": "https://didact.digital/sideschedule/pt/"},T={"en": ["This page is also available in English.", "View in English", "Dismiss"], "de": ["Diese Seite gibt es auch auf Deutsch.", "Auf Deutsch ansehen", "Schließen"], "fr": ["Cette page existe aussi en français.", "Voir en français", "Fermer"], "es": ["Esta página también está disponible en español.", "Ver en español", "Cerrar"], "it": ["Questa pagina è disponibile anche in italiano.", "Vai alla versione italiana", "Chiudi"], "pt": ["Esta página também está disponível em português.", "Ver em português", "Fechar"]},C="it";function st(){try{localStorage.setItem(K,'1')}catch(e){}}document.querySelectorAll('#lang-menu a').forEach(function(a){a.addEventListener('click',st)});try{if(localStorage.getItem(K))return}catch(e){}var l=String((navigator.languages&&navigator.languages[0])||navigator.language||'en').slice(0,2).toLowerCase();if(l===C||!U[l])return;var b=document.createElement('div');b.className='lang-hint';b.setAttribute('role','region');b.lang=l;b.setAttribute('aria-label',T[l][0]);var s=document.createElement('span');s.textContent=T[l][0];var a=document.createElement('a');a.href=U[l];a.hreflang=l;a.textContent=T[l][1];a.addEventListener('click',st);var x=document.createElement('button');x.type='button';x.setAttribute('aria-label',T[l][2]);x.textContent='\u00d7';x.addEventListener('click',function(){st();b.remove()});b.append(s,a,x);document.body.appendChild(b)})();</script><!--/lang-hint-->
+</body>
+</html>

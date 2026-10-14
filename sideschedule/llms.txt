@@ -1,0 +1,34 @@
+# SideSchedule
+
+> SideSchedule is a day-calendar sidebar for macOS 13 or later. It reserves a strip at the left or right screen edge the way the Dock does, so other windows can't cover it. Free for 14 days, then €12.99 once (two Macs per licence). Made by didact in Austria. Launch offer: 50% off for the first 100 buyers.
+
+## What it does
+
+- Shows today's events from Apple Calendar, which covers iCloud, Google, Exchange and CalDAV accounts. It reads, creates, renames, moves and deletes real events through EventKit.
+- Keeps its space: windows that slide under the sidebar get pushed back out. This needs the macOS Accessibility permission; the app only moves window frames and never reads window content.
+- Meeting notes typed in the sidebar save as Markdown files with YAML frontmatter in a folder you choose, ready for Obsidian or Logseq. Recurring meetings get one note per occurrence.
+- Joins Zoom, Google Meet, Microsoft Teams, Webex and FaceTime calls in one click, opening the native app when it's installed.
+- Shows the next free 30 minutes in the header. Drag events to reschedule, drop a file or text selection to block time. All-day events and Reminders have their own section.
+- Auto-hide shrinks it to a thin strip that still shows the join button and a countdown.
+- Works on any display, left or right edge, and follows to another screen when a monitor is unplugged.
+- Interface in English, German, French, Spanish, Italian and Portuguese.
+- Quick Add: a global shortcut (default Ctrl+Option+N) opens a text field. Type or dictate a sentence such as "Call with Bob tomorrow at half past three pm", check the preview, press Return. Understands dates, times, durations, all-day events and spoken forms in all six app languages; dictation uses macOS dictation (microphone button).
+- Optional reminders before events (off by default): system notification, in-sidebar banner or both, several lead times, snooze, filters (only events with a meeting link, skip declined events, calendar selection).
+- Optional Focus around meetings (off by default): runs a shortcut from the Shortcuts app when a meeting starts and when it ends, for example one that switches a Focus on.
+- New onboarding that explains the permission prompts before macOS asks.
+- Local-first: no account, no analytics, no telemetry. Network calls are licence checks (Lemon Squeezy) and update checks (GitHub).
+
+## Limits
+
+- Native fullscreen apps: the sidebar draws over them instead of shrinking them. This is on the roadmap.
+- Not on the Mac App Store. Distributed as a signed, notarized DMG.
+
+## Links
+
+- [Website](https://didact.digital/sideschedule/): features, comparison with Itsycal, Dato, Fantastical, Notion Calendar, Sidebar Calendar and others, FAQ, roadmap
+- [Download the latest DMG](https://github.com/4IngoJ/sideschedule/releases/latest/download/SideSchedule.dmg)
+- [Release notes](https://github.com/4IngoJ/sideschedule/releases)
+- [Buy a licence](https://4ingoj.lemonsqueezy.com/checkout/buy/e72e0987-c650-42d1-a936-908168e003f5)
+- Homebrew: `brew install --cask 4ingoj/tap/sideschedule`
+- [Privacy policy](https://didact.digital/sideschedule/privacy.html)
+- Contact: hello@didact.digital

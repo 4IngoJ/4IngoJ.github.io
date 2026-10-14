@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Confidentialité — SideSchedule</title>
+<meta name="description" content="Politique de confidentialité de SideSchedule, la barre latérale de calendrier du jour pour macOS.">
+<link rel="canonical" href="https://didact.digital/sideschedule/fr/privacy.html">
+<!--hreflang-->
+<link rel="alternate" hreflang="en" href="https://didact.digital/sideschedule/privacy.html">
+<link rel="alternate" hreflang="de" href="https://didact.digital/sideschedule/de/privacy.html">
+<link rel="alternate" hreflang="fr" href="https://didact.digital/sideschedule/fr/privacy.html">
+<link rel="alternate" hreflang="es" href="https://didact.digital/sideschedule/es/privacy.html">
+<link rel="alternate" hreflang="it" href="https://didact.digital/sideschedule/it/privacy.html">
+<link rel="alternate" hreflang="pt" href="https://didact.digital/sideschedule/pt/privacy.html">
+<link rel="alternate" hreflang="x-default" href="https://didact.digital/sideschedule/privacy.html">
+<!--/hreflang-->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://didact.digital/sideschedule/fr/privacy.html">
+<meta property="og:title" content="Confidentialité — SideSchedule">
+<meta property="og:description" content="Politique de confidentialité de SideSchedule, la barre latérale de calendrier du jour pour macOS.">
+<meta property="og:image" content="https://didact.digital/sideschedule/assets/og-image.png">
+<meta property="og:site_name" content="SideSchedule">
+<link rel="icon" type="image/png" href="../assets/app-icon.png">
+<style>
+  :root {
+    --paper: #FAFAF8; --band: #F0EEE9; --ink: #141413;
+    --muted: #6B6B68; --line: #E3E0DA; --white: #FFFFFF;
+    --sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: var(--sans); background: var(--paper); color: var(--ink); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+  nav { border-bottom: 1px solid var(--line); }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; }
+  .wordmark { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 17px; text-decoration: none; color: var(--ink); }
+  .wordmark img { width: 28px; height: 28px; border-radius: 7px; }
+  main { padding: 72px 0 96px; }
+  h1 { font-family: var(--sans); font-size: 40px; letter-spacing: -.02em; font-weight: 600; margin-bottom: 8px; }
+  .updated { color: var(--muted); font-size: 14px; margin-bottom: 48px; }
+  h2 { font-family: var(--sans); font-size: 24px; font-weight: 600; letter-spacing: -.01em; margin: 40px 0 12px; }
+  p, li { font-size: 16px; color: #3d3d3a; margin-bottom: 12px; }
+  ul { padding-left: 22px; margin-bottom: 16px; }
+  a { color: var(--ink); }
+  footer { border-top: 1px solid var(--line); padding: 32px 0; font-size: 14px; color: var(--muted); }
+
+  /* ---------- Language switcher (same as landing page) ---------- */
+  .lang-switcher { position: relative; }
+  .lang-toggle {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: none; border: 1px solid var(--line); border-radius: 999px;
+    padding: 6px 12px; cursor: pointer;
+    font-family: var(--sans); font-size: 13px; font-weight: 600; color: var(--muted);
+    transition: color .15s, border-color .15s;
+  }
+  .lang-toggle:hover { color: var(--ink); border-color: #cfccc4; }
+  .lang-toggle svg { width: 14px; height: 14px; }
+  .lang-toggle .caret { width: 10px; height: 10px; transition: transform .2s; }
+  .lang-switcher.open .lang-toggle .caret { transform: rotate(180deg); }
+  .lang-menu {
+    position: absolute; right: 0; top: calc(100% + 8px);
+    background: var(--white); border: 1px solid var(--line); border-radius: 12px;
+    box-shadow: 0 12px 32px rgba(20,20,19,.12);
+    padding: 6px; min-width: 170px; z-index: 200;
+    display: none;
+  }
+  .lang-switcher.open .lang-menu { display: block; }
+  .lang-switcher .lang-menu a {
+    text-decoration: none;
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    width: 100%; text-align: left;
+    background: none; border: none; border-radius: 8px;
+    padding: 9px 12px; cursor: pointer;
+    font-family: var(--sans); font-size: 14px; color: var(--ink);
+  }
+  .lang-switcher .lang-menu a:hover { background: var(--band); }
+  .lang-switcher .lang-menu a .lang-code { font-size: 11px; font-weight: 700; color: var(--muted); letter-spacing: .05em; }
+  .lang-switcher .lang-menu a.active { background: var(--band); font-weight: 600; }
+  .lang-switcher .lang-menu a.active .lang-code { color: var(--ink); }
+</style>
+<script>window.sidescheduleTranslations={"fr": {}};</script>
+</head>
+<body>
+<nav>
+  <div class="wrap">
+    <a class="wordmark" href="index.html"><img src="../assets/app-icon.png" alt="">SideSchedule</a>
+    <div class="lang-switcher" id="lang-switcher">
+      <button class="lang-toggle" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Changer de langue" data-i18n-aria-label="lang.ariaLabel">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <span id="lang-current">FR</span>
+        <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="lang-menu" role="menu" id="lang-menu"><a role="menuitem" href="https://didact.digital/sideschedule/privacy.html" hreflang="en" lang="en"><span>English</span><span class="lang-code">EN</span></a><a role="menuitem" href="https://didact.digital/sideschedule/de/privacy.html" hreflang="de" lang="de"><span>Deutsch</span><span class="lang-code">DE</span></a><a role="menuitem" href="https://didact.digital/sideschedule/fr/privacy.html" hreflang="fr" lang="fr" class="active" aria-current="true"><span>Français</span><span class="lang-code">FR</span></a><a role="menuitem" href="https://didact.digital/sideschedule/es/privacy.html" hreflang="es" lang="es"><span>Español</span><span class="lang-code">ES</span></a><a role="menuitem" href="https://didact.digital/sideschedule/it/privacy.html" hreflang="it" lang="it"><span>Italiano</span><span class="lang-code">IT</span></a><a role="menuitem" href="https://didact.digital/sideschedule/pt/privacy.html" hreflang="pt" lang="pt"><span>Português</span><span class="lang-code">PT</span></a></div>
+    </div>
+  </div>
+</nav>
+<main class="wrap">
+  <h1 data-i18n="h1">Politique de confidentialité</h1>
+  <p class="updated" data-i18n="updated">Dernière mise à jour : 12 octobre 2026</p>
+
+  <p data-i18n="intro">SideSchedule est une application macOS développée par Ingo Jurz, Graz, Autriche. Cette page explique quelles données l’application touche, ce qui quitte votre Mac et ce qui n’en sort jamais.</p>
+
+  <h2 data-i18n="short.h2">En bref</h2>
+  <ul>
+    <li data-i18n="short.li1">Vos événements et vos notes restent sur votre Mac. Ils ne sont jamais téléversés.</li>
+    <li data-i18n="short.li2">L’application n’a ni analyse, ni suivi, ni SDK de rapport de plantage, ni publicité.</li>
+    <li data-i18n="short.li3">Les seuls appels réseau de l’application : validation de licence (Lemon Squeezy) et vérification des mises à jour (Sparkle, via GitHub).</li>
+    <li data-i18n="short.li4">Ce site compte les visites avec GoatCounter, sans cookies, et ne charge aucun autre script tiers. L’identifiant d’un partenaire issu d’un lien partenaire ne reste dans votre navigateur que si vous l’acceptez — voir « Ce site web » plus bas.</li>
+  </ul>
+
+  <h2 data-i18n="website.h2">Ce site web</h2>
+  <p data-i18n="website.p1">Nous comptons les visites avec GoatCounter (voir « Statistiques de visite » plus bas) ; hormis ce script, ce site ne charge aucun script tiers. Si vous arrivez par le lien d'un partenaire (une URL contenant &lt;code&gt;?aff=&lt;/code&gt;), nous ajoutons l'identifiant du partenaire aux liens d'achat de cette page, afin que Lemon Squeezy, notre prestataire de paiement, puisse créditer le partenaire si vous achetez. Lire l'identifiant dans le lien ne stocke rien sur votre appareil. Si vous acceptez en plus dans le bandeau, nous conservons l'identifiant 60 jours dans le stockage local de votre navigateur, afin que le partenaire soit aussi crédité en cas d'achat ultérieur. Au premier lancement, l'app ouvre une seule fois une page de bienvenue sur didact.digital. Si vous aviez accepté, cette page transmet l'identifiant à l'app, qui l'enregistre dans le trousseau macOS et l'ajoute uniquement à son lien d'achat. Un clic sur un lien d'achat vous mène chez Lemon Squeezy, dont la politique de confidentialité s'applique alors. La base juridique de la conservation de l'identifiant est votre consentement (art. 6, par. 1, point a, RGPD ; § 165, al. 3, TKG 2021). Vous pouvez le retirer à tout moment avec le bouton ci-dessous, qui supprime l'identifiant enregistré de votre navigateur. Pour le faire supprimer aussi de l'app, écrivez à &lt;a href="mailto:hello@didact.digital"&gt;hello@didact.digital&lt;/a&gt;. L'app elle-même ne charge jamais de script de suivi.</p>
+  <p><button type="button" id="aff-withdraw" data-i18n="website.w">Retirer le consentement au suivi des partenaires</button> <span id="aff-withdraw-msg" role="status"></span></p>
+  <p data-i18n="website.p2">Le script est chargé depuis les serveurs de Lemon Squeezy ; leur politique de confidentialité s’applique à cette requête. L’application ne le charge jamais.</p>
+
+  <h2 data-i18n="visits.h2">Statistiques de visite</h2>
+  <p data-i18n="visits.p">Ce site compte les visites avec GoatCounter, un service de statistiques qui fonctionne sans cookies. Nous voyons ainsi quelles pages sont lues, quels liens amènent les visiteurs et combien de fois les boutons de téléchargement et d’achat sont cliqués. Ces données ne servent ni à la publicité ni à établir des profils de personnes. Quand vous ouvrez une page, votre navigateur envoie à GoatCounter l’adresse de la page, le site de provenance, les paramètres de campagne du lien (par exemple utm_source), le navigateur et la taille d’écran ainsi que votre localisation approximative. Selon GoatCounter, ni adresses IP ni chaînes user-agent ne sont enregistrées et aucun cookie n’est déposé ; vous n’êtes reconnu ni d’une visite à l’autre ni d’un site à l’autre. Un clic sur un lien de téléchargement ou d’achat est compté comme un événement portant un nom fixe, sans aucune information sur vous. GoatCounter est exploité par Martin Tournoij (Irlande) ; ses serveurs se trouvent chez Hetzner Online GmbH en Finlande et en Allemagne. La base juridique est notre intérêt légitime à comprendre l’usage du site (art. 6, par. 1, point f du RGPD). Vous pouvez vous y opposer à tout moment : hello@didact.digital. Bloquer le script dans votre navigateur fonctionne aussi ; le site reste pleinement utilisable. Les apps sont distinctes : elles ne contiennent aucune analyse et n’envoient aucune donnée d’usage.</p>
+  <h2 data-i18n="cal.h2">Données du calendrier</h2>
+  <p data-i18n="cal.p">SideSchedule lit vos calendriers via le framework EventKit d’Apple pour afficher votre journée. Si vous créez, renommez, déplacez ou supprimez des événements, ces changements sont réécrits dans Apple Calendrier. Les notes saisies dans SideSchedule restent locales sur votre Mac (éventuellement dupliquées en fichiers Markdown dans un dossier de votre choix, ou dans la description de l’événement dans Apple Calendrier si vous activez cette option). Rien de tout cela n’est transmis à nous ni à des tiers.</p>
+
+  <h2 data-i18n="acc.h2">Accès à l’accessibilité</h2>
+  <p data-i18n="acc.p">Si vous activez « Garder les fenêtres hors de la barre », SideSchedule utilise l’API d’accessibilité de macOS pour observer et repositionner les fenêtres de l’application au premier plan afin qu’elles ne glissent pas sous la barre latérale. Tout se passe sur votre Mac. Aucun titre de fenêtre, nom d’application ou donnée d’usage n’est collecté ni transmis.</p>
+
+  <h2 data-i18n="lic.h2">Activation et validation de la licence</h2>
+  <p data-i18n="lic.p">Quand vous saisissez une clé de licence, SideSchedule contacte l’API Lemon Squeezy (api.lemonsqueezy.com) en HTTPS pour l’activer puis la valider périodiquement. La requête contient votre clé et le nom d’hôte de votre Mac (utilisé comme étiquette d’activation pour reconnaître l’appareil dans votre portail client Lemon Squeezy). La clé est stockée dans le Trousseau macOS, pas dans des préférences en clair.</p>
+
+  <h2 data-i18n="upd.h2">Mises à jour</h2>
+  <p data-i18n="upd.p">SideSchedule vérifie les mises à jour via le framework Sparkle, qui récupère un fichier appcast hébergé sur GitHub (github.com). GitHub peut journaliser votre adresse IP lors de cette requête ; la politique de confidentialité de GitHub s’applique. Les téléchargements sont signés et vérifiés par une signature EdDSA avant installation.</p>
+
+  <h2 data-i18n="diag.h2">Rapports de diagnostic</h2>
+  <p data-i18n="diag.p">Vous pouvez envoyer manuellement un rapport de diagnostic par e-mail depuis la barre de menus ou les Réglages. Toujours à votre initiative : l’application rassemble les journaux récents, les rapports de plantage et des informations système de base dans un brouillon que vous pouvez relire, modifier ou supprimer avant envoi. Ces fichiers peuvent contenir des chemins locaux et le nom d’hôte de votre Mac. Rien n’est jamais envoyé automatiquement.</p>
+
+  <h2 data-i18n="never.h2">Ce que nous ne collectons jamais</h2>
+  <ul>
+    <li data-i18n="never.li1">Aucun compte ni inscription</li>
+    <li data-i18n="never.li2">Aucune analyse ni statistique d’usage</li>
+    <li data-i18n="never.li3">Aucun identifiant publicitaire</li>
+    <li data-i18n="never.li4">Aucune donnée de plantage, sauf si vous l’envoyez vous-même par e-mail</li>
+    <li data-i18n="never.li5">Aucun contenu de calendrier, note ou information de fenêtre</li>
+  </ul>
+
+  <h2 data-i18n="pay.h2">Paiement</h2>
+  <p><span data-i18n="pay.p">Les achats sont traités par Lemon Squeezy en tant que vendeur officiel. Vos données de paiement sont entièrement gérées par Lemon Squeezy et ne touchent ni l’application ni nos systèmes. Détails :</span> <a href="https://www.lemonsqueezy.com/privacy" data-i18n="pay.link">politique de confidentialité de Lemon Squeezy</a></p>
+
+  <h2 data-i18n="contact.h2">Contact</h2>
+  <p><span data-i18n="contact.p">Questions sur la confidentialité :</span> <a href="mailto:hello@didact.digital">hello@didact.digital</a></p>
+</main>
+<footer><div class="wrap" data-i18n="footer.tag">SideSchedule — une barre latérale de calendrier pour macOS</div></footer>
+
+<script>
+(function() {
+  var s = document.getElementById('lang-switcher');
+  if (!s) return;
+  var t = s.querySelector('.lang-toggle');
+  function close() { s.classList.remove('open'); t.setAttribute('aria-expanded', 'false'); }
+  t.addEventListener('click', function(e) { e.stopPropagation(); t.setAttribute('aria-expanded', s.classList.toggle('open')); });
+  document.addEventListener('click', function(e) { if (!s.contains(e.target)) close(); });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') close(); });
+})();
+</script>
+<script src="/assets/aff.js"></script>
+<script data-goatcounter="https://didact.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<!--lang-hint--><style>.lang-hint{position:fixed;left:16px;right:16px;bottom:16px;max-width:560px;margin:0 auto;z-index:300;display:flex;align-items:center;gap:14px;padding:12px 14px 12px 18px;border-radius:14px;background:#1A1917;color:#FAF9F7;font:500 14px/1.4 system-ui,-apple-system,sans-serif;box-shadow:0 12px 32px rgba(0,0,0,.28)}.lang-hint span{flex:1}.lang-hint a{color:#FAF9F7;font-weight:700;text-decoration:underline;white-space:nowrap}.lang-hint button{background:none;border:0;color:#B7B4AE;font-size:22px;line-height:1;cursor:pointer;padding:2px 6px}.lang-hint button:hover{color:#FAF9F7}</style><script>(function(){var K='lang-hint-dismissed',U={"en": "https://didact.digital/sideschedule/privacy.html", "de": "https://didact.digital/sideschedule/de/privacy.html", "fr": "https://didact.digital/sideschedule/fr/privacy.html", "es": "https://didact.digital/sideschedule/es/privacy.html", "it": "https://didact.digital/sideschedule/it/privacy.html", "pt": "https://didact.digital/sideschedule/pt/privacy.html"},T={"en": ["This page is also available in English.", "View in English", "Dismiss"], "de": ["Diese Seite gibt es auch auf Deutsch.", "Auf Deutsch ansehen", "Schließen"], "fr": ["Cette page existe aussi en français.", "Voir en français", "Fermer"], "es": ["Esta página también está disponible en español.", "Ver en español", "Cerrar"], "it": ["Questa pagina è disponibile anche in italiano.", "Vai alla versione italiana", "Chiudi"], "pt": ["Esta página também está disponível em português.", "Ver em português", "Fechar"]},C="fr";function st(){try{localStorage.setItem(K,'1')}catch(e){}}document.querySelectorAll('#lang-menu a').forEach(function(a){a.addEventListener('click',st)});try{if(localStorage.getItem(K))return}catch(e){}var l=String((navigator.languages&&navigator.languages[0])||navigator.language||'en').slice(0,2).toLowerCase();if(l===C||!U[l])return;var b=document.createElement('div');b.className='lang-hint';b.setAttribute('role','region');b.lang=l;b.setAttribute('aria-label',T[l][0]);var s=document.createElement('span');s.textContent=T[l][0];var a=document.createElement('a');a.href=U[l];a.hreflang=l;a.textContent=T[l][1];a.addEventListener('click',st);var x=document.createElement('button');x.type='button';x.setAttribute('aria-label',T[l][2]);x.textContent='\u00d7';x.addEventListener('click',function(){st();b.remove()});b.append(s,a,x);document.body.appendChild(b)})();</script><!--/lang-hint-->
+</body>
+</html>
