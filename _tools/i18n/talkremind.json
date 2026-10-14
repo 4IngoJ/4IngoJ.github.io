@@ -164,7 +164,8 @@
   "t160": "TalkRemind in Aktion",
   "t161": "Eine kurze Demo, vom ersten getippten Satz bis zum Hinweis.",
   "t162": "Demo-Video folgt in Kürze",
-  "ta163": "TalkRemind-ScreenBlock-Hinweis auf einem abgedunkelten Mac-Bildschirm"
+  "ta163": "TalkRemind-ScreenBlock-Hinweis auf einem abgedunkelten Mac-Bildschirm",
+  "t164": "Ton einschalten"
  },
  "fr": {
   "t001": "Fonctionnalités",
@@ -331,7 +332,8 @@
   "t160": "TalkRemind en action",
   "t161": "Une courte démo, de la première phrase tapée jusqu'au rappel.",
   "t162": "Vidéo de démo bientôt disponible",
-  "ta163": "Rappel ScreenBlock de TalkRemind sur un écran de Mac assombri"
+  "ta163": "Rappel ScreenBlock de TalkRemind sur un écran de Mac assombri",
+  "t164": "Activer le son"
  },
  "es": {
   "t001": "Funciones",
@@ -498,7 +500,8 @@
   "t160": "TalkRemind en acción",
   "t161": "Una demo corta, desde la primera frase tecleada hasta el aviso.",
   "t162": "Vídeo de demostración muy pronto",
-  "ta163": "Aviso ScreenBlock de TalkRemind en una pantalla de Mac oscurecida"
+  "ta163": "Aviso ScreenBlock de TalkRemind en una pantalla de Mac oscurecida",
+  "t164": "Activar el sonido"
  },
  "it": {
   "t001": "Funzioni",
@@ -665,7 +668,8 @@
   "t160": "TalkRemind in azione",
   "t161": "Una breve demo, dalla prima frase digitata fino al promemoria.",
   "t162": "Video demo in arrivo",
-  "ta163": "Promemoria ScreenBlock di TalkRemind su uno schermo Mac oscurato"
+  "ta163": "Promemoria ScreenBlock di TalkRemind su uno schermo Mac oscurato",
+  "t164": "Attiva l’audio"
  },
  "pt": {
   "t001": "Funcionalidades",
@@ -832,6 +836,7 @@
   "t160": "O TalkRemind em ação",
   "t161": "Uma demo curta, da primeira frase escrita até ao lembrete.",
   "t162": "Vídeo de demonstração em breve",
-  "ta163": "Lembrete ScreenBlock do TalkRemind num ecrã de Mac escurecido"
+  "ta163": "Lembrete ScreenBlock do TalkRemind num ecrã de Mac escurecido",
+  "t164": "Ativar o som"
  }
 }
