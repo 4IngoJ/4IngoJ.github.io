@@ -1,0 +1,21 @@
+{
+  "root": "../thanks",
+  "site_url": "https://didact.digital/thanks/",
+  "local_pages": [
+    "index.html"
+  ],
+  "pages": [
+    {
+      "src": "index.html",
+      "dict": "i18n/thanks.json",
+      "mode": "html",
+      "hint": false
+    }
+  ],
+  "localize": {
+    "/": "/{lang}/",
+    "/sideschedule/": "/sideschedule/{lang}/",
+    "/talkremind/": "/talkremind/{lang}/",
+    "/sideschedule/#faq": "/sideschedule/{lang}/#faq"
+  }
+}

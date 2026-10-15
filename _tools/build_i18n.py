@@ -226,7 +226,8 @@ def build():
             t = set_head(t, lang, p["src"], d)
             if p.get("switcher", True):
                 t = set_switcher(t, lang, p["src"])
-            t = set_hint(t, lang, p["src"])
+            if p.get("hint", True):
+                t = set_hint(t, lang, p["src"])
             if lang != "en":
                 t = set_jsonld(t, lang, p["src"])
                 t = rewrite_urls(t)
