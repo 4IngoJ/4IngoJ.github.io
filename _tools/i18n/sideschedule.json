@@ -137,8 +137,8 @@
   "faq3.a": "Die Leiste erscheint nicht mehr; die App öffnet stattdessen das Aktivierungsfenster. Gelöscht wird nichts: Notizen, Einstellungen und exportierte .md-Dateien bleiben unverändert, und die Leiste ist sofort nach Eingabe eines Schlüssels wieder da.",
   "faq4.q": "Werden meine Daten übertragen?",
   "faq4.a": "Die App: nein. Kalender und Notizen bleiben auf deinem Mac. Netzwerkzugriffe nur für Lizenzprüfung und Updates. Kein Analytics, kein Tracking, keine Telemetrie. Diese Website zählt Besuche mit GoatCounter, ohne Cookies, und lädt sonst keine Skripte von Dritten; kommst du über den Link eines Partners, wird dessen ID an die Kaufen-Links gehängt, damit er die Gutschrift bekommt — Details in der Datenschutzerklärung.",
-  "faq5.q": "Kann ich eine Rückerstattung erhalten?",
-  "faq5.a": "Lemon Squeezy wickelt die Zahlung ab. Wenn etwas wirklich nicht funktioniert, schreib an hello@didact.digital — die Testphase ist aber genau dafür da, dass du dir vor dem Kauf sicher bist.",
+  "faq5.q": "Kann ich mein Geld zurückbekommen?",
+  "faq5.a": "Ein Erstattungsversprechen gibt es nicht, weil der 14-Tage-Test alle Funktionen enthält. Probier es in Ruhe aus, bevor du zahlst. Ist wirklich etwas kaputt oder beim Kauf schiefgelaufen, schreib an hello@didact.digital, dann sehe ich es mir an.",
   "faq6.q": "Funktioniert es mit mehreren Monitoren?",
   "faq6.a": "Ja. Du wählst den Bildschirm aus; beim Abziehen eines Monitors wechselt die Leiste automatisch zum nächsten.",
   "final.h2": "Dein Kalender gewinnt endlich.",
@@ -148,7 +148,9 @@
   "footer.releases": "Veröffentlichungen",
   "footer.buy": "Lizenz kaufen",
   "meta.title": "SideSchedule – Kalender-Sidebar für den Mac mit Meeting-Notizen",
-  "meta.desc": "Eine Kalender-Sidebar für den Mac, die ihren Bildschirmstreifen hält wie das Dock, Meeting-Notizen als Markdown speichert und Calls mit einem Klick startet. 14 Tage gratis, 12,99 € einmalig."
+  "meta.desc": "Eine Kalender-Sidebar für den Mac, die ihren Bildschirmstreifen hält wie das Dock, Meeting-Notizen als Markdown speichert und Calls mit einem Klick startet. 14 Tage gratis, 12,99 € einmalig.",
+  "faq10.q": "Wie bekomme ich Support?",
+  "faq10.a": "Ich lese hello@didact.digital selbst und antworte innerhalb von zwei Werktagen (Mo bis Fr, österreichische Zeit). Wird es länger, sage ich das gleich in der ersten Antwort.\n\nLizenzschlüssel weg? Er steht in der Kaufbestätigung. Ist die auch weg, schreib mir von der Adresse, mit der du gekauft hast.\n\nNeuer Mac? Wähle zuerst „Diesen Mac deaktivieren“ in den Einstellungen und aktiviere dann auf dem neuen. Hängt ein Platz fest, schreib mir, ich gebe ihn frei.\n\nEtwas ist kaputt? Schick mir den Diagnosebericht aus den Einstellungen, wenn du kannst. Einen Behebungstermin kann ich nicht versprechen, eine Antwort schon."
  },
  "fr": {
   "hero.h1b": "Plus maintenant.",
@@ -276,8 +278,8 @@
   "faq3.a": "La barre latérale cesse d’apparaître et l’application ouvre la fenêtre d’activation. Rien n’est supprimé : vos notes, réglages et fichiers .md exportés restent exactement où ils sont. La barre revient dès que vous saisissez une clé, sans réinstallation.",
   "faq4.q": "Mes données sont-elles envoyées quelque part ?",
   "faq4.a": "L’app : non. Vos événements et notes restent sur votre Mac. Les seuls appels réseau sont la validation de licence (Lemon Squeezy) et les mises à jour (GitHub). Aucune analyse, aucun suivi, aucune télémétrie. Ce site compte les visites avec GoatCounter, sans cookies, et ne charge aucun autre script tiers ; si vous arrivez par le lien d’un partenaire, son identifiant est ajouté aux liens d’achat pour qu’il soit crédité — détails dans la politique de confidentialité.",
-  "faq5.q": "Puis-je être remboursé ?",
-  "faq5.a": "Lemon Squeezy gère les paiements en tant que revendeur officiel. Si quelque chose ne fonctionne vraiment pas, écrivez à hello@didact.digital et nous trouverons une solution — l’essai de 14 jours existe justement pour que vous soyez sûr avant de payer.",
+  "faq5.q": "Puis-je me faire rembourser ?",
+  "faq5.a": "Il n’y a pas de promesse de remboursement, parce que l’essai de 14 jours inclut toutes les fonctions. Teste-la tranquillement avant de payer. Si quelque chose est vraiment cassé ou s’est mal passé à l’achat, écris à hello@didact.digital et je regarde ça.",
   "faq6.q": "Fonctionne-t-elle avec plusieurs écrans ?",
   "faq6.a": "Oui. Choisissez l’écran sur lequel la barre latérale doit apparaître : elle le suivra. Si vous débranchez le moniteur, elle se déplace automatiquement vers le suivant.",
   "final.h2": "Votre calendrier gagne enfin.",
@@ -299,7 +301,9 @@
   "brew.copiedStatus": "Copié dans le presse-papiers",
   "brew.copyAria": "Copier la commande Homebrew",
   "meta.title": "SideSchedule – Barre latérale de calendrier pour Mac avec notes de réunion",
-  "meta.desc": "Une barre latérale de calendrier pour Mac qui garde sa bande d’écran comme le Dock, enregistre vos notes de réunion en Markdown et rejoint un appel en un clic. 14 jours gratuits, 12,99 € une seule fois."
+  "meta.desc": "Une barre latérale de calendrier pour Mac qui garde sa bande d’écran comme le Dock, enregistre vos notes de réunion en Markdown et rejoint un appel en un clic. 14 jours gratuits, 12,99 € une seule fois.",
+  "faq10.q": "Comment obtenir de l’aide ?",
+  "faq10.a": "Je lis hello@didact.digital moi-même et je réponds sous deux jours ouvrés (du lundi au vendredi, heure d’Autriche). Si ça traîne, je te le dis dès ma première réponse.\n\nClé de licence perdue ? Elle figure dans l’e-mail de confirmation d’achat. Si celui-ci a disparu aussi, écris-moi depuis l’adresse avec laquelle tu as acheté.\n\nNouveau Mac ? Choisis d’abord « Désactiver ce Mac » dans les préférences, puis active la licence sur le nouveau. Si une place reste bloquée, écris-moi et je la libère.\n\nQuelque chose est cassé ? Envoie-moi le rapport de diagnostic des préférences si tu peux. Je ne peux pas promettre de date de correction, mais je promets une réponse."
  },
  "es": {
   "hero.h1b": "Ya no.",
@@ -428,7 +432,7 @@
   "faq4.q": "¿Se envían mis datos a algún sitio?",
   "faq4.a": "La app: no. Tus eventos y notas se quedan en tu Mac. Las únicas conexiones de red son la validación de licencia (Lemon Squeezy) y las actualizaciones (GitHub). Sin analítica, sin seguimiento, sin telemetría. Este sitio cuenta las visitas con GoatCounter, sin cookies, y no carga otros scripts de terceros; si llegas por el enlace de un socio, su ID se añade a los enlaces de compra para que reciba su crédito — detalles en la política de privacidad.",
   "faq5.q": "¿Puedo obtener un reembolso?",
-  "faq5.a": "Lemon Squeezy gestiona los pagos como vendedor oficial. Si algo está realmente roto, escribe a hello@didact.digital y lo resolvemos — pero la prueba de 14 días existe para que estés seguro antes de pagar.",
+  "faq5.a": "No hay promesa de reembolso, porque la prueba de 14 días trae todas las funciones activadas. Úsala bien antes de pagar. Si algo está realmente roto o algo salió mal en la compra, escribe a hello@didact.digital y lo miro.",
   "faq6.q": "¿Funciona con varios monitores?",
   "faq6.a": "Sí. Eliges en qué pantalla vive la barra lateral y te sigue. Si desconectas el monitor, se mueve automáticamente al siguiente.",
   "final.h2": "Por fin, tu calendario gana.",
@@ -450,7 +454,9 @@
   "brew.copiedStatus": "Copiado al portapapeles",
   "brew.copyAria": "Copiar comando de Homebrew",
   "meta.title": "SideSchedule – Calendario lateral para Mac con notas de reunión",
-  "meta.desc": "Un calendario lateral para Mac que conserva su franja de pantalla como el Dock, guarda las notas de reunión en Markdown y entra en las llamadas con un clic. 14 días gratis, 12,99 € una sola vez."
+  "meta.desc": "Un calendario lateral para Mac que conserva su franja de pantalla como el Dock, guarda las notas de reunión en Markdown y entra en las llamadas con un clic. 14 días gratis, 12,99 € una sola vez.",
+  "faq10.q": "¿Cómo consigo soporte?",
+  "faq10.a": "Leo hello@didact.digital yo mismo y respondo en un plazo de dos días laborables (de lunes a viernes, hora de Austria). Si tardo más, te lo diré en la primera respuesta.\n\n¿Perdiste la clave de licencia? Está en el correo de confirmación de compra. Si ese también se perdió, escríbeme desde la dirección con la que compraste.\n\n¿Mac nuevo? Elige primero «Desactivar este Mac» en las preferencias y luego activa la licencia en el nuevo. Si una plaza se queda atascada, escríbeme y la libero.\n\n¿Algo no funciona? Mándame el informe de diagnóstico de las preferencias si puedes. No puedo prometer una fecha de arreglo, pero sí una respuesta."
  },
  "it": {
   "hero.h1b": "Non più.",
@@ -579,7 +585,7 @@
   "faq4.q": "I miei dati vengono inviati da qualche parte?",
   "faq4.a": "L’app: no. Eventi e note restano sul tuo Mac. Le uniche connessioni di rete sono la convalida della licenza (Lemon Squeezy) e gli aggiornamenti (GitHub). Nessuna analisi, nessun tracciamento, nessuna telemetria. Questo sito conta le visite con GoatCounter, senza cookie, e non carica altri script di terze parti; se arrivi tramite il link di un partner, il suo ID viene aggiunto ai link di acquisto così che venga accreditato — dettagli nell’informativa sulla privacy.",
   "faq5.q": "Posso ottenere un rimborso?",
-  "faq5.a": "Lemon Squeezy gestisce i pagamenti come rivenditore ufficiale. Se qualcosa è davvero rotto, scrivi a hello@didact.digital e troviamo una soluzione — ma la prova di 14 giorni serve proprio a farti decidere prima di pagare.",
+  "faq5.a": "Non prometto rimborsi, perché la prova di 14 giorni ha tutte le funzioni attive. Usala con calma prima di pagare. Se qualcosa è davvero rotto o è andato storto all’acquisto, scrivi a hello@didact.digital e ci do un’occhiata.",
   "faq6.q": "Funziona con più monitor?",
   "faq6.a": "Sì. Scegli su quale display deve stare la barra laterale e lei lo seguirà. Se scolleghi il monitor, passa automaticamente a quello successivo.",
   "final.h2": "Finalmente il tuo calendario vince.",
@@ -601,7 +607,9 @@
   "brew.copiedStatus": "Copiato negli appunti",
   "brew.copyAria": "Copia comando Homebrew",
   "meta.title": "SideSchedule – Calendario laterale per Mac con note di riunione",
-  "meta.desc": "Un calendario laterale per Mac che mantiene la sua striscia di schermo come il Dock, salva le note di riunione in Markdown e ti porta nelle chiamate con un clic. 14 giorni gratis, 12,99 € una tantum."
+  "meta.desc": "Un calendario laterale per Mac che mantiene la sua striscia di schermo come il Dock, salva le note di riunione in Markdown e ti porta nelle chiamate con un clic. 14 giorni gratis, 12,99 € una tantum.",
+  "faq10.q": "Come ottengo supporto?",
+  "faq10.a": "Leggo hello@didact.digital di persona e rispondo entro due giorni lavorativi (dal lunedì al venerdì, ora austriaca). Se ci metto di più, te lo dico già nella prima risposta.\n\nHai perso la chiave di licenza? È nell’email di conferma dell’acquisto. Se anche quella è sparita, scrivimi dall’indirizzo con cui hai comprato.\n\nMac nuovo? Scegli prima «Disattiva questo Mac» nelle impostazioni, poi attiva la licenza sul nuovo. Se un posto resta bloccato, scrivimi e lo libero.\n\nQualcosa non funziona? Mandami il rapporto diagnostico dalle impostazioni, se puoi. Una data per la correzione non posso prometterla, una risposta sì."
  },
  "pt": {
   "hero.h1b": "Isso acabou.",
@@ -729,8 +737,8 @@
   "faq3.a": "A barra lateral deixa de aparecer e a aplicação abre a janela de ativação. Nada é eliminado: as suas notas, definições e ficheiros .md exportados ficam exatamente onde estão. A barra regressa assim que introduzir uma chave, sem reinstalação.",
   "faq4.q": "Os meus dados são enviados para algum lugar?",
   "faq4.a": "A app: não. Os seus eventos e notas ficam no seu Mac. As únicas ligações de rede são a validação da licença (Lemon Squeezy) e as atualizações (GitHub). Sem analítica, sem rastreio, sem telemetria. Este site conta as visitas com o GoatCounter, sem cookies, e não carrega outros scripts de terceiros; se chegar através do link de um parceiro, o ID dele é juntado aos links de compra para que seja creditado — detalhes na política de privacidade.",
-  "faq5.q": "Posso pedir um reembolso?",
-  "faq5.a": "A Lemon Squeezy trata dos pagamentos como revendedor oficial. Se algo estiver mesmo avariado, escreva para hello@didact.digital e resolvemos — mas a avaliação de 14 dias existe para ter a certeza antes de pagar.",
+  "faq5.q": "Posso receber um reembolso?",
+  "faq5.a": "Não há promessa de reembolso, porque a avaliação de 14 dias traz todas as funcionalidades ativas. Usa-a com calma antes de pagares. Se algo estiver mesmo avariado ou tiver corrido mal na compra, escreve para hello@didact.digital e eu vejo o que se passa.",
   "faq6.q": "Funciona com vários monitores?",
   "faq6.a": "Sim. Escolha em que monitor fica a barra lateral e ela acompanha-o. Se desligar o monitor, passa automaticamente para o seguinte.",
   "final.h2": "Finalmente, o seu calendário ganha.",
@@ -752,6 +760,8 @@
   "brew.copiedStatus": "Copiado para a área de transferência",
   "brew.copyAria": "Copiar comando do Homebrew",
   "meta.title": "SideSchedule – Calendário lateral para Mac com notas de reunião",
-  "meta.desc": "Um calendário lateral para Mac que mantém a sua faixa de ecrã como o Dock, guarda as notas de reunião em Markdown e entra nas chamadas com um clique. 14 dias grátis, 12,99 € uma única vez."
+  "meta.desc": "Um calendário lateral para Mac que mantém a sua faixa de ecrã como o Dock, guarda as notas de reunião em Markdown e entra nas chamadas com um clique. 14 dias grátis, 12,99 € uma única vez.",
+  "faq10.q": "Como obtenho suporte?",
+  "faq10.a": "Leio o hello@didact.digital pessoalmente e respondo em dois dias úteis (de segunda a sexta, hora da Áustria). Se demorar mais, digo-to logo na primeira resposta.\n\nPerdeste a chave de licença? Está no e-mail de confirmação da compra. Se esse também se perdeu, escreve-me a partir do endereço com que compraste.\n\nMac novo? Escolhe primeiro «Desativar este Mac» nas preferências e depois ativa a licença no novo. Se um lugar ficar preso, escreve-me e eu liberto-o.\n\nAlgo avariado? Envia-me o relatório de diagnóstico das preferências, se puderes. Não posso prometer uma data de correção, mas prometo uma resposta."
  }
 }
