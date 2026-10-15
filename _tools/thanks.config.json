@@ -16,6 +16,7 @@
     "/": "/{lang}/",
     "/sideschedule/": "/sideschedule/{lang}/",
     "/talkremind/": "/talkremind/{lang}/",
-    "/sideschedule/#faq": "/sideschedule/{lang}/#faq"
+    "/sideschedule/#faq": "/sideschedule/{lang}/#faq",
+    "/tonecue/": "/tonecue/{lang}/"
   }
 }

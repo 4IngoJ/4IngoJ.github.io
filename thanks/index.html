@@ -67,10 +67,21 @@
   .lang-menu .lang-code{font-size:12px;font-weight:600;color:var(--graphite);letter-spacing:.05em}
   .lang-menu a span:first-child{display:none}
   nav .wrap{height:auto;min-height:64px;flex-wrap:wrap;gap:8px 16px}
-  ol{list-style:none;margin-top:32px;display:grid;gap:8px}
-  .step{border-top:1px solid var(--stone);padding-top:4px}
-  .step h2{margin-top:20px}
-  .decided{font-size:clamp(48px,10vw,96px);font-weight:700;letter-spacing:-.04em;line-height:1;margin-top:72px}
+  main.wrap{padding-top:clamp(64px,11vw,120px)}
+  .step{border-top:1px solid var(--stone);padding:8px 0 28px;margin-top:8px}
+  .step h2{margin:20px 0 10px;display:flex;align-items:center;gap:12px}
+  .num{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.07em;color:var(--graphite);border:1px solid var(--stone);border-radius:999px;min-width:32px;height:28px;display:inline-flex;align-items:center;justify-content:center;background:var(--white)}
+  .apps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:18px}
+  .app{display:flex;align-items:center;gap:14px;background:var(--white);border:1px solid var(--stone);border-radius:16px;padding:14px 16px;text-decoration:none;font-weight:600;transition:border-color .15s,transform .15s}
+  .app:hover,.app:focus-visible{border-color:var(--ink);transform:translateY(-2px)}
+  .app img{width:48px;height:48px;border-radius:11px;flex:none}
+  .app .arrow{margin-left:auto;color:var(--graphite)}
+  .macs{list-style:none;margin:14px 0 18px;display:grid;gap:10px}
+  .macs li{display:flex;align-items:center;gap:12px;color:#3d3b37}
+  .macs img{width:32px;height:32px;border-radius:8px;flex:none}
+  .macs b{font-weight:600;color:var(--ink);min-width:7.5em}
+  .note{background:var(--white);border:1px solid var(--stone);border-radius:12px;padding:14px 16px;margin-top:6px}
+  @media (prefers-reduced-motion:reduce){.app{transition:none}.app:hover{transform:none}}
   a:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
 </style>
 </head>
@@ -83,19 +94,30 @@
 <main class="wrap">
   <h1 style="font-size:40px" data-i18n="x001">Thank you.</h1>
   <p class="lede" data-i18n="x002">Your license key is in your receipt email. Three steps, about two minutes.</p>
-  <section class="step"><h2 data-i18n="x003">1. Install</h2>
-  <p data-i18n="x004">Download the app from its page, <a href="/sideschedule/">SideSchedule</a> or <a href="/talkremind/">TalkRemind</a>. Open the disk image and drag the app into Applications.</p></section>
-  <section class="step"><h2 data-i18n="x005">2. Enter your key</h2>
+  <section class="step"><h2><span class="num">01</span><span data-i18n="x003">Install</span></h2>
+  <p data-i18n="x004">Download the app from its page, then open the disk image and drag the app into Applications.</p>
+  <div class="apps">
+    <a class="app" href="/sideschedule/"><img src="/assets/sideschedule-icon.png" alt="" width="48" height="48">SideSchedule<span class="arrow" aria-hidden="true">→</span></a>
+    <a class="app" href="/talkremind/"><img src="/assets/talkremind-icon.png" alt="" width="48" height="48">TalkRemind<span class="arrow" aria-hidden="true">→</span></a>
+    <a class="app" href="/tonecue/"><img src="/assets/tonecue-icon.png" alt="" width="48" height="48">ToneCue<span class="arrow" aria-hidden="true">→</span></a>
+  </div></section>
+  <section class="step"><h2><span class="num">02</span><span data-i18n="x005">Enter your key</span></h2>
   <p data-i18n="x006">Open the app, go to Settings → License and paste the key from your receipt email.</p></section>
-  <section class="step"><h2 data-i18n="x007">3. Count your Macs</h2>
-  <p data-i18n="x008">One license covers two Macs for SideSchedule and three for TalkRemind. Swapping machines? In SideSchedule, “Deactivate this Mac” frees the slot again.</p></section>
+  <section class="step"><h2><span class="num">03</span><span data-i18n="x007">Count your Macs</span></h2>
+  <p data-i18n="x008">Macs per license:</p>
+  <ul class="macs">
+    <li><img src="/assets/sideschedule-icon.png" alt="" width="32" height="32"><b data-i18n="x018">Two Macs</b><span>SideSchedule</span></li>
+    <li><img src="/assets/talkremind-icon.png" alt="" width="32" height="32"><b data-i18n="x019">Three Macs</b><span>TalkRemind</span></li>
+    <li><img src="/assets/tonecue-icon.png" alt="" width="32" height="32"><span data-i18n="x020">ToneCue: details on its page.</span></li>
+  </ul>
+  <p data-i18n="x021">Swapping machines? In SideSchedule, “Deactivate this Mac” frees the slot again.</p>
+  <p class="note" data-i18n="x017">A license is for your own use. Please don’t hand your key to anyone else.</p></section>
   <section class="step"><h2 data-i18n="x009">Stuck?</h2>
   <p data-i18n="x010">I read <a href="mailto:hello@didact.digital">hello@didact.digital</a> myself and answer within two working days. The details are in the <a href="/sideschedule/#faq">support section</a>.</p></section>
   <section class="step"><h2 data-i18n="x011">Want something changed?</h2>
   <p data-i18n="x012">Wishes go into the public <a href="https://github.com/4IngoJ/sideschedule/discussions">wish book</a> on GitHub. Anyone can read it, me included.</p></section>
   <section class="step"><h2 data-i18n="x013">Know someone?</h2>
   <p data-i18n="x014">If you write, stream or talk about Mac apps, there is a <a href="https://4ingoj.lemonsqueezy.com/affiliates">partner program</a>.</p></section>
-  <p class="decided" data-i18n="x015">Decided.</p>
 </main>
 <footer><div class="wrap"><a href="/" data-i18n="x016">by didact.</a></div></footer>
 <script data-goatcounter="https://didact.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
