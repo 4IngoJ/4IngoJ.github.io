@@ -96,7 +96,7 @@
 </nav>
 <main class="wrap">
   <h1 data-i18n="h1">Política de privacidade</h1>
-  <p class="updated" data-i18n="updated">Última atualização: 12 de outubro de 2026</p>
+  <p class="updated" data-i18n="updated">Última atualização: 16 de outubro de 2026</p>
 
   <p data-i18n="intro">O SideSchedule é uma aplicação para macOS desenvolvida por Ingo Jurz, Graz, Áustria. Esta página explica que dados a aplicação toca, o que sai do seu Mac e o que nunca sai.</p>
 
@@ -104,7 +104,7 @@
   <ul>
     <li data-i18n="short.li1">Os seus eventos e notas ficam no seu Mac. Nunca são enviados para lado nenhum.</li>
     <li data-i18n="short.li2">A aplicação não tem análises, rastreamento, SDK de relatórios de falhas nem publicidade.</li>
-    <li data-i18n="short.li3">As únicas ligações de rede da aplicação: validação da licença (Lemon Squeezy) e verificação de atualizações (Sparkle, via GitHub).</li>
+    <li data-i18n="short.li3">As únicas ligações de rede da aplicação: validação da licença (Lemon Squeezy) e verificação de atualizações (Sparkle, via GitHub). A isto soma-se, só se quiseres, o relatório de diagnóstico (ver abaixo).</li>
     <li data-i18n="short.li4">Este site conta as visitas com o GoatCounter, sem cookies, e não carrega outros scripts de terceiros. O ID de um parceiro vindo de um link de parceiro só fica no seu navegador se aceitar — veja «Este site» mais abaixo.</li>
   </ul>
 
@@ -127,15 +127,22 @@
   <h2 data-i18n="upd.h2">Atualizações</h2>
   <p data-i18n="upd.p">O SideSchedule verifica atualizações através do framework Sparkle, que descarrega um ficheiro appcast alojado no GitHub (github.com). O GitHub pode registar o seu endereço IP ao servir esse ficheiro, segundo a sua própria política de privacidade. Os downloads de atualizações são assinados e verificados com uma assinatura EdDSA antes da instalação.</p>
 
-  <h2 data-i18n="diag.h2">Relatórios de diagnóstico</h2>
-  <p data-i18n="diag.p">Pode enviar manualmente um relatório de diagnóstico por e-mail a partir da barra de menus ou das Preferências. Sempre por iniciativa sua: a aplicação reúne registos recentes, relatórios de falhas e informações básicas do sistema num rascunho que pode rever, editar ou apagar antes de enviar. Estes ficheiros podem conter caminhos locais e o nome de host do seu Mac. Nada é enviado automaticamente.</p>
-
+<!--diagnostic-report-->
+  <h2 id="diagnostic-report" data-i18n="dr.title">Relatório de diagnóstico</h2>
+  <p data-i18n="dr.intro">Na app podes enviar um relatório de diagnóstico à didact. Isso só acontece se clicares em «Enviar para a didact» na janela «Enviar relatório de diagnóstico». Antes, vês o texto completo. Sem o teu clique, nada é transmitido, e o teu consentimento vale apenas para esse envio.</p>
+  <p><strong data-i18n="dr.contains.h">O que contém:</strong> <span data-i18n="dr.contains.p">A app, a versão, a versão do macOS, o modelo do Mac, o idioma, a hora, algumas definições da app sem dados secretos, as últimas linhas do registo da app e, se os escreveres, o teu texto e o teu e-mail. A tua pasta pessoal aparece como «~» nos caminhos. A app não escreve no seu registo chaves de licença, títulos do calendário, conteúdo de ficheiros nem notas.</span></p>
+  <p><strong data-i18n="dr.absent.h">O que os relatórios não contêm:</strong> <span data-i18n="dr.absent.p">Nenhum identificador do dispositivo ou da instalação, nenhuma conta, nenhum endereço IP. O relatório recebe um ID do relatório aleatório, que vês depois de enviar.</span></p>
+  <p><strong data-i18n="dr.purpose.h">Finalidade e base jurídica:</strong> <span data-i18n="dr.purpose.p">Usamos o relatório para encontrar e corrigir o problema que comunicaste, e respondemos-te se indicaste um endereço. A base jurídica é o teu consentimento (art. 6.º, n.º 1, alínea a) do RGPD), que dás ao clicar em «Enviar para a didact».</span></p>
+  <p><strong data-i18n="dr.retention.h">Prazo de conservação:</strong> <span data-i18n="dr.retention.p">Os relatórios são apagados automaticamente ao fim de 90 dias.</span></p>
+  <p><strong data-i18n="dr.deletion.h">Apagamento a pedido:</strong> <span data-i18n="dr.deletion.p">Escreve para hello@didact.digital e indica o ID do relatório. Apagamos o relatório e confirmamos-te isso. Sem o ID do relatório não conseguimos associar um relatório a ti, porque não guardamos nenhum identificador.</span></p>
+  <p><strong data-i18n="dr.location.h">Onde ficam os dados:</strong> <span data-i18n="dr.location.p">Junto da Cloudflare, Inc. (Workers e D1). A base de dados está na UE. A Cloudflare pode tratar o próprio pedido nos seus servidores em todo o mundo, na periferia da rede; aplicam-se as cláusulas contratuais-tipo do contrato de subcontratação com a Cloudflare. A Cloudflare pode guardar os pedidos nos seus próprios registos de funcionamento.</span></p>
+  <!--/diagnostic-report-->
   <h2 data-i18n="never.h2">O que nunca recolhemos</h2>
   <ul>
     <li data-i18n="never.li1">Nenhuma conta nem registo</li>
     <li data-i18n="never.li2">Nenhuma análise nem estatística de utilização</li>
     <li data-i18n="never.li3">Nenhum identificador de publicidade</li>
-    <li data-i18n="never.li4">Nenhum dado de falhas, a menos que o envie por e-mail</li>
+    <li data-i18n="never.li4">Nenhum dado de falhas, a menos que envies um relatório de diagnóstico</li>
     <li data-i18n="never.li5">Nenhum conteúdo de calendário, nota ou informação de janelas</li>
   </ul>
 

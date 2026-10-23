@@ -95,7 +95,7 @@
 </nav>
 <main class="wrap">
   <h1 data-i18n="h1">Privacy Policy</h1>
-  <p class="updated" data-i18n="updated">Last updated: 12 October 2026</p>
+  <p class="updated" data-i18n="updated">Last updated: 16 October 2026</p>
 
   <p data-i18n="intro">SideSchedule is a macOS app made by Ingo Jurz, Graz, Austria. This page explains what data the app touches, what leaves your Mac, and what never does.</p>
 
@@ -103,7 +103,7 @@
   <ul>
     <li data-i18n="short.li1">Your calendar events and notes stay on your Mac. They are never uploaded anywhere.</li>
     <li data-i18n="short.li2">The app has no analytics, no tracking, no crash-reporting SDK, and no advertising.</li>
-    <li data-i18n="short.li3">The app’s only network calls: license validation (Lemon Squeezy) and update checks (Sparkle, via GitHub).</li>
+    <li data-i18n="short.li3">The app’s only network calls: license validation (Lemon Squeezy) and update checks (Sparkle, via GitHub). Also, only if you choose to, the diagnostic report (see below).</li>
     <li data-i18n="short.li4">This website counts visits with GoatCounter, without cookies, and loads no other third-party scripts. A partner’s ID from a partner link stays in your browser only if you agree — see “This website” below.</li>
   </ul>
 
@@ -126,15 +126,22 @@
   <h2 data-i18n="upd.h2">Updates</h2>
   <p data-i18n="upd.p">SideSchedule checks for updates via the Sparkle framework, which fetches an appcast file hosted on GitHub (github.com). GitHub may log your IP address as part of serving that file, subject to GitHub’s own privacy policy. Update downloads are signed and verified with an EdDSA signature before installation.</p>
 
-  <h2 data-i18n="diag.h2">Diagnostics reports</h2>
-  <p data-i18n="diag.p">You can manually send a diagnostics report by email from the menu bar or Preferences. This is always user-initiated: the app collects recent app logs, crash reports, and basic system information into a draft email that you can review — and edit or delete — before anything is sent. These files may contain local file paths and your Mac’s hostname. Nothing is ever sent automatically.</p>
-
+<!--diagnostic-report-->
+  <h2 id="diagnostic-report" data-i18n="dr.title">Diagnostic report</h2>
+  <p data-i18n="dr.intro">In the app you can send a diagnostic report to didact. This only happens when you click “Send to didact” in the “Send diagnostic report” window. You see the complete text first. Nothing is transmitted without your click, and your consent covers that one report only.</p>
+  <p><strong data-i18n="dr.contains.h">What it contains:</strong> <span data-i18n="dr.contains.p">App, version, macOS version, Mac model, language, time, some app settings without secrets, the last lines of the app’s log and, if you enter them, your note and your email address. Your home folder appears as “~” in paths. The app does not write license keys, calendar titles, file contents or notes to its log.</span></p>
+  <p><strong data-i18n="dr.absent.h">What reports do not contain:</strong> <span data-i18n="dr.absent.p">No device or install ID, no account, no IP address. The report gets a random report ID, which you see after sending.</span></p>
+  <p><strong data-i18n="dr.purpose.h">Purpose and legal basis:</strong> <span data-i18n="dr.purpose.p">We use the report to find and fix the problem you reported, and we reply if you gave an address. The legal basis is your consent (Art. 6(1)(a) GDPR), which you give by clicking “Send to didact”.</span></p>
+  <p><strong data-i18n="dr.retention.h">Retention:</strong> <span data-i18n="dr.retention.p">Reports are deleted automatically after 90 days.</span></p>
+  <p><strong data-i18n="dr.deletion.h">Deletion on request:</strong> <span data-i18n="dr.deletion.p">Write to hello@didact.digital and name the report ID. We delete the report and confirm it. Without a report ID we cannot match a report to you, because we store no identifier.</span></p>
+  <p><strong data-i18n="dr.location.h">Where the data is kept:</strong> <span data-i18n="dr.location.p">With Cloudflare, Inc. (Workers and D1). The database is located in the EU. Cloudflare may process the request itself on its servers worldwide, at the network edge; the standard contractual clauses in the data processing agreement with Cloudflare apply. Cloudflare may keep request records in its own operating logs.</span></p>
+  <!--/diagnostic-report-->
   <h2 data-i18n="never.h2">What we never collect</h2>
   <ul>
     <li data-i18n="never.li1">No account or sign-up of any kind</li>
     <li data-i18n="never.li2">No analytics or usage statistics</li>
     <li data-i18n="never.li3">No advertising identifiers</li>
-    <li data-i18n="never.li4">No crash data unless you choose to email it yourself</li>
+    <li data-i18n="never.li4">No crash data unless you choose to send a diagnostic report</li>
     <li data-i18n="never.li5">No calendar contents, notes, or window information</li>
   </ul>
 

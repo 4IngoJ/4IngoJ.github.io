@@ -96,7 +96,7 @@
 </nav>
 <main class="wrap">
   <h1 data-i18n="h1">Datenschutzerklärung</h1>
-  <p class="updated" data-i18n="updated">Zuletzt aktualisiert: 12. Oktober 2026</p>
+  <p class="updated" data-i18n="updated">Zuletzt aktualisiert: 16. Oktober 2026</p>
 
   <p data-i18n="intro">SideSchedule ist eine macOS-App von Ingo Jurz, Graz, Österreich. Diese Seite erklärt, welche Daten die App berührt, was deinen Mac verlässt und was nie.</p>
 
@@ -104,7 +104,7 @@
   <ul>
     <li data-i18n="short.li1">Kalendertermine und Notizen bleiben auf deinem Mac. Sie werden nirgendwo hochgeladen.</li>
     <li data-i18n="short.li2">Die App hat kein Analytics, kein Tracking, kein Crash-Reporting-SDK und keine Werbung.</li>
-    <li data-i18n="short.li3">Die einzigen Netzwerkzugriffe der App: Lizenzprüfung (Lemon Squeezy) und Update-Checks (Sparkle, über GitHub).</li>
+    <li data-i18n="short.li3">Die einzigen Netzwerkzugriffe der App: Lizenzprüfung (Lemon Squeezy) und Update-Checks (Sparkle, über GitHub). Dazu kommt, nur wenn du es willst, der Diagnosebericht (siehe unten).</li>
     <li data-i18n="short.li4">Diese Website zählt Besuche mit GoatCounter, ohne Cookies, und lädt sonst keine Skripte von Dritten. Die ID eines Partners aus einem Partner-Link bleibt nur in deinem Browser, wenn du zustimmst — siehe „Diese Website“ weiter unten.</li>
   </ul>
 
@@ -127,15 +127,22 @@
   <h2 data-i18n="upd.h2">Updates</h2>
   <p data-i18n="upd.p">SideSchedule prüft Updates über das Sparkle-Framework, das eine Appcast-Datei von GitHub (github.com) lädt. GitHub kann dabei deine IP-Adresse protokollieren; es gilt die Datenschutzerklärung von GitHub. Update-Downloads sind signiert und werden vor der Installation per EdDSA-Signatur verifiziert.</p>
 
-  <h2 data-i18n="diag.h2">Diagnoseberichte</h2>
-  <p data-i18n="diag.p">Du kannst aus der Menüleiste oder den Einstellungen manuell einen Diagnosebericht per E-Mail schicken. Immer nur auf deine Initiative: Die App sammelt aktuelle Logs, Crash-Reports und Basis-Systeminfos in einem E-Mail-Entwurf, den du vor dem Senden prüfen, bearbeiten oder löschen kannst. Diese Dateien können lokale Pfade und den Hostnamen deines Macs enthalten. Automatisch wird nie etwas gesendet.</p>
-
+<!--diagnostic-report-->
+  <h2 id="diagnostic-report" data-i18n="dr.title">Diagnosebericht</h2>
+  <p data-i18n="dr.intro">In der App kannst du einen Diagnosebericht an didact senden. Das passiert nur, wenn du im Fenster „Diagnosebericht senden“ auf „Senden an didact“ klickst. Davor siehst du den vollständigen Text. Ohne deinen Klick wird nichts übertragen, und deine Zustimmung gilt nur für diese eine Sendung.</p>
+  <p><strong data-i18n="dr.contains.h">Was enthalten ist:</strong> <span data-i18n="dr.contains.p">App, Version, macOS-Version, Mac-Modell, Sprache, Zeitpunkt, einige App-Einstellungen ohne Geheimnisse, die letzten Zeilen des Programmprotokolls und, wenn du sie einträgst, dein Text und deine E-Mail-Adresse. Dein Benutzerordner erscheint in Pfaden als „~“. Die App schreibt keine Lizenzschlüssel, Kalendertitel, Dateiinhalte oder Notizen ins Protokoll.</span></p>
+  <p><strong data-i18n="dr.absent.h">Was nicht in den Berichten steht:</strong> <span data-i18n="dr.absent.p">Keine Geräte- oder Installations-ID, kein Konto, keine IP-Adresse. Der Bericht erhält eine zufällige Berichts-ID, die du nach dem Senden siehst.</span></p>
+  <p><strong data-i18n="dr.purpose.h">Zweck und Rechtsgrundlage:</strong> <span data-i18n="dr.purpose.p">Wir nutzen den Bericht, um das gemeldete Problem zu finden und zu beheben, und antworten dir, wenn du eine Adresse angegeben hast. Rechtsgrundlage ist deine Einwilligung (Art. 6 Abs. 1 lit. a DSGVO), die du mit dem Klick auf „Senden an didact“ erteilst.</span></p>
+  <p><strong data-i18n="dr.retention.h">Speicherdauer:</strong> <span data-i18n="dr.retention.p">Berichte werden nach 90 Tagen automatisch gelöscht.</span></p>
+  <p><strong data-i18n="dr.deletion.h">Löschen auf Anfrage:</strong> <span data-i18n="dr.deletion.p">Schreib an hello@didact.digital und nenne die Berichts-ID. Wir löschen den Bericht und bestätigen dir das. Ohne Berichts-ID können wir einen Bericht nicht zuordnen, weil wir keine Kennung speichern.</span></p>
+  <p><strong data-i18n="dr.location.h">Wo die Daten liegen:</strong> <span data-i18n="dr.location.p">Bei Cloudflare, Inc. (Workers und D1). Die Datenbank liegt in der EU. Die Anfrage selbst kann Cloudflare weltweit an seinen Servern am Rand verarbeiten; dafür gelten die Standardvertragsklauseln im Vertrag zur Auftragsverarbeitung mit Cloudflare. Cloudflare kann Anfragen in eigenen Betriebsprotokollen führen.</span></p>
+  <!--/diagnostic-report-->
   <h2 data-i18n="never.h2">Was wir nie sammeln</h2>
   <ul>
     <li data-i18n="never.li1">Kein Account, keine Registrierung</li>
     <li data-i18n="never.li2">Kein Analytics, keine Nutzungsstatistiken</li>
     <li data-i18n="never.li3">Keine Werbe-Kennungen</li>
-    <li data-i18n="never.li4">Keine Crash-Daten, außer du schickst sie selbst per E-Mail</li>
+    <li data-i18n="never.li4">Keine Crash-Daten, außer du sendest einen Diagnosebericht</li>
     <li data-i18n="never.li5">Keine Kalenderinhalte, Notizen oder Fensterinformationen</li>
   </ul>
 
