@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ToneCue: privacy</title>
-<meta name="description" content="Cosa fanno ToneCue e il suo sito con i dati: i nomi dei dispositivi audio e le scene restano sul tuo Mac, l’app non ha analytics e le chiamate di rete sono la convalida della licenza e il controllo degli aggiornamenti.">
+<meta name="description" content="Cosa fanno ToneCue e il suo sito con i dati: i nomi dei dispositivi audio e le scene restano sul tuo Mac, l’app non ha analytics e le chiamate di rete sono la convalida della licenza, il controllo degli aggiornamenti e, solo se lo invii, un rapporto diagnostico.">
 <link rel="canonical" href="https://didact.digital/tonecue/it/privacy.html">
 <!--hreflang-->
 <link rel="alternate" hreflang="en" href="https://didact.digital/tonecue/privacy.html">
@@ -19,7 +19,7 @@
 <meta property="og:locale" content="it_IT">
 <meta property="og:url" content="https://didact.digital/tonecue/it/privacy.html">
 <meta property="og:title" content="ToneCue: privacy">
-<meta property="og:description" content="Cosa fanno ToneCue e il suo sito con i dati: i nomi dei dispositivi audio e le scene restano sul tuo Mac, l’app non ha analytics e le chiamate di rete sono la convalida della licenza e il controllo degli aggiornamenti.">
+<meta property="og:description" content="Cosa fanno ToneCue e il suo sito con i dati: i nomi dei dispositivi audio e le scene restano sul tuo Mac, l’app non ha analytics e le chiamate di rete sono la convalida della licenza, il controllo degli aggiornamenti e, solo se lo invii, un rapporto diagnostico.">
 <meta property="og:image" content="https://didact.digital/assets/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
@@ -82,10 +82,10 @@
 </div></nav>
 <main class="wrap">
   <h1 style="font-size:40px" data-i18n="q001">Privacy</h1>
-  <p class="label" data-i18n="q002">Ultimo aggiornamento: 12 ottobre 2026</p>
+  <p class="label" data-i18n="q002">Ultimo aggiornamento: 16 ottobre 2026</p>
   <p style="margin-top:16px" data-i18n="q003">ToneCue è un’app per macOS sviluppata da Ingo Jurz, Graz, Austria. Questa pagina spiega quali dati l’app tocca, cosa lascia il tuo Mac e cosa non lo lascia mai.</p>
   <h2 data-i18n="q004">In breve</h2>
-  <p data-i18n="q005">ToneCue cambia i dispositivi audio che macOS usa. Non registra, non memorizza e non elabora il tuo audio. L’app non ha account, né analytics né tracciamento. Le sue uniche chiamate di rete sono la convalida della licenza (Lemon Squeezy) e il controllo degli aggiornamenti (Sparkle, tramite GitHub).</p>
+  <p data-i18n="q005">ToneCue cambia i dispositivi audio che macOS usa. Non registra, non memorizza e non elabora il tuo audio. L’app non ha account, né analytics né tracciamento. Le sue uniche chiamate di rete sono la convalida della licenza (Lemon Squeezy) e il controllo degli aggiornamenti (Sparkle, tramite GitHub). A questo si aggiunge, solo se vuoi, il rapporto diagnostico (vedi sotto).</p>
   <h2 data-i18n="q006">Dispositivi audio</h2>
   <p data-i18n="q007">ToneCue legge l’elenco dei dispositivi audio di ingresso e di uscita con i loro nomi e modifica quelli predefiniti del sistema. Le tue scene, i nomi dei dispositivi e le impostazioni sono salvati in un file sul tuo Mac.</p>
   <h2 data-i18n="q008">Accesso al calendario (facoltativo)</h2>
@@ -103,6 +103,16 @@
   <p><button type="button" id="aff-withdraw" data-i18n="q019w">Revoca il consenso al tracciamento dei partner</button> <span id="aff-withdraw-msg" role="status"></span></p>
   <h2 data-i18n="q018v">Statistiche delle visite</h2>
   <p data-i18n="q018s">Questo sito conta le visite con GoatCounter, un servizio di statistiche che funziona senza cookie. Così vediamo quali pagine vengono lette, da quali link arrivano i visitatori e quante volte vengono cliccati i pulsanti di download e di acquisto. I dati non servono né alla pubblicità né a creare profili di singole persone. Quando apri una pagina, il tuo browser invia a GoatCounter l’indirizzo della pagina, il sito di provenienza, i parametri di campagna del link (per esempio utm_source), il browser e le dimensioni dello schermo, e la tua posizione approssimativa. Secondo GoatCounter non vengono memorizzati né indirizzi IP né stringhe user-agent e non vengono impostati cookie; non vieni riconosciuto tra una visita e l’altra né tra siti diversi. Un clic su un link di download o di acquisto viene contato come evento con un nome fisso, senza dati su di te. GoatCounter è gestito da Martin Tournoij (Irlanda); i server sono presso Hetzner Online GmbH in Finlandia e Germania. La base giuridica è il nostro legittimo interesse a capire come viene usato il sito (art. 6, par. 1, lett. f GDPR). Puoi opporti in qualsiasi momento: <a href="mailto:hello@didact.digital">hello@didact.digital</a>. Anche bloccare lo script nel browser funziona; il sito resta pienamente utilizzabile. Le app sono separate: non contengono analytics e non inviano dati di utilizzo.</p>
+<!--diagnostic-report-->
+  <h2 id="diagnostic-report" data-i18n="dr.title">Rapporto diagnostico</h2>
+  <p data-i18n="dr.intro">Nell’app puoi inviare un rapporto diagnostico a didact. Succede solo se fai clic su «Invia a didact» nella finestra «Invia rapporto diagnostico». Prima vedi il testo completo. Senza il tuo clic non viene trasmesso nulla, e il tuo consenso vale solo per questo invio.</p>
+  <p><strong data-i18n="dr.contains.h">Cosa contiene:</strong> <span data-i18n="dr.contains.p">App, versione, versione di macOS, modello di Mac, lingua, orario, alcune impostazioni dell’app senza dati segreti, le ultime righe del log dell’app e, se li inserisci, il tuo testo e il tuo indirizzo e-mail. La tua cartella utente compare come «~» nei percorsi. L’app non scrive nel suo log chiavi di licenza, titoli del calendario, contenuto dei file o note.</span></p>
+  <p><strong data-i18n="dr.absent.h">Cosa non contengono i rapporti:</strong> <span data-i18n="dr.absent.p">Nessun ID del dispositivo o dell’installazione, nessun account, nessun indirizzo IP. Il rapporto riceve un ID rapporto casuale, che vedi dopo l’invio.</span></p>
+  <p><strong data-i18n="dr.purpose.h">Finalità e base giuridica:</strong> <span data-i18n="dr.purpose.p">Usiamo il rapporto per trovare e risolvere il problema segnalato, e ti rispondiamo se hai indicato un indirizzo. La base giuridica è il tuo consenso (art. 6, paragrafo 1, lettera a del GDPR), che dai facendo clic su «Invia a didact».</span></p>
+  <p><strong data-i18n="dr.retention.h">Periodo di conservazione:</strong> <span data-i18n="dr.retention.p">I rapporti vengono eliminati automaticamente dopo 90 giorni.</span></p>
+  <p><strong data-i18n="dr.deletion.h">Cancellazione su richiesta:</strong> <span data-i18n="dr.deletion.p">Scrivi a hello@didact.digital indicando l’ID rapporto. Eliminiamo il rapporto e te lo confermiamo. Senza l’ID rapporto non possiamo associare un rapporto a te, perché non conserviamo alcun identificativo.</span></p>
+  <p><strong data-i18n="dr.location.h">Dove si trovano i dati:</strong> <span data-i18n="dr.location.p">Presso Cloudflare, Inc. (Workers e D1). Il database si trova nell’UE. Cloudflare può elaborare la richiesta stessa sui suoi server in tutto il mondo, ai margini della rete; si applicano le clausole contrattuali tipo dell’accordo sul trattamento dei dati con Cloudflare. Cloudflare può registrare le richieste nei propri log operativi.</span></p>
+  <!--/diagnostic-report-->
   <h2 data-i18n="q020">I tuoi diritti</h2>
   <p data-i18n="q021">Puoi chiedere l’accesso, la rettifica o la cancellazione dei dati che conserviamo su di te scrivendo a <a href="mailto:hello@didact.digital">hello@didact.digital</a>. Puoi anche presentare un reclamo all’autorità austriaca per la protezione dei dati (Datenschutzbehörde, dsb.gv.at).</p>
   <h2 data-i18n="q022">Titolare del trattamento</h2>

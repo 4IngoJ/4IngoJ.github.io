@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ToneCue: Privacy</title>
-<meta name="description" content="What ToneCue and its website do with data: audio device names and scenes stay on your Mac, the app has no analytics, and the network calls are license checks and update checks.">
+<meta name="description" content="What ToneCue and its website do with data: audio device names and scenes stay on your Mac, the app has no analytics, and the network calls are license checks, update checks and, only if you send one, a diagnostic report.">
 <link rel="canonical" href="https://didact.digital/tonecue/privacy.html">
 <!--hreflang-->
 <link rel="alternate" hreflang="en" href="https://didact.digital/tonecue/privacy.html">
@@ -19,7 +19,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:url" content="https://didact.digital/tonecue/privacy.html">
 <meta property="og:title" content="Privacy · ToneCue">
-<meta property="og:description" content="What ToneCue and its website do with data: audio device names and scenes stay on your Mac, the app has no analytics, and the network calls are license checks and update checks.">
+<meta property="og:description" content="What ToneCue and its website do with data: audio device names and scenes stay on your Mac, the app has no analytics, and the network calls are license checks, update checks and, only if you send one, a diagnostic report.">
 <meta property="og:image" content="https://didact.digital/assets/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
@@ -82,10 +82,10 @@
 </div></nav>
 <main class="wrap">
   <h1 style="font-size:40px" data-i18n="q001">Privacy</h1>
-  <p class="label" data-i18n="q002">Last updated: 12 October 2026</p>
+  <p class="label" data-i18n="q002">Last updated: 16 October 2026</p>
   <p style="margin-top:16px" data-i18n="q003">ToneCue is a macOS app made by Ingo Jurz, Graz, Austria. This page explains what data the app touches, what leaves your Mac, and what never does.</p>
   <h2 data-i18n="q004">The short version</h2>
-  <p data-i18n="q005">ToneCue changes which audio devices macOS uses. It does not record, store or process your sound. The app has no account, no analytics and no tracking. Its only network calls are license validation (Lemon Squeezy) and update checks (Sparkle, via GitHub).</p>
+  <p data-i18n="q005">ToneCue changes which audio devices macOS uses. It does not record, store or process your sound. The app has no account, no analytics and no tracking. Its only network calls are license validation (Lemon Squeezy) and update checks (Sparkle, via GitHub). Also, only if you choose to, the diagnostic report (see below).</p>
   <h2 data-i18n="q006">Audio devices</h2>
   <p data-i18n="q007">ToneCue reads the list of audio input and output devices and their names, and switches the system defaults. Your scenes, device names and settings are stored in a file on your Mac.</p>
   <h2 data-i18n="q008">Calendar access (optional)</h2>
@@ -103,6 +103,16 @@
   <p><button type="button" id="aff-withdraw" data-i18n="q019w">Withdraw consent for partner tracking</button> <span id="aff-withdraw-msg" role="status"></span></p>
   <h2 data-i18n="q018v">Visit statistics</h2>
   <p data-i18n="q018s">This website counts visits with GoatCounter, an analytics service that works without cookies. We use it to see which pages are read, which links bring visitors here, and how often the download and purchase buttons are clicked. The data is not used for advertising and not to build profiles of individual people. When you open a page, your browser sends GoatCounter the page address, the referring site, the campaign tags in the link (for example utm_source), your browser and screen size, and your approximate location. According to GoatCounter, it stores no IP addresses or user-agent strings and sets no cookies, so you are not recognised across visits or across sites. A click on a download or purchase link is counted as an event with a fixed name, without anything about you. GoatCounter is run by Martin Tournoij (Ireland); its servers are at Hetzner Online GmbH in Finland and Germany. The legal basis is our legitimate interest in understanding how the website is used (Art. 6(1)(f) GDPR). You can object at any time: <a href="mailto:hello@didact.digital">hello@didact.digital</a>. Blocking the script in your browser also works, and the site stays fully usable. The apps are separate: they contain no analytics and send no usage data.</p>
+<!--diagnostic-report-->
+  <h2 id="diagnostic-report" data-i18n="dr.title">Diagnostic report</h2>
+  <p data-i18n="dr.intro">In the app you can send a diagnostic report to didact. This only happens when you click “Send to didact” in the “Send diagnostic report” window. You see the complete text first. Nothing is transmitted without your click, and your consent covers that one report only.</p>
+  <p><strong data-i18n="dr.contains.h">What it contains:</strong> <span data-i18n="dr.contains.p">App, version, macOS version, Mac model, language, time, some app settings without secrets, the last lines of the app’s log and, if you enter them, your note and your email address. Your home folder appears as “~” in paths. The app does not write license keys, calendar titles, file contents or notes to its log.</span></p>
+  <p><strong data-i18n="dr.absent.h">What reports do not contain:</strong> <span data-i18n="dr.absent.p">No device or install ID, no account, no IP address. The report gets a random report ID, which you see after sending.</span></p>
+  <p><strong data-i18n="dr.purpose.h">Purpose and legal basis:</strong> <span data-i18n="dr.purpose.p">We use the report to find and fix the problem you reported, and we reply if you gave an address. The legal basis is your consent (Art. 6(1)(a) GDPR), which you give by clicking “Send to didact”.</span></p>
+  <p><strong data-i18n="dr.retention.h">Retention:</strong> <span data-i18n="dr.retention.p">Reports are deleted automatically after 90 days.</span></p>
+  <p><strong data-i18n="dr.deletion.h">Deletion on request:</strong> <span data-i18n="dr.deletion.p">Write to hello@didact.digital and name the report ID. We delete the report and confirm it. Without a report ID we cannot match a report to you, because we store no identifier.</span></p>
+  <p><strong data-i18n="dr.location.h">Where the data is kept:</strong> <span data-i18n="dr.location.p">With Cloudflare, Inc. (Workers and D1). The database is located in the EU. Cloudflare may process the request itself on its servers worldwide, at the network edge; the standard contractual clauses in the data processing agreement with Cloudflare apply. Cloudflare may keep request records in its own operating logs.</span></p>
+  <!--/diagnostic-report-->
   <h2 data-i18n="q020">Your rights</h2>
   <p data-i18n="q021">You can ask for access to, correction of, or deletion of data we hold about you by writing to <a href="mailto:hello@didact.digital">hello@didact.digital</a>. You can also complain to the Austrian data protection authority (Datenschutzbehörde, dsb.gv.at).</p>
   <h2 data-i18n="q022">Controller</h2>

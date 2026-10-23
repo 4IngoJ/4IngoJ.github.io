@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Confidentialité · TalkRemind</title>
-<meta name="description" content="Ce que TalkRemind et son site font des données : les événements de frappe restent sur votre Mac, l’app n’a pas d’analytique, et les appels réseau se limitent à la validation de la licence et aux mises à jour.">
+<meta name="description" content="Ce que TalkRemind et son site font des données : les événements de frappe restent sur votre Mac, l’app n’a pas d’analytique, et les appels réseau sont la validation de la licence, les mises à jour et, seulement si tu l’envoies, un rapport de diagnostic.">
 <link rel="canonical" href="https://didact.digital/talkremind/fr/privacy.html">
 <!--hreflang-->
 <link rel="alternate" hreflang="en" href="https://didact.digital/talkremind/privacy.html">
@@ -19,7 +19,7 @@
 <meta property="og:locale" content="fr_FR">
 <meta property="og:url" content="https://didact.digital/talkremind/fr/privacy.html">
 <meta property="og:title" content="Confidentialité · TalkRemind">
-<meta property="og:description" content="Ce que TalkRemind et son site font des données : les événements de frappe restent sur votre Mac, l’app n’a pas d’analytique, et les appels réseau se limitent à la validation de la licence et aux mises à jour.">
+<meta property="og:description" content="Ce que TalkRemind et son site font des données : les événements de frappe restent sur votre Mac, l’app n’a pas d’analytique, et les appels réseau sont la validation de la licence, les mises à jour et, seulement si tu l’envoies, un rapport de diagnostic.">
 <meta property="og:image" content="https://didact.digital/assets/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
@@ -82,10 +82,10 @@
 </div></nav>
 <main class="wrap">
   <h1 style="font-size:40px" data-i18n="p001">Confidentialité</h1>
-  <p class="label" data-i18n="p002">Dernière mise à jour : 12 octobre 2026</p>
+  <p class="label" data-i18n="p002">Dernière mise à jour : 16 octobre 2026</p>
   <p style="margin-top:16px" data-i18n="p003">TalkRemind est une application macOS développée par Ingo Jurz, Graz, Autriche. Cette page explique quelles données l’application touche, ce qui quitte votre Mac et ce qui ne le quitte jamais.</p>
   <h2 data-i18n="p004">La version courte</h2>
-  <p data-i18n="p005">Les événements de frappe et de dictée restent sur votre Mac. TalkRemind observe quand vous tapez et combien, jamais les caractères. L’application n’a ni analytique ni suivi. Ses seuls appels réseau sont la validation de la licence (Lemon Squeezy) et la recherche de mises à jour (Sparkle, via GitHub).</p>
+  <p data-i18n="p005">Les événements de frappe et de dictée restent sur votre Mac. TalkRemind observe quand vous tapez et combien, jamais les caractères. L’application n’a ni analytique ni suivi. Ses seuls appels réseau sont la validation de la licence (Lemon Squeezy) et la recherche de mises à jour (Sparkle, via GitHub). S’y ajoute, seulement si tu le veux, le rapport de diagnostic (voir plus bas).</p>
   <h2 data-i18n="p006">Rythme de frappe et accès à l’accessibilité</h2>
   <p data-i18n="p007">TalkRemind utilise l’API d’accessibilité de macOS pour voir le rythme et la quantité de votre frappe. Il n’enregistre ni ne stocke les caractères que vous tapez et ne lit pas le contenu des fenêtres. Vos statistiques (par exemple votre part de dictée et la tendance sur sept jours) sont stockées localement sur votre Mac.</p>
   <h2 data-i18n="p008">Synchronisation iCloud facultative</h2>
@@ -101,6 +101,16 @@
   <p><button type="button" id="aff-withdraw" data-i18n="p017w">Retirer le consentement au suivi des partenaires</button> <span id="aff-withdraw-msg" role="status"></span></p>
   <h2 data-i18n="p016v">Statistiques de visite</h2>
   <p data-i18n="p016s">Ce site compte les visites avec GoatCounter, un service de statistiques qui fonctionne sans cookies. Nous voyons ainsi quelles pages sont lues, quels liens amènent les visiteurs et combien de fois les boutons de téléchargement et d’achat sont cliqués. Ces données ne servent ni à la publicité ni à établir des profils de personnes. Quand vous ouvrez une page, votre navigateur envoie à GoatCounter l’adresse de la page, le site de provenance, les paramètres de campagne du lien (par exemple utm_source), le navigateur et la taille d’écran ainsi que votre localisation approximative. Selon GoatCounter, ni adresses IP ni chaînes user-agent ne sont enregistrées et aucun cookie n’est déposé ; vous n’êtes reconnu ni d’une visite à l’autre ni d’un site à l’autre. Un clic sur un lien de téléchargement ou d’achat est compté comme un événement portant un nom fixe, sans aucune information sur vous. GoatCounter est exploité par Martin Tournoij (Irlande) ; ses serveurs se trouvent chez Hetzner Online GmbH en Finlande et en Allemagne. La base juridique est notre intérêt légitime à comprendre l’usage du site (art. 6, par. 1, point f du RGPD). Vous pouvez vous y opposer à tout moment : <a href="mailto:hello@didact.digital">hello@didact.digital</a>. Bloquer le script dans votre navigateur fonctionne aussi ; le site reste pleinement utilisable. Les apps sont distinctes : elles ne contiennent aucune analyse et n’envoient aucune donnée d’usage.</p>
+<!--diagnostic-report-->
+  <h2 id="diagnostic-report" data-i18n="dr.title">Rapport de diagnostic</h2>
+  <p data-i18n="dr.intro">Dans l’app, tu peux envoyer un rapport de diagnostic à didact. Cela n’arrive que si tu cliques sur « Envoyer à didact » dans la fenêtre « Envoyer un rapport de diagnostic ». Avant, tu vois le texte complet. Sans ton clic, rien n’est transmis, et ton accord ne vaut que pour cet envoi.</p>
+  <p><strong data-i18n="dr.contains.h">Ce que le rapport contient :</strong> <span data-i18n="dr.contains.p">L’app, la version, la version de macOS, le modèle de Mac, la langue, l’heure, quelques réglages de l’app sans données secrètes, les dernières lignes du journal de l’app et, si tu les saisis, ton texte et ton adresse e-mail. Ton dossier personnel apparaît comme « ~ » dans les chemins. L’app n’écrit dans son journal ni clé de licence, ni titre de calendrier, ni contenu de fichier, ni note.</span></p>
+  <p><strong data-i18n="dr.absent.h">Ce que les rapports ne contiennent pas :</strong> <span data-i18n="dr.absent.p">Pas d’identifiant d’appareil ou d’installation, pas de compte, pas d’adresse IP. Le rapport reçoit un identifiant de rapport aléatoire, que tu vois après l’envoi.</span></p>
+  <p><strong data-i18n="dr.purpose.h">Finalité et base juridique :</strong> <span data-i18n="dr.purpose.p">Nous utilisons le rapport pour trouver et corriger le problème signalé, et nous te répondons si tu as indiqué une adresse. La base juridique est ton consentement (art. 6, par. 1, point a du RGPD), que tu donnes en cliquant sur « Envoyer à didact ».</span></p>
+  <p><strong data-i18n="dr.retention.h">Durée de conservation :</strong> <span data-i18n="dr.retention.p">Les rapports sont supprimés automatiquement après 90 jours.</span></p>
+  <p><strong data-i18n="dr.deletion.h">Suppression sur demande :</strong> <span data-i18n="dr.deletion.p">Écris à hello@didact.digital en indiquant l’identifiant de rapport. Nous supprimons le rapport et te le confirmons. Sans identifiant de rapport, nous ne pouvons pas associer un rapport à toi, car nous ne conservons aucun identifiant.</span></p>
+  <p><strong data-i18n="dr.location.h">Où se trouvent les données :</strong> <span data-i18n="dr.location.p">Chez Cloudflare, Inc. (Workers et D1). La base de données se trouve dans l’UE. Cloudflare peut traiter la requête elle-même sur ses serveurs dans le monde entier, en périphérie du réseau ; les clauses contractuelles types du contrat de sous-traitance avec Cloudflare s’appliquent. Cloudflare peut consigner les requêtes dans ses propres journaux d’exploitation.</span></p>
+  <!--/diagnostic-report-->
   <h2 data-i18n="p018">Vos droits</h2>
   <p data-i18n="p019">Vous pouvez demander l’accès, la rectification ou la suppression des données que nous détenons sur vous en écrivant à <a href="mailto:hello@didact.digital">hello@didact.digital</a>. Vous pouvez aussi déposer une réclamation auprès de l’autorité autrichienne de protection des données (Datenschutzbehörde, dsb.gv.at).</p>
   <h2 data-i18n="p020">Responsable du traitement</h2>

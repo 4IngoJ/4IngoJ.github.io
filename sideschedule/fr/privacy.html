@@ -96,7 +96,7 @@
 </nav>
 <main class="wrap">
   <h1 data-i18n="h1">Politique de confidentialité</h1>
-  <p class="updated" data-i18n="updated">Dernière mise à jour : 12 octobre 2026</p>
+  <p class="updated" data-i18n="updated">Dernière mise à jour : 16 octobre 2026</p>
 
   <p data-i18n="intro">SideSchedule est une application macOS développée par Ingo Jurz, Graz, Autriche. Cette page explique quelles données l’application touche, ce qui quitte votre Mac et ce qui n’en sort jamais.</p>
 
@@ -104,7 +104,7 @@
   <ul>
     <li data-i18n="short.li1">Vos événements et vos notes restent sur votre Mac. Ils ne sont jamais téléversés.</li>
     <li data-i18n="short.li2">L’application n’a ni analyse, ni suivi, ni SDK de rapport de plantage, ni publicité.</li>
-    <li data-i18n="short.li3">Les seuls appels réseau de l’application : validation de licence (Lemon Squeezy) et vérification des mises à jour (Sparkle, via GitHub).</li>
+    <li data-i18n="short.li3">Les seuls appels réseau de l’application : validation de licence (Lemon Squeezy) et vérification des mises à jour (Sparkle, via GitHub). S’y ajoute, seulement si tu le veux, le rapport de diagnostic (voir plus bas).</li>
     <li data-i18n="short.li4">Ce site compte les visites avec GoatCounter, sans cookies, et ne charge aucun autre script tiers. L’identifiant d’un partenaire issu d’un lien partenaire ne reste dans votre navigateur que si vous l’acceptez — voir « Ce site web » plus bas.</li>
   </ul>
 
@@ -127,15 +127,22 @@
   <h2 data-i18n="upd.h2">Mises à jour</h2>
   <p data-i18n="upd.p">SideSchedule vérifie les mises à jour via le framework Sparkle, qui récupère un fichier appcast hébergé sur GitHub (github.com). GitHub peut journaliser votre adresse IP lors de cette requête ; la politique de confidentialité de GitHub s’applique. Les téléchargements sont signés et vérifiés par une signature EdDSA avant installation.</p>
 
-  <h2 data-i18n="diag.h2">Rapports de diagnostic</h2>
-  <p data-i18n="diag.p">Vous pouvez envoyer manuellement un rapport de diagnostic par e-mail depuis la barre de menus ou les Réglages. Toujours à votre initiative : l’application rassemble les journaux récents, les rapports de plantage et des informations système de base dans un brouillon que vous pouvez relire, modifier ou supprimer avant envoi. Ces fichiers peuvent contenir des chemins locaux et le nom d’hôte de votre Mac. Rien n’est jamais envoyé automatiquement.</p>
-
+<!--diagnostic-report-->
+  <h2 id="diagnostic-report" data-i18n="dr.title">Rapport de diagnostic</h2>
+  <p data-i18n="dr.intro">Dans l’app, tu peux envoyer un rapport de diagnostic à didact. Cela n’arrive que si tu cliques sur « Envoyer à didact » dans la fenêtre « Envoyer un rapport de diagnostic ». Avant, tu vois le texte complet. Sans ton clic, rien n’est transmis, et ton accord ne vaut que pour cet envoi.</p>
+  <p><strong data-i18n="dr.contains.h">Ce que le rapport contient :</strong> <span data-i18n="dr.contains.p">L’app, la version, la version de macOS, le modèle de Mac, la langue, l’heure, quelques réglages de l’app sans données secrètes, les dernières lignes du journal de l’app et, si tu les saisis, ton texte et ton adresse e-mail. Ton dossier personnel apparaît comme « ~ » dans les chemins. L’app n’écrit dans son journal ni clé de licence, ni titre de calendrier, ni contenu de fichier, ni note.</span></p>
+  <p><strong data-i18n="dr.absent.h">Ce que les rapports ne contiennent pas :</strong> <span data-i18n="dr.absent.p">Pas d’identifiant d’appareil ou d’installation, pas de compte, pas d’adresse IP. Le rapport reçoit un identifiant de rapport aléatoire, que tu vois après l’envoi.</span></p>
+  <p><strong data-i18n="dr.purpose.h">Finalité et base juridique :</strong> <span data-i18n="dr.purpose.p">Nous utilisons le rapport pour trouver et corriger le problème signalé, et nous te répondons si tu as indiqué une adresse. La base juridique est ton consentement (art. 6, par. 1, point a du RGPD), que tu donnes en cliquant sur « Envoyer à didact ».</span></p>
+  <p><strong data-i18n="dr.retention.h">Durée de conservation :</strong> <span data-i18n="dr.retention.p">Les rapports sont supprimés automatiquement après 90 jours.</span></p>
+  <p><strong data-i18n="dr.deletion.h">Suppression sur demande :</strong> <span data-i18n="dr.deletion.p">Écris à hello@didact.digital en indiquant l’identifiant de rapport. Nous supprimons le rapport et te le confirmons. Sans identifiant de rapport, nous ne pouvons pas associer un rapport à toi, car nous ne conservons aucun identifiant.</span></p>
+  <p><strong data-i18n="dr.location.h">Où se trouvent les données :</strong> <span data-i18n="dr.location.p">Chez Cloudflare, Inc. (Workers et D1). La base de données se trouve dans l’UE. Cloudflare peut traiter la requête elle-même sur ses serveurs dans le monde entier, en périphérie du réseau ; les clauses contractuelles types du contrat de sous-traitance avec Cloudflare s’appliquent. Cloudflare peut consigner les requêtes dans ses propres journaux d’exploitation.</span></p>
+  <!--/diagnostic-report-->
   <h2 data-i18n="never.h2">Ce que nous ne collectons jamais</h2>
   <ul>
     <li data-i18n="never.li1">Aucun compte ni inscription</li>
     <li data-i18n="never.li2">Aucune analyse ni statistique d’usage</li>
     <li data-i18n="never.li3">Aucun identifiant publicitaire</li>
-    <li data-i18n="never.li4">Aucune donnée de plantage, sauf si vous l’envoyez vous-même par e-mail</li>
+    <li data-i18n="never.li4">Aucune donnée de plantage, sauf si tu envoies un rapport de diagnostic</li>
     <li data-i18n="never.li5">Aucun contenu de calendrier, note ou information de fenêtre</li>
   </ul>
 
