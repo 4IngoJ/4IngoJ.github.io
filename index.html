@@ -17,13 +17,13 @@
 <meta property="og:url" content="https://didact.digital/">
 <meta property="og:title" content="didact.digital: small Mac apps you pay for once">
 <meta property="og:description" content="SideSchedule, TalkRemind and ToneCue. Each does one job. Pay once, no account, no tracking.">
-<meta property="og:image" content="https://didact.digital/assets/og-image.png">
+<meta property="og:image" content="https://didact.digital/assets/v2/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="didact.digital wordmark">
 <meta property="og:site_name" content="didact.digital">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://didact.digital/assets/og-image.png">
+<meta name="twitter:image" content="https://didact.digital/assets/v2/og-image.png">
 <meta name="theme-color" content="#FAF9F7" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#131209" media="(prefers-color-scheme: dark)">
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
@@ -235,16 +235,14 @@ footer .sign .label{padding-bottom:16px}
 footer .fine{max-width:680px}
 
 
-/* The full stop as an object: a photographed ink sphere beside the headline */
-.hero{position:relative;overflow:hidden;isolation:isolate}
-.orb{position:absolute;z-index:-1;right:-48px;top:96px;width:min(48vw,720px);pointer-events:none;-webkit-mask-image:radial-gradient(closest-side,#000 70%,transparent);mask-image:radial-gradient(closest-side,#000 70%,transparent);animation:orb 1.6s var(--ease) .2s both}
-.orb img{width:100%;height:auto;mix-blend-mode:multiply}
-@media (prefers-color-scheme:dark){.orb img{mix-blend-mode:normal}}
-@keyframes orb{from{opacity:0;transform:translateY(48px) scale(.92)}to{opacity:1;transform:none}}
-.orb-inner{will-change:transform}
-@media (max-width:1023px){.orb{width:420px;right:-160px;top:64px;opacity:.9}}
-@media (max-width:639px){.orb{width:280px;right:-96px;top:72px}}
-.hero .wrap{position:relative}
+/* The full stop as an object: the period of the headline is a photographed ink sphere.
+   The sphere fills ~46% of its image, centred, so the box is oversized and pulled back with negative margins. */
+.hero{position:relative;isolation:isolate}
+.period{display:inline-block;position:relative;width:.82em;height:0;margin-left:.14em;vertical-align:baseline;animation:land 1.2s var(--ease) .5s both}
+.period picture{position:absolute;left:-.49em;bottom:-.51em;width:1.8em;height:1.8em;-webkit-mask-image:radial-gradient(closest-side,#000 55%,transparent 78%);mask-image:radial-gradient(closest-side,#000 55%,transparent 78%);}
+.period img{width:100%;height:100%;mix-blend-mode:multiply}
+/* In the dark the ink turns to light: the same photo, inverted and screened */
+@media (prefers-color-scheme:dark){.period img{filter:invert(1);mix-blend-mode:screen}}
 /* Letterpress behind the tagline */
 .tagline{position:relative;overflow:hidden;isolation:isolate}
 .tagline .press{position:absolute;inset:0;z-index:-1;-webkit-mask-image:linear-gradient(#0000,#000 25%,#000 75%,#0000);mask-image:linear-gradient(#0000,#000 25%,#000 75%,#0000)}
@@ -317,9 +315,8 @@ footer .fine{max-width:680px}
 
 <main id="main">
   <header class="hero">
-    <div class="orb" aria-hidden="true"><div class="orb-inner"><picture><source srcset="/assets/v2/sphere-dark.webp" media="(prefers-color-scheme: dark)"><img src="/assets/v2/sphere-light.webp" alt="" width="1200" height="1200" fetchpriority="high"></picture></div></div>
     <div class="wrap">
-      <h1><span class="line">Apps for high</span><span class="line">performing</span><span class="line">people<span class="stop" aria-hidden="true"></span><span class="sr">.</span></span></h1>
+      <h1><span class="line">Apps for high</span><span class="line">performing</span><span class="line">people<span class="period" aria-hidden="true"><picture><img src="/assets/v2/sphere-light.webp" alt="" width="1200" height="1200" fetchpriority="high"></picture></span><span class="sr">.</span></span></h1>
       <p class="sub">Three small Mac apps. <b>Each does one job, then gets out of your way.</b> Pay once. No account. Nothing watches you.</p>
       <div class="cta">
         <a class="btn btn-primary" href="#apps">Pick an app <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M205.66,149.66l-72,72a8,8,0,0,1-11.32,0l-72-72a8,8,0,0,1,11.32-11.32L120,196.69V40a8,8,0,0,1,16,0V196.69l58.34-58.35a8,8,0,0,1,11.32,11.32Z"/></svg></a>
@@ -637,20 +634,6 @@ footer .fine{max-width:680px}
     }
     addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(ink); } }, { passive: true });
     ink();
-  }
-
-  // The orb drifts slower than the page
-  var orb = document.querySelector('.orb-inner');
-  if (!still && orb) {
-    var pending = false;
-    addEventListener('scroll', function () {
-      if (pending) return; pending = true;
-      requestAnimationFrame(function () {
-        pending = false;
-        var y = Math.min(scrollY, innerHeight);
-        orb.style.transform = 'translate3d(0,' + (y * .25).toFixed(1) + 'px,0) rotate(' + (y * .02).toFixed(2) + 'deg)';
-      });
-    }, { passive: true });
   }
 
   // Copy buttons
