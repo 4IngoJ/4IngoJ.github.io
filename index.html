@@ -252,6 +252,23 @@ footer .fine{max-width:680px}
 @media (prefers-color-scheme:dark){.tagline .press{display:none}}
 @media (max-width:767px){.tagline .press img{left:0;opacity:.35}}
 
+
+/* Each chapter's full stop lands when the chapter arrives */
+.js .app h3 .stop{transform:translateY(-.9em) scale(0);transition:transform .9s var(--ease) .35s}
+.js .app.in h3 .stop{transform:none}
+/* Chapter rail: three dots, the current one filled */
+.rail{position:fixed;left:24px;top:50%;z-index:30;display:grid;gap:16px;list-style:none;transform:translate(-8px,-50%);opacity:0;pointer-events:none;transition:opacity .5s var(--ease),transform .5s var(--ease)}
+.rail-on .rail{opacity:1;transform:translate(0,-50%);pointer-events:auto}
+.rail a{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--muted);font:500 12px/16px var(--mono);text-transform:uppercase;letter-spacing:.07em}
+.rail i{width:12px;height:12px;border-radius:50%;border:1.5px solid currentColor;transition:transform .5s var(--ease),background-color .3s var(--ease)}
+.rail span{opacity:0;transform:translateX(-4px);transition:opacity .3s var(--ease),transform .5s var(--ease)}
+.rail a:hover span,.rail a[aria-current="true"] span{opacity:1;transform:none}
+.rail a[aria-current="true"]{color:var(--fg)}
+.rail a[aria-current="true"] i{background:var(--fg);border-color:var(--fg);transform:scale(1.15)}
+@media (max-width:1359px){.rail{display:none}}
+/* Screens tilt a little toward the pointer */
+.frame{transition:transform .7s var(--ease);transform:perspective(1200px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg))}
+
 /* Scroll reveal, once per section */
 .js .rise{opacity:0;transform:translateY(32px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
 .js .rise.in{opacity:1;transform:none}
@@ -291,6 +308,12 @@ footer .fine{max-width:680px}
     <li><a href="mailto:hello@didact.digital">Write to me</a></li>
   </ul>
 </div>
+
+<nav class="rail" aria-label="Apps on this page">
+  <a href="#sideschedule"><i></i><span>SideSchedule</span></a>
+  <a href="#talkremind"><i></i><span>TalkRemind</span></a>
+  <a href="#tonecue"><i></i><span>ToneCue</span></a>
+</nav>
 
 <main id="main">
   <header class="hero">
@@ -554,6 +577,31 @@ footer .fine{max-width:680px}
     });
   }, { rootMargin: '-45% 0px -50% 0px' });
   ['apps', 'changelog', 'partners'].forEach(function (id) { spy.observe(document.getElementById(id)); });
+
+  // Chapter rail follows the app in view
+  var railLinks = document.querySelectorAll('.rail a');
+  new IntersectionObserver(function (es) {
+    es.forEach(function (e) { document.body.classList.toggle('rail-on', e.isIntersecting); });
+  }, { rootMargin: '-40% 0px -40% 0px' }).observe(document.getElementById('apps'));
+  var chapter = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      railLinks.forEach(function (a) { a.setAttribute('aria-current', a.getAttribute('href') === '#' + e.target.id); });
+    });
+  }, { rootMargin: '-50% 0px -50% 0px' });
+  document.querySelectorAll('.app').forEach(function (a) { chapter.observe(a); });
+
+  // Gentle tilt on fine pointers
+  if (!still && matchMedia('(pointer: fine)').matches) {
+    document.querySelectorAll('.frame').forEach(function (f) {
+      f.addEventListener('pointermove', function (e) {
+        var b = f.getBoundingClientRect();
+        f.style.setProperty('--ry', ((e.clientX - b.left) / b.width - .5) * 6 + 'deg');
+        f.style.setProperty('--rx', ((e.clientY - b.top) / b.height - .5) * -6 + 'deg');
+      });
+      f.addEventListener('pointerleave', function () { f.style.setProperty('--rx', '0deg'); f.style.setProperty('--ry', '0deg'); });
+    });
+  }
 
   // Demo video plays only while visible, never with reduced motion
   var v = document.querySelector('#sideschedule video');
