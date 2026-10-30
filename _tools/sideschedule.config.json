@@ -18,7 +18,7 @@
     {
       "src": "privacy.html",
       "dict": "i18n/sideschedule_privacy.json",
-      "mode": "text"
+      "mode": "html"
     }
   ],
   "localize": {
