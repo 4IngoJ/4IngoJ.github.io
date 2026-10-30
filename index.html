@@ -46,7 +46,6 @@
    Sizes snap to the Tailwind scale, spacing to 2/4/8/12/16/24/32/40/48/64/80/96. */
 :root{
   --bg:#FAF9F7; --fg:#1A1917; --muted:#6E6C68; --line:#E6E4E0; --tile:#F0EFEC; --card:#FFFFFF;
-  --ghost:rgba(26,25,23,.22);
   --head-a:#1A1917; --head-b:#5C5A56;
   --glass:rgba(250,249,247,.42); --glass-edge:rgba(255,255,255,.75); --glass-shade:rgba(26,25,23,.08);
   --ease:cubic-bezier(.22,1,.36,1);
@@ -57,13 +56,11 @@
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme=light]){
   --bg:#000000; --fg:#F5F5F2; --muted:#A1A09B; --line:#272727; --tile:#181818; --card:#1F1F1F;
-  --ghost:rgba(245,245,242,.22);
   --head-a:#FFFFFF; --head-b:#9B9B9B;
   --glass:rgba(24,24,24,.45); --glass-edge:rgba(255,255,255,.18); --glass-shade:rgba(0,0,0,.4);
 }}
 :root[data-theme=dark]{color-scheme:dark;
   --bg:#000000; --fg:#F5F5F2; --muted:#A1A09B; --line:#272727; --tile:#181818; --card:#1F1F1F;
-  --ghost:rgba(245,245,242,.22);
   --head-a:#FFFFFF; --head-b:#9B9B9B;
   --glass:rgba(24,24,24,.45); --glass-edge:rgba(255,255,255,.18); --glass-shade:rgba(0,0,0,.4);
 }
@@ -363,13 +360,6 @@ p,li,dd{text-wrap:pretty}
 /* the cursor stays a Mac cursor: black with a white rim, in both modes */
 .scene .sc-cursor{background:#111;filter:drop-shadow(0 0 1px #fff) drop-shadow(0 1px 1px rgba(0,0,0,.5))}
 
-/* Tagline: words ink in as you scroll */
-.tagline{padding:160px 0;text-align:center}
-.tagline p{max-width:880px;margin:0 auto;font-size:36px;line-height:40px;font-weight:700;letter-spacing:-.04em;text-wrap:balance}
-@media (min-width:768px){.tagline p{font-size:60px;line-height:1}}
-.tagline .line{display:block}
-.tagline .w{color:var(--ghost);transition:color .5s var(--ease)}
-.tagline .w.on{color:var(--fg)}
 
 /* Promises */
 .promises{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;padding:0 12px;max-width:1224px;margin:0 auto}
@@ -690,12 +680,6 @@ footer .fine{max-width:880px}
     </div>
   </section>
 
-  <div class="tagline" aria-label="Built by one person, who also answers your email.">
-    <div class="wrap">
-      <p aria-hidden="true"><span class="line"><span class="lt">Built by one person,</span></span><span class="line"><span class="lt">who also answers your email</span><span class="pd"><span class="pd-t">.</span><i class="pd-b"></i></span></span></p>
-    </div>
-  </div>
-
   <div aria-labelledby="promise-h">
     <div class="sec-head wrap"><h2 id="promise-h">What every app comes with<span class="pd"><span class="pd-t">.</span><i class="pd-b"></i></span></h2></div>
     <div class="promises" data-dot-edge=".25">
@@ -931,32 +915,6 @@ footer .fine{max-width:880px}
   }, { rootMargin: '-45% 0px -50% 0px' });
   ['apps', 'changelog', 'partners'].forEach(function (id) { spy.observe(document.getElementById(id)); });
 
-
-  // Tagline: split into words, each inks in as the block scrolls through the viewport
-  var words = [];
-  document.querySelectorAll('.tagline .lt').forEach(function (line) {
-    var text = line.textContent;
-    line.textContent = '';
-    text.trim().split(/\s+/).forEach(function (w, i, all) {
-      var s = document.createElement('span');
-      s.className = 'w';
-      s.textContent = w + (i < all.length - 1 ? ' ' : '');
-      line.appendChild(s);
-      words.push(s);
-    });
-  });
-  if (still) { words.forEach(function (w) { w.classList.add('on'); }); } else {
-    var block = document.querySelector('.tagline p'), ticking = false;
-    function ink() {
-      ticking = false;
-      var r = block.getBoundingClientRect();
-      var progress = (innerHeight * .75 - r.top) / (r.height + innerHeight * .25);
-      var lit = Math.round(Math.min(Math.max(progress, 0), 1) * words.length);
-      words.forEach(function (w, i) { w.classList.toggle('on', i < lit); });
-    }
-    addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(ink); } }, { passive: true });
-    ink();
-  }
 
   // The wandering full stop, driven by GSAP: it crouches, jumps on a gravity arc,
   // lands with a squash and a small rebound (CustomBounce), and steps through every stop.
