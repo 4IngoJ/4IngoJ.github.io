@@ -32,6 +32,7 @@
 <link rel="preload" href="/assets/fonts/onest-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/onest-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/fonts.css">
+<script>try{var t=localStorage.getItem('didact-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
  {"@type":"Organization","@id":"https://didact.digital/#org","name":"didact.digital Software e.U.","alternateName":"didact.digital","url":"https://didact.digital/","logo":"https://didact.digital/assets/favicon-192.png","email":"hello@didact.digital"},
@@ -51,12 +52,19 @@
   --gutter:16px;
   color-scheme:light dark;
 }
-@media (prefers-color-scheme:dark){:root{
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){
   --bg:#000000; --fg:#F5F5F2; --muted:#A1A09B; --line:#272727; --tile:#181818; --card:#1F1F1F;
   --ghost:rgba(245,245,242,.22);
   --head-a:#FFFFFF; --head-b:#9B9B9B;
   --glass:rgba(24,24,24,.45); --glass-edge:rgba(255,255,255,.18); --glass-shade:rgba(0,0,0,.4);
 }}
+:root[data-theme=dark]{color-scheme:dark;
+  --bg:#000000; --fg:#F5F5F2; --muted:#A1A09B; --line:#272727; --tile:#181818; --card:#1F1F1F;
+  --ghost:rgba(245,245,242,.22);
+  --head-a:#FFFFFF; --head-b:#9B9B9B;
+  --glass:rgba(24,24,24,.45); --glass-edge:rgba(255,255,255,.18); --glass-shade:rgba(0,0,0,.4);
+}
+:root[data-theme=light]{color-scheme:light}
 @media (min-width:768px){:root{--gutter:24px}}
 
 *{margin:0;padding:0;box-sizing:border-box}
@@ -90,19 +98,31 @@ p,li,dd{text-wrap:pretty}
 .more:hover{text-decoration:underline}
 .more:hover svg{transform:translateX(2px)}
 
-/* Navigation: Liquid Glass. Blur, lift and a bright rim; refraction where the browser supports it. */
+/* Navigation: Liquid Glass. Blur, lift, a bright rim and a soft sheen on the upper half. */
 .nav{position:fixed;top:12px;left:50%;z-index:50;transform:translateX(-50%);display:flex;align-items:center;gap:16px;padding:6px 6px 6px 20px;border-radius:9999px;width:max-content;max-width:calc(100% - 24px);isolation:isolate;
   background:var(--glass);
   -webkit-backdrop-filter:blur(12px) saturate(1.8);backdrop-filter:blur(12px) saturate(1.8);
   box-shadow:inset 0 1px 0 var(--glass-edge),inset 0 0 0 1px var(--glass-edge),inset 0 -8px 16px -12px var(--glass-shade),0 8px 32px -8px rgba(0,0,0,.18),0 1px 2px rgba(0,0,0,.06);
   transition:box-shadow .5s var(--ease),padding .5s var(--ease)}
 .scrolled .nav{box-shadow:inset 0 1px 0 var(--glass-edge),inset 0 0 0 1px var(--glass-edge),inset 0 -8px 16px -12px var(--glass-shade),0 16px 48px -12px rgba(0,0,0,.28),0 1px 2px rgba(0,0,0,.08)}
-.nav::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;-webkit-backdrop-filter:url(#glass);backdrop-filter:url(#glass);pointer-events:none}
+.nav::after{content:"";position:absolute;inset:1px;border-radius:inherit;pointer-events:none;background:linear-gradient(180deg,rgba(255,255,255,.22),rgba(255,255,255,0) 55%)}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) .nav::after{background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,0) 55%)}}
+:root[data-theme=dark] .nav::after{background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,0) 55%)}
 .nav .mark{display:block;height:20px;width:auto}
 .nav ul{display:flex;gap:4px;list-style:none}
 .nav ul a{display:block;font:500 14px/20px var(--sans);padding:8px 12px;border-radius:9999px;text-decoration:none;color:var(--muted);transition:color .3s var(--ease),background-color .3s var(--ease)}
 .nav ul a:hover,.nav ul a[aria-current="true"]{color:var(--fg);background:color-mix(in srgb,var(--fg) 7%,transparent)}
 .nav .btn{font-size:14px;line-height:20px;padding:8px 16px}
+.wm-paper{display:none}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) .wm-ink{display:none}:root:not([data-theme=light]) .wm-paper{display:block}}
+:root[data-theme=dark] .wm-ink{display:none}:root[data-theme=dark] .wm-paper{display:block}
+.theme-btn{position:relative;width:36px;height:36px;margin-right:-8px;border:0;border-radius:9999px;background:none;color:var(--muted);cursor:pointer;display:grid;place-items:center;transition:color .3s var(--ease),background-color .3s var(--ease)}
+.theme-btn:hover{color:var(--fg);background:color-mix(in srgb,var(--fg) 7%,transparent)}
+.theme-btn:active{transform:scale(.94)}
+.theme-btn svg{grid-area:1/1;width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:transform .5s var(--ease),opacity .3s var(--ease)}
+.theme-btn .i-moon{opacity:0;transform:rotate(-60deg) scale(.6)}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) .theme-btn .i-sun{opacity:0;transform:rotate(60deg) scale(.6)}:root:not([data-theme=light]) .theme-btn .i-moon{opacity:1;transform:none}}
+:root[data-theme=dark] .theme-btn .i-sun{opacity:0;transform:rotate(60deg) scale(.6)}:root[data-theme=dark] .theme-btn .i-moon{opacity:1;transform:none}
 .menu-btn{display:none;width:40px;height:40px;border:0;background:none;color:var(--fg);border-radius:9999px;cursor:pointer;position:relative}
 .menu-btn i{position:absolute;left:12px;width:16px;height:2px;border-radius:2px;background:currentColor;transition:transform .5s var(--ease)}
 .menu-btn i:first-child{top:15px}.menu-btn i:last-child{top:23px}
@@ -119,6 +139,7 @@ p,li,dd{text-wrap:pretty}
 @media (max-width:767px){
   .nav{left:12px;right:12px;transform:none;width:auto;justify-content:space-between;padding-left:16px}
   .nav ul,.nav .btn{display:none}
+  .theme-btn{margin:0 0 0 auto}
   .menu-btn{display:block}
 }
 
@@ -160,7 +181,7 @@ p,li,dd{text-wrap:pretty}
 .tile .head img{width:64px;height:64px;margin:0 auto 24px;border-radius:14px;box-shadow:0 12px 24px -12px rgba(0,0,0,.3)}
 .tile h2{font-size:48px;line-height:1}
 @media (min-width:768px){.tile h2{font-size:60px}}
-.tile .hook{max-width:680px;margin:16px auto 0;font-size:24px;line-height:32px;font-weight:500;letter-spacing:-.02em}
+.tile .hook{max-width:680px;margin:16px auto 0;font-size:24px;line-height:32px;font-weight:500;letter-spacing:-.02em;text-wrap:balance}
 @media (min-width:768px){.tile .hook{font-size:30px;line-height:36px}}
 .tile .what{max-width:620px;margin:16px auto 0;font-size:18px;line-height:28px;color:var(--muted)}
 .tile .actions{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:16px 24px;margin-top:32px}
@@ -178,7 +199,8 @@ p,li,dd{text-wrap:pretty}
 /* One dark tile breaks the rhythm, the way a product page alternates */
 .tile.dark{--fg:#F5F5F2;--muted:#A1A09B;--line:#313131;--card:#272727;--bg:#000;background:#000;color:var(--fg)}
 .tile.dark .btn-primary{background:#F5F5F2;color:#000}
-@media (prefers-color-scheme:dark){.tile.dark{background:#131209;box-shadow:inset 0 0 0 1px #272727}}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) .tile.dark{background:#131209;box-shadow:inset 0 0 0 1px #272727}}
+:root[data-theme=dark] .tile.dark{background:#131209;box-shadow:inset 0 0 0 1px #272727}
 
 
 /* Compare, the way a spec page does it */
@@ -204,6 +226,9 @@ p,li,dd{text-wrap:pretty}
 }
 
 
+/* Scene headings: short, and each one ends in a stop the dot can take */
+.sc-cap{margin:80px auto 0;font-size:30px;line-height:36px;letter-spacing:-.03em}
+.sc-cap + .scene{margin-top:32px}
 /* Mini scene: a small Mac, built in HTML, that shows what TalkRemind does */
 .scene{position:relative;max-width:760px;aspect-ratio:16/10;margin:64px auto 48px;border-radius:24px;background:#1F1F1F;overflow:hidden;box-shadow:0 0 0 1px #313131,0 40px 80px -32px rgba(0,0,0,.6);text-align:left;font-size:14px;line-height:20px;color:#F5F5F2}
 .sc-bar{display:flex;align-items:center;gap:16px;height:28px;padding:0 16px;background:rgba(255,255,255,.06);font-size:12px;line-height:16px;color:#C9C8C4}
@@ -220,6 +245,10 @@ p,li,dd{text-wrap:pretty}
 @keyframes caret{50%{opacity:0}}
 .sc-state{position:absolute;left:24px;bottom:16px;font:500 12px/16px var(--mono);text-transform:uppercase;letter-spacing:.07em;color:#A1A09B}
 .sc-mic{display:none}
+/* dictation pill: a mic and a live waveform, shown only while talking */
+.sc-wave{position:absolute;left:50%;bottom:16px;display:flex;align-items:center;gap:3px;height:36px;padding:0 16px 0 12px;border-radius:9999px;background:rgba(20,20,22,.9);box-shadow:0 0 0 1px #3a3a3a,0 12px 24px -8px rgba(0,0,0,.6);opacity:0;transform:translate(-50%,12px)}
+.sc-wave svg{width:16px;height:16px;fill:#F2A65A;margin-right:6px}
+.sc-wave i{width:3px;height:20px;border-radius:2px;background:#F5F5F2;transform:scaleY(.15);transform-origin:50% 50%}
 .scene.dictating .sc-kbd{display:none}.scene.dictating .sc-mic{display:inline}
 .sc-nudge{position:absolute;left:50%;top:40px;width:min(440px,86%);display:flex;align-items:center;gap:12px;padding:12px 16px 16px 12px;border-radius:16px;background:rgba(24,24,24,.92);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);box-shadow:0 0 0 1px #3a3a3a,0 24px 48px -12px rgba(0,0,0,.7);opacity:0;transform:translate(-50%,-24px) scale(.96);overflow:hidden}
 .sc-nudge img{width:40px;height:40px;border-radius:10px;flex:none}
@@ -375,6 +404,11 @@ footer .fine{max-width:880px}
 .dot{position:absolute;top:0;left:0;z-index:45;width:0;height:0;pointer-events:none;opacity:0;transition:opacity .4s var(--ease);will-change:transform}
 .dot i{position:absolute;left:-10px;top:-20px;width:20px;height:20px;border-radius:50%;background:var(--fg);transform-origin:50% 100%;transition:background-color .4s var(--ease);will-change:transform}
 .dot.ready{opacity:1}
+/* contact shadow: fades out as the dot leaves a surface, gathers as it falls onto the next */
+.dot-sh{position:absolute;top:0;left:0;z-index:44;width:20px;height:6px;margin:-3px 0 0 -10px;border-radius:50%;background:rgba(0,0,0,.32);filter:blur(2px);opacity:0;pointer-events:none;will-change:transform,opacity}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) .dot-sh{background:rgba(0,0,0,.7)}}
+:root[data-theme=dark] .dot-sh{background:rgba(0,0,0,.7)}
+@media (hover:hover) and (pointer:fine){.dotfx .dot i{pointer-events:auto;cursor:pointer}}
 
 /* Scroll reveal, once per block */
 .js .rise{opacity:0;transform:translateY(32px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
@@ -395,27 +429,21 @@ footer .fine{max-width:880px}
 <body>
 <a class="skip" href="#main">Skip to content</a>
 
-<!-- Refraction for the glass bar. Browsers without SVG backdrop filters keep the plain blur. -->
-<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
-  <filter id="glass" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
-    <feTurbulence type="fractalNoise" baseFrequency=".006 .018" numOctaves="2" seed="11" result="noise"/>
-    <feGaussianBlur in="noise" stdDeviation="2" result="soft"/>
-    <feDisplacementMap in="SourceGraphic" in2="soft" scale="24" xChannelSelector="R" yChannelSelector="G"/>
-  </filter>
-</svg>
 
 <nav class="nav" aria-label="Main">
   <a href="/" aria-label="didact.digital home">
-    <picture>
-      <source srcset="/assets/didact-digital-wordmark-paper.svg" media="(prefers-color-scheme: dark)">
-      <img class="mark" src="/assets/didact-digital-wordmark-ink.svg" alt="didact.digital" width="113" height="20">
-    </picture>
+    <img class="mark wm-ink" src="/assets/didact-digital-wordmark-ink.svg" alt="didact.digital" width="113" height="20">
+    <img class="mark wm-paper" src="/assets/didact-digital-wordmark-paper.svg" alt="didact.digital" width="113" height="20">
   </a>
   <ul>
     <li><a href="#apps">Apps</a></li>
     <li><a href="#changelog">What’s new</a></li>
     <li><a href="#partners">Partners</a></li>
   </ul>
+  <button class="theme-btn" type="button" aria-label="Switch to dark mode" title="Light or dark">
+    <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+    <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.1A8.5 8.5 0 1 1 9.9 3.5a6.6 6.6 0 0 0 10.6 10.6Z"/></svg>
+  </button>
   <a class="btn btn-primary" href="#apps">Try free</a>
   <button class="menu-btn" type="button" aria-expanded="false" aria-controls="sheet" aria-label="Open menu"><i></i><i></i></button>
 </nav>
@@ -446,11 +474,11 @@ footer .fine{max-width:880px}
   </header>
 
   <div class="tiles" id="apps" aria-label="The apps">
-    <article class="tile rise" id="sideschedule" data-dot-edge=".86" aria-labelledby="ss-h">
+    <article class="tile rise" id="sideschedule" aria-labelledby="ss-h">
       <div class="head">
         <img src="/sideschedule/assets/app-icon.png" alt="" width="64" height="64">
         <h2 id="ss-h">SideSchedule</h2>
-        <p class="hook">My calendar kept losing to every other window.</p>
+        <h3 class="hook">My calendar kept losing to every other window<span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></h3>
         <p class="what">A calendar sidebar that keeps its strip of screen the way the Dock does. Meeting notes become Markdown files, and one click joins your call.</p>
         <div class="actions">
           <a class="btn btn-primary" href="https://github.com/4IngoJ/sideschedule/releases/latest/download/SideSchedule.dmg">Download free trial</a>
@@ -463,7 +491,8 @@ footer .fine{max-width:880px}
           <li>Six languages.</li>
         </ul>
       </div>
-      <div class="scene ss" data-dot-edge=".12" role="img" aria-label="Animation: SideSchedule slides in at the right edge and the open window makes room for it. A click on Join opens the call. Then the sidebar folds into a thin strip that still shows the next meeting.">
+      <h3 class="sc-cap">It claims its own strip<span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></h3>
+      <div class="scene ss" role="img" aria-label="Animation: SideSchedule slides in at the right edge and the open window makes room for it. A click on Join opens the call. Then the sidebar folds into a thin strip that still shows the next meeting.">
         <img class="sc-wall" src="/assets/v2/wall-dusk.webp" alt="" width="1600" height="893" loading="lazy">
         <div class="sc-bar" aria-hidden="true"><span class="sc-app">Notes</span><span>File</span><span>Edit</span><span>View</span><span class="sc-gap"></span><span>Thu 10:58</span></div>
         <div class="ss-desk" aria-hidden="true">
@@ -486,11 +515,11 @@ footer .fine{max-width:880px}
       <p class="demo-link"><a class="more" href="/sideschedule/assets/demo-web.mp4">Watch the 34 second demo <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"/></svg></a></p>
     </article>
 
-    <article class="tile dark rise" id="talkremind" data-dot-edge=".14" aria-labelledby="tr-h">
+    <article class="tile dark rise" id="talkremind" aria-labelledby="tr-h">
       <div class="head">
         <img src="/talkremind/assets/app-icon.png" alt="" width="64" height="64">
         <h2 id="tr-h">TalkRemind</h2>
-        <p class="hook">You bought a dictation app. You still type.</p>
+        <h3 class="hook">You bought a dictation app. You still type<span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></h3>
         <p class="what">A menu bar app that notices a long stretch of typing and nudges you to use the dictation app you already own. It never transcribes and never reads what you type.</p>
         <div class="actions">
           <a class="btn btn-primary" href="https://github.com/4IngoJ/TalkRemind/releases/latest/download/TalkRemind.dmg">Download free trial</a>
@@ -503,13 +532,15 @@ footer .fine{max-width:880px}
           <li>Shows how much you dictate compared to typing.</li>
         </ul>
       </div>
-      <div class="scene tr" data-dot-edge=".88" role="img" aria-label="Animation: someone types a long note, TalkRemind slides in the nudge Your dictation app is waiting with the shortcut Option R, and the rest of the note arrives by dictation.">
+      <h3 class="sc-cap">It notices, then it nudges<span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></h3>
+      <div class="scene tr" role="img" aria-label="Animation: someone types a long note, TalkRemind slides in the nudge Your dictation app is waiting with the shortcut Option R, and the rest of the note arrives by dictation.">
         <img class="sc-wall" src="/assets/v2/wall-ember.webp" alt="" width="1600" height="893" loading="lazy">
         <div class="sc-bar" aria-hidden="true"><span class="sc-app">Notes</span><span>File</span><span>Edit</span><span>Format</span><span class="sc-gap"></span><img src="/talkremind/assets/app-icon.png" alt="" width="16" height="16"><span>9:41</span></div>
         <div class="sc-win" aria-hidden="true">
           <div class="sc-title"><i></i><i></i><i></i><span>Thursday review</span></div>
           <p class="sc-text"><span class="sc-typed"></span><span class="sc-dict"></span><span class="sc-caret"></span></p>
           <p class="sc-state"><span class="sc-kbd">Typing</span><span class="sc-mic">Dictating</span></p>
+          <div class="sc-wave"><svg viewBox="0 0 256 256" aria-hidden="true"><path d="M128,176a48.05,48.05,0,0,0,48-48V64a48,48,0,0,0-96,0v64A48.05,48.05,0,0,0,128,176ZM96,64a32,32,0,0,1,64,0v64a32,32,0,0,1-64,0Zm40,143.6V232a8,8,0,0,1-16,0V207.6A80.11,80.11,0,0,1,48,128a8,8,0,0,1,16,0,64,64,0,0,0,128,0,8,8,0,0,1,16,0A80.11,80.11,0,0,1,136,207.6Z"/></svg><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
         </div>
         <div class="sc-nudge" aria-hidden="true">
           <img src="/talkremind/assets/app-icon.png" alt="" width="40" height="40">
@@ -520,11 +551,11 @@ footer .fine{max-width:880px}
       </div>
     </article>
 
-    <article class="tile rise" id="tonecue" data-dot-edge=".86" aria-labelledby="tc-h">
+    <article class="tile rise" id="tonecue" aria-labelledby="tc-h">
       <div class="head">
         <img src="/tonecue/assets/app-icon.png" alt="" width="64" height="64">
         <h2 id="tc-h">ToneCue</h2>
-        <p class="hook">Your Mac, with the microphone you meant.</p>
+        <h3 class="hook">Your Mac, with the microphone you meant<span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></h3>
         <p class="what">A menu bar app that picks your microphone and speakers by situation: a dock, a calendar meeting, an open app. It tells you why it switched, and you can undo it.</p>
         <div class="actions">
           <a class="btn btn-primary" href="https://github.com/4IngoJ/tonecue/releases/latest/download/ToneCue.dmg">Download free trial</a>
@@ -537,7 +568,8 @@ footer .fine{max-width:880px}
           <li>Works from Raycast too.</li>
         </ul>
       </div>
-      <div class="scene light tc" data-dot-edge=".12" role="img" aria-label="Animation: a meeting starts in the calendar. ToneCue switches input and output to AirPods Pro, names the scene Calls and the reason, a meeting is on, and offers Undo. When the meeting ends, it goes back to the desk setup.">
+      <h3 class="sc-cap">It switches, and it says why<span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></h3>
+      <div class="scene light tc" role="img" aria-label="Animation: a meeting starts in the calendar. ToneCue switches input and output to AirPods Pro, names the scene Calls and the reason, a meeting is on, and offers Undo. When the meeting ends, it goes back to the desk setup.">
         <img class="sc-wall" src="/assets/v2/wall-morning.webp" alt="" width="1600" height="893" loading="lazy">
         <div class="sc-bar" aria-hidden="true"><span class="sc-app">Calendar</span><span>File</span><span>Edit</span><span>View</span><span class="sc-gap"></span><img src="/tonecue/assets/app-icon.png" alt="" width="16" height="16"><span class="tc-clock">10:59</span></div>
         <div class="tc-cal" aria-hidden="true">
@@ -562,8 +594,8 @@ footer .fine{max-width:880px}
 
 
   <section aria-labelledby="compare-h">
-    <div class="sec-head wrap"><h2 id="compare-h">Which one is yours?</h2><p>All three at a glance.</p></div>
-    <div class="compare rise" data-dot-edge=".5">
+    <div class="sec-head wrap"><h2 id="compare-h">Three apps, side by side<span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></h2><p>What each one does, where it lives and what it costs.</p></div>
+    <div class="compare rise">
       <table>
         <thead><tr><td></td>
           <th scope="col"><img src="/sideschedule/assets/app-icon.png" alt="" width="56" height="56"><b>SideSchedule</b></th>
@@ -592,22 +624,22 @@ footer .fine{max-width:880px}
   <div aria-labelledby="promise-h">
     <div class="sec-head wrap"><h2 id="promise-h">What every app comes with<span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></h2></div>
     <div class="promises">
-      <div class="promise rise" data-dot-edge=".88">
+      <div class="promise rise">
         <p class="label">Price</p>
         <h3>You pay once<span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></h3>
         <p>No subscription. After 14 free days the license is yours, for two Macs with SideSchedule or ToneCue and three with TalkRemind.</p>
       </div>
-      <div class="promise rise" data-dot-edge=".88">
+      <div class="promise rise">
         <p class="label">Account</p>
         <h3>There is none<span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></h3>
         <p>Nothing to sign up for. You enter a license key and that’s it.</p>
       </div>
-      <div class="promise rise" data-dot-edge=".88">
+      <div class="promise rise">
         <p class="label">Privacy</p>
         <h3>Nothing watches you<span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></h3>
         <p>No analytics, no telemetry in any app. The only network calls are license and update checks, plus a diagnostic report if you choose to send one. Details in the <a href="/sideschedule/privacy.html">SideSchedule</a>, <a href="/talkremind/privacy.html">TalkRemind</a> and <a href="/tonecue/privacy.html">ToneCue</a> privacy notes.</p>
       </div>
-      <div class="promise rise" data-dot-edge=".88">
+      <div class="promise rise">
         <p class="label">Install</p>
         <h3>Signed and notarized<span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></h3>
         <p>Notarized by Apple, updated through Sparkle. Or use Homebrew:</p>
@@ -623,7 +655,7 @@ footer .fine{max-width:880px}
     <div class="wrap">
       <div class="sec-head"><h2 id="log-h">What’s new<span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></h2><p>The newest release of each app.</p></div>
       <div class="log">
-        <article class="release rise" lang="en" data-dot-edge=".85">
+        <article class="release rise" lang="en">
           <header><img src="/sideschedule/assets/app-icon.png" alt="" width="40" height="40"><div><h3>SideSchedule<span class="mono">1.2.0</span></h3><time datetime="2026-10-20">20 Oct 2026</time></div></header>
           <ul class="notes">
             <li>The sidebar folds back by itself after an alert or auto expand opened it, and takes the alert banner along.</li>
@@ -637,7 +669,7 @@ footer .fine{max-width:880px}
           </details>
           <p class="all"><a href="https://github.com/4IngoJ/sideschedule/releases">All SideSchedule releases</a></p>
         </article>
-        <article class="release rise" lang="en" data-dot-edge=".85">
+        <article class="release rise" lang="en">
           <header><img src="/talkremind/assets/app-icon.png" alt="" width="40" height="40"><div><h3>TalkRemind<span class="mono">0.13.0</span></h3><time datetime="2026-10-24">24 Oct 2026</time></div></header>
           <ul class="notes">
             <li>A new look across the app: nudges, menu bar, statistics and Settings.</li>
@@ -651,7 +683,7 @@ footer .fine{max-width:880px}
           </details>
           <p class="all"><a href="https://github.com/4IngoJ/TalkRemind/releases">All TalkRemind releases</a></p>
         </article>
-        <article class="release rise" lang="en" data-dot-edge=".85">
+        <article class="release rise" lang="en">
           <header><img src="/tonecue/assets/app-icon.png" alt="" width="40" height="40"><div><h3>ToneCue<span class="mono">2.1.0</span></h3><time datetime="2026-10-11">11 Oct 2026</time></div></header>
           <ul class="notes">
             <li>New Raycast extension: switch scenes, apply one by name and mute the microphone from Raycast.</li>
@@ -674,7 +706,7 @@ footer .fine{max-width:880px}
         <p class="label" style="margin-top:24px">Form by Brevo (EU), spam check by Cloudflare Turnstile</p>
       </div>
       <div class="rise">
-        <iframe data-dot-edge=".9" class="signup" title="Subscribe to didact.digital news" src="https://4dd93bf3.sibforms.com/serve/MUIFAAxjfk4SfjnsBviBPjfD2lXFaBbc07ge-hCp-v-i32R0TJzwtsyn46msoyZ4GVzC-1AWjzPUMPJWJvwPIz3d_H61Hr7h7PUrjsj-6_3DT0PyXnd7CvP_5ujypIz3x0rl4al8Qrxy7F-H8hW1Uf9ylu_ANFW9Bz7yyCx3rvOcYIwegZYb4Tt2k1jm3GIvDcFaE_lX8iHTPA12rA==" loading="lazy" scrolling="no"></iframe>
+        <iframe class="signup" title="Subscribe to didact.digital news" src="https://4dd93bf3.sibforms.com/serve/MUIFAAxjfk4SfjnsBviBPjfD2lXFaBbc07ge-hCp-v-i32R0TJzwtsyn46msoyZ4GVzC-1AWjzPUMPJWJvwPIz3d_H61Hr7h7PUrjsj-6_3DT0PyXnd7CvP_5ujypIz3x0rl4al8Qrxy7F-H8hW1Uf9ylu_ANFW9Bz7yyCx3rvOcYIwegZYb4Tt2k1jm3GIvDcFaE_lX8iHTPA12rA==" loading="lazy" scrolling="no"></iframe>
         <p class="label" style="margin-top:12px">Form not showing? <a href="https://4dd93bf3.sibforms.com/serve/MUIFAAxjfk4SfjnsBviBPjfD2lXFaBbc07ge-hCp-v-i32R0TJzwtsyn46msoyZ4GVzC-1AWjzPUMPJWJvwPIz3d_H61Hr7h7PUrjsj-6_3DT0PyXnd7CvP_5ujypIz3x0rl4al8Qrxy7F-H8hW1Uf9ylu_ANFW9Bz7yyCx3rvOcYIwegZYb4Tt2k1jm3GIvDcFaE_lX8iHTPA12rA==" target="_blank" rel="noopener">Open it in its own tab</a></p>
       </div>
     </div>
@@ -711,10 +743,8 @@ footer .fine{max-width:880px}
 <footer>
   <div class="wrap">
     <div class="top">
-      <picture>
-        <source srcset="/assets/didact-digital-wordmark-paper.svg" media="(prefers-color-scheme: dark)">
-        <img src="/assets/didact-digital-wordmark-ink.svg" alt="didact.digital" width="90" height="16">
-      </picture>
+      <img class="wm-ink" src="/assets/didact-digital-wordmark-ink.svg" alt="didact.digital" width="90" height="16">
+      <img class="wm-paper" src="/assets/didact-digital-wordmark-paper.svg" alt="didact.digital" width="90" height="16">
       <a href="mailto:hello@didact.digital">hello@didact.digital</a>
     </div>
     <ul>
@@ -731,6 +761,7 @@ footer .fine{max-width:880px}
   </div>
 </footer>
 
+<div class="dot-sh" aria-hidden="true"></div>
 <div class="dot" aria-hidden="true"><i></i></div>
 <script src="/assets/vendor/gsap-3.15.0/gsap.min.js"></script>
 <script src="/assets/vendor/gsap-3.15.0/CustomEase.min.js"></script>
@@ -740,6 +771,23 @@ footer .fine{max-width:880px}
 (function () {
   document.documentElement.classList.add('js');
   var still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Light or dark: starts from the system, remembers the choice in this browser
+  var themeBtn = document.querySelector('.theme-btn'), sys = matchMedia('(prefers-color-scheme: dark)');
+  function isDark() { var t = document.documentElement.dataset.theme; return t ? t === 'dark' : sys.matches; }
+  function syncTheme() {
+    var d = isDark();
+    themeBtn.setAttribute('aria-label', d ? 'Switch to light mode' : 'Switch to dark mode');
+    document.querySelectorAll('meta[name=theme-color]').forEach(function (m) { m.setAttribute('content', d ? '#000000' : '#FAF9F7'); });
+  }
+  themeBtn.addEventListener('click', function () {
+    var next = isDark() ? 'light' : 'dark';
+    document.documentElement.dataset.theme = next;
+    try { localStorage.setItem('didact-theme', next); } catch (e) {}
+    syncTheme();
+  });
+  sys.addEventListener('change', syncTheme);
+  syncTheme();
 
   // Mobile menu
   var btn = document.querySelector('.menu-btn');
@@ -833,7 +881,11 @@ footer .fine{max-width:880px}
       var gt = t.querySelector('.pd-t').getBoundingClientRect(), bt = t.querySelector('.pd-b').getBoundingClientRect();
       return { x: gt.left + gt.width / 2 + scrollX, y: bt.top + scrollY, s: fs(t) * .17 / 20, c: colorOf(t) };
     }
-    function setTo(p) { gsap.set(dot, { x: p.x, y: p.y }); gsap.set(body, { scaleX: p.s, scaleY: p.s }); body.style.backgroundColor = p.c; cur = p; }
+    var sh = document.querySelector('.dot-sh'), REST = .3;
+    function setTo(p) {
+      gsap.set(dot, { x: p.x, y: p.y }); gsap.set(body, { scaleX: p.s, scaleY: p.s }); body.style.backgroundColor = p.c; cur = p;
+      gsap.set(sh, { x: p.x, y: p.y, scaleX: p.s * 1.15, opacity: p.park ? 0 : REST });
+    }
 
     function hop(to, quick, done) {
       var top = scrollY + 72, bottom = scrollY + innerHeight - 24;
@@ -857,26 +909,32 @@ footer .fine{max-width:880px}
         // fall, hit, rebound and settle: one CustomBounce curve, with its matching squash
         .to(dot, { y: to.y, duration: down / impact, ease: 'dotFall' }, 'go+=' + up)
         .fromTo(body, { scaleX: s1, scaleY: s1 }, { scaleX: s1 * (1 + .5 / squashPeak), scaleY: s1 * (1 - .45 / squashPeak), duration: down / impact, ease: 'dotFall-squash', immediateRender: false }, 'go+=' + up)
-        .set(body, { scaleX: s1, scaleY: s1 });
+        .set(body, { scaleX: s1, scaleY: s1 })
+        // the shadow stays on the ground: it thins out as the dot rises, gathers where it will land
+        .to(sh, { opacity: 0, scaleX: s0 * .4, duration: up * .7, ease: 'power1.out' }, 'go')
+        .set(sh, { x: to.x, y: to.y, scaleX: s1 * .3 }, 'go+=' + up)
+        .to(sh, { opacity: to.park ? 0 : REST, scaleX: s1 * 1.15, duration: down, ease: 'power2.in' }, 'go+=' + up);
     }
 
     // Stay where you are while you are on screen; once off screen, jump to the visible stop
     // nearest the middle. With nothing visible, rest mid screen at the right edge of the content.
-    function inView(p) { return p.y > scrollY + innerHeight * .12 && p.y < scrollY + innerHeight * .9; }
+    function inView(p) { return p.y > scrollY + innerHeight * .06 && p.y < scrollY + innerHeight * .94; }
     function pick() {
-      if (at !== null && at >= 0 && inView(spot(at))) return at;
-      var mid = scrollY + innerHeight * .45, best = null, bestD = Infinity;
+      var eye = scrollY + innerHeight * .4, best = null, bestD = Infinity, curD = Infinity;
       stops.forEach(function (t, i) {
         var p = spot(i);
         if (!inView(p)) return;
-        var d = Math.abs(p.y - mid);
+        var d = Math.abs(p.y - eye);
+        if (i === at) curD = d;
         if (d < bestD) { bestD = d; best = i; }
       });
-      return best === null ? 'park' : best;
+      if (best === null) return 'park';
+      // keep the current heading unless another one is clearly closer to the eye line
+      return curD !== Infinity && curD - bestD < innerHeight * .12 ? at : best;
     }
     function parkSpot() {
       var w = document.querySelector('main .wrap').getBoundingClientRect();
-      return { x: w.right - 24 + scrollX, y: scrollY + innerHeight * .5, s: .6, c: '' };
+      return { x: w.right - 24 + scrollX, y: scrollY + innerHeight * .5, s: .6, c: '', park: true };
     }
     function step() {
       if (busy || !hopped) return;
@@ -894,8 +952,14 @@ footer .fine{max-width:880px}
       if (busy || !cur || at === 'park') return;
       var p = spot(at);
       if (Math.abs(p.x - cur.x) + Math.abs(p.y - cur.y) < 1) return;
-      cur = p; gsap.to(dot, { x: p.x, y: p.y, duration: .3, ease: 'power3.out' });
+      cur = p; gsap.to(dot, { x: p.x, y: p.y, duration: .3, ease: 'power3.out' }); gsap.to(sh, { x: p.x, y: p.y, duration: .3, ease: 'power3.out' });
     }
+    function poke() {
+      if (busy || !cur) return;
+      busy = true; hop(cur, true, function () { busy = false; step(); });
+    }
+    body.addEventListener('pointerenter', poke);
+    body.addEventListener('click', poke);
     var ticking = false;
     addEventListener('scroll', function () {
       hopped = true;
@@ -994,22 +1058,34 @@ footer .fine{max-width:880px}
     var B = 'Next I want to read the release notes once more and send them to the team before lunch.';
     if (still || !window.gsap) {
       typed.textContent = A; dict.textContent = B; scene.classList.add('dictating');
+      var wv = scene.querySelector('.sc-wave'); wv.style.opacity = 1; wv.style.transform = 'translate(-50%,0)';
       nudge.style.opacity = 1; nudge.style.transform = 'translate(-50%,0)'; return;
     }
     var words = B.split(' '), t = { n: 0 }, w = { n: 0 };
+    var wave = scene.querySelector('.sc-wave'), bars = wave.querySelectorAll('i'), talk = null;
+    gsap.set(wave, { xPercent: -50, x: 0, y: 12 });
+    function speak(on) {
+      if (talk) { talk.kill(); talk = null; }
+      gsap.to(wave, { opacity: on ? 1 : 0, y: on ? 0 : 12, duration: .35, ease: on ? 'back.out(1.8)' : 'power2.in' });
+      if (!on) return gsap.to(bars, { scaleY: .15, duration: .25 });
+      // each bar breathes at its own pace, louder in the middle, like a voice
+      talk = gsap.to(bars, { scaleY: function (i) { var mid = 1 - Math.abs(i - 6.5) / 8; return .25 + Math.random() * .75 * mid + .1; },
+        duration: .14, ease: 'sine.inOut', stagger: { each: .02, from: 'center' }, repeat: -1, repeatRefresh: true, yoyo: true });
+    }
     gsap.set(nudge, { xPercent: -50, x: 0, y: -24, scale: .96 });
     var tl = gsap.timeline({ repeat: -1, repeatDelay: 1.2, paused: true, onRepeat: reset });
-    function reset() { typed.textContent = ''; dict.textContent = ''; t.n = 0; w.n = 0; scene.classList.remove('dictating'); }
+    function reset() { typed.textContent = ''; dict.textContent = ''; t.n = 0; w.n = 0; scene.classList.remove('dictating'); speak(false); }
     tl.to(t, { n: A.length, duration: A.length * .034, ease: 'none', onUpdate: function () { typed.textContent = A.slice(0, Math.round(t.n)); } })
       // the nudge drops in, like the real one
       .to(nudge, { opacity: 1, y: 0, scale: 1, duration: .6, ease: 'back.out(1.6)' }, '-=0.4')
       .fromTo(timer, { scaleX: 1 }, { scaleX: 0, duration: 2.6, ease: 'none' }, '<')
       .call(function () { keys[0].classList.add('down'); }, null, '+=0.9')
       .call(function () { keys[1].classList.add('down'); }, null, '+=0.25')
-      .call(function () { keys.forEach(function (k) { k.classList.remove('down'); }); scene.classList.add('dictating'); }, null, '+=0.35')
+      .call(function () { keys.forEach(function (k) { k.classList.remove('down'); }); scene.classList.add('dictating'); speak(true); }, null, '+=0.35')
       .to(nudge, { opacity: 0, y: -24, scale: .96, duration: .35, ease: 'power2.in' })
       // dictation arrives a few words at a time, much faster than typing
       .to(w, { n: words.length, duration: 2.4, ease: 'steps(' + Math.ceil(words.length / 3) + ')', onUpdate: function () { dict.textContent = words.slice(0, Math.round(w.n)).join(' '); } })
+      .call(function () { speak(false); }, null, '+=0.3')
       .to({}, { duration: 2.2 });
     playWhileVisible(scene, tl);
   })();
