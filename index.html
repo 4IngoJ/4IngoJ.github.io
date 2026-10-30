@@ -231,6 +231,54 @@ p,li,dd{text-wrap:pretty}
 .sc-timer{position:absolute;left:12px;right:12px;bottom:6px;height:3px;border-radius:2px;background:#C9C8C4;transform-origin:left;transform:scaleX(1)}
 @media (max-width:639px){.scene{aspect-ratio:4/5}.sc-bar span:not(.sc-app):not(:last-child){display:none}.sc-win{left:4%;right:4%}.sc-text{font-size:14px;line-height:20px}}
 
+
+.demo-link{margin:0 0 48px;font-size:14px;line-height:20px}
+.sc-cursor{position:absolute;left:0;top:0;width:14px;height:20px;background:#F5F5F2;clip-path:polygon(0 0,0 80%,28% 62%,45% 100%,62% 92%,45% 56%,80% 56%);opacity:0;filter:drop-shadow(0 1px 1px rgba(0,0,0,.6));z-index:5}
+/* SideSchedule scene */
+.ss-desk{position:absolute;inset:28px 0 0}
+.ss-win{position:absolute;left:4%;top:24px;bottom:56px;right:31%;border-radius:12px;background:#272727;box-shadow:0 0 0 1px #313131;padding:0 20px;overflow:hidden}
+.ss-win b{display:block;height:10px;margin:14px 0;border-radius:5px;background:#3a3a3a}
+.ss-win b.s{width:60%}
+.ss-side{position:absolute;top:0;right:0;bottom:0;width:30%;background:#181818;box-shadow:-1px 0 0 #313131;padding:16px 12px}
+.ss-head strong{display:block;font-size:16px;line-height:24px}
+.ss-head span{font-size:12px;line-height:16px;color:#A1A09B}
+.ss-day{position:absolute;left:12px;right:12px;top:72px;bottom:56px}
+.ss-h{position:absolute;left:0;font:500 12px/16px var(--mono);color:#6E6C68;transform:translateY(-50%)}
+.ss-ev{position:absolute;left:28px;right:0;padding:4px 8px;border-radius:6px;font-size:12px;line-height:16px;font-weight:600;overflow:hidden;box-shadow:inset 3px 0 0 currentColor}
+.ss-ev.blue{color:#7FA8FF;background:rgba(43,90,228,.22)}
+.ss-ev.yellow{color:#F2D06B;background:rgba(242,208,107,.16)}
+.ss-ev.violet{color:#C792EA;background:rgba(199,146,234,.18)}
+.ss-join{display:inline-block;margin-top:6px;padding:2px 10px;border-radius:9999px;background:#F2D06B;color:#1A1917;font-style:normal;font-size:12px;line-height:16px}
+.ss-join.on{background:#fff}
+.ss-now{position:absolute;left:24px;right:0;height:2px;background:#FF5A4E}
+.ss-now::before{content:"";position:absolute;left:-4px;top:-3px;width:8px;height:8px;border-radius:50%;background:#FF5A4E}
+.ss-strip{position:absolute;top:0;right:0;bottom:0;width:5%;min-width:28px;background:#181818;box-shadow:-1px 0 0 #313131;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;visibility:hidden}
+.ss-strip em{font-style:normal;font-size:10px;line-height:12px;font-weight:700;color:#1A1917;background:#F2D06B;border-radius:9999px;padding:2px 4px;writing-mode:vertical-rl}
+.ss-strip span{font:500 10px/12px var(--mono);color:#A1A09B}
+.ss-dock{position:absolute;left:50%;bottom:8px;transform:translateX(-50%);display:flex;gap:6px;padding:6px;border-radius:12px;background:rgba(255,255,255,.08);box-shadow:0 0 0 1px rgba(255,255,255,.08)}
+.ss-dock i{width:22px;height:22px;border-radius:6px;background:#3a3a3a}
+/* light scene (ToneCue) */
+.scene.tc{aspect-ratio:2/1}
+@media (max-width:639px){.scene.tc{aspect-ratio:4/5}}
+.scene.light{background:#DEDCD7;color:#1A1917;box-shadow:0 0 0 1px #D0CEC9,0 40px 80px -32px rgba(0,0,0,.25)}
+.scene.light .sc-bar{background:rgba(255,255,255,.45);color:#5C5A56}
+.scene.light .sc-bar .sc-app{color:#1A1917}
+.tc-pop{position:absolute;right:6%;top:40px;width:min(320px,72%);padding:16px;border-radius:16px;background:rgba(255,255,255,.9);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);box-shadow:0 0 0 1px rgba(0,0,0,.08),0 24px 48px -16px rgba(0,0,0,.3)}
+.tc-top strong{font-size:16px;line-height:24px}
+.tc-dev{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
+.tc-dev > div{padding:8px 12px;border-radius:12px;background:#F0EFEC;min-width:0}
+.tc-dev small{display:block;font-size:12px;line-height:16px;color:#6E6C68}
+.tc-dev span{display:block;font-size:14px;line-height:20px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tc-scene{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;padding:12px;border-radius:12px;box-shadow:inset 0 0 0 1px #E6E4E0}
+.tc-scene b{display:block;font-size:16px;line-height:24px}
+.tc-scene span{display:block;font-size:12px;line-height:16px;color:#6E6C68}
+.tc-undo{font-style:normal;font-size:12px;line-height:16px;font-weight:600;padding:4px 10px;border-radius:9999px;background:#1A1917;color:#FAF9F7}
+.tc-toast{position:absolute;left:6%;top:40px;width:min(240px,46%);padding:12px 16px;border-radius:16px;background:rgba(255,255,255,.9);box-shadow:0 0 0 1px rgba(0,0,0,.08),0 16px 32px -12px rgba(0,0,0,.25);opacity:0}
+.tc-toast b{display:block;font-size:14px;line-height:20px}
+.tc-toast span{font-size:12px;line-height:16px;color:#6E6C68}
+.tc-dev span,.tc-name,.tc-why{transition:opacity .3s var(--ease)}
+@media (max-width:639px){.tc-pop{right:4%;left:4%;width:auto;top:120px}.tc-toast{left:4%;width:auto;right:4%;top:40px}.ss-side{width:52%}.ss-dock{display:none}}
+
 /* Tagline: words ink in as you scroll */
 .tagline{padding:160px 0;text-align:center}
 .tagline p{max-width:880px;margin:0 auto;font-size:36px;line-height:40px;font-weight:700;letter-spacing:-.04em;text-wrap:balance}
@@ -371,11 +419,11 @@ footer .fine{max-width:880px}
   <header class="hero">
     <div class="wrap">
       <h1 aria-label="Apps for high performing people."><span class="line" aria-hidden="true">Apps for h<span class="ihost"><span class="i-real">i</span><span class="i-less">ı</span><i class="pd-b"></i></span>gh</span><span class="line" aria-hidden="true">performing people<span class="pd" data-dot="hero"><span class="pd-t">.</span><i class="pd-b"></i></span></span></h1>
-      <p class="sub">Three small Mac apps. <b>Each does one job, then gets out of your way.</b><br class="br"> Pay once. No account. Nothing watches you<span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></p>
+      <p class="sub">Three small Mac apps. <b>Each does one job, then gets out of your way.</b><br class="br"> Pay once. No account. Nothing watches you.</p>
       <div class="cta">
         <a class="btn btn-primary" href="#apps">Pick an app</a>
       </div>
-      <p class="proof">Free for 14 days. Made by one person in Graz, Austria<span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></p>
+      <p class="proof">Free for 14 days. Made by one person in Graz, Austria.</p>
       <ul class="icons">
         <li><a href="#sideschedule"><img src="/sideschedule/assets/app-icon.png" alt="" width="128" height="128"><b>SideSchedule</b><span>Your calendar, docked like the Dock</span></a></li>
         <li><a href="#talkremind"><img src="/talkremind/assets/app-icon.png" alt="" width="128" height="128"><b>TalkRemind</b><span>A nudge to dictate, not type</span></a></li>
@@ -385,46 +433,63 @@ footer .fine{max-width:880px}
   </header>
 
   <div class="tiles" id="apps" aria-label="The apps">
-    <article class="tile rise" id="sideschedule" aria-labelledby="ss-h">
+    <article class="tile rise" id="sideschedule" data-dot-edge=".86" aria-labelledby="ss-h">
       <div class="head">
         <img src="/sideschedule/assets/app-icon.png" alt="" width="64" height="64">
         <h2 id="ss-h">SideSchedule</h2>
-        <p class="hook">My calendar kept losing to every other window<span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></p>
+        <p class="hook">My calendar kept losing to every other window.</p>
         <p class="what">A calendar sidebar that keeps its strip of screen the way the Dock does. Meeting notes become Markdown files, and one click joins your call.</p>
         <div class="actions">
           <a class="btn btn-primary" href="https://github.com/4IngoJ/sideschedule/releases/latest/download/SideSchedule.dmg">Download free trial</a>
           <a class="more" href="/sideschedule/">Learn more <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"/></svg></a>
         </div>
-        <p class="price">Free for 14 days, then €12.99 once. macOS 13 or later<span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></p>
+        <p class="price">Free for 14 days, then €12.99 once. macOS 13 or later.</p>
         <ul class="facts">
           <li>Reads Apple Calendar, so iCloud, Google, Exchange and CalDAV work.</li>
           <li>Joins Zoom, Meet, Teams, Webex and FaceTime calls.</li>
           <li>Six languages.</li>
         </ul>
       </div>
-      <div class="shot">
-        <video src="/sideschedule/assets/demo-web.mp4" poster="/sideschedule/assets/demo-poster.jpg" width="1600" height="1006" muted loop playsinline preload="none" aria-label="SideSchedule docked on the right edge of a Mac desktop, showing the day's meetings"></video>
+      <div class="scene ss" role="img" aria-label="Animation: SideSchedule slides in at the right edge and the open window makes room for it. A click on Join opens the call. Then the sidebar folds into a thin strip that still shows the next meeting.">
+        <div class="sc-bar" aria-hidden="true"><span class="sc-app">Notes</span><span>File</span><span>Edit</span><span>View</span><span class="sc-gap"></span><span>Thu 10:58</span></div>
+        <div class="ss-desk" aria-hidden="true">
+          <div class="ss-win"><div class="sc-title"><i></i><i></i><i></i><span>Launch checklist</span></div><b></b><b></b><b class="s"></b><b></b><b class="s"></b></div>
+          <aside class="ss-side">
+            <div class="ss-head"><strong>Thursday</strong><span>October 29</span></div>
+            <div class="ss-day">
+              <span class="ss-h" style="top:0">10</span><span class="ss-h" style="top:33.3%">11</span><span class="ss-h" style="top:66.6%">12</span>
+              <div class="ss-ev blue" style="top:8%;height:16%">Standup</div>
+              <div class="ss-ev yellow" style="top:35%;height:26%">Design review<em class="ss-join">Join</em></div>
+              <div class="ss-ev violet" style="top:72%;height:20%">Lunch with Jana</div>
+              <i class="ss-now" style="top:32%"></i>
+            </div>
+          </aside>
+          <div class="ss-strip"><em>Join</em><span>2m</span></div>
+          <i class="sc-cursor"></i>
+          <div class="ss-dock"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
       </div>
+      <p class="demo-link"><a class="more" href="/sideschedule/assets/demo-web.mp4">Watch the 34 second demo <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"/></svg></a></p>
     </article>
 
-    <article class="tile dark rise" id="talkremind" aria-labelledby="tr-h">
+    <article class="tile dark rise" id="talkremind" data-dot-edge=".14" aria-labelledby="tr-h">
       <div class="head">
         <img src="/talkremind/assets/app-icon.png" alt="" width="64" height="64">
         <h2 id="tr-h">TalkRemind</h2>
-        <p class="hook">You bought a dictation app. You still type<span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></p>
+        <p class="hook">You bought a dictation app. You still type.</p>
         <p class="what">A menu bar app that notices a long stretch of typing and nudges you to use the dictation app you already own. It never transcribes and never reads what you type.</p>
         <div class="actions">
           <a class="btn btn-primary" href="https://github.com/4IngoJ/TalkRemind/releases/latest/download/TalkRemind.dmg">Download free trial</a>
           <a class="more" href="/talkremind/">Learn more <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"/></svg></a>
         </div>
-        <p class="price">Free for 14 days, then €9.99 once. macOS 14 or later<span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></p>
+        <p class="price">Free for 14 days, then €9.99 once. macOS 14 or later.</p>
         <ul class="facts">
           <li>Recognises 17 dictation apps. Any app with a hotkey works.</li>
           <li>Four nudge styles, quiet hours and exemptions per app.</li>
           <li>Shows how much you dictate compared to typing.</li>
         </ul>
       </div>
-      <div class="scene" role="img" aria-label="Animation: someone types a long note, TalkRemind slides in the nudge Your dictation app is waiting with the shortcut Option R, and the rest of the note arrives by dictation.">
+      <div class="scene tr" role="img" aria-label="Animation: someone types a long note, TalkRemind slides in the nudge Your dictation app is waiting with the shortcut Option R, and the rest of the note arrives by dictation.">
         <div class="sc-bar" aria-hidden="true"><span class="sc-app">Notes</span><span>File</span><span>Edit</span><span>Format</span><span class="sc-gap"></span><img src="/talkremind/assets/app-icon.png" alt="" width="16" height="16"><span>9:41</span></div>
         <div class="sc-win" aria-hidden="true">
           <div class="sc-title"><i></i><i></i><i></i><span>Thursday review</span></div>
@@ -440,25 +505,34 @@ footer .fine{max-width:880px}
       </div>
     </article>
 
-    <article class="tile rise" id="tonecue" aria-labelledby="tc-h">
+    <article class="tile rise" id="tonecue" data-dot-edge=".86" aria-labelledby="tc-h">
       <div class="head">
         <img src="/tonecue/assets/app-icon.png" alt="" width="64" height="64">
         <h2 id="tc-h">ToneCue</h2>
-        <p class="hook">Your Mac, with the microphone you meant<span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></p>
+        <p class="hook">Your Mac, with the microphone you meant.</p>
         <p class="what">A menu bar app that picks your microphone and speakers by situation: a dock, a calendar meeting, an open app. It tells you why it switched, and you can undo it.</p>
         <div class="actions">
           <a class="btn btn-primary" href="https://github.com/4IngoJ/tonecue/releases/latest/download/ToneCue.dmg">Download free trial</a>
           <a class="more" href="/tonecue/">Learn more <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"/></svg></a>
         </div>
-        <p class="price">Free for 14 days, then €9.99 once. macOS 13 or later<span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></p>
+        <p class="price">Free for 14 days, then €9.99 once. macOS 13 or later.</p>
         <ul class="facts">
           <li>Scenes with rules. Higher scenes win.</li>
           <li>Pauses when you pick a device by hand.</li>
           <li>Works from Raycast too.</li>
         </ul>
       </div>
-      <div class="shot" style="max-width:720px">
-        <img src="/tonecue/assets/screens/scenes.png" alt="ToneCue settings listing audio scenes with their rules" width="720" height="520" loading="lazy">
+      <div class="scene light tc" role="img" aria-label="Animation: a meeting starts in the calendar. ToneCue switches input and output to AirPods Pro, names the scene Calls and the reason, a meeting is on, and offers Undo. When the meeting ends, it goes back to the desk setup.">
+        <div class="sc-bar" aria-hidden="true"><span class="sc-app">Calendar</span><span>File</span><span>Edit</span><span>View</span><span class="sc-gap"></span><img src="/tonecue/assets/app-icon.png" alt="" width="16" height="16"><span class="tc-clock">10:59</span></div>
+        <div class="tc-toast" aria-hidden="true"><b>Design review</b><span>Now · Zoom</span></div>
+        <div class="tc-pop" aria-hidden="true">
+          <div class="tc-top"><strong>ToneCue</strong></div>
+          <div class="tc-dev">
+            <div><small>Input</small><span class="tc-in">Elgato Wave XLR</span></div>
+            <div><small>Output</small><span class="tc-out">LG HDR WQHD</span></div>
+          </div>
+          <div class="tc-scene"><div><b class="tc-name">Desk</b><span class="tc-why">LG HDR WQHD is connected</span></div><em class="tc-undo">Undo</em></div>
+        </div>
       </div>
     </article>
   </div>
@@ -466,7 +540,7 @@ footer .fine{max-width:880px}
 
   <section aria-labelledby="compare-h">
     <div class="sec-head wrap"><h2 id="compare-h">Which one is yours?</h2><p>All three at a glance.</p></div>
-    <div class="compare rise">
+    <div class="compare rise" data-dot-edge=".5">
       <table>
         <thead><tr><td></td>
           <th scope="col"><img src="/sideschedule/assets/app-icon.png" alt="" width="56" height="56"><b>SideSchedule</b></th>
@@ -540,7 +614,7 @@ footer .fine{max-width:880px}
           </details>
           <p class="all"><a href="https://github.com/4IngoJ/sideschedule/releases">All SideSchedule releases</a></p>
         </article>
-        <article class="release rise" lang="en">
+        <article class="release rise" lang="en" data-dot-edge=".8">
           <header><img src="/talkremind/assets/app-icon.png" alt="" width="40" height="40"><div><h3>TalkRemind<span class="mono">0.13.0</span></h3><time datetime="2026-10-24">24 Oct 2026</time></div></header>
           <ul class="notes">
             <li>A new look across the app: nudges, menu bar, statistics and Settings.</li>
@@ -676,13 +750,6 @@ footer .fine{max-width:880px}
   }, { rootMargin: '-45% 0px -50% 0px' });
   ['apps', 'changelog', 'partners'].forEach(function (id) { spy.observe(document.getElementById(id)); });
 
-  // Demo video plays only while visible, never with reduced motion
-  var v = document.querySelector('#sideschedule video');
-  if (still) { v.controls = true; } else {
-    new IntersectionObserver(function (es) {
-      es.forEach(function (e) { if (e.isIntersecting) { v.play().catch(function () { v.controls = true; }); } else { v.pause(); } });
-    }, { threshold: .4 }).observe(v);
-  }
 
   // Tagline: split into words, each inks in as the block scrolls through the viewport
   var words = [];
@@ -722,7 +789,7 @@ footer .fine{max-width:880px}
     for (var k = 0; k <= 200; k++) squashPeak = Math.max(squashPeak, sq(k / 200));
 
     var root = document.documentElement, dot = document.querySelector('.dot'), body = dot.firstChild;
-    var stops = [].slice.call(document.querySelectorAll('[data-dot]')), ihost = document.querySelector('.ihost');
+    var stops = [].slice.call(document.querySelectorAll('[data-dot],[data-dot-edge]')), ihost = document.querySelector('.ihost');
     var at = -1, want = 0, busy = false, hopped = false, cur = null;
 
     function fs(el) { return parseFloat(getComputedStyle(el).fontSize); }
@@ -733,7 +800,13 @@ footer .fine{max-width:880px}
         var g = ihost.querySelector('.i-less').getBoundingClientRect(), b = ihost.querySelector('.pd-b').getBoundingClientRect(), f = fs(ihost);
         return { x: g.left + g.width / 2 + scrollX, y: b.top - f * .675 + f * .085 + scrollY, s: f * .17 / 20, c: '' };
       }
-      var t = stops[i], gt = t.querySelector('.pd-t').getBoundingClientRect(), bt = t.querySelector('.pd-b').getBoundingClientRect();
+      var t = stops[i];
+      if (t.dataset.dotEdge) {
+        // resting on the top edge of a box, the size of a heading's full stop
+        var e = t.getBoundingClientRect();
+        return { x: e.left + e.width * parseFloat(t.dataset.dotEdge) + scrollX, y: e.top + scrollY, s: .7, c: '' };
+      }
+      var gt = t.querySelector('.pd-t').getBoundingClientRect(), bt = t.querySelector('.pd-b').getBoundingClientRect();
       return { x: gt.left + gt.width / 2 + scrollX, y: bt.top + scrollY, s: fs(t) * .17 / 20, c: colorOf(t) };
     }
     function setTo(p) { gsap.set(dot, { x: p.x, y: p.y }); gsap.set(body, { scaleX: p.s, scaleY: p.s }); body.style.backgroundColor = p.c; cur = p; }
@@ -798,9 +871,77 @@ footer .fine{max-width:880px}
     });
   })();
 
+
+  // Mini scenes share one rule: play while visible, rest on the last frame with reduced motion
+  function playWhileVisible(el, tl) {
+    new IntersectionObserver(function (es) { es.forEach(function (e) { e.isIntersecting ? tl.play() : tl.pause(); }); }, { threshold: .35 }).observe(el);
+  }
+
+  // SideSchedule: slides in, the window makes room, one click joins, then it folds to a strip
+  (function () {
+    var sc = document.querySelector('.scene.ss');
+    if (!sc) return;
+    var side = sc.querySelector('.ss-side'), win = sc.querySelector('.ss-win'), strip = sc.querySelector('.ss-strip');
+    var join = sc.querySelector('.ss-join'), cur = sc.querySelector('.sc-cursor'), now = sc.querySelector('.ss-now');
+    if (still || !window.gsap) { side.style.transform = 'none'; win.style.right = '31%'; return; }
+    var desk = sc.querySelector('.ss-desk');
+    function rel() { var j = join.getBoundingClientRect(), d = desk.getBoundingClientRect(); return { x: j.left - d.left + j.width / 2, y: j.top - d.top + j.height / 2 }; }
+    var tl = gsap.timeline({ repeat: -1, repeatDelay: .8, paused: true });
+    tl.set([side, strip], { xPercent: 100, visibility: 'visible' }).set(win, { right: '4%' }).set(cur, { opacity: 0, x: 120, y: 260 }).set(now, { top: '28%' })
+      .to({}, { duration: .8 })
+      // the sidebar claims its strip, the window steps aside
+      .to(side, { xPercent: 0, duration: .9, ease: 'power3.out' })
+      .to(win, { right: '31%', duration: .9, ease: 'power3.out' }, '<')
+      .to(now, { top: '33%', duration: 2.2, ease: 'none' }, '<')
+      // cursor finds Join and clicks
+      .to(cur, { opacity: 1, duration: .2 }, '-=1.2')
+      .to(cur, { x: function () { return rel().x; }, y: function () { return rel().y; }, duration: 1, ease: 'power2.inOut' }, '<')
+      .to(cur, { scale: .8, duration: .08, yoyo: true, repeat: 1 })
+      .call(function () { join.classList.add('on'); join.textContent = 'Joining'; })
+      .to(cur, { opacity: 0, duration: .3 }, '+=.6')
+      // auto hide: the sidebar folds to a sliver that keeps Join and the countdown
+      .to(side, { xPercent: 100, duration: .7, ease: 'power3.in' }, '+=.6')
+      .to(strip, { xPercent: 0, duration: .5, ease: 'power3.out' }, '-=.15')
+      .to(win, { right: '7%', duration: .7, ease: 'power3.inOut' }, '<')
+      .call(function () { join.classList.remove('on'); join.textContent = 'Join'; }, null, '+=2')
+      .to(strip, { xPercent: 100, duration: .4, ease: 'power2.in' })
+      .to(win, { right: '4%', duration: .4, ease: 'power2.in' }, '<');
+    playWhileVisible(sc, tl);
+  })();
+
+  // ToneCue: a meeting starts, the devices switch, the reason and Undo show, then back to the desk
+  (function () {
+    var sc = document.querySelector('.scene.tc');
+    if (!sc) return;
+    var toast = sc.querySelector('.tc-toast'), inp = sc.querySelector('.tc-in'), out = sc.querySelector('.tc-out');
+    var name = sc.querySelector('.tc-name'), why = sc.querySelector('.tc-why'), undo = sc.querySelector('.tc-undo'), clock = sc.querySelector('.tc-clock');
+    function set(a) { inp.textContent = a[0]; out.textContent = a[1]; name.textContent = a[2]; why.textContent = a[3]; }
+    var desk = ['Elgato Wave XLR', 'LG HDR WQHD', 'Desk', 'LG HDR WQHD is connected'];
+    var call = ['AirPods Pro', 'AirPods Pro', 'Calls', 'A meeting is on'];
+    if (still || !window.gsap) { set(call); return; }
+    var fields = [inp, out, name, why];
+    function swap(to) {
+      return gsap.timeline()
+        .to(fields, { opacity: 0, y: -6, duration: .2, stagger: .05, ease: 'power2.in' })
+        .call(function () { set(to); })
+        .fromTo(fields, { y: 8 }, { opacity: 1, y: 0, duration: .45, stagger: .06, ease: 'back.out(2)' });
+    }
+    var tl = gsap.timeline({ repeat: -1, paused: true, onRepeat: function () { set(desk); clock.textContent = '10:59'; } });
+    tl.call(function () { set(desk); clock.textContent = '10:59'; })
+      .to({}, { duration: 1.4 })
+      .call(function () { clock.textContent = '11:00'; })
+      .fromTo(toast, { opacity: 0, y: -12 }, { opacity: 1, y: 0, duration: .5, ease: 'back.out(1.6)' })
+      .add(swap(call), '+=.6')
+      .fromTo(undo, { scale: 1 }, { scale: 1.12, duration: .18, yoyo: true, repeat: 1, ease: 'power2.out' }, '+=.1')
+      .to(toast, { opacity: 0, y: -12, duration: .4, ease: 'power2.in' }, '+=2')
+      .add(swap(desk), '+=1.2')
+      .to({}, { duration: 1.6 });
+    playWhileVisible(sc, tl);
+  })();
+
   // TalkRemind mini scene: typing, the nudge, the shortcut, then dictation
   (function () {
-    var scene = document.querySelector('.scene');
+    var scene = document.querySelector('.scene.tr');
     if (!scene) return;
     var typed = scene.querySelector('.sc-typed'), dict = scene.querySelector('.sc-dict'), nudge = scene.querySelector('.sc-nudge');
     var keys = scene.querySelectorAll('kbd'), timer = scene.querySelector('.sc-timer');
@@ -825,7 +966,7 @@ footer .fine{max-width:880px}
       // dictation arrives a few words at a time, much faster than typing
       .to(w, { n: words.length, duration: 2.4, ease: 'steps(' + Math.ceil(words.length / 3) + ')', onUpdate: function () { dict.textContent = words.slice(0, Math.round(w.n)).join(' '); } })
       .to({}, { duration: 2.2 });
-    new IntersectionObserver(function (es) { es.forEach(function (e) { e.isIntersecting ? tl.play() : tl.pause(); }); }, { threshold: .35 }).observe(scene);
+    playWhileVisible(scene, tl);
   })();
 
   // Copy buttons
