@@ -234,12 +234,17 @@ p,li,dd{text-wrap:pretty}
 
 .demo-link{margin:0 0 48px;font-size:14px;line-height:20px}
 .sc-cursor{position:absolute;left:0;top:0;width:14px;height:20px;background:#F5F5F2;clip-path:polygon(0 0,0 80%,28% 62%,45% 100%,62% 92%,45% 56%,80% 56%);opacity:0;filter:drop-shadow(0 1px 1px rgba(0,0,0,.6));z-index:5}
+/* Desktop wallpapers behind the scenes; windows get the frosted look of macOS */
+.sc-wall{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.sc-bar{position:relative;z-index:1;-webkit-backdrop-filter:blur(20px) saturate(1.6);backdrop-filter:blur(20px) saturate(1.6)}
+.ss-desk,.sc-win,.sc-nudge,.tc-cal,.tc-toast,.tc-pop{z-index:1}
+.sc-win{background:rgba(39,39,39,.78);-webkit-backdrop-filter:blur(24px) saturate(1.4);backdrop-filter:blur(24px) saturate(1.4)}
 /* SideSchedule scene */
 .ss-desk{position:absolute;inset:28px 0 0}
-.ss-win{position:absolute;left:4%;top:24px;bottom:56px;right:31%;border-radius:12px;background:#272727;box-shadow:0 0 0 1px #313131;padding:0 20px;overflow:hidden}
+.ss-win{position:absolute;left:4%;top:24px;bottom:56px;right:31%;border-radius:12px;background:rgba(39,39,39,.8);-webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px);box-shadow:0 0 0 1px #313131;padding:0 20px;overflow:hidden}
 .ss-win b{display:block;height:10px;margin:14px 0;border-radius:5px;background:#3a3a3a}
 .ss-win b.s{width:60%}
-.ss-side{position:absolute;top:0;right:0;bottom:0;width:30%;background:#181818;box-shadow:-1px 0 0 #313131;padding:16px 12px}
+.ss-side{position:absolute;top:0;right:0;bottom:0;width:30%;background:rgba(20,20,22,.86);-webkit-backdrop-filter:blur(24px) saturate(1.4);backdrop-filter:blur(24px) saturate(1.4);box-shadow:-1px 0 0 #313131;padding:16px 12px}
 .ss-head strong{display:block;font-size:16px;line-height:24px}
 .ss-head span{font-size:12px;line-height:16px;color:#A1A09B}
 .ss-day{position:absolute;left:12px;right:12px;top:72px;bottom:56px}
@@ -248,7 +253,7 @@ p,li,dd{text-wrap:pretty}
 .ss-ev.blue{color:#7FA8FF;background:rgba(43,90,228,.22)}
 .ss-ev.yellow{color:#F2D06B;background:rgba(242,208,107,.16)}
 .ss-ev.violet{color:#C792EA;background:rgba(199,146,234,.18)}
-.ss-join{display:inline-block;margin-top:6px;padding:2px 10px;border-radius:9999px;background:#F2D06B;color:#1A1917;font-style:normal;font-size:12px;line-height:16px}
+.ss-join{display:block;width:max-content;margin-top:6px;padding:2px 10px;border-radius:9999px;background:#F2D06B;color:#1A1917;font-style:normal;font-size:12px;line-height:16px}
 .ss-join.on{background:#fff}
 .ss-now{position:absolute;left:24px;right:0;height:2px;background:#FF5A4E}
 .ss-now::before{content:"";position:absolute;left:-4px;top:-3px;width:8px;height:8px;border-radius:50%;background:#FF5A4E}
@@ -257,6 +262,8 @@ p,li,dd{text-wrap:pretty}
 .ss-strip span{font:500 10px/12px var(--mono);color:#A1A09B}
 .ss-dock{position:absolute;left:50%;bottom:8px;transform:translateX(-50%);display:flex;gap:6px;padding:6px;border-radius:12px;background:rgba(255,255,255,.08);box-shadow:0 0 0 1px rgba(255,255,255,.08)}
 .ss-dock i{width:22px;height:22px;border-radius:6px;background:#3a3a3a}
+.scene.tr{aspect-ratio:16/9}
+@media (max-width:639px){.scene.tr{aspect-ratio:4/5}}
 /* light scene (ToneCue) */
 .scene.tc{aspect-ratio:2/1}
 @media (max-width:639px){.scene.tc{aspect-ratio:4/5}}
@@ -273,6 +280,12 @@ p,li,dd{text-wrap:pretty}
 .tc-scene b{display:block;font-size:16px;line-height:24px}
 .tc-scene span{display:block;font-size:12px;line-height:16px;color:#6E6C68}
 .tc-undo{font-style:normal;font-size:12px;line-height:16px;font-weight:600;padding:4px 10px;border-radius:9999px;background:#1A1917;color:#FAF9F7}
+.tc-cal{position:absolute;left:4%;right:30%;top:44px;bottom:16px;border-radius:12px;background:rgba(255,255,255,.62);-webkit-backdrop-filter:blur(24px) saturate(1.4);backdrop-filter:blur(24px) saturate(1.4);box-shadow:0 0 0 1px rgba(0,0,0,.06);padding:12px 16px;display:flex;flex-direction:column;gap:8px}
+.tc-cal-head{display:grid;grid-template-columns:repeat(5,1fr);font-size:12px;line-height:16px;color:#6E6C68}
+.tc-cal-head .today{color:#FF5A4E;font-weight:600}
+.tc-cal-grid{flex:1;display:grid;grid-template-columns:repeat(5,1fr);grid-template-rows:repeat(7,1fr);gap:4px 8px}
+.tc-cal-grid i{border-radius:6px;background:rgba(43,90,228,.12);box-shadow:inset 3px 0 0 rgba(43,90,228,.45)}
+.tc-cal-grid i.hot{background:rgba(242,176,64,.22);box-shadow:inset 3px 0 0 #E2A43A}
 .tc-toast{position:absolute;left:6%;top:40px;width:min(240px,46%);padding:12px 16px;border-radius:16px;background:rgba(255,255,255,.9);box-shadow:0 0 0 1px rgba(0,0,0,.08),0 16px 32px -12px rgba(0,0,0,.25);opacity:0}
 .tc-toast b{display:block;font-size:14px;line-height:20px}
 .tc-toast span{font-size:12px;line-height:16px;color:#6E6C68}
@@ -450,7 +463,8 @@ footer .fine{max-width:880px}
           <li>Six languages.</li>
         </ul>
       </div>
-      <div class="scene ss" role="img" aria-label="Animation: SideSchedule slides in at the right edge and the open window makes room for it. A click on Join opens the call. Then the sidebar folds into a thin strip that still shows the next meeting.">
+      <div class="scene ss" data-dot-edge=".12" role="img" aria-label="Animation: SideSchedule slides in at the right edge and the open window makes room for it. A click on Join opens the call. Then the sidebar folds into a thin strip that still shows the next meeting.">
+        <img class="sc-wall" src="/assets/v2/wall-dusk.webp" alt="" width="1600" height="893" loading="lazy">
         <div class="sc-bar" aria-hidden="true"><span class="sc-app">Notes</span><span>File</span><span>Edit</span><span>View</span><span class="sc-gap"></span><span>Thu 10:58</span></div>
         <div class="ss-desk" aria-hidden="true">
           <div class="ss-win"><div class="sc-title"><i></i><i></i><i></i><span>Launch checklist</span></div><b></b><b></b><b class="s"></b><b></b><b class="s"></b></div>
@@ -489,7 +503,8 @@ footer .fine{max-width:880px}
           <li>Shows how much you dictate compared to typing.</li>
         </ul>
       </div>
-      <div class="scene tr" role="img" aria-label="Animation: someone types a long note, TalkRemind slides in the nudge Your dictation app is waiting with the shortcut Option R, and the rest of the note arrives by dictation.">
+      <div class="scene tr" data-dot-edge=".88" role="img" aria-label="Animation: someone types a long note, TalkRemind slides in the nudge Your dictation app is waiting with the shortcut Option R, and the rest of the note arrives by dictation.">
+        <img class="sc-wall" src="/assets/v2/wall-ember.webp" alt="" width="1600" height="893" loading="lazy">
         <div class="sc-bar" aria-hidden="true"><span class="sc-app">Notes</span><span>File</span><span>Edit</span><span>Format</span><span class="sc-gap"></span><img src="/talkremind/assets/app-icon.png" alt="" width="16" height="16"><span>9:41</span></div>
         <div class="sc-win" aria-hidden="true">
           <div class="sc-title"><i></i><i></i><i></i><span>Thursday review</span></div>
@@ -522,8 +537,16 @@ footer .fine{max-width:880px}
           <li>Works from Raycast too.</li>
         </ul>
       </div>
-      <div class="scene light tc" role="img" aria-label="Animation: a meeting starts in the calendar. ToneCue switches input and output to AirPods Pro, names the scene Calls and the reason, a meeting is on, and offers Undo. When the meeting ends, it goes back to the desk setup.">
+      <div class="scene light tc" data-dot-edge=".12" role="img" aria-label="Animation: a meeting starts in the calendar. ToneCue switches input and output to AirPods Pro, names the scene Calls and the reason, a meeting is on, and offers Undo. When the meeting ends, it goes back to the desk setup.">
+        <img class="sc-wall" src="/assets/v2/wall-morning.webp" alt="" width="1600" height="893" loading="lazy">
         <div class="sc-bar" aria-hidden="true"><span class="sc-app">Calendar</span><span>File</span><span>Edit</span><span>View</span><span class="sc-gap"></span><img src="/tonecue/assets/app-icon.png" alt="" width="16" height="16"><span class="tc-clock">10:59</span></div>
+        <div class="tc-cal" aria-hidden="true">
+          <div class="tc-cal-head"><span>Mon</span><span>Tue</span><span>Wed</span><span class="today">Thu</span><span>Fri</span></div>
+          <div class="tc-cal-grid">
+            <i style="grid-column:1;grid-row:2/4"></i><i style="grid-column:2;grid-row:1/3"></i><i class="hot" style="grid-column:4;grid-row:3/5"></i>
+            <i style="grid-column:3;grid-row:5/7"></i><i style="grid-column:5;grid-row:2/3"></i><i style="grid-column:4;grid-row:6/7"></i>
+          </div>
+        </div>
         <div class="tc-toast" aria-hidden="true"><b>Design review</b><span>Now · Zoom</span></div>
         <div class="tc-pop" aria-hidden="true">
           <div class="tc-top"><strong>ToneCue</strong></div>
@@ -569,22 +592,22 @@ footer .fine{max-width:880px}
   <div aria-labelledby="promise-h">
     <div class="sec-head wrap"><h2 id="promise-h">What every app comes with<span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></h2></div>
     <div class="promises">
-      <div class="promise rise">
+      <div class="promise rise" data-dot-edge=".88">
         <p class="label">Price</p>
         <h3>You pay once<span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></h3>
         <p>No subscription. After 14 free days the license is yours, for two Macs with SideSchedule or ToneCue and three with TalkRemind.</p>
       </div>
-      <div class="promise rise">
+      <div class="promise rise" data-dot-edge=".88">
         <p class="label">Account</p>
         <h3>There is none<span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></h3>
         <p>Nothing to sign up for. You enter a license key and that’s it.</p>
       </div>
-      <div class="promise rise">
+      <div class="promise rise" data-dot-edge=".88">
         <p class="label">Privacy</p>
         <h3>Nothing watches you<span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></h3>
         <p>No analytics, no telemetry in any app. The only network calls are license and update checks, plus a diagnostic report if you choose to send one. Details in the <a href="/sideschedule/privacy.html">SideSchedule</a>, <a href="/talkremind/privacy.html">TalkRemind</a> and <a href="/tonecue/privacy.html">ToneCue</a> privacy notes.</p>
       </div>
-      <div class="promise rise">
+      <div class="promise rise" data-dot-edge=".88">
         <p class="label">Install</p>
         <h3>Signed and notarized<span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></h3>
         <p>Notarized by Apple, updated through Sparkle. Or use Homebrew:</p>
@@ -600,7 +623,7 @@ footer .fine{max-width:880px}
     <div class="wrap">
       <div class="sec-head"><h2 id="log-h">What’s new<span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></h2><p>The newest release of each app.</p></div>
       <div class="log">
-        <article class="release rise" lang="en">
+        <article class="release rise" lang="en" data-dot-edge=".85">
           <header><img src="/sideschedule/assets/app-icon.png" alt="" width="40" height="40"><div><h3>SideSchedule<span class="mono">1.2.0</span></h3><time datetime="2026-10-20">20 Oct 2026</time></div></header>
           <ul class="notes">
             <li>The sidebar folds back by itself after an alert or auto expand opened it, and takes the alert banner along.</li>
@@ -614,7 +637,7 @@ footer .fine{max-width:880px}
           </details>
           <p class="all"><a href="https://github.com/4IngoJ/sideschedule/releases">All SideSchedule releases</a></p>
         </article>
-        <article class="release rise" lang="en" data-dot-edge=".8">
+        <article class="release rise" lang="en" data-dot-edge=".85">
           <header><img src="/talkremind/assets/app-icon.png" alt="" width="40" height="40"><div><h3>TalkRemind<span class="mono">0.13.0</span></h3><time datetime="2026-10-24">24 Oct 2026</time></div></header>
           <ul class="notes">
             <li>A new look across the app: nudges, menu bar, statistics and Settings.</li>
@@ -628,7 +651,7 @@ footer .fine{max-width:880px}
           </details>
           <p class="all"><a href="https://github.com/4IngoJ/TalkRemind/releases">All TalkRemind releases</a></p>
         </article>
-        <article class="release rise" lang="en">
+        <article class="release rise" lang="en" data-dot-edge=".85">
           <header><img src="/tonecue/assets/app-icon.png" alt="" width="40" height="40"><div><h3>ToneCue<span class="mono">2.1.0</span></h3><time datetime="2026-10-11">11 Oct 2026</time></div></header>
           <ul class="notes">
             <li>New Raycast extension: switch scenes, apply one by name and mute the microphone from Raycast.</li>
@@ -651,7 +674,7 @@ footer .fine{max-width:880px}
         <p class="label" style="margin-top:24px">Form by Brevo (EU), spam check by Cloudflare Turnstile</p>
       </div>
       <div class="rise">
-        <iframe class="signup" title="Subscribe to didact.digital news" src="https://4dd93bf3.sibforms.com/serve/MUIFAAxjfk4SfjnsBviBPjfD2lXFaBbc07ge-hCp-v-i32R0TJzwtsyn46msoyZ4GVzC-1AWjzPUMPJWJvwPIz3d_H61Hr7h7PUrjsj-6_3DT0PyXnd7CvP_5ujypIz3x0rl4al8Qrxy7F-H8hW1Uf9ylu_ANFW9Bz7yyCx3rvOcYIwegZYb4Tt2k1jm3GIvDcFaE_lX8iHTPA12rA==" loading="lazy" scrolling="no"></iframe>
+        <iframe data-dot-edge=".9" class="signup" title="Subscribe to didact.digital news" src="https://4dd93bf3.sibforms.com/serve/MUIFAAxjfk4SfjnsBviBPjfD2lXFaBbc07ge-hCp-v-i32R0TJzwtsyn46msoyZ4GVzC-1AWjzPUMPJWJvwPIz3d_H61Hr7h7PUrjsj-6_3DT0PyXnd7CvP_5ujypIz3x0rl4al8Qrxy7F-H8hW1Uf9ylu_ANFW9Bz7yyCx3rvOcYIwegZYb4Tt2k1jm3GIvDcFaE_lX8iHTPA12rA==" loading="lazy" scrolling="no"></iframe>
         <p class="label" style="margin-top:12px">Form not showing? <a href="https://4dd93bf3.sibforms.com/serve/MUIFAAxjfk4SfjnsBviBPjfD2lXFaBbc07ge-hCp-v-i32R0TJzwtsyn46msoyZ4GVzC-1AWjzPUMPJWJvwPIz3d_H61Hr7h7PUrjsj-6_3DT0PyXnd7CvP_5ujypIz3x0rl4al8Qrxy7F-H8hW1Uf9ylu_ANFW9Bz7yyCx3rvOcYIwegZYb4Tt2k1jm3GIvDcFaE_lX8iHTPA12rA==" target="_blank" rel="noopener">Open it in its own tab</a></p>
       </div>
     </div>
@@ -790,7 +813,8 @@ footer .fine{max-width:880px}
 
     var root = document.documentElement, dot = document.querySelector('.dot'), body = dot.firstChild;
     var stops = [].slice.call(document.querySelectorAll('[data-dot],[data-dot-edge]')), ihost = document.querySelector('.ihost');
-    var at = -1, want = 0, busy = false, hopped = false, cur = null;
+    var at = -1, busy = false, hopped = false, cur = null;
+    function hopTo0() { busy = true; hop(spot(0), false, function () { busy = false; settle(); step(); }); }
 
     function fs(el) { return parseFloat(getComputedStyle(el).fontSize); }
     function colorOf(el) { var c = getComputedStyle(el).color; return /,\s*0\)$/.test(c) ? '' : c; }
@@ -812,10 +836,12 @@ footer .fine{max-width:880px}
     function setTo(p) { gsap.set(dot, { x: p.x, y: p.y }); gsap.set(body, { scaleX: p.s, scaleY: p.s }); body.style.backgroundColor = p.c; cur = p; }
 
     function hop(to, quick, done) {
+      var top = scrollY + 72, bottom = scrollY + innerHeight - 24;
+      if (cur.y < top || cur.y > bottom) { cur = { x: cur.x, y: Math.min(Math.max(cur.y, top), bottom), s: cur.s, c: cur.c }; gsap.set(dot, { y: cur.y }); }
       var from = cur, dx = to.x - from.x, dy = to.y - from.y;
       var air = Math.min(.9, (quick ? .32 : .42) + Math.hypot(dx, dy) / 2800);
       var lift = Math.min(200, 36 + Math.abs(dx) * .16 + Math.abs(dy) * .05) * (quick ? .7 : 1);
-      var up = air * .42, down = air - up, apex = Math.min(from.y, to.y) - lift;
+      var up = air * .42, down = air - up, apex = Math.max(top, Math.min(from.y, to.y) - lift);
       var s0 = from.s, s1 = to.s, crouch = quick ? .08 : .14;
       cur = to;
       gsap.timeline({ onComplete: done })
@@ -834,19 +860,38 @@ footer .fine{max-width:880px}
         .set(body, { scaleX: s1, scaleY: s1 });
     }
 
-    function step() {
-      if (busy || !hopped || at === want) return;
-      var gap = Math.abs(want - at), next = gap > 5 ? want : at + (want > at ? 1 : -1);
-      busy = true; at = next;
-      hop(spot(next), gap > 1, function () { busy = false; settle(); step(); });
-    }
+    // Stay where you are while you are on screen; once off screen, jump to the visible stop
+    // nearest the middle. With nothing visible, rest mid screen at the right edge of the content.
+    function inView(p) { return p.y > scrollY + innerHeight * .12 && p.y < scrollY + innerHeight * .9; }
     function pick() {
-      var line = scrollY + innerHeight * .4, best = 0;
-      stops.forEach(function (t, i) { if (t.getBoundingClientRect().top + scrollY < line) best = i; });
-      return best;
+      if (at !== null && at >= 0 && inView(spot(at))) return at;
+      var mid = scrollY + innerHeight * .45, best = null, bestD = Infinity;
+      stops.forEach(function (t, i) {
+        var p = spot(i);
+        if (!inView(p)) return;
+        var d = Math.abs(p.y - mid);
+        if (d < bestD) { bestD = d; best = i; }
+      });
+      return best === null ? 'park' : best;
+    }
+    function parkSpot() {
+      var w = document.querySelector('main .wrap').getBoundingClientRect();
+      return { x: w.right - 24 + scrollX, y: scrollY + innerHeight * .5, s: .6, c: '' };
+    }
+    function step() {
+      if (busy || !hopped) return;
+      var next = pick();
+      if (next === 'park') {
+        var pk = parkSpot();
+        if (at === 'park') { cur = pk; gsap.to(dot, { y: pk.y, x: pk.x, duration: .6, ease: 'power3.out', overwrite: 'auto' }); return; }
+        at = 'park'; busy = true; return hop(pk, false, function () { busy = false; step(); });
+      }
+      if (next === at) return;
+      at = next; busy = true;
+      hop(spot(next), false, function () { busy = false; settle(); step(); });
     }
     function settle() {
-      if (busy || !cur) return;
+      if (busy || !cur || at === 'park') return;
       var p = spot(at);
       if (Math.abs(p.x - cur.x) + Math.abs(p.y - cur.y) < 1) return;
       cur = p; gsap.to(dot, { x: p.x, y: p.y, duration: .3, ease: 'power3.out' });
@@ -855,19 +900,19 @@ footer .fine{max-width:880px}
     addEventListener('scroll', function () {
       hopped = true;
       if (ticking) return; ticking = true;
-      requestAnimationFrame(function () { ticking = false; want = pick(); step(); });
+      requestAnimationFrame(function () { ticking = false; step(); });
     }, { passive: true });
     document.addEventListener('transitionend', function (e) {
-      if (e.propertyName === 'transform' && at >= 0 && e.target.contains(stops[at])) settle();
+      if (e.propertyName === 'transform' && typeof at === 'number' && at >= 0 && e.target.contains(stops[at])) settle();
     });
-    addEventListener('resize', function () { gsap.killTweensOf([dot, body]); busy = false; setTo(spot(at)); });
+    addEventListener('resize', function () { gsap.killTweensOf([dot, body]); busy = false; setTo(at === 'park' ? parkSpot() : spot(at)); });
 
     (document.fonts ? document.fonts.ready : Promise.resolve()).then(function () {
       // Sit on the i from the start, then take the first step to the end of the headline
       root.classList.add('dotfx');
       setTo(spot(-1));
       dot.classList.add('ready');
-      setTimeout(function () { hopped = true; want = Math.max(want, pick()); step(); }, 1200);
+      setTimeout(function () { if (at !== -1 || busy) return; hopped = true; at = 0; hopTo0(); }, 1200);
     });
   })();
 
