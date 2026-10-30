@@ -1,0 +1,14 @@
+{
+  "defaults": {
+    "utm_source": "linkedin",
+    "utm_medium": "social"
+  },
+  "links": {
+    "ss": {
+      "url": "/sideschedule/",
+      "utm_campaign": "sideschedule-launch",
+      "title": "SideSchedule: your calendar, one glance away",
+      "description": "A small Mac app for your day. One-time purchase, no account, no tracking."
+    }
+  }
+}

@@ -1,6 +1,6 @@
 {
   "de": {
-    "w000": "didact.",
+    "w000": "didact.digital",
     "w001": "Willkommen.",
     "w002": "Danke fürs Installieren. Drei Dinge vorab.",
     "w003": "1. Finden",
@@ -11,11 +11,11 @@
     "w008": "Fragen oder Probleme? Schreib an <a href=\"mailto:hello@didact.digital\">hello@didact.digital</a>.",
     "w009": "Partner-Link gefunden und an die App übergeben.",
     "w010": "Kein Partner-Link gefunden. Es ist nichts weiter zu tun.",
-    "w011": "von didact.",
+    "w011": "von didact.digital",
     "w012": "Newsletter abbestellen"
   },
   "fr": {
-    "w000": "didact.",
+    "w000": "didact.digital",
     "w001": "Bienvenue.",
     "w002": "Merci d'avoir installé l'app. Trois choses à savoir.",
     "w003": "1. La trouver",
@@ -26,11 +26,11 @@
     "w008": "Une question ou un souci ? Écris à <a href=\"mailto:hello@didact.digital\">hello@didact.digital</a>.",
     "w009": "Lien partenaire trouvé et transmis à l'app.",
     "w010": "Aucun lien partenaire trouvé. Rien d'autre à faire.",
-    "w011": "par didact.",
+    "w011": "par didact.digital",
     "w012": "Se désabonner de la newsletter"
   },
   "es": {
-    "w000": "didact.",
+    "w000": "didact.digital",
     "w001": "Bienvenido.",
     "w002": "Gracias por instalarla. Tres cosas que conviene saber.",
     "w003": "1. Encontrarla",
@@ -41,11 +41,11 @@
     "w008": "¿Dudas o problemas? Escribe a <a href=\"mailto:hello@didact.digital\">hello@didact.digital</a>.",
     "w009": "Enlace de socio encontrado y entregado a la app.",
     "w010": "No se encontró ningún enlace de socio. No hay nada más que hacer.",
-    "w011": "de didact.",
+    "w011": "de didact.digital",
     "w012": "Cancelar la suscripción al boletín"
   },
   "it": {
-    "w000": "didact.",
+    "w000": "didact.digital",
     "w001": "Benvenuto.",
     "w002": "Grazie per aver installato l'app. Tre cose da sapere.",
     "w003": "1. Trovarla",
@@ -56,11 +56,11 @@
     "w008": "Domande o problemi? Scrivi a <a href=\"mailto:hello@didact.digital\">hello@didact.digital</a>.",
     "w009": "Link del partner trovato e passato all'app.",
     "w010": "Nessun link del partner trovato. Non c'è altro da fare.",
-    "w011": "di didact.",
+    "w011": "di didact.digital",
     "w012": "Annulla l’iscrizione alla newsletter"
   },
   "pt": {
-    "w000": "didact.",
+    "w000": "didact.digital",
     "w001": "Bem-vindo.",
     "w002": "Obrigado por instalar. Três coisas a saber.",
     "w003": "1. Encontrar",
@@ -71,7 +71,7 @@
     "w008": "Dúvidas ou problemas? Escreve para <a href=\"mailto:hello@didact.digital\">hello@didact.digital</a>.",
     "w009": "Link de parceiro encontrado e entregue à app.",
     "w010": "Nenhum link de parceiro encontrado. Não há mais nada a fazer.",
-    "w011": "da didact.",
+    "w011": "da didact.digital",
     "w012": "Cancelar a subscrição da newsletter"
   }
 }
