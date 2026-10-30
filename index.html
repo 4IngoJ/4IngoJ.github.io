@@ -135,7 +135,7 @@ p,li,dd{text-wrap:pretty}
 .hero .cta{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin-top:32px}
 .br{display:none}
 @media (min-width:1024px){.br{display:inline}.hero .sub{max-width:880px}}
-.hero h1,.hero .sub,.hero .cta,.hero .proof,.icons li{animation:enter 1s var(--ease) both}
+.hero .sub,.hero .cta,.hero .proof,.icons li{animation:enter 1s var(--ease) both}
 .hero .sub{animation-delay:.12s}.hero .cta{animation-delay:.24s}.hero .proof{animation-delay:.3s}
 .icons li{animation-duration:1.2s}.icons li:nth-child(1){animation-delay:.4s}.icons li:nth-child(2){animation-delay:.48s}.icons li:nth-child(3){animation-delay:.56s}
 @keyframes enter{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
@@ -202,6 +202,34 @@ p,li,dd{text-wrap:pretty}
   .compare thead b{font-size:14px;line-height:20px}
   .compare tbody th{grid-column:1/-1;text-align:center;padding:16px 0 0;border-bottom:0}
 }
+
+
+/* Mini scene: a small Mac, built in HTML, that shows what TalkRemind does */
+.scene{position:relative;max-width:760px;aspect-ratio:16/10;margin:64px auto 48px;border-radius:24px;background:#1F1F1F;overflow:hidden;box-shadow:0 0 0 1px #313131,0 40px 80px -32px rgba(0,0,0,.6);text-align:left;font-size:14px;line-height:20px;color:#F5F5F2}
+.sc-bar{display:flex;align-items:center;gap:16px;height:28px;padding:0 16px;background:rgba(255,255,255,.06);font-size:12px;line-height:16px;color:#C9C8C4}
+.sc-bar .sc-app{font-weight:700;color:#F5F5F2}
+.sc-bar .sc-gap{flex:1}
+.sc-bar img{width:16px;height:16px;border-radius:4px}
+.sc-win{position:absolute;left:8%;right:8%;top:56px;bottom:32px;border-radius:12px;background:#272727;box-shadow:0 0 0 1px #313131,0 24px 48px -16px rgba(0,0,0,.6);padding:0 24px 24px}
+.sc-title{display:flex;align-items:center;gap:8px;height:40px;font-size:12px;color:#A1A09B}
+.sc-title i{width:12px;height:12px;border-radius:50%;background:#3a3a3a}
+.sc-title span{margin-left:8px}
+.sc-text{font-size:16px;line-height:24px;color:#F5F5F2;min-height:96px}
+.sc-dict{color:#F5F5F2}
+.sc-caret{display:inline-block;width:2px;height:20px;margin-left:1px;vertical-align:-4px;background:#F5F5F2;animation:caret 1s steps(1) infinite}
+@keyframes caret{50%{opacity:0}}
+.sc-state{position:absolute;left:24px;bottom:16px;font:500 12px/16px var(--mono);text-transform:uppercase;letter-spacing:.07em;color:#A1A09B}
+.sc-mic{display:none}
+.scene.dictating .sc-kbd{display:none}.scene.dictating .sc-mic{display:inline}
+.sc-nudge{position:absolute;left:50%;top:40px;width:min(440px,86%);display:flex;align-items:center;gap:12px;padding:12px 16px 16px 12px;border-radius:16px;background:rgba(24,24,24,.92);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);box-shadow:0 0 0 1px #3a3a3a,0 24px 48px -12px rgba(0,0,0,.7);opacity:0;transform:translate(-50%,-24px) scale(.96);overflow:hidden}
+.sc-nudge img{width:40px;height:40px;border-radius:10px;flex:none}
+.sc-nudge b{display:block;font-size:16px;line-height:24px;font-weight:600}
+.sc-keys{display:flex;gap:4px;margin-top:4px}
+.sc-keys kbd{display:inline-grid;place-items:center;min-width:24px;height:24px;padding:0 4px;border-radius:6px;border:1px solid #5a5a5a;font:600 12px/1 var(--sans);color:#F5F5F2}
+.sc-keys kbd.down{background:#F5F5F2;color:#000;border-color:#F5F5F2}
+.sc-esc{margin-left:auto;align-self:flex-start;font:500 12px/16px var(--mono);padding:2px 6px;border-radius:6px;border:1px solid #4a4a4a;color:#A1A09B}
+.sc-timer{position:absolute;left:12px;right:12px;bottom:6px;height:3px;border-radius:2px;background:#C9C8C4;transform-origin:left;transform:scaleX(1)}
+@media (max-width:639px){.scene{aspect-ratio:4/5}.sc-bar span:not(.sc-app):not(:last-child){display:none}.sc-win{left:4%;right:4%}.sc-text{font-size:14px;line-height:20px}}
 
 /* Tagline: words ink in as you scroll */
 .tagline{padding:160px 0;text-align:center}
@@ -283,7 +311,8 @@ footer .fine{max-width:880px}
 .i-less{display:none}
 .dotfx .i-real{display:none}.dotfx .i-less{display:inline}
 .dotfx .pd-t{visibility:hidden}
-.dot{position:absolute;top:0;left:0;z-index:45;width:20px;height:20px;margin:-10px 0 0 -10px;border-radius:50%;background:var(--fg);pointer-events:none;opacity:0;transition:opacity .4s var(--ease),background-color .4s var(--ease);will-change:transform}
+.dot{position:absolute;top:0;left:0;z-index:45;width:0;height:0;pointer-events:none;opacity:0;transition:opacity .4s var(--ease);will-change:transform}
+.dot i{position:absolute;left:-10px;top:-20px;width:20px;height:20px;border-radius:50%;background:var(--fg);transform-origin:50% 100%;transition:background-color .4s var(--ease);will-change:transform}
 .dot.ready{opacity:1}
 
 /* Scroll reveal, once per block */
@@ -298,7 +327,7 @@ footer .fine{max-width:880px}
   .js .rise,.js .shot{transform:none}
   .sheet a{transform:none}
   .icons a:hover{transform:none}
-  .hero h1,.hero .sub,.hero .cta,.hero .proof,.icons li{animation:none}
+  .hero .sub,.hero .cta,.hero .proof,.icons li{animation:none}
 }
 </style>
 </head>
@@ -342,11 +371,11 @@ footer .fine{max-width:880px}
   <header class="hero">
     <div class="wrap">
       <h1 aria-label="Apps for high performing people."><span class="line" aria-hidden="true">Apps for h<span class="ihost"><span class="i-real">i</span><span class="i-less">ı</span><i class="pd-b"></i></span>gh</span><span class="line" aria-hidden="true">performing people<span class="pd" data-dot="hero"><span class="pd-t">.</span><i class="pd-b"></i></span></span></h1>
-      <p class="sub">Three small Mac apps. <b>Each does one job, then gets out of your way.</b><br class="br"> Pay once. No account. Nothing watches you.</p>
+      <p class="sub">Three small Mac apps. <b>Each does one job, then gets out of your way.</b><br class="br"> Pay once. No account. Nothing watches you<span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></p>
       <div class="cta">
         <a class="btn btn-primary" href="#apps">Pick an app</a>
       </div>
-      <p class="proof">Free for 14 days. Made by one person in Graz, Austria.</p>
+      <p class="proof">Free for 14 days. Made by one person in Graz, Austria<span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></p>
       <ul class="icons">
         <li><a href="#sideschedule"><img src="/sideschedule/assets/app-icon.png" alt="" width="128" height="128"><b>SideSchedule</b><span>Your calendar, docked like the Dock</span></a></li>
         <li><a href="#talkremind"><img src="/talkremind/assets/app-icon.png" alt="" width="128" height="128"><b>TalkRemind</b><span>A nudge to dictate, not type</span></a></li>
@@ -366,7 +395,7 @@ footer .fine{max-width:880px}
           <a class="btn btn-primary" href="https://github.com/4IngoJ/sideschedule/releases/latest/download/SideSchedule.dmg">Download free trial</a>
           <a class="more" href="/sideschedule/">Learn more <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"/></svg></a>
         </div>
-        <p class="price">Free for 14 days, then €12.99 once. macOS 13 or later.</p>
+        <p class="price">Free for 14 days, then €12.99 once. macOS 13 or later<span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></p>
         <ul class="facts">
           <li>Reads Apple Calendar, so iCloud, Google, Exchange and CalDAV work.</li>
           <li>Joins Zoom, Meet, Teams, Webex and FaceTime calls.</li>
@@ -388,15 +417,26 @@ footer .fine{max-width:880px}
           <a class="btn btn-primary" href="https://github.com/4IngoJ/TalkRemind/releases/latest/download/TalkRemind.dmg">Download free trial</a>
           <a class="more" href="/talkremind/">Learn more <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"/></svg></a>
         </div>
-        <p class="price">Free for 14 days, then €9.99 once. macOS 14 or later.</p>
+        <p class="price">Free for 14 days, then €9.99 once. macOS 14 or later<span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></p>
         <ul class="facts">
           <li>Recognises 17 dictation apps. Any app with a hotkey works.</li>
           <li>Four nudge styles, quiet hours and exemptions per app.</li>
           <li>Shows how much you dictate compared to typing.</li>
         </ul>
       </div>
-      <div class="shot narrow-shot cut">
-        <img src="/talkremind/assets/screens/popover-trend.webp" alt="TalkRemind menu bar window showing today's dictation share and a weekly trend" width="784" height="844" loading="lazy">
+      <div class="scene" role="img" aria-label="Animation: someone types a long note, TalkRemind slides in the nudge Your dictation app is waiting with the shortcut Option R, and the rest of the note arrives by dictation.">
+        <div class="sc-bar" aria-hidden="true"><span class="sc-app">Notes</span><span>File</span><span>Edit</span><span>Format</span><span class="sc-gap"></span><img src="/talkremind/assets/app-icon.png" alt="" width="16" height="16"><span>9:41</span></div>
+        <div class="sc-win" aria-hidden="true">
+          <div class="sc-title"><i></i><i></i><i></i><span>Thursday review</span></div>
+          <p class="sc-text"><span class="sc-typed"></span><span class="sc-dict"></span><span class="sc-caret"></span></p>
+          <p class="sc-state"><span class="sc-kbd">Typing</span><span class="sc-mic">Dictating</span></p>
+        </div>
+        <div class="sc-nudge" aria-hidden="true">
+          <img src="/talkremind/assets/app-icon.png" alt="" width="40" height="40">
+          <div><b>Your dictation app is waiting</b><span class="sc-keys"><kbd>⌥</kbd><kbd>R</kbd></span></div>
+          <span class="sc-esc">esc</span>
+          <i class="sc-timer"></i>
+        </div>
       </div>
     </article>
 
@@ -410,7 +450,7 @@ footer .fine{max-width:880px}
           <a class="btn btn-primary" href="https://github.com/4IngoJ/tonecue/releases/latest/download/ToneCue.dmg">Download free trial</a>
           <a class="more" href="/tonecue/">Learn more <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"/></svg></a>
         </div>
-        <p class="price">Free for 14 days, then €9.99 once. macOS 13 or later.</p>
+        <p class="price">Free for 14 days, then €9.99 once. macOS 13 or later<span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></p>
         <ul class="facts">
           <li>Scenes with rules. Higher scenes win.</li>
           <li>Pauses when you pick a device by hand.</li>
@@ -457,22 +497,22 @@ footer .fine{max-width:880px}
     <div class="promises">
       <div class="promise rise">
         <p class="label">Price</p>
-        <h3>You pay once.</h3>
+        <h3>You pay once<span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></h3>
         <p>No subscription. After 14 free days the license is yours, for two Macs with SideSchedule or ToneCue and three with TalkRemind.</p>
       </div>
       <div class="promise rise">
         <p class="label">Account</p>
-        <h3>There is none.</h3>
+        <h3>There is none<span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></h3>
         <p>Nothing to sign up for. You enter a license key and that’s it.</p>
       </div>
       <div class="promise rise">
         <p class="label">Privacy</p>
-        <h3>Nothing watches you.</h3>
+        <h3>Nothing watches you<span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></h3>
         <p>No analytics, no telemetry in any app. The only network calls are license and update checks, plus a diagnostic report if you choose to send one. Details in the <a href="/sideschedule/privacy.html">SideSchedule</a>, <a href="/talkremind/privacy.html">TalkRemind</a> and <a href="/tonecue/privacy.html">ToneCue</a> privacy notes.</p>
       </div>
       <div class="promise rise">
         <p class="label">Install</p>
-        <h3>Signed and notarized.</h3>
+        <h3>Signed and notarized<span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></h3>
         <p>Notarized by Apple, updated through Sparkle. Or use Homebrew:</p>
         <div class="cmd"><code>brew install --cask 4ingoj/tap/sideschedule</code><button type="button" aria-label="Copy command"><svg class="cp" viewBox="0 0 256 256" aria-hidden="true"><path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"/></svg><svg class="ok" viewBox="0 0 256 256" aria-hidden="true"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg></button></div>
         <div class="cmd"><code>brew install --cask 4ingoj/tap/tonecue</code><button type="button" aria-label="Copy command"><svg class="cp" viewBox="0 0 256 256" aria-hidden="true"><path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"/></svg><svg class="ok" viewBox="0 0 256 256" aria-hidden="true"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg></button></div>
@@ -594,7 +634,10 @@ footer .fine{max-width:880px}
   </div>
 </footer>
 
-<div class="dot" aria-hidden="true"></div>
+<div class="dot" aria-hidden="true"><i></i></div>
+<script src="/assets/vendor/gsap-3.15.0/gsap.min.js"></script>
+<script src="/assets/vendor/gsap-3.15.0/CustomEase.min.js"></script>
+<script src="/assets/vendor/gsap-3.15.0/CustomBounce.min.js"></script>
 <script src="/assets/aff.js"></script>
 <script>
 (function () {
@@ -667,88 +710,122 @@ footer .fine{max-width:880px}
     ink();
   }
 
-  // The wandering full stop
+  // The wandering full stop, driven by GSAP: it crouches, jumps on a gravity arc,
+  // lands with a squash and a small rebound (CustomBounce), and steps through every stop.
   (function () {
-    if (still) return;
-    var root = document.documentElement, dot = document.querySelector('.dot');
-    var targets = [].slice.call(document.querySelectorAll('[data-dot]'));
-    var ihost = document.querySelector('.ihost');
-    root.classList.add('dotfx');
-    var cur = null, active = null, hopped = false, anim = null;
+    if (still || !window.gsap || !window.CustomBounce) return;
+    gsap.registerPlugin(CustomEase, CustomBounce);
+    CustomBounce.create('dotFall', { strength: .3, squash: 2.2, squashID: 'dotFall-squash' });
+    var fall = gsap.parseEase('dotFall'), impact = 0;
+    while (impact < 1 && fall(impact) < .999) impact += .005;
+    var squashPeak = 0, sq = gsap.parseEase('dotFall-squash');
+    for (var k = 0; k <= 200; k++) squashPeak = Math.max(squashPeak, sq(k / 200));
 
-    function fontSize(el) { return parseFloat(getComputedStyle(el).fontSize); }
-    function colorOf(el) {
-      var c = getComputedStyle(el).color;
-      return /rgba\(.*,\s*0\)$/.test(c) || c === 'transparent' ? '' : c;
+    var root = document.documentElement, dot = document.querySelector('.dot'), body = dot.firstChild;
+    var stops = [].slice.call(document.querySelectorAll('[data-dot]')), ihost = document.querySelector('.ihost');
+    var at = -1, want = 0, busy = false, hopped = false, cur = null;
+
+    function fs(el) { return parseFloat(getComputedStyle(el).fontSize); }
+    function colorOf(el) { var c = getComputedStyle(el).color; return /,\s*0\)$/.test(c) ? '' : c; }
+    // x = centre, y = bottom of the dot, s = scale of the 20px body
+    function spot(i) {
+      if (i < 0) {
+        var g = ihost.querySelector('.i-less').getBoundingClientRect(), b = ihost.querySelector('.pd-b').getBoundingClientRect(), f = fs(ihost);
+        return { x: g.left + g.width / 2 + scrollX, y: b.top - f * .675 + f * .085 + scrollY, s: f * .17 / 20, c: '' };
+      }
+      var t = stops[i], gt = t.querySelector('.pd-t').getBoundingClientRect(), bt = t.querySelector('.pd-b').getBoundingClientRect();
+      return { x: gt.left + gt.width / 2 + scrollX, y: bt.top + scrollY, s: fs(t) * .17 / 20, c: colorOf(t) };
     }
-    function spotOfI() {
-      var g = ihost.querySelector('.i-less').getBoundingClientRect(), b = ihost.querySelector('.pd-b').getBoundingClientRect();
-      var fs = fontSize(ihost);
-      return { x: g.left + g.width / 2 + scrollX, y: b.top - fs * .675 + scrollY, s: fs * .17 / 20, c: '' };
+    function setTo(p) { gsap.set(dot, { x: p.x, y: p.y }); gsap.set(body, { scaleX: p.s, scaleY: p.s }); body.style.backgroundColor = p.c; cur = p; }
+
+    function hop(to, quick, done) {
+      var from = cur, dx = to.x - from.x, dy = to.y - from.y;
+      var air = Math.min(.9, (quick ? .32 : .42) + Math.hypot(dx, dy) / 2800);
+      var lift = Math.min(200, 36 + Math.abs(dx) * .16 + Math.abs(dy) * .05) * (quick ? .7 : 1);
+      var up = air * .42, down = air - up, apex = Math.min(from.y, to.y) - lift;
+      var s0 = from.s, s1 = to.s, crouch = quick ? .08 : .14;
+      cur = to;
+      gsap.timeline({ onComplete: done })
+        // crouch: wider and flatter, still standing on its baseline
+        .to(body, { scaleX: s0 * 1.38, scaleY: s0 * .6, duration: crouch, ease: 'power2.out' })
+        .addLabel('go')
+        // take off: stretched along the jump, colour follows the destination
+        .to(body, { scaleX: s0 * .76, scaleY: s0 * 1.34, duration: .1, ease: 'power2.out' }, 'go')
+        .call(function () { body.style.backgroundColor = to.c; }, null, 'go')
+        .to(body, { scaleX: s1, scaleY: s1, duration: Math.max(.05, up - .1), ease: 'sine.out' }, 'go+=.1')
+        .to(dot, { x: to.x, duration: up + down, ease: 'none' }, 'go')
+        .to(dot, { y: apex, duration: up, ease: 'power2.out' }, 'go')
+        // fall, hit, rebound and settle: one CustomBounce curve, with its matching squash
+        .to(dot, { y: to.y, duration: down / impact, ease: 'dotFall' }, 'go+=' + up)
+        .fromTo(body, { scaleX: s1, scaleY: s1 }, { scaleX: s1 * (1 + .5 / squashPeak), scaleY: s1 * (1 - .45 / squashPeak), duration: down / impact, ease: 'dotFall-squash', immediateRender: false }, 'go+=' + up)
+        .set(body, { scaleX: s1, scaleY: s1 });
     }
-    function spotOf(t) {
-      var g = t.querySelector('.pd-t').getBoundingClientRect(), b = t.querySelector('.pd-b').getBoundingClientRect();
-      var fs = fontSize(t), d = fs * .17;
-      return { x: g.left + g.width / 2 + scrollX, y: b.top - d / 2 + scrollY, s: d / 20, c: colorOf(t) };
-    }
-    function T(p, sx, sy) { return 'translate(' + p.x.toFixed(1) + 'px,' + p.y.toFixed(1) + 'px) scale(' + (sx || p.s).toFixed(3) + ',' + (sy || p.s).toFixed(3) + ')'; }
-    function place(p) { if (anim) anim.cancel(); dot.style.transform = T(p); dot.style.backgroundColor = p.c; cur = p; }
-    function hop(p) {
-      if (!cur) return place(p);
-      var from = cur, dx = Math.abs(p.x - from.x), dy = Math.abs(p.y - from.y);
-      var lift = Math.min(160, 48 + dx * .12 + dy * .04);
-      var peak = { x: (from.x + p.x) / 2, y: Math.min(from.y, p.y) - lift, s: (from.s + p.s) / 2 };
-      var land = { x: p.x, y: p.y + p.s * 2, s: p.s };
-      if (anim) anim.cancel();
-      dot.style.transform = T(p); dot.style.backgroundColor = p.c; cur = p;
-      anim = dot.animate([
-        { transform: T(from), easing: 'cubic-bezier(.2,.7,.4,1)' },
-        { transform: T(peak), offset: .42, easing: 'cubic-bezier(.6,0,.85,.4)' },
-        { transform: T(land, p.s * 1.3, p.s * .7), offset: .82, easing: 'cubic-bezier(.22,1,.36,1)' },
-        { transform: T(p) }
-      ], { duration: 900 });
-      anim.onfinish = settle;
+
+    function step() {
+      if (busy || !hopped || at === want) return;
+      var gap = Math.abs(want - at), next = gap > 5 ? want : at + (want > at ? 1 : -1);
+      busy = true; at = next;
+      hop(spot(next), gap > 1, function () { busy = false; settle(); step(); });
     }
     function pick() {
-      var line = scrollY + innerHeight * .6, best = targets[0];
-      targets.forEach(function (t) { if (t.getBoundingClientRect().top + scrollY < line) best = t; });
+      var line = scrollY + innerHeight * .4, best = 0;
+      stops.forEach(function (t, i) { if (t.getBoundingClientRect().top + scrollY < line) best = i; });
       return best;
     }
-    var ticking = false;
-    function onScroll() {
-      if (!hopped) { hopped = true; dot.classList.add('ready'); }
-      if (ticking) return; ticking = true;
-      requestAnimationFrame(function () {
-        ticking = false;
-        var t = pick();
-        if (t !== active) { active = t; hop(spotOf(t)); }
-      });
-    }
-    function goHero() { if (hopped) return; hopped = true; dot.classList.add('ready'); active = pick(); hop(spotOf(active)); }
-    // A block that is still sliding in moves its full stop; follow it once it settles
     function settle() {
-      if (!hopped || !active) return;
-      var p = spotOf(active);
+      if (busy || !cur) return;
+      var p = spot(at);
       if (Math.abs(p.x - cur.x) + Math.abs(p.y - cur.y) < 1) return;
-      var from = cur; dot.style.transform = T(p); cur = p;
-      anim = dot.animate([{ transform: T(from) }, { transform: T(p) }], { duration: 300, easing: 'cubic-bezier(.22,1,.36,1)' });
+      cur = p; gsap.to(dot, { x: p.x, y: p.y, duration: .3, ease: 'power3.out' });
     }
+    var ticking = false;
+    addEventListener('scroll', function () {
+      hopped = true;
+      if (ticking) return; ticking = true;
+      requestAnimationFrame(function () { ticking = false; want = pick(); step(); });
+    }, { passive: true });
     document.addEventListener('transitionend', function (e) {
-      if (e.propertyName === 'transform' && active && e.target.contains(active)) settle();
+      if (e.propertyName === 'transform' && at >= 0 && e.target.contains(stops[at])) settle();
     });
-    addEventListener('scroll', onScroll, { passive: true });
-    addEventListener('resize', function () { place(hopped ? spotOf(active) : spotOfI()); });
+    addEventListener('resize', function () { gsap.killTweensOf([dot, body]); busy = false; setTo(spot(at)); });
+
     (document.fonts ? document.fonts.ready : Promise.resolve()).then(function () {
-      // Let the hero settle, set the dot on the i, then send it to the end of the line
-      setTimeout(function () {
-        if (hopped) return place(spotOf(active));
-        var i = spotOfI();
-        place({ x: i.x, y: i.y - 48, s: i.s, c: '' });
-        dot.classList.add('ready');
-        hop(i);
-        setTimeout(goHero, 1300);
-      }, 1100);
+      // Sit on the i from the start, then take the first step to the end of the headline
+      root.classList.add('dotfx');
+      setTo(spot(-1));
+      dot.classList.add('ready');
+      setTimeout(function () { hopped = true; want = Math.max(want, pick()); step(); }, 1200);
     });
+  })();
+
+  // TalkRemind mini scene: typing, the nudge, the shortcut, then dictation
+  (function () {
+    var scene = document.querySelector('.scene');
+    if (!scene) return;
+    var typed = scene.querySelector('.sc-typed'), dict = scene.querySelector('.sc-dict'), nudge = scene.querySelector('.sc-nudge');
+    var keys = scene.querySelectorAll('kbd'), timer = scene.querySelector('.sc-timer');
+    var A = 'Thursday review. The onboarding still has one step too many, and the settings window needs a clearer title for the shortcuts section. ';
+    var B = 'Next I want to read the release notes once more and send them to the team before lunch.';
+    if (still || !window.gsap) {
+      typed.textContent = A; dict.textContent = B; scene.classList.add('dictating');
+      nudge.style.opacity = 1; nudge.style.transform = 'translate(-50%,0)'; return;
+    }
+    var words = B.split(' '), t = { n: 0 }, w = { n: 0 };
+    gsap.set(nudge, { xPercent: -50, x: 0, y: -24, scale: .96 });
+    var tl = gsap.timeline({ repeat: -1, repeatDelay: 1.2, paused: true, onRepeat: reset });
+    function reset() { typed.textContent = ''; dict.textContent = ''; t.n = 0; w.n = 0; scene.classList.remove('dictating'); }
+    tl.to(t, { n: A.length, duration: A.length * .034, ease: 'none', onUpdate: function () { typed.textContent = A.slice(0, Math.round(t.n)); } })
+      // the nudge drops in, like the real one
+      .to(nudge, { opacity: 1, y: 0, scale: 1, duration: .6, ease: 'back.out(1.6)' }, '-=0.4')
+      .fromTo(timer, { scaleX: 1 }, { scaleX: 0, duration: 2.6, ease: 'none' }, '<')
+      .call(function () { keys[0].classList.add('down'); }, null, '+=0.9')
+      .call(function () { keys[1].classList.add('down'); }, null, '+=0.25')
+      .call(function () { keys.forEach(function (k) { k.classList.remove('down'); }); scene.classList.add('dictating'); }, null, '+=0.35')
+      .to(nudge, { opacity: 0, y: -24, scale: .96, duration: .35, ease: 'power2.in' })
+      // dictation arrives a few words at a time, much faster than typing
+      .to(w, { n: words.length, duration: 2.4, ease: 'steps(' + Math.ceil(words.length / 3) + ')', onUpdate: function () { dict.textContent = words.slice(0, Math.round(w.n)).join(' '); } })
+      .to({}, { duration: 2.2 });
+    new IntersectionObserver(function (es) { es.forEach(function (e) { e.isIntersecting ? tl.play() : tl.pause(); }); }, { threshold: .35 }).observe(scene);
   })();
 
   // Copy buttons
