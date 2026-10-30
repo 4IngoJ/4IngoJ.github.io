@@ -20,12 +20,12 @@
 <meta property="og:image" content="https://didact.digital/assets/v2/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="didact.digital wordmark">
+<meta property="og:image:alt" content="Apps for high performing people. SideSchedule, TalkRemind and ToneCue by didact.digital">
 <meta property="og:site_name" content="didact.digital">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://didact.digital/assets/v2/og-image.png">
 <meta name="theme-color" content="#FAF9F7" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#131209" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon-180.png">
@@ -38,29 +38,29 @@
  {"@type":"WebSite","url":"https://didact.digital/","name":"didact.digital","publisher":{"@id":"https://didact.digital/#org"}}]}
 </script>
 <style>
-/* didact.digital v2. One idea: the full stop. Every app does one job, then stops.
+/* didact.digital v2, Apple oriented: centred hero, one full-width tile per app, glass navigation.
    Sizes snap to the Tailwind scale, spacing to 2/4/8/12/16/24/32/40/48/64/80/96. */
 :root{
-  --bg:#FAF9F7; --fg:#1A1917; --muted:#5C5A56; --line:#E6E4E0; --card:#FFFFFF;
-  --ghost:rgba(26,25,23,.28);
+  --bg:#FAF9F7; --fg:#1A1917; --muted:#6E6C68; --line:#E6E4E0; --tile:#F0EFEC; --card:#FFFFFF;
+  --ghost:rgba(26,25,23,.22);
   --head-a:#1A1917; --head-b:#5C5A56;
+  --glass:rgba(250,249,247,.42); --glass-edge:rgba(255,255,255,.75); --glass-shade:rgba(26,25,23,.08);
   --ease:cubic-bezier(.22,1,.36,1);
   --sans:"Onest",-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
   --mono:"Geist Mono",ui-monospace,"SF Mono",Menlo,monospace;
-  --gutter:24px;
+  --gutter:16px;
   color-scheme:light dark;
 }
 @media (prefers-color-scheme:dark){:root{
-  --bg:#131209; --fg:#FAF9F7; --muted:#A8A49C; --line:#313131; --card:#1F1F1F;
-  --ghost:rgba(250,249,247,.26);
-  --head-a:#FAF9F7; --head-b:#9B9B9B;
+  --bg:#000000; --fg:#F5F5F2; --muted:#A1A09B; --line:#272727; --tile:#181818; --card:#1F1F1F;
+  --ghost:rgba(245,245,242,.22);
+  --head-a:#FFFFFF; --head-b:#9B9B9B;
+  --glass:rgba(24,24,24,.45); --glass-edge:rgba(255,255,255,.18); --glass-shade:rgba(0,0,0,.4);
 }}
-@media (min-width:768px){:root{--gutter:48px}}
+@media (min-width:768px){:root{--gutter:24px}}
 
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:96px;-webkit-text-size-adjust:100%}
-body::after{content:"";position:fixed;inset:0;z-index:60;pointer-events:none;opacity:.05;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
-@media (prefers-color-scheme:dark){body::after{mix-blend-mode:screen;opacity:.04}}
 body{font:400 16px/24px var(--sans);background:var(--bg);color:var(--fg);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
 ::selection{background:var(--fg);color:var(--bg)}
 a{color:inherit;text-underline-offset:4px;text-decoration-thickness:1px}
@@ -69,36 +69,45 @@ img,video{display:block;max-width:100%;height:auto}
 h1,h2,h3{font-weight:700;letter-spacing:-.04em;text-wrap:balance}
 p,li,dd{text-wrap:pretty}
 .wrap{max-width:1200px;margin:0 auto;padding:0 var(--gutter)}
+.narrow{max-width:980px}
 .mono{font-family:var(--mono);font-weight:400;letter-spacing:0}
 .label{font:500 12px/16px var(--mono);text-transform:uppercase;letter-spacing:.07em;color:var(--muted)}
 .skip{position:absolute;left:16px;top:-64px;z-index:100;background:var(--fg);color:var(--bg);padding:8px 12px;border-radius:8px;font-weight:600;transition:transform .3s var(--ease)}
 .skip:focus{transform:translateY(80px)}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.center{text-align:center}
 
-/* Buttons */
-.btn{display:inline-flex;align-items:center;gap:8px;font:600 16px/24px var(--sans);padding:8px 12px;border-radius:12px;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:transform .5s var(--ease),background-color .3s var(--ease),border-color .3s var(--ease)}
-.btn svg{width:16px;height:16px;fill:currentColor;transition:transform .5s var(--ease)}
+/* Buttons: pills, like the platform they sell on */
+.btn{display:inline-flex;align-items:center;gap:8px;font:600 16px/24px var(--sans);padding:8px 16px;border-radius:9999px;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:transform .5s var(--ease),background-color .3s var(--ease),border-color .3s var(--ease),opacity .3s var(--ease)}
+.btn svg{width:16px;height:16px;fill:currentColor}
 .btn-primary{background:var(--fg);color:var(--bg)}
-.btn-primary:hover{transform:translateY(-2px)}
-.btn-primary:hover svg{transform:translateY(2px)}
+.btn-primary:hover{opacity:.86}
 .btn-ghost{border-color:var(--line);color:var(--fg)}
 .btn-ghost:hover{border-color:var(--fg)}
-.btn-ghost:hover svg{transform:translateX(4px)}
 .btn:active{transform:scale(.98)}
+.more{display:inline-flex;align-items:center;gap:4px;font-weight:500;text-decoration:none}
+.more svg{width:14px;height:14px;fill:currentColor;transition:transform .5s var(--ease)}
+.more:hover{text-decoration:underline}
+.more:hover svg{transform:translateX(2px)}
 
-/* Navigation: a floating bar, sized to its content */
-.nav{position:fixed;top:16px;left:50%;z-index:50;transform:translateX(-50%);display:flex;align-items:center;gap:24px;padding:8px 8px 8px 16px;border-radius:16px;border:1px solid var(--line);background:color-mix(in srgb,var(--bg) 72%,transparent);-webkit-backdrop-filter:blur(16px) saturate(1.4);backdrop-filter:blur(16px) saturate(1.4);width:max-content;max-width:calc(100% - 32px)}
-.nav .mark{display:block;height:28px;width:auto}
+/* Navigation: Liquid Glass. Blur, lift and a bright rim; refraction where the browser supports it. */
+.nav{position:fixed;top:12px;left:50%;z-index:50;transform:translateX(-50%);display:flex;align-items:center;gap:16px;padding:6px 6px 6px 20px;border-radius:9999px;width:max-content;max-width:calc(100% - 24px);isolation:isolate;
+  background:var(--glass);
+  -webkit-backdrop-filter:blur(12px) saturate(1.8);backdrop-filter:blur(12px) saturate(1.8);
+  box-shadow:inset 0 1px 0 var(--glass-edge),inset 0 0 0 1px var(--glass-edge),inset 0 -8px 16px -12px var(--glass-shade),0 8px 32px -8px rgba(0,0,0,.18),0 1px 2px rgba(0,0,0,.06);
+  transition:box-shadow .5s var(--ease)}
+.nav::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;-webkit-backdrop-filter:url(#glass);backdrop-filter:url(#glass);pointer-events:none}
+.nav .mark{display:block;height:20px;width:auto}
 .nav ul{display:flex;gap:4px;list-style:none}
-.nav ul a{display:block;font:500 14px/20px var(--sans);padding:8px 12px;border-radius:8px;text-decoration:none;color:var(--muted);transition:color .3s var(--ease),background-color .3s var(--ease)}
-.nav ul a:hover,.nav ul a[aria-current="true"]{color:var(--fg);background:color-mix(in srgb,var(--fg) 6%,transparent)}
-.nav .btn{font-size:14px;line-height:20px;border-radius:8px}
-.menu-btn{display:none;width:40px;height:40px;border:0;background:none;color:var(--fg);border-radius:8px;cursor:pointer;position:relative}
+.nav ul a{display:block;font:500 14px/20px var(--sans);padding:8px 12px;border-radius:9999px;text-decoration:none;color:var(--muted);transition:color .3s var(--ease),background-color .3s var(--ease)}
+.nav ul a:hover,.nav ul a[aria-current="true"]{color:var(--fg);background:color-mix(in srgb,var(--fg) 7%,transparent)}
+.nav .btn{font-size:14px;line-height:20px;padding:8px 16px}
+.menu-btn{display:none;width:40px;height:40px;border:0;background:none;color:var(--fg);border-radius:9999px;cursor:pointer;position:relative}
 .menu-btn i{position:absolute;left:12px;width:16px;height:2px;border-radius:2px;background:currentColor;transition:transform .5s var(--ease)}
 .menu-btn i:first-child{top:15px}.menu-btn i:last-child{top:23px}
 .menu-open .menu-btn i:first-child{transform:translateY(4px) rotate(45deg)}
 .menu-open .menu-btn i:last-child{transform:translateY(-4px) rotate(-45deg)}
-.sheet{position:fixed;inset:0;z-index:40;padding:96px var(--gutter) 48px;background:color-mix(in srgb,var(--bg) 94%,transparent);-webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px);visibility:hidden;opacity:0;transition:opacity .5s var(--ease),visibility 0s linear .5s}
+.sheet{position:fixed;inset:0;z-index:40;padding:96px 24px 48px;background:color-mix(in srgb,var(--bg) 92%,transparent);-webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px);visibility:hidden;opacity:0;transition:opacity .5s var(--ease),visibility 0s linear .5s}
 .sheet ul{list-style:none}
 .sheet a{display:block;font:700 36px/40px var(--sans);letter-spacing:-.04em;padding:12px 0;text-decoration:none;opacity:0;transform:translateY(24px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
 .menu-open .sheet{visibility:visible;opacity:1;transition:opacity .5s var(--ease)}
@@ -107,187 +116,161 @@ p,li,dd{text-wrap:pretty}
 .menu-open .sheet li:nth-child(3) a{transition-delay:120ms}
 .menu-open .sheet li:nth-child(4) a{transition-delay:180ms}
 @media (max-width:767px){
-  .nav{left:16px;right:16px;transform:none;width:auto;justify-content:space-between}
+  .nav{left:12px;right:12px;transform:none;width:auto;justify-content:space-between;padding-left:16px}
   .nav ul,.nav .btn{display:none}
   .menu-btn{display:block}
 }
 
-/* Hero */
-.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding:128px 0 48px}
-.hero h1{font-size:48px;line-height:1;max-width:none;background:linear-gradient(90deg,var(--head-a),var(--head-b));-webkit-background-clip:text;background-clip:text;color:transparent;padding-bottom:8px}
+/* Hero: centred, with the nav clear of the headline */
+.hero{padding:160px 0 96px;text-align:center}
+@media (min-width:768px){.hero{padding-top:192px}}
+.hero h1{font-size:48px;line-height:1;margin:0 auto;background:linear-gradient(90deg,var(--head-a),var(--head-b));-webkit-background-clip:text;background-clip:text;color:transparent;padding-bottom:8px}
 @media (min-width:640px){.hero h1{font-size:72px}}
-@media (min-width:768px){.hero h1{font-size:96px}}
-@media (min-width:1024px){.hero h1{font-size:128px}}
+@media (min-width:1024px){.hero h1{font-size:96px}}
 .hero h1 .line{display:block}
-/* The full stop is drawn, not typed. It lands last. */
-.stop{display:inline-block;width:.2em;height:.2em;margin-left:.04em;border-radius:50%;background:var(--fg);vertical-align:baseline;animation:land 1s var(--ease) .5s both}
-@keyframes land{from{transform:translateY(-1.2em) scale(.4);opacity:0}60%{opacity:1}to{transform:none;opacity:1}}
-.hero .sub{max-width:680px;margin-top:32px;font-size:20px;line-height:28px;color:var(--muted)}
+.hero .sub{max-width:680px;margin:24px auto 0;font-size:20px;line-height:28px;color:var(--muted)}
+@media (min-width:768px){.hero .sub{font-size:24px;line-height:32px}}
 .hero .sub b{color:var(--fg);font-weight:500}
-.hero .cta{display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-top:40px}
-.hero .proof{font-size:14px;line-height:20px;color:var(--muted)}
+.hero .cta{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin-top:32px}
+.hero .proof{margin-top:16px;font-size:14px;line-height:20px;color:var(--muted)}
 
-/* The three apps as keys */
-.keys{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:80px}
-.key{display:flex;align-items:center;gap:16px;padding:16px;border-radius:24px;border:1px solid var(--line);background:var(--card);text-decoration:none;transition:transform .5s var(--ease),border-color .3s var(--ease)}
-.key{box-shadow:0 1px 2px rgba(26,25,23,.04)}
-.key:hover{box-shadow:0 1px 2px rgba(26,25,23,.06),0 24px 48px -24px rgba(26,25,23,.25)}
-.key:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--fg) 30%,transparent)}
-.key img{width:64px;height:64px;flex:none;filter:drop-shadow(0 8px 16px rgba(0,0,0,.12))}
-.key b{display:block;font-size:18px;line-height:28px;font-weight:600;letter-spacing:-.02em}
-.key span{display:block;font-size:14px;line-height:20px;color:var(--muted)}
-@media (max-width:899px){.keys{grid-template-columns:1fr}}
+/* The three icons, the product shot of a company that makes three apps */
+.icons{display:flex;justify-content:center;gap:24px;margin-top:80px;list-style:none}
+@media (min-width:768px){.icons{gap:64px}}
+.icons a{display:flex;flex-direction:column;align-items:center;gap:16px;text-decoration:none;transition:transform .5s var(--ease)}
+.icons a:hover{transform:translateY(-8px)}
+.icons img{width:80px;height:80px;border-radius:18px;box-shadow:0 1px 2px rgba(0,0,0,.08),0 24px 48px -16px rgba(0,0,0,.28)}
+@media (min-width:768px){.icons img{width:128px;height:128px;border-radius:28px}}
+.icons b{font-size:14px;line-height:20px;font-weight:600}
+@media (min-width:768px){.icons b{font-size:16px;line-height:24px}}
 
-/* Sections */
-section{padding:96px 0;border-top:1px solid var(--line)}
-.sec-head{display:flex;justify-content:space-between;align-items:baseline;gap:24px;margin-bottom:48px}
-.sec-head h2{font-size:36px;line-height:40px}
-@media (min-width:768px){.sec-head h2{font-size:48px;line-height:1}}
-
-/* App chapters */
-.app{display:grid;grid-template-columns:5fr 6fr;gap:64px;align-items:center;padding:64px 0}
-.app + .app{border-top:1px solid var(--line)}
-.app .label{display:flex;gap:12px;align-items:center}
-.app .label img{width:32px;height:32px}
-.app h3{font-size:36px;line-height:40px;margin:24px 0 16px}
-@media (min-width:1024px){.app h3{font-size:48px;line-height:1}}
-.app h3 .stop{animation:none}
-.app .what{font-size:18px;line-height:28px;color:var(--muted);max-width:520px}
-.app ul{list-style:none;margin:24px 0;border-top:1px solid var(--line)}
-.app li{padding:12px 0;border-bottom:1px solid var(--line);font-size:16px;line-height:24px}
-.price{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:baseline;margin-bottom:24px}
-.price strong{font-size:24px;line-height:32px;font-weight:600;letter-spacing:-.02em}
-.price span{font-size:14px;line-height:20px;color:var(--muted)}
-.actions{display:flex;flex-wrap:wrap;gap:12px}
-/* Media frame: outer 24px radius, 8px gap, so the inner radius is 16px */
-.frame{border-radius:24px;padding:8px;background:var(--card);border:1px solid var(--line);box-shadow:0 1px 2px rgba(26,25,23,.06),0 8px 16px -8px rgba(26,25,23,.12),0 48px 96px -48px rgba(26,25,23,.35)}
-.frame > *{border-radius:16px;width:100%;background:var(--bg)}
-.frame.tall{max-width:440px;margin-left:auto}
-.frame.tall img{object-fit:cover}
-@media (max-width:899px){.app{grid-template-columns:1fr;gap:40px}.frame.tall{margin:0 auto}}
+/* App tiles */
+.tiles{display:grid;gap:12px;padding:0 12px}
+.tile{border-radius:32px;background:var(--tile);padding:64px 24px 0;text-align:center;overflow:hidden}
+@media (min-width:768px){.tile{padding:80px 48px 0}}
+.tile .head img{width:64px;height:64px;margin:0 auto 24px;border-radius:14px;box-shadow:0 12px 24px -12px rgba(0,0,0,.3)}
+.tile h2{font-size:48px;line-height:1}
+@media (min-width:768px){.tile h2{font-size:60px}}
+.tile .hook{max-width:680px;margin:16px auto 0;font-size:24px;line-height:32px;font-weight:500;letter-spacing:-.02em}
+@media (min-width:768px){.tile .hook{font-size:30px;line-height:36px}}
+.tile .what{max-width:620px;margin:16px auto 0;font-size:18px;line-height:28px;color:var(--muted)}
+.tile .actions{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:16px 24px;margin-top:32px}
+.tile .price{margin-top:16px;font-size:14px;line-height:20px;color:var(--muted)}
+.tile .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:880px;margin:48px auto 0;list-style:none;font-size:14px;line-height:20px;color:var(--muted)}
+.tile .facts li{padding-top:16px;border-top:1px solid var(--line)}
+@media (max-width:767px){.tile .facts{grid-template-columns:1fr;gap:12px;text-align:left}}
+/* The screen rises out of the tile and is cut by its bottom edge */
+.shot{max-width:960px;margin:64px auto 0;border-radius:24px 24px 0 0;padding:8px 8px 0;background:var(--card);box-shadow:0 0 0 1px var(--line),0 32px 64px -24px rgba(0,0,0,.25)}
+.shot > *{width:100%;border-radius:16px 16px 0 0;background:var(--bg)}
+.shot.narrow-shot{max-width:440px}
+.shot.cut{max-height:440px;overflow:hidden}
+.shot.cut img{object-fit:cover;object-position:top}
+.tiles > *{min-width:0}
 
 /* Tagline: words ink in as you scroll */
-.tagline{padding:160px 0;border-top:1px solid var(--line)}
-.tagline p{max-width:880px;font-size:36px;line-height:40px;font-weight:700;letter-spacing:-.04em;text-wrap:balance}
+.tagline{padding:160px 0;text-align:center}
+.tagline p{max-width:880px;margin:0 auto;font-size:36px;line-height:40px;font-weight:700;letter-spacing:-.04em;text-wrap:balance}
 @media (min-width:768px){.tagline p{font-size:60px;line-height:1}}
+.tagline .line{display:block}
 .tagline .w{color:var(--ghost);transition:color .5s var(--ease)}
 .tagline .w.on{color:var(--fg)}
-.tagline .line{display:block}
-.tagline .stop{animation:none;transform:scale(0);transition:transform .7s var(--ease)}
-.tagline.done .stop{transform:none}
 
 /* Promises */
-.promises > *,.log > *,.split > *,.app > *,.keys > *{min-width:0}
-.promises{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-.promise{padding:32px;border-radius:24px;background:var(--card);border:1px solid var(--line)}
-.promise h3{font-size:24px;line-height:32px;letter-spacing:-.02em;margin:12px 0 8px}
+.promises{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;padding:0 12px;max-width:1224px;margin:0 auto}
+.promises > *{min-width:0}
+.promise{padding:40px;border-radius:32px;background:var(--tile)}
+.promise h3{font-size:30px;line-height:36px;margin:12px 0}
 .promise p{color:var(--muted)}
-.cmd{display:flex;align-items:center;gap:8px;margin-top:16px;padding:4px 4px 4px 12px;border-radius:12px;background:var(--bg);border:1px solid var(--line);font:400 14px/20px var(--mono);color:var(--fg)}
+.cmd{display:flex;align-items:center;gap:8px;margin-top:16px;padding:4px 4px 4px 16px;border-radius:9999px;background:var(--card);font:400 14px/20px var(--mono);color:var(--fg)}
 .cmd code{flex:1;min-width:0;overflow-x:auto;white-space:nowrap;scrollbar-width:none}
-.cmd button{flex:none;display:grid;place-items:center;width:32px;height:32px;border-radius:8px;border:0;background:none;color:var(--muted);cursor:pointer;transition:color .3s var(--ease),background-color .3s var(--ease)}
-.cmd button:hover{color:var(--fg);background:color-mix(in srgb,var(--fg) 6%,transparent)}
+.cmd button{flex:none;display:grid;place-items:center;width:32px;height:32px;border-radius:9999px;border:0;background:none;color:var(--muted);cursor:pointer;transition:color .3s var(--ease),background-color .3s var(--ease)}
+.cmd button:hover{color:var(--fg);background:color-mix(in srgb,var(--fg) 7%,transparent)}
 .cmd button:active{transform:scale(.98)}
 .cmd svg{width:16px;height:16px;fill:currentColor}
 .cmd .ok{display:none}.cmd.copied .ok{display:block}.cmd.copied .cp{display:none}
-@media (max-width:767px){.promises{grid-template-columns:1fr}.promise{padding:24px}}
+@media (max-width:767px){.promises{grid-template-columns:1fr}.promise{padding:32px 24px}}
+
+/* Sections */
+section{padding:96px 0}
+.sec-head{text-align:center;margin-bottom:48px}
+.sec-head h2{font-size:36px;line-height:40px}
+@media (min-width:768px){.sec-head h2{font-size:48px;line-height:1}}
+.sec-head p{margin-top:12px;color:var(--muted);font-size:18px;line-height:28px}
 
 /* Changelog */
-.log{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.release{padding:24px;border-radius:24px;border:1px solid var(--line);display:flex;flex-direction:column}
+.log{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.log > *{min-width:0}
+.release{padding:32px;border-radius:24px;background:var(--card);box-shadow:0 0 0 1px var(--line);display:flex;flex-direction:column}
 .release header{display:flex;align-items:center;gap:12px;margin-bottom:16px}
-.release header img{width:40px;height:40px}
+.release header img{width:40px;height:40px;border-radius:9px}
 .release h3{font-size:18px;line-height:28px;letter-spacing:-.02em;font-weight:600}
 .release h3 .mono{font-size:14px;margin-left:8px;color:var(--muted)}
 .release time{display:block;font:400 12px/16px var(--mono);color:var(--muted)}
 .notes{list-style:none;display:grid;gap:12px;font-size:14px;line-height:20px;flex:1}
 .notes li{padding-left:16px;position:relative}
 .notes li::before{content:"";position:absolute;left:0;top:8px;width:4px;height:4px;border-radius:50%;background:var(--fg)}
+.notes code{font:400 12px/16px var(--mono)}
 .before{margin-top:16px;font-size:14px;line-height:20px;color:var(--muted)}
 .before summary{cursor:pointer;font:500 12px/16px var(--mono);text-transform:uppercase;letter-spacing:.07em;list-style:none;padding:8px 0}
 .before summary::-webkit-details-marker{display:none}
 .before summary::after{content:" +"}.before[open] summary::after{content:" \2212"}
 .before p{padding:4px 0}
 .release .all{margin-top:16px;font-size:14px;line-height:20px}
-.notes code{font:400 12px/16px var(--mono)}
 @media (max-width:899px){.log{grid-template-columns:1fr}}
 
 /* Newsletter and partners */
-.split{display:grid;grid-template-columns:1fr 1fr;gap:64px}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.split > *{min-width:0}
 .split h2{font-size:36px;line-height:40px;margin-bottom:16px}
 .split p{color:var(--muted);max-width:520px}
 .split p + p{margin-top:12px}
-.signup{width:100%;height:340px;border:0;border-radius:16px;margin-top:24px;background:var(--card)}
-.facts{display:grid;grid-template-columns:auto 1fr;gap:12px 24px;margin-top:24px;font-size:14px;line-height:20px}
-.facts dt{font:500 12px/20px var(--mono);text-transform:uppercase;letter-spacing:.07em;color:var(--muted)}
+.signup{width:100%;height:340px;border:0;border-radius:24px;background:var(--card)}
+.facts-list{display:grid;grid-template-columns:auto 1fr;gap:12px 24px;margin-top:24px;font-size:14px;line-height:20px}
+.facts-list dt{font:500 12px/20px var(--mono);text-transform:uppercase;letter-spacing:.07em;color:var(--muted)}
+.actions{display:flex;flex-wrap:wrap;gap:12px}
 @media (max-width:899px){.split{grid-template-columns:1fr;gap:48px}}
+.hr{border:0;border-top:1px solid var(--line);margin:0 auto;max-width:1152px}
 
-/* Footer */
-footer{padding:64px 0 48px;border-top:1px solid var(--line);font-size:14px;line-height:20px;color:var(--muted)}
-footer .row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:32px}
-footer ul{list-style:none;display:grid;grid-template-columns:repeat(2,auto);gap:8px 32px}
+/* Footer: small and quiet; the maker steps back */
+footer{padding:48px 0;font-size:12px;line-height:16px;color:var(--muted)}
+footer .top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:24px;padding-bottom:24px;border-bottom:1px solid var(--line)}
+footer .top img{height:16px;width:auto}
+footer ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px 24px;padding:24px 0}
 footer a{text-decoration:none}footer a:hover{color:var(--fg);text-decoration:underline}
-footer .big{font:700 72px/1 var(--sans);letter-spacing:-.05em;color:var(--fg);margin:96px 0 48px}
-@media (min-width:768px){footer .big{font-size:128px}}
-@media (min-width:1200px){footer .big{font-size:160px}}
-footer .big span.w2{display:inline-block}
-footer .sign{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px}
-footer .sign .label{padding-bottom:16px}
-footer .fine{max-width:680px}
+footer .fine{max-width:880px}
 
-
-/* The full stop as an object: the period of the headline is a photographed ink sphere.
-   The sphere fills ~46% of its image, centred, so the box is oversized and pulled back with negative margins. */
-.hero{position:relative;isolation:isolate}
-.period{display:inline-block;position:relative;width:.82em;height:0;margin-left:.14em;vertical-align:baseline;animation:land 1.2s var(--ease) .5s both}
-.period picture{position:absolute;left:-.49em;bottom:-.51em;width:1.8em;height:1.8em;-webkit-mask-image:radial-gradient(closest-side,#000 55%,transparent 78%);mask-image:radial-gradient(closest-side,#000 55%,transparent 78%);}
-.period img{width:100%;height:100%;mix-blend-mode:multiply}
-/* In the dark the ink turns to light: the same photo, inverted and screened */
-@media (prefers-color-scheme:dark){.period img{filter:invert(1);mix-blend-mode:screen}}
-/* Letterpress behind the tagline */
-.tagline{position:relative;overflow:hidden;isolation:isolate}
-.tagline .press{position:absolute;inset:0;z-index:-1;-webkit-mask-image:linear-gradient(#0000,#000 25%,#000 75%,#0000);mask-image:linear-gradient(#0000,#000 25%,#000 75%,#0000)}
-.tagline .press img{position:absolute;top:0;left:22%;width:100%;height:100%;object-fit:cover;object-position:60% 50%;mix-blend-mode:multiply;-webkit-mask-image:linear-gradient(90deg,#0000,#000 35%);mask-image:linear-gradient(90deg,#0000,#000 35%)}
-@media (prefers-color-scheme:dark){.tagline .press{display:none}}
-@media (max-width:767px){.tagline .press img{left:0;opacity:.35}}
-
-
-/* Each chapter's full stop lands when the chapter arrives */
-.js .app h3 .stop{transform:translateY(-.9em) scale(0);transition:transform .9s var(--ease) .35s}
-.js .app.in h3 .stop{transform:none}
-/* Chapter rail: three dots, the current one filled */
-.rail{position:fixed;left:24px;top:50%;z-index:30;display:grid;gap:16px;list-style:none;transform:translate(-8px,-50%);opacity:0;pointer-events:none;transition:opacity .5s var(--ease),transform .5s var(--ease)}
-.rail-on .rail{opacity:1;transform:translate(0,-50%);pointer-events:auto}
-.rail a{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--muted);font:500 12px/16px var(--mono);text-transform:uppercase;letter-spacing:.07em}
-.rail i{width:12px;height:12px;border-radius:50%;border:1.5px solid currentColor;transition:transform .5s var(--ease),background-color .3s var(--ease)}
-.rail span{opacity:0;transform:translateX(-4px);transition:opacity .3s var(--ease),transform .5s var(--ease)}
-.rail a:hover span,.rail a[aria-current="true"] span{opacity:1;transform:none}
-.rail a[aria-current="true"]{color:var(--fg)}
-.rail a[aria-current="true"] i{background:var(--fg);border-color:var(--fg);transform:scale(1.15)}
-@media (max-width:1359px){.rail{display:none}}
-/* Screens tilt a little toward the pointer */
-.frame{transition:transform .7s var(--ease);transform:perspective(1200px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg))}
-
-/* Scroll reveal, once per section */
+/* Scroll reveal, once per block */
 .js .rise{opacity:0;transform:translateY(32px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
 .js .rise.in{opacity:1;transform:none}
+.js .shot{transform:translateY(48px) scale(.96);transition:transform 1s var(--ease)}
+.js .in .shot{transform:none}
 
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none!important;transition-property:opacity,color,background-color,border-color!important}
-  .js .rise{transform:none}
+  .js .rise,.js .shot{transform:none}
   .sheet a{transform:none}
-  .btn:hover,.key:hover{transform:none}
+  .icons a:hover{transform:none}
 }
 </style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 
+<!-- Refraction for the glass bar. Browsers without SVG backdrop filters keep the plain blur. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <filter id="glass" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+    <feTurbulence type="fractalNoise" baseFrequency=".006 .018" numOctaves="2" seed="11" result="noise"/>
+    <feGaussianBlur in="noise" stdDeviation="2" result="soft"/>
+    <feDisplacementMap in="SourceGraphic" in2="soft" scale="24" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+</svg>
+
 <nav class="nav" aria-label="Main">
   <a href="/" aria-label="didact.digital home">
     <picture>
       <source srcset="/assets/didact-digital-wordmark-paper.svg" media="(prefers-color-scheme: dark)">
-      <img class="mark" src="/assets/didact-digital-wordmark-ink.svg" alt="didact.digital" width="160" height="28">
+      <img class="mark" src="/assets/didact-digital-wordmark-ink.svg" alt="didact.digital" width="113" height="20">
     </picture>
   </a>
   <ul>
@@ -307,140 +290,130 @@ footer .fine{max-width:680px}
   </ul>
 </div>
 
-<nav class="rail" aria-label="Apps on this page">
-  <a href="#sideschedule"><i></i><span>SideSchedule</span></a>
-  <a href="#talkremind"><i></i><span>TalkRemind</span></a>
-  <a href="#tonecue"><i></i><span>ToneCue</span></a>
-</nav>
-
 <main id="main">
   <header class="hero">
     <div class="wrap">
-      <h1><span class="line">Apps for high</span><span class="line">performing</span><span class="line">people<span class="period" aria-hidden="true"><picture><img src="/assets/v2/sphere-light.webp" alt="" width="1200" height="1200" fetchpriority="high"></picture></span><span class="sr">.</span></span></h1>
+      <h1><span class="line">Apps for high</span><span class="line">performing people.</span></h1>
       <p class="sub">Three small Mac apps. <b>Each does one job, then gets out of your way.</b> Pay once. No account. Nothing watches you.</p>
       <div class="cta">
-        <a class="btn btn-primary" href="#apps">Pick an app <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M205.66,149.66l-72,72a8,8,0,0,1-11.32,0l-72-72a8,8,0,0,1,11.32-11.32L120,196.69V40a8,8,0,0,1,16,0V196.69l58.34-58.35a8,8,0,0,1,11.32,11.32Z"/></svg></a>
-        <span class="proof">Free for 14 days. Made by one person in Graz, Austria.</span>
+        <a class="btn btn-primary" href="#apps">Pick an app</a>
       </div>
-      <div class="keys">
-        <a class="key" href="#sideschedule"><img src="/sideschedule/assets/app-icon.png" alt="" width="64" height="64"><div><b>SideSchedule</b><span>Your calendar, docked like the Dock</span></div></a>
-        <a class="key" href="#talkremind"><img src="/talkremind/assets/app-icon.png" alt="" width="64" height="64"><div><b>TalkRemind</b><span>A nudge to dictate, not type</span></div></a>
-        <a class="key" href="#tonecue"><img src="/tonecue/assets/app-icon.png" alt="" width="64" height="64"><div><b>ToneCue</b><span>The right mic, every time</span></div></a>
-      </div>
+      <p class="proof">Free for 14 days. Made by one person in Graz, Austria.</p>
+      <ul class="icons">
+        <li><a href="#sideschedule"><img src="/sideschedule/assets/app-icon.png" alt="" width="128" height="128"><b>SideSchedule</b></a></li>
+        <li><a href="#talkremind"><img src="/talkremind/assets/app-icon.png" alt="" width="128" height="128"><b>TalkRemind</b></a></li>
+        <li><a href="#tonecue"><img src="/tonecue/assets/app-icon.png" alt="" width="128" height="128"><b>ToneCue</b></a></li>
+      </ul>
     </div>
   </header>
 
-  <section id="apps" aria-labelledby="apps-h">
+  <div class="tiles" id="apps" aria-label="The apps">
+    <article class="tile rise" id="sideschedule" aria-labelledby="ss-h">
+      <div class="head">
+        <img src="/sideschedule/assets/app-icon.png" alt="" width="64" height="64">
+        <h2 id="ss-h">SideSchedule</h2>
+        <p class="hook">My calendar kept losing to every other window.</p>
+        <p class="what">A calendar sidebar that keeps its strip of screen the way the Dock does. Meeting notes become Markdown files, and one click joins your call.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="https://github.com/4IngoJ/sideschedule/releases/latest/download/SideSchedule.dmg">Download free trial</a>
+          <a class="more" href="/sideschedule/">Learn more <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"/></svg></a>
+        </div>
+        <p class="price">Free for 14 days, then €12.99 once. macOS 13 or later.</p>
+        <ul class="facts">
+          <li>Reads Apple Calendar, so iCloud, Google, Exchange and CalDAV work.</li>
+          <li>Joins Zoom, Meet, Teams, Webex and FaceTime calls.</li>
+          <li>Six languages.</li>
+        </ul>
+      </div>
+      <div class="shot">
+        <video src="/sideschedule/assets/demo-web.mp4" poster="/sideschedule/assets/demo-poster.jpg" width="1600" height="1006" muted loop playsinline preload="none" aria-label="SideSchedule docked on the right edge of a Mac desktop, showing the day's meetings"></video>
+      </div>
+    </article>
+
+    <article class="tile rise" id="talkremind" aria-labelledby="tr-h">
+      <div class="head">
+        <img src="/talkremind/assets/app-icon.png" alt="" width="64" height="64">
+        <h2 id="tr-h">TalkRemind</h2>
+        <p class="hook">You bought a dictation app. You still type.</p>
+        <p class="what">A menu bar app that notices a long stretch of typing and nudges you to use the dictation app you already own. It never transcribes and never reads what you type.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="https://github.com/4IngoJ/TalkRemind/releases/latest/download/TalkRemind.dmg">Download free trial</a>
+          <a class="more" href="/talkremind/">Learn more <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"/></svg></a>
+        </div>
+        <p class="price">Free for 14 days, then €9.99 once. macOS 14 or later.</p>
+        <ul class="facts">
+          <li>Recognises 17 dictation apps. Any app with a hotkey works.</li>
+          <li>Four nudge styles, quiet hours and exemptions per app.</li>
+          <li>Shows how much you dictate compared to typing.</li>
+        </ul>
+      </div>
+      <div class="shot narrow-shot cut">
+        <img src="/talkremind/assets/screens/popover-trend.webp" alt="TalkRemind menu bar window showing today's dictation share and a weekly trend" width="784" height="844" loading="lazy">
+      </div>
+    </article>
+
+    <article class="tile rise" id="tonecue" aria-labelledby="tc-h">
+      <div class="head">
+        <img src="/tonecue/assets/app-icon.png" alt="" width="64" height="64">
+        <h2 id="tc-h">ToneCue</h2>
+        <p class="hook">Your Mac, with the microphone you meant.</p>
+        <p class="what">A menu bar app that picks your microphone and speakers by situation: a dock, a calendar meeting, an open app. It tells you why it switched, and you can undo it.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="https://github.com/4IngoJ/tonecue/releases/latest/download/ToneCue.dmg">Download free trial</a>
+          <a class="more" href="/tonecue/">Learn more <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"/></svg></a>
+        </div>
+        <p class="price">Free for 14 days, then €9.99 once. macOS 13 or later.</p>
+        <ul class="facts">
+          <li>Scenes with rules. Higher scenes win.</li>
+          <li>Pauses when you pick a device by hand.</li>
+          <li>Works from Raycast too.</li>
+        </ul>
+      </div>
+      <div class="shot" style="max-width:720px">
+        <img src="/tonecue/assets/screens/scenes.png" alt="ToneCue settings listing audio scenes with their rules" width="720" height="520" loading="lazy">
+      </div>
+    </article>
+  </div>
+
+  <div class="tagline" aria-label="Each app does one job and then gets out of the way.">
     <div class="wrap">
-      <div class="sec-head"><h2 id="apps-h">The apps.</h2><span class="label">Three, for now</span></div>
-
-      <article class="app rise" id="sideschedule">
-        <div>
-          <p class="label"><img src="/sideschedule/assets/app-icon.png" alt="" width="32" height="32">SideSchedule · macOS 13+</p>
-          <h3>My calendar kept losing to every other window<span class="stop" aria-hidden="true"></span><span class="sr">.</span></h3>
-          <p class="what">A calendar sidebar that keeps its strip of screen the way the Dock does. Meeting notes become Markdown files, and one click joins your call.</p>
-          <ul>
-            <li>Reads Apple Calendar, so iCloud, Google, Exchange and CalDAV work.</li>
-            <li>Joins Zoom, Meet, Teams, Webex and FaceTime calls.</li>
-            <li>Six languages.</li>
-          </ul>
-          <p class="price"><strong>€12.99 once</strong><span>after 14 free days</span></p>
-          <div class="actions">
-            <a class="btn btn-primary" href="https://github.com/4IngoJ/sideschedule/releases/latest/download/SideSchedule.dmg">Download free trial <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M205.66,149.66l-72,72a8,8,0,0,1-11.32,0l-72-72a8,8,0,0,1,11.32-11.32L120,196.69V40a8,8,0,0,1,16,0V196.69l58.34-58.35a8,8,0,0,1,11.32,11.32Z"/></svg></a>
-            <a class="btn btn-ghost" href="/sideschedule/">See SideSchedule <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
-          </div>
-        </div>
-        <div class="frame">
-          <video src="/sideschedule/assets/demo-web.mp4" poster="/sideschedule/assets/demo-poster.jpg" width="1600" height="1006" muted loop playsinline preload="none" aria-label="SideSchedule docked on the right edge of a Mac desktop, showing the day's meetings"></video>
-        </div>
-      </article>
-
-      <article class="app rise" id="talkremind">
-        <div>
-          <p class="label"><img src="/talkremind/assets/app-icon.png" alt="" width="32" height="32">TalkRemind · macOS 14+</p>
-          <h3>You bought a dictation app. You still type<span class="stop" aria-hidden="true"></span><span class="sr">.</span></h3>
-          <p class="what">A menu bar app that notices a long stretch of typing and nudges you to use the dictation app you already own. It never transcribes and never reads what you type.</p>
-          <ul>
-            <li>Recognises 17 dictation apps. Any app with a hotkey works.</li>
-            <li>Four nudge styles, quiet hours and exemptions per app.</li>
-            <li>Shows how much you dictate compared to typing.</li>
-          </ul>
-          <p class="price"><strong>€9.99 once</strong><span>after 14 free days</span></p>
-          <div class="actions">
-            <a class="btn btn-primary" href="https://github.com/4IngoJ/TalkRemind/releases/latest/download/TalkRemind.dmg">Download free trial <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M205.66,149.66l-72,72a8,8,0,0,1-11.32,0l-72-72a8,8,0,0,1,11.32-11.32L120,196.69V40a8,8,0,0,1,16,0V196.69l58.34-58.35a8,8,0,0,1,11.32,11.32Z"/></svg></a>
-            <a class="btn btn-ghost" href="/talkremind/">See TalkRemind <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
-          </div>
-        </div>
-        <div class="frame tall">
-          <img src="/talkremind/assets/screens/popover-trend.webp" alt="TalkRemind menu bar window showing today's dictation share and a weekly trend" width="784" height="844" loading="lazy">
-        </div>
-      </article>
-
-      <article class="app rise" id="tonecue">
-        <div>
-          <p class="label"><img src="/tonecue/assets/app-icon.png" alt="" width="32" height="32">ToneCue · macOS 13+</p>
-          <h3>Your Mac, with the microphone you meant<span class="stop" aria-hidden="true"></span><span class="sr">.</span></h3>
-          <p class="what">A menu bar app that picks your microphone and speakers by situation: a dock, a calendar meeting, an open app. It tells you why it switched, and you can undo it.</p>
-          <ul>
-            <li>Scenes with rules. Higher scenes win.</li>
-            <li>Pauses when you pick a device by hand.</li>
-            <li>Works from Raycast too.</li>
-          </ul>
-          <p class="price"><strong>€9.99 once</strong><span>after 14 free days</span></p>
-          <div class="actions">
-            <a class="btn btn-primary" href="https://github.com/4IngoJ/tonecue/releases/latest/download/ToneCue.dmg">Download free trial <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M205.66,149.66l-72,72a8,8,0,0,1-11.32,0l-72-72a8,8,0,0,1,11.32-11.32L120,196.69V40a8,8,0,0,1,16,0V196.69l58.34-58.35a8,8,0,0,1,11.32,11.32Z"/></svg></a>
-            <a class="btn btn-ghost" href="/tonecue/">See ToneCue <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
-          </div>
-        </div>
-        <div class="frame">
-          <img src="/tonecue/assets/screens/scenes.png" alt="ToneCue settings listing audio scenes with their rules" width="720" height="520" loading="lazy">
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <div class="tagline" aria-label="Each app does one job and then gets out of the way. Full stop.">
-    <div class="press" aria-hidden="true"><img src="/assets/v2/letterpress.webp" alt="" width="2400" height="1340" loading="lazy"></div>
-    <div class="wrap">
-      <p aria-hidden="true"><span class="line">Each app does one job</span><span class="line">and then gets out of the way.</span><span class="line">Full stop<span class="stop"></span></span></p>
+      <p aria-hidden="true"><span class="line">Each app does one job</span><span class="line">and then gets out of the way.</span></p>
     </div>
   </div>
 
-  <section aria-labelledby="promise-h">
-    <div class="wrap">
-      <div class="sec-head"><h2 id="promise-h">What every app comes with.</h2></div>
-      <div class="promises">
-        <div class="promise rise">
-          <p class="label">Price</p>
-          <h3>You pay once</h3>
-          <p>No subscription. After 14 free days the license is yours, for two Macs with SideSchedule or ToneCue and three with TalkRemind.</p>
-        </div>
-        <div class="promise rise">
-          <p class="label">Account</p>
-          <h3>There is none</h3>
-          <p>Nothing to sign up for. You enter a license key and that’s it.</p>
-        </div>
-        <div class="promise rise">
-          <p class="label">Privacy</p>
-          <h3>Nothing watches you</h3>
-          <p>No analytics, no telemetry in any app. The only network calls are license and update checks, plus a diagnostic report if you choose to send one. Details in the <a href="/sideschedule/privacy.html">SideSchedule</a>, <a href="/talkremind/privacy.html">TalkRemind</a> and <a href="/tonecue/privacy.html">ToneCue</a> privacy notes.</p>
-        </div>
-        <div class="promise rise">
-          <p class="label">Install</p>
-          <h3>Signed, notarized, updated</h3>
-          <p>Notarized by Apple, updated through Sparkle. Or use Homebrew:</p>
-          <div class="cmd"><code>brew install --cask 4ingoj/tap/sideschedule</code><button type="button" aria-label="Copy command"><svg class="cp" viewBox="0 0 256 256" aria-hidden="true"><path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"/></svg><svg class="ok" viewBox="0 0 256 256" aria-hidden="true"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg></button></div>
-          <div class="cmd"><code>brew install --cask 4ingoj/tap/tonecue</code><button type="button" aria-label="Copy command"><svg class="cp" viewBox="0 0 256 256" aria-hidden="true"><path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"/></svg><svg class="ok" viewBox="0 0 256 256" aria-hidden="true"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg></button></div>
-          <p class="sr" role="status" aria-live="polite" id="copy-status"></p>
-        </div>
+  <div aria-labelledby="promise-h">
+    <div class="sec-head wrap"><h2 id="promise-h">What every app comes with.</h2></div>
+    <div class="promises">
+      <div class="promise rise">
+        <p class="label">Price</p>
+        <h3>You pay once.</h3>
+        <p>No subscription. After 14 free days the license is yours, for two Macs with SideSchedule or ToneCue and three with TalkRemind.</p>
+      </div>
+      <div class="promise rise">
+        <p class="label">Account</p>
+        <h3>There is none.</h3>
+        <p>Nothing to sign up for. You enter a license key and that’s it.</p>
+      </div>
+      <div class="promise rise">
+        <p class="label">Privacy</p>
+        <h3>Nothing watches you.</h3>
+        <p>No analytics, no telemetry in any app. The only network calls are license and update checks, plus a diagnostic report if you choose to send one. Details in the <a href="/sideschedule/privacy.html">SideSchedule</a>, <a href="/talkremind/privacy.html">TalkRemind</a> and <a href="/tonecue/privacy.html">ToneCue</a> privacy notes.</p>
+      </div>
+      <div class="promise rise">
+        <p class="label">Install</p>
+        <h3>Signed and notarized.</h3>
+        <p>Notarized by Apple, updated through Sparkle. Or use Homebrew:</p>
+        <div class="cmd"><code>brew install --cask 4ingoj/tap/sideschedule</code><button type="button" aria-label="Copy command"><svg class="cp" viewBox="0 0 256 256" aria-hidden="true"><path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"/></svg><svg class="ok" viewBox="0 0 256 256" aria-hidden="true"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg></button></div>
+        <div class="cmd"><code>brew install --cask 4ingoj/tap/tonecue</code><button type="button" aria-label="Copy command"><svg class="cp" viewBox="0 0 256 256" aria-hidden="true"><path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"/></svg><svg class="ok" viewBox="0 0 256 256" aria-hidden="true"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg></button></div>
+        <p class="sr" role="status" aria-live="polite" id="copy-status"></p>
       </div>
     </div>
-  </section>
+  </div>
 
   <!-- Release step 13: one article.release per app, newest release only; the previous one goes into details.before. -->
   <section id="changelog" aria-labelledby="log-h">
     <div class="wrap">
-      <div class="sec-head"><h2 id="log-h">Changelog.</h2><span class="label">Newest release per app</span></div>
+      <div class="sec-head"><h2 id="log-h">What’s new.</h2><p>The newest release of each app.</p></div>
       <div class="log">
         <article class="release rise" lang="en">
           <header><img src="/sideschedule/assets/app-icon.png" alt="" width="40" height="40"><div><h3>SideSchedule<span class="mono">1.2.0</span></h3><time datetime="2026-10-20">20 Oct 2026</time></div></header>
@@ -483,18 +456,22 @@ footer .fine{max-width:680px}
     </div>
   </section>
 
+  <hr class="hr">
+
   <section aria-labelledby="news-h">
     <div class="wrap split">
       <div class="rise">
         <h2 id="news-h">One email when something ships.</h2>
         <p>A short note when an app gets something worth reading about, when there’s a launch price, or when a new app is on the way. At most once a month, written by me.</p>
-        <p class="label">Form by Brevo (EU), spam check by Cloudflare Turnstile</p>
+        <p class="label" style="margin-top:24px">Form by Brevo (EU), spam check by Cloudflare Turnstile</p>
       </div>
       <div class="rise">
         <iframe class="signup" title="Subscribe to didact.digital news" src="https://4dd93bf3.sibforms.com/serve/MUIFAAxjfk4SfjnsBviBPjfD2lXFaBbc07ge-hCp-v-i32R0TJzwtsyn46msoyZ4GVzC-1AWjzPUMPJWJvwPIz3d_H61Hr7h7PUrjsj-6_3DT0PyXnd7CvP_5ujypIz3x0rl4al8Qrxy7F-H8hW1Uf9ylu_ANFW9Bz7yyCx3rvOcYIwegZYb4Tt2k1jm3GIvDcFaE_lX8iHTPA12rA==" loading="lazy" scrolling="no"></iframe>
       </div>
     </div>
   </section>
+
+  <hr class="hr">
 
   <section id="partners" aria-labelledby="partners-h">
     <div class="wrap split">
@@ -509,7 +486,7 @@ footer .fine{max-width:680px}
       </div>
       <div class="rise">
         <p class="label">Facts to copy</p>
-        <dl class="facts">
+        <dl class="facts-list">
           <dt>Maker</dt><dd>didact.digital, Graz, Austria</dd>
           <dt>SideSchedule</dt><dd>A Mac calendar sidebar that keeps its strip of screen, like the Dock.</dd>
           <dt>TalkRemind</dt><dd>A menu bar nudge that gets you to dictate instead of type.</dd>
@@ -524,20 +501,23 @@ footer .fine{max-width:680px}
 
 <footer>
   <div class="wrap">
-    <div class="row">
-      <ul>
-        <li><a href="/sideschedule/">SideSchedule</a></li>
-        <li><a href="/sideschedule/privacy.html">SideSchedule privacy</a></li>
-        <li><a href="/talkremind/">TalkRemind</a></li>
-        <li><a href="/talkremind/privacy.html">TalkRemind privacy</a></li>
-        <li><a href="/tonecue/">ToneCue</a></li>
-        <li><a href="/tonecue/privacy.html">ToneCue privacy</a></li>
-        <li><a href="/impressum.html">Legal notice</a></li>
-        <li><a href="/newsletter/abmelden.html">Newsletter unsubscribe</a></li>
-      </ul>
+    <div class="top">
+      <picture>
+        <source srcset="/assets/didact-digital-wordmark-paper.svg" media="(prefers-color-scheme: dark)">
+        <img src="/assets/didact-digital-wordmark-ink.svg" alt="didact.digital" width="90" height="16">
+      </picture>
       <a href="mailto:hello@didact.digital">hello@didact.digital</a>
     </div>
-    <div class="sign"><p class="big" aria-hidden="true">did. <span class="w2">act<span class="stop"></span></span></p><p class="label">Made in Graz, Austria</p></div>
+    <ul>
+      <li><a href="/sideschedule/">SideSchedule</a></li>
+      <li><a href="/talkremind/">TalkRemind</a></li>
+      <li><a href="/tonecue/">ToneCue</a></li>
+      <li><a href="/sideschedule/privacy.html">SideSchedule privacy</a></li>
+      <li><a href="/talkremind/privacy.html">TalkRemind privacy</a></li>
+      <li><a href="/tonecue/privacy.html">ToneCue privacy</a></li>
+      <li><a href="/impressum.html">Legal notice</a></li>
+      <li><a href="/newsletter/abmelden.html">Newsletter unsubscribe</a></li>
+    </ul>
     <p class="fine">© 2026 didact.digital Software e.U., Graz, Austria. This site counts visits with GoatCounter, without cookies; the apps track nothing. A partner link can remember the partner’s ID in your browser, but only if you agree.</p>
   </div>
 </footer>
@@ -575,31 +555,6 @@ footer .fine{max-width:680px}
   }, { rootMargin: '-45% 0px -50% 0px' });
   ['apps', 'changelog', 'partners'].forEach(function (id) { spy.observe(document.getElementById(id)); });
 
-  // Chapter rail follows the app in view
-  var railLinks = document.querySelectorAll('.rail a');
-  new IntersectionObserver(function (es) {
-    es.forEach(function (e) { document.body.classList.toggle('rail-on', e.isIntersecting); });
-  }, { rootMargin: '-40% 0px -40% 0px' }).observe(document.getElementById('apps'));
-  var chapter = new IntersectionObserver(function (es) {
-    es.forEach(function (e) {
-      if (!e.isIntersecting) return;
-      railLinks.forEach(function (a) { a.setAttribute('aria-current', a.getAttribute('href') === '#' + e.target.id); });
-    });
-  }, { rootMargin: '-50% 0px -50% 0px' });
-  document.querySelectorAll('.app').forEach(function (a) { chapter.observe(a); });
-
-  // Gentle tilt on fine pointers
-  if (!still && matchMedia('(pointer: fine)').matches) {
-    document.querySelectorAll('.frame').forEach(function (f) {
-      f.addEventListener('pointermove', function (e) {
-        var b = f.getBoundingClientRect();
-        f.style.setProperty('--ry', ((e.clientX - b.left) / b.width - .5) * 6 + 'deg');
-        f.style.setProperty('--rx', ((e.clientY - b.top) / b.height - .5) * -6 + 'deg');
-      });
-      f.addEventListener('pointerleave', function () { f.style.setProperty('--rx', '0deg'); f.style.setProperty('--ry', '0deg'); });
-    });
-  }
-
   // Demo video plays only while visible, never with reduced motion
   var v = document.querySelector('#sideschedule video');
   if (still) { v.controls = true; } else {
@@ -611,26 +566,24 @@ footer .fine{max-width:680px}
   // Tagline: split into words, each inks in as the block scrolls through the viewport
   var words = [];
   document.querySelectorAll('.tagline .line').forEach(function (line) {
-    var stop = line.querySelector('.stop');
-    var text = line.firstChild.textContent;
-    line.firstChild.remove();
+    var text = line.textContent;
+    line.textContent = '';
     text.trim().split(/\s+/).forEach(function (w, i, all) {
       var s = document.createElement('span');
       s.className = 'w';
       s.textContent = w + (i < all.length - 1 ? ' ' : '');
-      line.insertBefore(s, stop);
+      line.appendChild(s);
       words.push(s);
     });
   });
-  if (still) { words.forEach(function (w) { w.classList.add('on'); }); document.querySelector('.tagline').classList.add('done'); } else {
-    var block = document.querySelector('.tagline p'), tag = document.querySelector('.tagline'), ticking = false;
+  if (still) { words.forEach(function (w) { w.classList.add('on'); }); } else {
+    var block = document.querySelector('.tagline p'), ticking = false;
     function ink() {
       ticking = false;
       var r = block.getBoundingClientRect();
       var progress = (innerHeight * .75 - r.top) / (r.height + innerHeight * .25);
       var lit = Math.round(Math.min(Math.max(progress, 0), 1) * words.length);
       words.forEach(function (w, i) { w.classList.toggle('on', i < lit); });
-      tag.classList.toggle('done', lit >= words.length);
     }
     addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(ink); } }, { passive: true });
     ink();

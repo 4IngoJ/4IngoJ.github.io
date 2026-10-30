@@ -4,15 +4,18 @@
 <link rel="stylesheet" href="../assets/fonts.css">
 <style>
 *{margin:0;box-sizing:border-box}
-body{width:1200px;height:630px;background:#FAF9F7;color:#1A1917;font-family:Onest,sans-serif;position:relative;overflow:hidden}
-.orb{position:absolute;left:755px;top:157px;width:420px;-webkit-mask-image:radial-gradient(closest-side,#000 70%,transparent);mask-image:radial-gradient(closest-side,#000 70%,transparent)}
-.orb img{width:100%;mix-blend-mode:multiply}
-h1{position:absolute;left:72px;bottom:150px;font-weight:700;font-size:96px;line-height:1;letter-spacing:-.04em}
-p{position:absolute;left:76px;bottom:72px;font:500 20px/28px "Geist Mono",monospace;text-transform:uppercase;letter-spacing:.07em;color:#5C5A56}
-.mark{position:absolute;left:72px;top:64px;height:40px}
+body{width:1200px;height:630px;background:#FAF9F7;color:#1A1917;font-family:Onest,sans-serif;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+h1{font-weight:700;font-size:72px;line-height:1;letter-spacing:-.04em;background:linear-gradient(90deg,#1A1917,#5C5A56);-webkit-background-clip:text;background-clip:text;color:transparent;padding-bottom:8px}
+ul{display:flex;gap:48px;list-style:none;padding:0;margin-top:56px}
+li{display:flex;flex-direction:column;align-items:center;gap:14px;font-weight:600;font-size:20px}
+li img{width:112px;height:112px;border-radius:25px;box-shadow:0 1px 2px rgba(0,0,0,.08),0 24px 48px -16px rgba(0,0,0,.28)}
+.mark{position:absolute;left:50%;transform:translateX(-50%);bottom:40px;height:20px}
 </style></head><body>
+<h1>Apps for high<br>performing people.</h1>
+<ul>
+  <li><img src="../sideschedule/assets/app-icon.png" alt="">SideSchedule</li>
+  <li><img src="../talkremind/assets/app-icon.png" alt="">TalkRemind</li>
+  <li><img src="../tonecue/assets/app-icon.png" alt="">ToneCue</li>
+</ul>
 <img class="mark" src="../assets/didact-digital-wordmark-ink.svg" alt="">
-<div class="orb"><img src="../assets/v2/sphere-light.webp" alt=""></div>
-<h1>Apps for high<br>performing people</h1>
-<p>Mac apps · Pay once · No account</p>
 </body></html>
