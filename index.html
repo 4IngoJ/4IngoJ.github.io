@@ -150,6 +150,8 @@ p,li,dd{text-wrap:pretty}
 @media (min-width:768px){.icons img{width:128px;height:128px;border-radius:28px}}
 .icons b{font-size:14px;line-height:20px;font-weight:600}
 @media (min-width:768px){.icons b{font-size:16px;line-height:24px}}
+.icons span{display:block;white-space:nowrap;font-size:14px;line-height:20px;color:var(--muted);margin-top:-12px}
+@media (max-width:1023px){.icons span{display:none}}
 
 /* App tiles */
 .tiles{display:grid;gap:12px;padding:0 12px}
@@ -173,6 +175,10 @@ p,li,dd{text-wrap:pretty}
 .shot.cut{max-height:440px;overflow:hidden}
 .shot.cut img{object-fit:cover;object-position:top}
 .tiles > *{min-width:0}
+/* One dark tile breaks the rhythm, the way a product page alternates */
+.tile.dark{--fg:#F5F5F2;--muted:#A1A09B;--line:#313131;--card:#272727;--bg:#000;background:#000;color:var(--fg)}
+.tile.dark .btn-primary{background:#F5F5F2;color:#000}
+@media (prefers-color-scheme:dark){.tile.dark{background:#131209;box-shadow:inset 0 0 0 1px #272727}}
 
 
 /* Compare, the way a spec page does it */
@@ -331,9 +337,9 @@ footer .fine{max-width:880px}
       </div>
       <p class="proof">Free for 14 days. Made by one person in Graz, Austria.</p>
       <ul class="icons">
-        <li><a href="#sideschedule"><img src="/sideschedule/assets/app-icon.png" alt="" width="128" height="128"><b>SideSchedule</b></a></li>
-        <li><a href="#talkremind"><img src="/talkremind/assets/app-icon.png" alt="" width="128" height="128"><b>TalkRemind</b></a></li>
-        <li><a href="#tonecue"><img src="/tonecue/assets/app-icon.png" alt="" width="128" height="128"><b>ToneCue</b></a></li>
+        <li><a href="#sideschedule"><img src="/sideschedule/assets/app-icon.png" alt="" width="128" height="128"><b>SideSchedule</b><span>Your calendar, docked like the Dock</span></a></li>
+        <li><a href="#talkremind"><img src="/talkremind/assets/app-icon.png" alt="" width="128" height="128"><b>TalkRemind</b><span>A nudge to dictate, not type</span></a></li>
+        <li><a href="#tonecue"><img src="/tonecue/assets/app-icon.png" alt="" width="128" height="128"><b>ToneCue</b><span>The right mic, every time</span></a></li>
       </ul>
     </div>
   </header>
@@ -361,7 +367,7 @@ footer .fine{max-width:880px}
       </div>
     </article>
 
-    <article class="tile rise" id="talkremind" aria-labelledby="tr-h">
+    <article class="tile dark rise" id="talkremind" aria-labelledby="tr-h">
       <div class="head">
         <img src="/talkremind/assets/app-icon.png" alt="" width="64" height="64">
         <h2 id="tr-h">TalkRemind</h2>
