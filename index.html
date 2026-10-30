@@ -431,6 +431,8 @@ section{padding:96px 0}
 .split h2{font-size:36px;line-height:40px;margin-bottom:16px}
 .split p{color:var(--muted);max-width:520px}
 .split p + p{margin-top:12px}
+/* the intro walks along beside the tall form, so the dot always has text to stand on */
+@media (min-width:900px){[aria-labelledby=news-h] .split > :first-child{position:sticky;top:26vh}}
 /* Brevo form: measured height per width (taken from the live page), its own margins clipped away */
 .signup-wrap{--h:1044px;position:relative;width:100%;max-width:540px;height:var(--h);border-radius:24px;overflow:hidden;background:#fff}
 @media (max-width:339px){.signup-wrap{--h:1492px}}
@@ -986,6 +988,7 @@ footer .fine{max-width:880px}
         var g = ihost.querySelector('.i-less').getBoundingClientRect(), b = ihost.querySelector('.pd-b').getBoundingClientRect(), f = fs(ihost);
         return { x: g.left + g.width / 2 + scrollX, y: b.top - f * .675 + f * .085 + scrollY, s: f * .17 / 20, c: tint() };
       }
+      if (i >= stops.length) return floorSpot(floors[i - stops.length]);
       var t = stops[i];
       if (t.dataset.dotEdge) {
         // resting on the top edge of a box, the size of a heading's full stop
@@ -995,10 +998,43 @@ footer .fine{max-width:880px}
       var gt = t.querySelector('.pd-t').getBoundingClientRect(), bt = t.querySelector('.pd-b').getBoundingClientRect();
       return { x: gt.left + gt.width / 2 + scrollX, y: bt.top + scrollY, s: size(), c: tint(t) };
     }
+    var BOX = 'img, .btn, .scene, .release, .promise';
+    // Floors: when no stop is in the band the dot still needs ground under it, so it stands on
+    // the top edge of a box or image, or on top of the last letter of a text's first line.
+    var floors = [].slice.call(document.querySelectorAll('main h2, main h3, main p, main li, main summary, main dt, main dd, main img, main th, main td, main .btn, main .scene, main .release, main .promise, footer p, footer li, footer img'))
+      .filter(function (f) { return !f.closest('[aria-hidden=true], .scene *') && !f.matches('[data-dot-edge]') && !/^\s*$/.test(f.textContent + (f.matches(BOX) ? 'x' : '')); });
+    var ctx = document.createElement('canvas').getContext('2d'), memo = new WeakMap();
+    function floorSpot(f) {
+      var r = f.getBoundingClientRect(), o = memo.get(f);
+      if (!o) {
+        o = { dx: r.width * .82, dy: 0 };
+        if (!f.matches(BOX)) {
+          // last letter on the first line, measured glyph by glyph
+          var w = document.createTreeWalker(f, NodeFilter.SHOW_TEXT), n, rg = document.createRange(), top = null, hit = null;
+          scan: while ((n = w.nextNode())) {
+            for (var k = 0; k < n.length; k++) {
+              rg.setStart(n, k); rg.setEnd(n, k + 1);
+              var cr = rg.getBoundingClientRect();
+              if (!cr.width) continue;
+              if (top === null) top = cr.top; else if (cr.top > top + cr.height * .5) break scan;
+              if (/[\p{L}\p{N}]/u.test(n.data[k])) hit = { r: cr, ch: n.data[k], el: n.parentElement };
+            }
+          }
+          if (hit) {
+            ctx.font = getComputedStyle(hit.el).font;
+            var m = ctx.measureText(hit.ch), fsz = fs(hit.el);
+            var asc = m.fontBoundingBoxAscent || fsz * .95, ink = m.actualBoundingBoxAscent || fsz * .7;
+            o = { dx: hit.r.left + hit.r.width / 2 - r.left, dy: hit.r.top + asc - ink - r.top };
+          }
+        }
+        memo.set(f, o);
+      }
+      return { x: r.left + o.dx + scrollX, y: r.top + o.dy + scrollY, s: size(), c: tint(f) };
+    }
     var sh = document.querySelector('.dot-sh'), REST = .3;
     function setTo(p) {
       gsap.set(dot, { x: p.x, y: p.y }); gsap.set(body, { scaleX: p.s, scaleY: p.s }); body.style.backgroundColor = p.c; cur = p;
-      gsap.set(sh, { x: p.x, y: p.y, scaleX: p.s * 1.15, opacity: p.park ? 0 : REST });
+      gsap.set(sh, { x: p.x, y: p.y, scaleX: p.s * 1.15, opacity: REST });
     }
 
     function hop(to, quick, done) {
@@ -1030,43 +1066,47 @@ footer .fine{max-width:880px}
         // the shadow stays on the ground: it thins out as the dot rises, gathers where it will land
         .to(sh, { opacity: 0, scaleX: s0 * .4, duration: up * .7, ease: 'power1.out' }, 'go')
         .set(sh, { x: to.x, y: to.y, scaleX: s1 * .3 }, 'go+=' + up)
-        .to(sh, { opacity: to.park ? 0 : REST, scaleX: s1 * 1.15, duration: down, ease: 'power2.in' }, 'go+=' + up);
+        .to(sh, { opacity: REST, scaleX: s1 * 1.15, duration: down, ease: 'power2.in' }, 'go+=' + up);
     }
 
-    // Stay where you are while you are on screen; once off screen, jump to the visible stop
-    // nearest the middle. With nothing visible, rest mid screen at the right edge of the content.
     // the dot lives in the middle band of the screen; crossing its edge is what makes it jump
     function inView(p) { return p.y > scrollY + innerHeight * .22 && p.y < scrollY + innerHeight * .78; }
-    function pick() {
-      // stay put while the current stop is inside the band; otherwise take the band stop nearest the middle
-      if (typeof at === 'number' && at >= 0 && inView(spot(at))) return at;
+    function onScreen(p) { return p.y > scrollY + 110 && p.y < scrollY + innerHeight - 24; }
+    function nearest(from, to, ok) {
       var mid = scrollY + innerHeight * .5, best = null, bestD = Infinity;
-      stops.forEach(function (t, i) {
-        var p = spot(i);
-        if (!inView(p)) return;
-        var d = Math.abs(p.y - mid);
-        if (d < bestD) { bestD = d; best = i; }
-      });
-      return best === null ? 'park' : best;
+      for (var i = from; i < to; i++) {
+        if (i >= stops.length) {
+          // cheap test on the box before measuring glyphs
+          var r = floors[i - stops.length].getBoundingClientRect();
+          if (!r.width || r.bottom < 0 || r.top > innerHeight) continue;
+        }
+        var p = spot(i), d = Math.abs(p.y - mid);
+        if (ok(p) && d < bestD) { bestD = d; best = i; }
+      }
+      return best;
     }
-    function parkSpot() {
-      var w = document.querySelector('main .wrap').getBoundingClientRect();
-      return { x: w.right - 24 + scrollX, y: scrollY + innerHeight * .5, s: size(), c: tint(), park: true };
+    function pick() {
+      // a stop wins: stay on it while it is inside the band, else take the band stop nearest the middle;
+      // without one, stand on a floor inside the band, and only then anything on screen. Never on air.
+      var n = stops.length, all = n + floors.length, here = at >= 0 && inView(spot(at));
+      if (here && at < n) return at;
+      var s = nearest(0, n, inView);
+      if (s !== null) return s;
+      if (here) return at;
+      var f = nearest(n, all, inView);
+      if (f === null) f = nearest(0, all, onScreen);
+      return f === null ? at : f;
     }
     function step() {
       if (busy || !hopped) return;
       var next = pick();
-      if (next === 'park') {
-        var pk = parkSpot();
-        if (at === 'park') { cur = pk; gsap.to(dot, { y: pk.y, x: pk.x, duration: .6, ease: 'power3.out', overwrite: 'auto' }); return; }
-        at = 'park'; busy = true; return hop(pk, false, function () { busy = false; step(); });
-      }
-      if (next === at) return;
+      // same ground: follow it if it moved (sticky intro beside the form)
+      if (next === at) return settle();
       at = next; busy = true;
       hop(spot(next), false, function () { busy = false; settle(); step(); });
     }
     function settle() {
-      if (busy || !cur || at === 'park') return;
+      if (busy || !cur || at < 0) return;
       var p = spot(at);
       if (Math.abs(p.x - cur.x) + Math.abs(p.y - cur.y) < 1) return;
       cur = p; gsap.to(dot, { x: p.x, y: p.y, duration: .3, ease: 'power3.out' }); gsap.to(sh, { x: p.x, y: p.y, duration: .3, ease: 'power3.out' });
@@ -1084,9 +1124,9 @@ footer .fine{max-width:880px}
       requestAnimationFrame(function () { ticking = false; step(); });
     }, { passive: true });
     document.addEventListener('transitionend', function (e) {
-      if (e.propertyName === 'transform' && typeof at === 'number' && at >= 0 && e.target.contains(stops[at])) settle();
+      if (e.propertyName === 'transform' && at >= 0 && e.target.contains(stops[at] || floors[at - stops.length])) settle();
     });
-    addEventListener('resize', function () { gsap.killTweensOf([dot, body]); busy = false; setTo(at === 'park' ? parkSpot() : spot(at)); });
+    addEventListener('resize', function () { memo = new WeakMap(); gsap.killTweensOf([dot, body]); busy = false; setTo(spot(at)); });
 
     (document.fonts ? document.fonts.ready : Promise.resolve()).then(function () {
       // Sit on the i from the start, then take the first step to the end of the headline
