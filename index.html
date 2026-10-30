@@ -38,6 +38,9 @@
  {"@type":"Organization","@id":"https://didact.digital/#org","name":"didact.digital Software e.U.","alternateName":"didact.digital","url":"https://didact.digital/","logo":"https://didact.digital/assets/favicon-192.png","email":"hello@didact.digital"},
  {"@type":"WebSite","url":"https://didact.digital/","name":"didact.digital","publisher":{"@id":"https://didact.digital/#org"}}]}
 </script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is this a subscription?", "acceptedAnswer": {"@type": "Answer", "text": "No. You pay once per app: €12.99 for SideSchedule, €9.99 each for TalkRemind and ToneCue."}}, {"@type": "Question", "name": "How does the trial work?", "acceptedAnswer": {"@type": "Answer", "text": "Every app runs for 14 days with every feature switched on. No account and no card."}}, {"@type": "Question", "name": "On how many Macs can I use a license?", "acceptedAnswer": {"@type": "Answer", "text": "Two Macs with SideSchedule or ToneCue, three with TalkRemind."}}, {"@type": "Question", "name": "Which macOS do I need?", "acceptedAnswer": {"@type": "Answer", "text": "macOS 13 or later for SideSchedule and ToneCue, macOS 14 or later for TalkRemind."}}, {"@type": "Question", "name": "What leaves my Mac?", "acceptedAnswer": {"@type": "Answer", "text": "A license check and an update check. A diagnostic report only if you choose to send one. No analytics, no tracking, no telemetry."}}, {"@type": "Question", "name": "Can I get a refund?", "acceptedAnswer": {"@type": "Answer", "text": "There is no refund promise, because the 14 day trial has every feature switched on. Use it properly before you buy."}}, {"@type": "Question", "name": "I lost my license key.", "acceptedAnswer": {"@type": "Answer", "text": "It is in your receipt email. If that is gone too, write to hello@didact.digital from the address you bought with."}}, {"@type": "Question", "name": "How do updates arrive?", "acceptedAnswer": {"@type": "Answer", "text": "Inside the app, through Sparkle. SideSchedule and ToneCue are also on Homebrew."}}]}
+</script>
 <style>
 /* didact.digital v2, Apple oriented: centred hero, one full-width tile per app, glass navigation.
    Sizes snap to the Tailwind scale, spacing to 2/4/8/12/16/24/32/40/48/64/80/96. */
@@ -108,7 +111,10 @@ p,li,dd{text-wrap:pretty}
 .nav::after{content:"";position:absolute;inset:1px;border-radius:inherit;pointer-events:none;background:linear-gradient(180deg,rgba(255,255,255,.22),rgba(255,255,255,0) 55%)}
 @media (prefers-color-scheme:dark){:root:not([data-theme=light]) .nav::after{background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,0) 55%)}}
 :root[data-theme=dark] .nav::after{background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,0) 55%)}
-.nav .mark{display:block;height:20px;width:auto}
+.nav .mark{height:20px;width:auto;vertical-align:middle}
+.nav .mark.wm-paper{display:none}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) .nav .mark.wm-ink{display:none}:root:not([data-theme=light]) .nav .mark.wm-paper{display:inline}}
+:root[data-theme=dark] .nav .mark.wm-ink{display:none}:root[data-theme=dark] .nav .mark.wm-paper{display:inline}
 .nav ul{display:flex;gap:4px;list-style:none}
 .nav ul a{display:block;font:500 14px/20px var(--sans);padding:8px 12px;border-radius:9999px;text-decoration:none;color:var(--muted);transition:color .3s var(--ease),background-color .3s var(--ease)}
 .nav ul a:hover,.nav ul a[aria-current="true"]{color:var(--fg);background:color-mix(in srgb,var(--fg) 7%,transparent)}
@@ -296,9 +302,6 @@ p,li,dd{text-wrap:pretty}
 /* light scene (ToneCue) */
 .scene.tc{aspect-ratio:2/1}
 @media (max-width:639px){.scene.tc{aspect-ratio:4/5}}
-.scene.light{background:#DEDCD7;color:#1A1917;box-shadow:0 0 0 1px #D0CEC9,0 40px 80px -32px rgba(0,0,0,.25)}
-.scene.light .sc-bar{background:rgba(255,255,255,.45);color:#5C5A56}
-.scene.light .sc-bar .sc-app{color:#1A1917}
 .tc-pop{position:absolute;right:6%;top:40px;width:min(320px,72%);padding:16px;border-radius:16px;background:rgba(255,255,255,.9);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);box-shadow:0 0 0 1px rgba(0,0,0,.08),0 24px 48px -16px rgba(0,0,0,.3)}
 .tc-top strong{font-size:16px;line-height:24px}
 .tc-dev{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
@@ -320,6 +323,43 @@ p,li,dd{text-wrap:pretty}
 .tc-toast span{font-size:12px;line-height:16px;color:#6E6C68}
 .tc-dev span,.tc-name,.tc-why{transition:opacity .3s var(--ease)}
 @media (max-width:639px){.tc-pop{right:4%;left:4%;width:auto;top:120px}.tc-toast{left:4%;width:auto;right:4%;top:40px}.ss-side{width:52%}.ss-dock{display:none}}
+
+
+/* Scenes follow light and dark: one set of tokens, two values */
+.scene{--s-bg:#DEDCD7;--s-fg:#1A1917;--s-muted:#6E6C68;--s-panel:rgba(255,255,255,.7);--s-strong:rgba(250,250,249,.88);--s-pop:rgba(255,255,255,.92);--s-card:rgba(240,239,236,.9);--s-line:rgba(0,0,0,.08);--s-bar:rgba(255,255,255,.45);--s-skel:#E0DEDA;--s-key:#B9B7B2;--s-shadow:rgba(0,0,0,.22);--s-blue:#2456D6;--s-blue-bg:rgba(43,90,228,.12);--s-yellow:#8A5D00;--s-yellow-bg:rgba(242,176,64,.22);--s-violet:#7A3FB2;--s-violet-bg:rgba(150,90,200,.14);--s-join:#E9B23C}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) .scene{--s-bg:#1F1F1F;--s-fg:#F5F5F2;--s-muted:#A1A09B;--s-panel:rgba(32,32,34,.78);--s-strong:rgba(20,20,22,.88);--s-pop:rgba(24,24,26,.92);--s-card:rgba(255,255,255,.07);--s-line:rgba(255,255,255,.1);--s-bar:rgba(0,0,0,.28);--s-skel:#3a3a3a;--s-key:#5a5a5a;--s-shadow:rgba(0,0,0,.6);--s-blue:#7FA8FF;--s-blue-bg:rgba(43,90,228,.22);--s-yellow:#F2D06B;--s-yellow-bg:rgba(242,208,107,.16);--s-violet:#C792EA;--s-violet-bg:rgba(199,146,234,.18);--s-join:#F2D06B}}
+:root[data-theme=dark] .scene{--s-bg:#1F1F1F;--s-fg:#F5F5F2;--s-muted:#A1A09B;--s-panel:rgba(32,32,34,.78);--s-strong:rgba(20,20,22,.88);--s-pop:rgba(24,24,26,.92);--s-card:rgba(255,255,255,.07);--s-line:rgba(255,255,255,.1);--s-bar:rgba(0,0,0,.28);--s-skel:#3a3a3a;--s-key:#5a5a5a;--s-shadow:rgba(0,0,0,.6);--s-blue:#7FA8FF;--s-blue-bg:rgba(43,90,228,.22);--s-yellow:#F2D06B;--s-yellow-bg:rgba(242,208,107,.16);--s-violet:#C792EA;--s-violet-bg:rgba(199,146,234,.18);--s-join:#F2D06B}
+.sc-wall.wd{display:none}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) .sc-wall.wl{display:none}:root:not([data-theme=light]) .sc-wall.wd{display:block}}
+:root[data-theme=dark] .sc-wall.wl{display:none}:root[data-theme=dark] .sc-wall.wd{display:block}
+.scene{background:var(--s-bg);color:var(--s-fg);box-shadow:0 0 0 1px var(--s-line),0 40px 80px -32px var(--s-shadow);transition:background-color .5s var(--ease)}
+.scene .sc-bar{background:var(--s-bar);color:var(--s-muted)}
+.scene .sc-bar .sc-app{color:var(--s-fg)}
+.scene .sc-win,.scene .ss-win,.scene .tc-cal{background:var(--s-panel);box-shadow:0 0 0 1px var(--s-line),0 24px 48px -16px var(--s-shadow)}
+.scene .sc-title{color:var(--s-muted)}
+.scene .sc-title i,.scene .ss-win b,.scene .ss-dock i{background:var(--s-skel)}
+.scene .sc-text,.scene .sc-dict{color:var(--s-fg)}
+.scene .sc-caret{background:var(--s-fg)}
+.scene .sc-state,.scene .ss-head span,.scene .ss-h,.scene .ss-strip span,.scene .tc-dev small,.scene .tc-scene span,.scene .tc-cal-head,.scene .tc-toast span,.scene .sc-esc{color:var(--s-muted)}
+.scene .sc-nudge,.scene .sc-wave,.scene .tc-pop,.scene .tc-toast{background:var(--s-pop);box-shadow:0 0 0 1px var(--s-line),0 24px 48px -12px var(--s-shadow)}
+.scene .sc-nudge b{color:var(--s-fg)}
+.scene .sc-keys kbd{border-color:var(--s-key);color:var(--s-fg)}
+.scene .sc-keys kbd.down{background:var(--s-fg);border-color:var(--s-fg);color:var(--s-bg)}
+.scene .sc-esc{border-color:var(--s-key)}
+.scene .sc-timer{background:var(--s-muted)}
+.scene .sc-wave i{background:var(--s-fg)}
+.scene .ss-side,.scene .ss-strip{background:var(--s-strong);box-shadow:-1px 0 0 var(--s-line)}
+.scene .ss-ev.blue{color:var(--s-blue);background:var(--s-blue-bg)}
+.scene .ss-ev.yellow{color:var(--s-yellow);background:var(--s-yellow-bg)}
+.scene .ss-ev.violet{color:var(--s-violet);background:var(--s-violet-bg)}
+.scene .ss-join,.scene .ss-strip em{background:var(--s-join);color:#1A1917}
+.scene .ss-join.on{background:var(--s-fg);color:var(--s-bg)}
+.scene .ss-dock{background:var(--s-bar);box-shadow:0 0 0 1px var(--s-line)}
+.scene .tc-dev > div{background:var(--s-card)}
+.scene .tc-scene{box-shadow:inset 0 0 0 1px var(--s-line)}
+.scene .tc-undo{background:var(--s-fg);color:var(--s-bg)}
+/* the cursor stays a Mac cursor: black with a white rim, in both modes */
+.scene .sc-cursor{background:#111;filter:drop-shadow(0 0 1px #fff) drop-shadow(0 1px 1px rgba(0,0,0,.5))}
 
 /* Tagline: words ink in as you scroll */
 .tagline{padding:160px 0;text-align:center}
@@ -372,13 +412,40 @@ section{padding:96px 0}
 .release .all{margin-top:16px;font-size:14px;line-height:20px}
 @media (max-width:899px){.log{grid-template-columns:1fr}}
 
+/* FAQ: quiet rows that open smoothly where the browser can animate to auto height */
+:root{interpolate-size:allow-keywords}
+.faq{border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{display:flex;justify-content:space-between;align-items:center;gap:24px;padding:24px 0;font-size:20px;line-height:28px;font-weight:600;letter-spacing:-.02em;cursor:pointer;list-style:none}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";flex:none;width:12px;height:12px;background:linear-gradient(currentColor,currentColor) center/100% 2px no-repeat,linear-gradient(currentColor,currentColor) center/2px 100% no-repeat;transition:transform .5s var(--ease)}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details::details-content{height:0;overflow:clip;transition:height .5s var(--ease),content-visibility .5s allow-discrete}
+.faq details[open]::details-content{height:auto}
+.faq p{padding:0 48px 24px 0;color:var(--muted);font-size:18px;line-height:28px;max-width:720px}
 /* Newsletter and partners */
 .split{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
 .split > *{min-width:0}
 .split h2{font-size:36px;line-height:40px;margin-bottom:16px}
 .split p{color:var(--muted);max-width:520px}
 .split p + p{margin-top:12px}
-.signup{width:100%;height:340px;border:0;border-radius:24px;background:var(--tile)}
+/* Brevo form: measured height per width (taken from the live page), its own margins clipped away */
+.signup-wrap{--h:1044px;position:relative;width:100%;max-width:540px;height:var(--h);border-radius:24px;overflow:hidden;background:#fff}
+@media (max-width:339px){.signup-wrap{--h:1492px}}
+@media (min-width:340px) and (max-width:359px){.signup-wrap{--h:1402px}}
+@media (min-width:360px) and (max-width:379px){.signup-wrap{--h:1355px}}
+@media (min-width:380px) and (max-width:399px){.signup-wrap{--h:1312px}}
+@media (min-width:400px) and (max-width:419px){.signup-wrap{--h:1288px}}
+@media (min-width:420px) and (max-width:439px){.signup-wrap{--h:1288px}}
+@media (min-width:440px) and (max-width:459px){.signup-wrap{--h:1288px}}
+@media (min-width:460px) and (max-width:479px){.signup-wrap{--h:1222px}}
+@media (min-width:480px) and (max-width:499px){.signup-wrap{--h:1199px}}
+@media (min-width:500px) and (max-width:519px){.signup-wrap{--h:1127px}}
+@media (min-width:520px) and (max-width:539px){.signup-wrap{--h:1097px}}
+@media (min-width:540px) and (max-width:559px){.signup-wrap{--h:1076px}}
+@media (min-width:560px) and (max-width:579px){.signup-wrap{--h:1076px}}
+@media (min-width:580px) and (max-width:599px){.signup-wrap{--h:1038px}}
+.signup{position:absolute;left:-20px;top:-40px;width:calc(100% + 40px);height:calc(var(--h) + 80px);border:0;display:block}
 .facts-list{display:grid;grid-template-columns:auto 1fr;gap:12px 24px;margin-top:24px;font-size:14px;line-height:20px}
 .facts-list dt{font:500 12px/20px var(--mono);text-transform:uppercase;letter-spacing:.07em;color:var(--muted)}
 .actions{display:flex;flex-wrap:wrap;gap:12px}
@@ -410,6 +477,7 @@ footer .fine{max-width:880px}
 :root[data-theme=dark] .dot-sh{background:rgba(0,0,0,.7)}
 @media (hover:hover) and (pointer:fine){.dotfx .dot i{pointer-events:auto;cursor:pointer}}
 
+::view-transition-old(root),::view-transition-new(root){animation:none;mix-blend-mode:normal}
 /* Scroll reveal, once per block */
 .js .rise{opacity:0;transform:translateY(32px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
 .js .rise.in{opacity:1;transform:none}
@@ -468,7 +536,7 @@ footer .fine{max-width:880px}
       <ul class="icons">
         <li><a href="#sideschedule"><img src="/sideschedule/assets/app-icon.png" alt="" width="128" height="128"><b>SideSchedule</b><span>Your calendar, docked like the Dock</span></a></li>
         <li><a href="#talkremind"><img src="/talkremind/assets/app-icon.png" alt="" width="128" height="128"><b>TalkRemind</b><span>A nudge to dictate, not type</span></a></li>
-        <li><a href="#tonecue"><img src="/tonecue/assets/app-icon.png" alt="" width="128" height="128"><b>ToneCue</b><span>The right mic, every time</span></a></li>
+        <li><a href="#tonecue"><img src="/assets/v2/tonecue-icon.png" alt="" width="128" height="128"><b>ToneCue</b><span>The right mic, every time</span></a></li>
       </ul>
     </div>
   </header>
@@ -493,7 +561,7 @@ footer .fine{max-width:880px}
       </div>
       <h3 class="sc-cap">It claims its own strip<span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></h3>
       <div class="scene ss" role="img" aria-label="Animation: SideSchedule slides in at the right edge and the open window makes room for it. A click on Join opens the call. Then the sidebar folds into a thin strip that still shows the next meeting.">
-        <img class="sc-wall" src="/assets/v2/wall-dusk.webp" alt="" width="1600" height="893" loading="lazy">
+        <img class="sc-wall wl" src="/assets/v2/wall-dusk-light.webp" alt="" width="1600" height="893" loading="lazy"><img class="sc-wall wd" src="/assets/v2/wall-dusk.webp" alt="" width="1600" height="893" loading="lazy">
         <div class="sc-bar" aria-hidden="true"><span class="sc-app">Notes</span><span>File</span><span>Edit</span><span>View</span><span class="sc-gap"></span><span>Thu 10:58</span></div>
         <div class="ss-desk" aria-hidden="true">
           <div class="ss-win"><div class="sc-title"><i></i><i></i><i></i><span>Launch checklist</span></div><b></b><b></b><b class="s"></b><b></b><b class="s"></b></div>
@@ -534,7 +602,7 @@ footer .fine{max-width:880px}
       </div>
       <h3 class="sc-cap">It notices, then it nudges<span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></h3>
       <div class="scene tr" role="img" aria-label="Animation: someone types a long note, TalkRemind slides in the nudge Your dictation app is waiting with the shortcut Option R, and the rest of the note arrives by dictation.">
-        <img class="sc-wall" src="/assets/v2/wall-ember.webp" alt="" width="1600" height="893" loading="lazy">
+        <img class="sc-wall wl" src="/assets/v2/wall-ember-light.webp" alt="" width="1600" height="893" loading="lazy"><img class="sc-wall wd" src="/assets/v2/wall-ember.webp" alt="" width="1600" height="893" loading="lazy">
         <div class="sc-bar" aria-hidden="true"><span class="sc-app">Notes</span><span>File</span><span>Edit</span><span>Format</span><span class="sc-gap"></span><img src="/talkremind/assets/app-icon.png" alt="" width="16" height="16"><span>9:41</span></div>
         <div class="sc-win" aria-hidden="true">
           <div class="sc-title"><i></i><i></i><i></i><span>Thursday review</span></div>
@@ -553,7 +621,7 @@ footer .fine{max-width:880px}
 
     <article class="tile rise" id="tonecue" aria-labelledby="tc-h">
       <div class="head">
-        <img src="/tonecue/assets/app-icon.png" alt="" width="64" height="64">
+        <img src="/assets/v2/tonecue-icon.png" alt="" width="64" height="64">
         <h2 id="tc-h">ToneCue</h2>
         <h3 class="hook">Your Mac, with the microphone you meant<span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></h3>
         <p class="what">A menu bar app that picks your microphone and speakers by situation: a dock, a calendar meeting, an open app. It tells you why it switched, and you can undo it.</p>
@@ -569,9 +637,9 @@ footer .fine{max-width:880px}
         </ul>
       </div>
       <h3 class="sc-cap">It switches, and it says why<span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></h3>
-      <div class="scene light tc" role="img" aria-label="Animation: a meeting starts in the calendar. ToneCue switches input and output to AirPods Pro, names the scene Calls and the reason, a meeting is on, and offers Undo. When the meeting ends, it goes back to the desk setup.">
-        <img class="sc-wall" src="/assets/v2/wall-morning.webp" alt="" width="1600" height="893" loading="lazy">
-        <div class="sc-bar" aria-hidden="true"><span class="sc-app">Calendar</span><span>File</span><span>Edit</span><span>View</span><span class="sc-gap"></span><img src="/tonecue/assets/app-icon.png" alt="" width="16" height="16"><span class="tc-clock">10:59</span></div>
+      <div class="scene tc" role="img" aria-label="Animation: a meeting starts in the calendar. ToneCue switches input and output to AirPods Pro, names the scene Calls and the reason, a meeting is on, and offers Undo. When the meeting ends, it goes back to the desk setup.">
+        <img class="sc-wall wl" src="/assets/v2/wall-morning.webp" alt="" width="1600" height="893" loading="lazy"><img class="sc-wall wd" src="/assets/v2/wall-morning-dark.webp" alt="" width="1600" height="893" loading="lazy">
+        <div class="sc-bar" aria-hidden="true"><span class="sc-app">Calendar</span><span>File</span><span>Edit</span><span>View</span><span class="sc-gap"></span><img src="/assets/v2/tonecue-icon.png" alt="" width="16" height="16"><span class="tc-clock">10:59</span></div>
         <div class="tc-cal" aria-hidden="true">
           <div class="tc-cal-head"><span>Mon</span><span>Tue</span><span>Wed</span><span class="today">Thu</span><span>Fri</span></div>
           <div class="tc-cal-grid">
@@ -600,7 +668,7 @@ footer .fine{max-width:880px}
         <thead><tr><td></td>
           <th scope="col"><img src="/sideschedule/assets/app-icon.png" alt="" width="56" height="56"><b>SideSchedule</b></th>
           <th scope="col"><img src="/talkremind/assets/app-icon.png" alt="" width="56" height="56"><b>TalkRemind</b></th>
-          <th scope="col"><img src="/tonecue/assets/app-icon.png" alt="" width="56" height="56"><b>ToneCue</b></th>
+          <th scope="col"><img src="/assets/v2/tonecue-icon.png" alt="" width="56" height="56"><b>ToneCue</b></th>
         </tr></thead>
         <tbody>
           <tr><th scope="row">Does</th><td>Keeps your calendar on screen</td><td>Nudges you to dictate</td><td>Picks the right mic and speakers</td></tr>
@@ -684,7 +752,7 @@ footer .fine{max-width:880px}
           <p class="all"><a href="https://github.com/4IngoJ/TalkRemind/releases">All TalkRemind releases</a></p>
         </article>
         <article class="release rise" lang="en">
-          <header><img src="/tonecue/assets/app-icon.png" alt="" width="40" height="40"><div><h3>ToneCue<span class="mono">2.1.0</span></h3><time datetime="2026-10-11">11 Oct 2026</time></div></header>
+          <header><img src="/assets/v2/tonecue-icon.png" alt="" width="40" height="40"><div><h3>ToneCue<span class="mono">2.1.0</span></h3><time datetime="2026-10-11">11 Oct 2026</time></div></header>
           <ul class="notes">
             <li>New Raycast extension: switch scenes, apply one by name and mute the microphone from Raycast.</li>
             <li>Ask <code>@tonecue</code> in Raycast which scene is active and why ToneCue switched.</li>
@@ -692,6 +760,24 @@ footer .fine{max-width:880px}
           </ul>
           <p class="all"><a href="https://github.com/4IngoJ/tonecue/releases">All ToneCue releases</a></p>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr">
+
+  <section id="faq" aria-labelledby="faq-h">
+    <div class="wrap narrow">
+      <div class="sec-head"><h2 id="faq-h">Questions, answered<span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></h2></div>
+      <div class="faq">
+        <details><summary>Is this a subscription?</summary><p>No. You pay once per app: €12.99 for SideSchedule, €9.99 each for TalkRemind and ToneCue.</p></details>
+        <details><summary>How does the trial work?</summary><p>Every app runs for 14 days with every feature switched on. No account and no card.</p></details>
+        <details><summary>On how many Macs can I use a license?</summary><p>Two Macs with SideSchedule or ToneCue, three with TalkRemind.</p></details>
+        <details><summary>Which macOS do I need?</summary><p>macOS 13 or later for SideSchedule and ToneCue, macOS 14 or later for TalkRemind.</p></details>
+        <details><summary>What leaves my Mac?</summary><p>A license check and an update check. A diagnostic report only if you choose to send one. No analytics, no tracking, no telemetry.</p></details>
+        <details><summary>Can I get a refund?</summary><p>There is no refund promise, because the 14 day trial has every feature switched on. Use it properly before you buy.</p></details>
+        <details><summary>I lost my license key.</summary><p>It is in your receipt email. If that is gone too, write to hello@didact.digital from the address you bought with.</p></details>
+        <details><summary>How do updates arrive?</summary><p>Inside the app, through Sparkle. SideSchedule and ToneCue are also on Homebrew.</p></details>
       </div>
     </div>
   </section>
@@ -706,7 +792,7 @@ footer .fine{max-width:880px}
         <p class="label" style="margin-top:24px">Form by Brevo (EU), spam check by Cloudflare Turnstile</p>
       </div>
       <div class="rise">
-        <iframe class="signup" title="Subscribe to didact.digital news" src="https://4dd93bf3.sibforms.com/serve/MUIFAAxjfk4SfjnsBviBPjfD2lXFaBbc07ge-hCp-v-i32R0TJzwtsyn46msoyZ4GVzC-1AWjzPUMPJWJvwPIz3d_H61Hr7h7PUrjsj-6_3DT0PyXnd7CvP_5ujypIz3x0rl4al8Qrxy7F-H8hW1Uf9ylu_ANFW9Bz7yyCx3rvOcYIwegZYb4Tt2k1jm3GIvDcFaE_lX8iHTPA12rA==" loading="lazy" scrolling="no"></iframe>
+        <div class="signup-wrap"><iframe class="signup" title="Subscribe to didact.digital news" src="https://4dd93bf3.sibforms.com/serve/MUIFAAxjfk4SfjnsBviBPjfD2lXFaBbc07ge-hCp-v-i32R0TJzwtsyn46msoyZ4GVzC-1AWjzPUMPJWJvwPIz3d_H61Hr7h7PUrjsj-6_3DT0PyXnd7CvP_5ujypIz3x0rl4al8Qrxy7F-H8hW1Uf9ylu_ANFW9Bz7yyCx3rvOcYIwegZYb4Tt2k1jm3GIvDcFaE_lX8iHTPA12rA==" loading="lazy" scrolling="no"></iframe></div>
         <p class="label" style="margin-top:12px">Form not showing? <a href="https://4dd93bf3.sibforms.com/serve/MUIFAAxjfk4SfjnsBviBPjfD2lXFaBbc07ge-hCp-v-i32R0TJzwtsyn46msoyZ4GVzC-1AWjzPUMPJWJvwPIz3d_H61Hr7h7PUrjsj-6_3DT0PyXnd7CvP_5ujypIz3x0rl4al8Qrxy7F-H8hW1Uf9ylu_ANFW9Bz7yyCx3rvOcYIwegZYb4Tt2k1jm3GIvDcFaE_lX8iHTPA12rA==" target="_blank" rel="noopener">Open it in its own tab</a></p>
       </div>
     </div>
@@ -782,9 +868,19 @@ footer .fine{max-width:880px}
   }
   themeBtn.addEventListener('click', function () {
     var next = isDark() ? 'light' : 'dark';
-    document.documentElement.dataset.theme = next;
-    try { localStorage.setItem('didact-theme', next); } catch (e) {}
-    syncTheme();
+    function apply() {
+      document.documentElement.dataset.theme = next;
+      try { localStorage.setItem('didact-theme', next); } catch (e) {}
+      syncTheme();
+    }
+    if (still || !document.startViewTransition) return apply();
+    // the new theme grows as a circle from the button
+    var b = themeBtn.getBoundingClientRect(), x = b.left + b.width / 2, y = b.top + b.height / 2;
+    var r = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+    document.startViewTransition(apply).ready.then(function () {
+      document.documentElement.animate({ clipPath: ['circle(0px at ' + x + 'px ' + y + 'px)', 'circle(' + r + 'px at ' + x + 'px ' + y + 'px)'] },
+        { duration: 650, easing: 'cubic-bezier(.22,1,.36,1)', pseudoElement: '::view-transition-new(root)' });
+    });
   });
   sys.addEventListener('change', syncTheme);
   syncTheme();
@@ -865,6 +961,8 @@ footer .fine{max-width:880px}
     function hopTo0() { busy = true; hop(spot(0), false, function () { busy = false; settle(); step(); }); }
 
     function fs(el) { return parseFloat(getComputedStyle(el).fontSize); }
+    var h2ref = document.querySelector('.sec-head h2');
+    function h2size() { return h2ref ? fs(h2ref) : 36; }
     function colorOf(el) { var c = getComputedStyle(el).color; return /,\s*0\)$/.test(c) ? '' : c; }
     // x = centre, y = bottom of the dot, s = scale of the 20px body
     function spot(i) {
@@ -879,7 +977,7 @@ footer .fine{max-width:880px}
         return { x: e.left + e.width * parseFloat(t.dataset.dotEdge) + scrollX, y: e.top + scrollY, s: .7, c: '' };
       }
       var gt = t.querySelector('.pd-t').getBoundingClientRect(), bt = t.querySelector('.pd-b').getBoundingClientRect();
-      return { x: gt.left + gt.width / 2 + scrollX, y: bt.top + scrollY, s: fs(t) * .17 / 20, c: colorOf(t) };
+      return { x: gt.left + gt.width / 2 + scrollX, y: bt.top + scrollY, s: Math.max(fs(t), h2size()) * .17 / 20, c: colorOf(t), f: fs(t) };
     }
     var sh = document.querySelector('.dot-sh'), REST = .3;
     function setTo(p) {
@@ -920,17 +1018,18 @@ footer .fine{max-width:880px}
     // nearest the middle. With nothing visible, rest mid screen at the right edge of the content.
     function inView(p) { return p.y > scrollY + innerHeight * .06 && p.y < scrollY + innerHeight * .94; }
     function pick() {
-      var eye = scrollY + innerHeight * .4, best = null, bestD = Infinity, curD = Infinity;
+      // the tallest visible heading wins; among equals, the one nearest the eye line
+      var eye = scrollY + innerHeight * .4, best = null, bestF = 0, bestD = Infinity, cur = null;
       stops.forEach(function (t, i) {
         var p = spot(i);
         if (!inView(p)) return;
-        var d = Math.abs(p.y - eye);
-        if (i === at) curD = d;
-        if (d < bestD) { bestD = d; best = i; }
+        var f = Math.round(p.f), d = Math.abs(p.y - eye);
+        if (i === at) cur = { f: f, d: d };
+        if (f > bestF || (f === bestF && d < bestD)) { best = i; bestF = f; bestD = d; }
       });
       if (best === null) return 'park';
-      // keep the current heading unless another one is clearly closer to the eye line
-      return curD !== Infinity && curD - bestD < innerHeight * .12 ? at : best;
+      if (cur && cur.f === bestF && cur.d - bestD < innerHeight * .12) return at;
+      return best;
     }
     function parkSpot() {
       var w = document.querySelector('main .wrap').getBoundingClientRect();
@@ -977,6 +1076,7 @@ footer .fine{max-width:880px}
       setTo(spot(-1));
       dot.classList.add('ready');
       setTimeout(function () { if (at !== -1 || busy) return; hopped = true; at = 0; hopTo0(); }, 1200);
+      setTimeout(function () { if (at === 0 && scrollY < 10) poke(); }, 6000);
     });
   })();
 
