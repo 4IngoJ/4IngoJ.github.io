@@ -480,6 +480,9 @@ footer .fine{max-width:880px}
 @media (hover:hover) and (pointer:fine){.dotfx .dot i{pointer-events:auto;cursor:pointer}}
 
 ::view-transition-old(root),::view-transition-new(root){animation:none;mix-blend-mode:normal}
+/* going dark, the old light page sits on top and shrinks away */
+.vt-dark::view-transition-old(root){z-index:2}
+.vt-dark::view-transition-new(root){z-index:1}
 /* Scroll reveal, once per block */
 .js .rise{opacity:0;transform:translateY(32px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
 .js .rise.in{opacity:1;transform:none}
@@ -879,10 +882,17 @@ footer .fine{max-width:880px}
     // the new theme grows as a circle from the button
     var b = themeBtn.getBoundingClientRect(), x = b.left + b.width / 2, y = b.top + b.height / 2;
     var r = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
-    document.startViewTransition(apply).ready.then(function () {
-      document.documentElement.animate({ clipPath: ['circle(0px at ' + x + 'px ' + y + 'px)', 'circle(' + r + 'px at ' + x + 'px ' + y + 'px)'] },
-        { duration: 650, easing: 'cubic-bezier(.22,1,.36,1)', pseudoElement: '::view-transition-new(root)' });
+    // to light: the light grows out of the button. To dark: the light shrinks back into it, so the dark closes in from the edges
+    var toDark = next === 'dark', root = document.documentElement;
+    root.classList.toggle('vt-dark', toDark);
+    var vt = document.startViewTransition(apply);
+    vt.ready.then(function () {
+      var small = 'circle(0px at ' + x + 'px ' + y + 'px)', big = 'circle(' + r + 'px at ' + x + 'px ' + y + 'px)';
+      root.animate({ clipPath: toDark ? [big, small] : [small, big] },
+        { duration: toDark ? 750 : 650, easing: toDark ? 'cubic-bezier(.64,0,.78,0)' : 'cubic-bezier(.22,1,.36,1)', fill: 'forwards',
+          pseudoElement: toDark ? '::view-transition-old(root)' : '::view-transition-new(root)' });
     });
+    vt.finished.then(function () { root.classList.remove('vt-dark'); });
   });
   sys.addEventListener('change', syncTheme);
   syncTheme();
