@@ -275,6 +275,17 @@ footer ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px 24px;padding:24px 
 footer a{text-decoration:none}footer a:hover{color:var(--fg);text-decoration:underline}
 footer .fine{max-width:880px}
 
+
+/* The wandering full stop. didact's i has no dot; here the dot leaves the i,
+   becomes the full stop and then follows you down the page. */
+.pd{white-space:nowrap}
+.pd-b{display:inline-block;width:0;height:0;vertical-align:baseline}
+.i-less{display:none}
+.dotfx .i-real{display:none}.dotfx .i-less{display:inline}
+.dotfx .pd-t{visibility:hidden}
+.dot{position:absolute;top:0;left:0;z-index:45;width:20px;height:20px;margin:-10px 0 0 -10px;border-radius:50%;background:var(--fg);pointer-events:none;opacity:0;transition:opacity .4s var(--ease),background-color .4s var(--ease);will-change:transform}
+.dot.ready{opacity:1}
+
 /* Scroll reveal, once per block */
 .js .rise{opacity:0;transform:translateY(32px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
 .js .rise.in{opacity:1;transform:none}
@@ -330,7 +341,7 @@ footer .fine{max-width:880px}
 <main id="main">
   <header class="hero">
     <div class="wrap">
-      <h1><span class="line">Apps for high</span><span class="line">performing people.</span></h1>
+      <h1 aria-label="Apps for high performing people."><span class="line" aria-hidden="true">Apps for h<span class="ihost"><span class="i-real">i</span><span class="i-less">ı</span><i class="pd-b"></i></span>gh</span><span class="line" aria-hidden="true">performing people<span class="pd" data-dot="hero"><span class="pd-t">.</span><i class="pd-b"></i></span></span></h1>
       <p class="sub">Three small Mac apps. <b>Each does one job, then gets out of your way.</b><br class="br"> Pay once. No account. Nothing watches you.</p>
       <div class="cta">
         <a class="btn btn-primary" href="#apps">Pick an app</a>
@@ -349,7 +360,7 @@ footer .fine{max-width:880px}
       <div class="head">
         <img src="/sideschedule/assets/app-icon.png" alt="" width="64" height="64">
         <h2 id="ss-h">SideSchedule</h2>
-        <p class="hook">My calendar kept losing to every other window.</p>
+        <p class="hook">My calendar kept losing to every other window<span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></p>
         <p class="what">A calendar sidebar that keeps its strip of screen the way the Dock does. Meeting notes become Markdown files, and one click joins your call.</p>
         <div class="actions">
           <a class="btn btn-primary" href="https://github.com/4IngoJ/sideschedule/releases/latest/download/SideSchedule.dmg">Download free trial</a>
@@ -371,7 +382,7 @@ footer .fine{max-width:880px}
       <div class="head">
         <img src="/talkremind/assets/app-icon.png" alt="" width="64" height="64">
         <h2 id="tr-h">TalkRemind</h2>
-        <p class="hook">You bought a dictation app. You still type.</p>
+        <p class="hook">You bought a dictation app. You still type<span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></p>
         <p class="what">A menu bar app that notices a long stretch of typing and nudges you to use the dictation app you already own. It never transcribes and never reads what you type.</p>
         <div class="actions">
           <a class="btn btn-primary" href="https://github.com/4IngoJ/TalkRemind/releases/latest/download/TalkRemind.dmg">Download free trial</a>
@@ -393,7 +404,7 @@ footer .fine{max-width:880px}
       <div class="head">
         <img src="/tonecue/assets/app-icon.png" alt="" width="64" height="64">
         <h2 id="tc-h">ToneCue</h2>
-        <p class="hook">Your Mac, with the microphone you meant.</p>
+        <p class="hook">Your Mac, with the microphone you meant<span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></p>
         <p class="what">A menu bar app that picks your microphone and speakers by situation: a dock, a calendar meeting, an open app. It tells you why it switched, and you can undo it.</p>
         <div class="actions">
           <a class="btn btn-primary" href="https://github.com/4IngoJ/tonecue/releases/latest/download/ToneCue.dmg">Download free trial</a>
@@ -437,12 +448,12 @@ footer .fine{max-width:880px}
 
   <div class="tagline" aria-label="Each app does one job and then gets out of the way.">
     <div class="wrap">
-      <p aria-hidden="true"><span class="line">Each app does one job</span><span class="line">and then gets out of the way.</span></p>
+      <p aria-hidden="true"><span class="line"><span class="lt">Each app does one job</span></span><span class="line"><span class="lt">and then gets out of the way</span><span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></span></p>
     </div>
   </div>
 
   <div aria-labelledby="promise-h">
-    <div class="sec-head wrap"><h2 id="promise-h">What every app comes with.</h2></div>
+    <div class="sec-head wrap"><h2 id="promise-h">What every app comes with<span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></h2></div>
     <div class="promises">
       <div class="promise rise">
         <p class="label">Price</p>
@@ -473,7 +484,7 @@ footer .fine{max-width:880px}
   <!-- Release step 13: one article.release per app, newest release only; the previous one goes into details.before. -->
   <section id="changelog" aria-labelledby="log-h">
     <div class="wrap">
-      <div class="sec-head"><h2 id="log-h">What’s new.</h2><p>The newest release of each app.</p></div>
+      <div class="sec-head"><h2 id="log-h">What’s new<span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></h2><p>The newest release of each app.</p></div>
       <div class="log">
         <article class="release rise" lang="en">
           <header><img src="/sideschedule/assets/app-icon.png" alt="" width="40" height="40"><div><h3>SideSchedule<span class="mono">1.2.0</span></h3><time datetime="2026-10-20">20 Oct 2026</time></div></header>
@@ -521,7 +532,7 @@ footer .fine{max-width:880px}
   <section aria-labelledby="news-h">
     <div class="wrap split">
       <div class="rise">
-        <h2 id="news-h">One email when something ships.</h2>
+        <h2 id="news-h">One email when something ships<span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></h2>
         <p>A short note when an app gets something worth reading about, when there’s a launch price, or when a new app is on the way. At most once a month, written by me.</p>
         <p class="label" style="margin-top:24px">Form by Brevo (EU), spam check by Cloudflare Turnstile</p>
       </div>
@@ -537,7 +548,7 @@ footer .fine{max-width:880px}
   <section id="partners" aria-labelledby="partners-h">
     <div class="wrap split">
       <div class="rise">
-        <h2 id="partners-h">Partners, press and reviewers.</h2>
+        <h2 id="partners-h">Partners, press and reviewers<span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></h2>
         <p>Share an app and earn 30 percent of each sale. Tracking runs for 30 days, payouts start at €10, and Lemon Squeezy handles the paperwork.</p>
         <p>Want to review an app first? Write to me and I’ll send you a license.</p>
         <div class="actions" style="margin-top:24px">
@@ -583,6 +594,7 @@ footer .fine{max-width:880px}
   </div>
 </footer>
 
+<div class="dot" aria-hidden="true"></div>
 <script src="/assets/aff.js"></script>
 <script>
 (function () {
@@ -631,7 +643,7 @@ footer .fine{max-width:880px}
 
   // Tagline: split into words, each inks in as the block scrolls through the viewport
   var words = [];
-  document.querySelectorAll('.tagline .line').forEach(function (line) {
+  document.querySelectorAll('.tagline .lt').forEach(function (line) {
     var text = line.textContent;
     line.textContent = '';
     text.trim().split(/\s+/).forEach(function (w, i, all) {
@@ -654,6 +666,90 @@ footer .fine{max-width:880px}
     addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(ink); } }, { passive: true });
     ink();
   }
+
+  // The wandering full stop
+  (function () {
+    if (still) return;
+    var root = document.documentElement, dot = document.querySelector('.dot');
+    var targets = [].slice.call(document.querySelectorAll('[data-dot]'));
+    var ihost = document.querySelector('.ihost');
+    root.classList.add('dotfx');
+    var cur = null, active = null, hopped = false, anim = null;
+
+    function fontSize(el) { return parseFloat(getComputedStyle(el).fontSize); }
+    function colorOf(el) {
+      var c = getComputedStyle(el).color;
+      return /rgba\(.*,\s*0\)$/.test(c) || c === 'transparent' ? '' : c;
+    }
+    function spotOfI() {
+      var g = ihost.querySelector('.i-less').getBoundingClientRect(), b = ihost.querySelector('.pd-b').getBoundingClientRect();
+      var fs = fontSize(ihost);
+      return { x: g.left + g.width / 2 + scrollX, y: b.top - fs * .675 + scrollY, s: fs * .17 / 20, c: '' };
+    }
+    function spotOf(t) {
+      var g = t.querySelector('.pd-t').getBoundingClientRect(), b = t.querySelector('.pd-b').getBoundingClientRect();
+      var fs = fontSize(t), d = fs * .17;
+      return { x: g.left + g.width / 2 + scrollX, y: b.top - d / 2 + scrollY, s: d / 20, c: colorOf(t) };
+    }
+    function T(p, sx, sy) { return 'translate(' + p.x.toFixed(1) + 'px,' + p.y.toFixed(1) + 'px) scale(' + (sx || p.s).toFixed(3) + ',' + (sy || p.s).toFixed(3) + ')'; }
+    function place(p) { if (anim) anim.cancel(); dot.style.transform = T(p); dot.style.backgroundColor = p.c; cur = p; }
+    function hop(p) {
+      if (!cur) return place(p);
+      var from = cur, dx = Math.abs(p.x - from.x), dy = Math.abs(p.y - from.y);
+      var lift = Math.min(160, 48 + dx * .12 + dy * .04);
+      var peak = { x: (from.x + p.x) / 2, y: Math.min(from.y, p.y) - lift, s: (from.s + p.s) / 2 };
+      var land = { x: p.x, y: p.y + p.s * 2, s: p.s };
+      if (anim) anim.cancel();
+      dot.style.transform = T(p); dot.style.backgroundColor = p.c; cur = p;
+      anim = dot.animate([
+        { transform: T(from), easing: 'cubic-bezier(.2,.7,.4,1)' },
+        { transform: T(peak), offset: .42, easing: 'cubic-bezier(.6,0,.85,.4)' },
+        { transform: T(land, p.s * 1.3, p.s * .7), offset: .82, easing: 'cubic-bezier(.22,1,.36,1)' },
+        { transform: T(p) }
+      ], { duration: 900 });
+      anim.onfinish = settle;
+    }
+    function pick() {
+      var line = scrollY + innerHeight * .6, best = targets[0];
+      targets.forEach(function (t) { if (t.getBoundingClientRect().top + scrollY < line) best = t; });
+      return best;
+    }
+    var ticking = false;
+    function onScroll() {
+      if (!hopped) { hopped = true; dot.classList.add('ready'); }
+      if (ticking) return; ticking = true;
+      requestAnimationFrame(function () {
+        ticking = false;
+        var t = pick();
+        if (t !== active) { active = t; hop(spotOf(t)); }
+      });
+    }
+    function goHero() { if (hopped) return; hopped = true; dot.classList.add('ready'); active = pick(); hop(spotOf(active)); }
+    // A block that is still sliding in moves its full stop; follow it once it settles
+    function settle() {
+      if (!hopped || !active) return;
+      var p = spotOf(active);
+      if (Math.abs(p.x - cur.x) + Math.abs(p.y - cur.y) < 1) return;
+      var from = cur; dot.style.transform = T(p); cur = p;
+      anim = dot.animate([{ transform: T(from) }, { transform: T(p) }], { duration: 300, easing: 'cubic-bezier(.22,1,.36,1)' });
+    }
+    document.addEventListener('transitionend', function (e) {
+      if (e.propertyName === 'transform' && active && e.target.contains(active)) settle();
+    });
+    addEventListener('scroll', onScroll, { passive: true });
+    addEventListener('resize', function () { place(hopped ? spotOf(active) : spotOfI()); });
+    (document.fonts ? document.fonts.ready : Promise.resolve()).then(function () {
+      // Let the hero settle, set the dot on the i, then send it to the end of the line
+      setTimeout(function () {
+        if (hopped) return place(spotOf(active));
+        var i = spotOfI();
+        place({ x: i.x, y: i.y - 48, s: i.s, c: '' });
+        dot.classList.add('ready');
+        hop(i);
+        setTimeout(goHero, 1300);
+      }, 1100);
+    });
+  })();
 
   // Copy buttons
   var status = document.getElementById('copy-status');
