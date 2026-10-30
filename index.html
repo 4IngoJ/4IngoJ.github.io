@@ -95,7 +95,8 @@ p,li,dd{text-wrap:pretty}
   background:var(--glass);
   -webkit-backdrop-filter:blur(12px) saturate(1.8);backdrop-filter:blur(12px) saturate(1.8);
   box-shadow:inset 0 1px 0 var(--glass-edge),inset 0 0 0 1px var(--glass-edge),inset 0 -8px 16px -12px var(--glass-shade),0 8px 32px -8px rgba(0,0,0,.18),0 1px 2px rgba(0,0,0,.06);
-  transition:box-shadow .5s var(--ease)}
+  transition:box-shadow .5s var(--ease),padding .5s var(--ease)}
+.scrolled .nav{box-shadow:inset 0 1px 0 var(--glass-edge),inset 0 0 0 1px var(--glass-edge),inset 0 -8px 16px -12px var(--glass-shade),0 16px 48px -12px rgba(0,0,0,.28),0 1px 2px rgba(0,0,0,.08)}
 .nav::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;-webkit-backdrop-filter:url(#glass);backdrop-filter:url(#glass);pointer-events:none}
 .nav .mark{display:block;height:20px;width:auto}
 .nav ul{display:flex;gap:4px;list-style:none}
@@ -132,6 +133,12 @@ p,li,dd{text-wrap:pretty}
 @media (min-width:768px){.hero .sub{font-size:24px;line-height:32px}}
 .hero .sub b{color:var(--fg);font-weight:500}
 .hero .cta{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin-top:32px}
+.br{display:none}
+@media (min-width:1024px){.br{display:inline}.hero .sub{max-width:880px}}
+.hero h1,.hero .sub,.hero .cta,.hero .proof,.icons li{animation:enter 1s var(--ease) both}
+.hero .sub{animation-delay:.12s}.hero .cta{animation-delay:.24s}.hero .proof{animation-delay:.3s}
+.icons li{animation-duration:1.2s}.icons li:nth-child(1){animation-delay:.4s}.icons li:nth-child(2){animation-delay:.48s}.icons li:nth-child(3){animation-delay:.56s}
+@keyframes enter{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 .hero .proof{margin-top:16px;font-size:14px;line-height:20px;color:var(--muted)}
 
 /* The three icons, the product shot of a company that makes three apps */
@@ -166,6 +173,22 @@ p,li,dd{text-wrap:pretty}
 .shot.cut{max-height:440px;overflow:hidden}
 .shot.cut img{object-fit:cover;object-position:top}
 .tiles > *{min-width:0}
+
+
+/* Compare, the way a spec page does it */
+.compare{overflow-x:auto;padding:0 var(--gutter)}
+.compare table{width:100%;max-width:980px;margin:0 auto;border-collapse:collapse;font-size:16px;line-height:24px;min-width:560px}
+.compare th,.compare td{padding:16px 12px;text-align:center;border-bottom:1px solid var(--line);vertical-align:top}
+.compare thead th{border-bottom:0;padding-bottom:24px}
+.compare thead img{width:56px;height:56px;margin:0 auto 12px;border-radius:12px;box-shadow:0 12px 24px -12px rgba(0,0,0,.3)}
+.compare thead b{display:block;font-size:18px;line-height:28px;font-weight:600}
+.compare tbody th{text-align:left;font:500 12px/24px var(--mono);text-transform:uppercase;letter-spacing:.07em;color:var(--muted);white-space:nowrap}
+.compare td strong{font-weight:600}
+.compare td span{display:block;font-size:14px;line-height:20px;color:var(--muted)}
+.compare td a{font-size:14px;line-height:20px}
+/* On narrow screens the table scrolls sideways, the row labels stay put */
+.compare tbody th,.compare thead td{position:sticky;left:0;z-index:1;background:var(--bg)}
+@media (max-width:767px){.compare table{font-size:14px;line-height:20px;min-width:520px}.compare tbody th{white-space:normal;max-width:96px}}
 
 /* Tagline: words ink in as you scroll */
 .tagline{padding:160px 0;text-align:center}
@@ -251,6 +274,7 @@ footer .fine{max-width:880px}
   .js .rise,.js .shot{transform:none}
   .sheet a{transform:none}
   .icons a:hover{transform:none}
+  .hero h1,.hero .sub,.hero .cta,.hero .proof,.icons li{animation:none}
 }
 </style>
 </head>
@@ -294,7 +318,7 @@ footer .fine{max-width:880px}
   <header class="hero">
     <div class="wrap">
       <h1><span class="line">Apps for high</span><span class="line">performing people.</span></h1>
-      <p class="sub">Three small Mac apps. <b>Each does one job, then gets out of your way.</b> Pay once. No account. Nothing watches you.</p>
+      <p class="sub">Three small Mac apps. <b>Each does one job, then gets out of your way.</b><br class="br"> Pay once. No account. Nothing watches you.</p>
       <div class="cta">
         <a class="btn btn-primary" href="#apps">Pick an app</a>
       </div>
@@ -374,6 +398,29 @@ footer .fine{max-width:880px}
       </div>
     </article>
   </div>
+
+
+  <section aria-labelledby="compare-h">
+    <div class="sec-head wrap"><h2 id="compare-h">Which one is yours?</h2><p>All three at a glance.</p></div>
+    <div class="compare rise">
+      <table>
+        <thead><tr><td></td>
+          <th scope="col"><img src="/sideschedule/assets/app-icon.png" alt="" width="56" height="56"><b>SideSchedule</b></th>
+          <th scope="col"><img src="/talkremind/assets/app-icon.png" alt="" width="56" height="56"><b>TalkRemind</b></th>
+          <th scope="col"><img src="/tonecue/assets/app-icon.png" alt="" width="56" height="56"><b>ToneCue</b></th>
+        </tr></thead>
+        <tbody>
+          <tr><th scope="row">Does</th><td>Keeps your calendar on screen</td><td>Nudges you to dictate</td><td>Picks the right mic and speakers</td></tr>
+          <tr><th scope="row">Lives in</th><td>A sidebar at the screen edge</td><td>The menu bar</td><td>The menu bar</td></tr>
+          <tr><th scope="row">Price</th><td><strong>€12.99 once</strong><span>after 14 free days</span></td><td><strong>€9.99 once</strong><span>after 14 free days</span></td><td><strong>€9.99 once</strong><span>after 14 free days</span></td></tr>
+          <tr><th scope="row">Macs per license</th><td>2</td><td>3</td><td>2</td></tr>
+          <tr><th scope="row">Needs</th><td>macOS 13 or later</td><td>macOS 14 or later</td><td>macOS 13 or later</td></tr>
+          <tr><th scope="row">Homebrew</th><td>Yes</td><td>No</td><td>Yes</td></tr>
+          <tr><th scope="row"><span class="sr">Links</span></th><td><a href="/sideschedule/">Learn more</a></td><td><a href="/talkremind/">Learn more</a></td><td><a href="/tonecue/">Learn more</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
 
   <div class="tagline" aria-label="Each app does one job and then gets out of the way.">
     <div class="wrap">
@@ -538,6 +585,11 @@ footer .fine{max-width:880px}
   btn.addEventListener('click', function () { setMenu(!document.body.classList.contains('menu-open')); });
   document.querySelectorAll('.sheet a').forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+
+  // Lift the glass bar once the page has moved
+  var lifted = false;
+  function lift() { var on = scrollY > 24; if (on !== lifted) { lifted = on; document.body.classList.toggle('scrolled', on); } }
+  addEventListener('scroll', lift, { passive: true }); lift();
 
   // Reveal each block once
   var io = new IntersectionObserver(function (es) {
