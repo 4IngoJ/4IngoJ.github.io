@@ -467,7 +467,7 @@ footer .fine{max-width:880px}
 .pd-b{display:inline-block;width:0;height:0;vertical-align:baseline}
 .i-less{display:none}
 .dotfx .i-real{display:none}.dotfx .i-less{display:inline}
-.dotfx .pd-t{visibility:hidden}
+.dotfx [data-dot] .pd-t{visibility:hidden}
 .dot{position:absolute;top:0;left:0;z-index:45;width:0;height:0;pointer-events:none;opacity:0;transition:opacity .4s var(--ease);will-change:transform}
 .dot i{position:absolute;left:-10px;top:-20px;width:20px;height:20px;border-radius:50%;background:var(--fg);transform-origin:50% 100%;transition:background-color .4s var(--ease);will-change:transform}
 .dot.ready{opacity:1}
@@ -530,7 +530,7 @@ footer .fine{max-width:880px}
       <h1 aria-label="Apps for high performing people."><span class="line" aria-hidden="true">Apps for h<span class="ihost"><span class="i-real">i</span><span class="i-less">ı</span><i class="pd-b"></i></span>gh</span><span class="line" aria-hidden="true">performing people<span class="pd" data-dot="hero"><span class="pd-t">.</span><i class="pd-b"></i></span></span></h1>
       <p class="sub">Three small Mac apps. <b>Each does one job, then gets out of your way.</b><br class="br"> Pay once. No account. Nothing watches you.</p>
       <div class="cta">
-        <a class="btn btn-primary" href="#apps">Pick an app</a>
+        <a class="btn btn-primary" href="#apps" data-dot-edge=".5">Pick an app</a>
       </div>
       <p class="proof">Free for 14 days. Made by one person in Graz, Austria.</p>
       <ul class="icons">
@@ -544,9 +544,9 @@ footer .fine{max-width:880px}
   <div class="tiles" id="apps" aria-label="The apps">
     <article class="tile rise" id="sideschedule" aria-labelledby="ss-h">
       <div class="head">
-        <img src="/sideschedule/assets/app-icon.png" alt="" width="64" height="64">
+        <img src="/sideschedule/assets/app-icon.png" alt="" width="64" height="64" data-dot-edge=".5">
         <h2 id="ss-h">SideSchedule</h2>
-        <h3 class="hook">My calendar kept losing to every other window<span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></h3>
+        <h3 class="hook">My calendar kept losing to every other window<span class="pd"><span class="pd-t">.</span><i class="pd-b"></i></span></h3>
         <p class="what">A calendar sidebar that keeps its strip of screen the way the Dock does. Meeting notes become Markdown files, and one click joins your call.</p>
         <div class="actions">
           <a class="btn btn-primary" href="https://github.com/4IngoJ/sideschedule/releases/latest/download/SideSchedule.dmg">Download free trial</a>
@@ -559,8 +559,8 @@ footer .fine{max-width:880px}
           <li>Six languages.</li>
         </ul>
       </div>
-      <h3 class="sc-cap">It claims its own strip<span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></h3>
-      <div class="scene ss" role="img" aria-label="Animation: SideSchedule slides in at the right edge and the open window makes room for it. A click on Join opens the call. Then the sidebar folds into a thin strip that still shows the next meeting.">
+      <h3 class="sc-cap">It claims its own strip<span class="pd"><span class="pd-t">.</span><i class="pd-b"></i></span></h3>
+      <div class="scene ss" data-dot-edge=".5" role="img" aria-label="Animation: SideSchedule slides in at the right edge and the open window makes room for it. A click on Join opens the call. Then the sidebar folds into a thin strip that still shows the next meeting.">
         <img class="sc-wall wl" src="/assets/v2/wall-dusk-light.webp" alt="" width="1600" height="893" loading="lazy"><img class="sc-wall wd" src="/assets/v2/wall-dusk.webp" alt="" width="1600" height="893" loading="lazy">
         <div class="sc-bar" aria-hidden="true"><span class="sc-app">Notes</span><span>File</span><span>Edit</span><span>View</span><span class="sc-gap"></span><span>Thu 10:58</span></div>
         <div class="ss-desk" aria-hidden="true">
@@ -585,9 +585,9 @@ footer .fine{max-width:880px}
 
     <article class="tile dark rise" id="talkremind" aria-labelledby="tr-h">
       <div class="head">
-        <img src="/talkremind/assets/app-icon.png" alt="" width="64" height="64">
+        <img src="/talkremind/assets/app-icon.png" alt="" width="64" height="64" data-dot-edge=".5">
         <h2 id="tr-h">TalkRemind</h2>
-        <h3 class="hook">You bought a dictation app. You still type<span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></h3>
+        <h3 class="hook">You bought a dictation app. You still type<span class="pd"><span class="pd-t">.</span><i class="pd-b"></i></span></h3>
         <p class="what">A menu bar app that notices a long stretch of typing and nudges you to use the dictation app you already own. It never transcribes and never reads what you type.</p>
         <div class="actions">
           <a class="btn btn-primary" href="https://github.com/4IngoJ/TalkRemind/releases/latest/download/TalkRemind.dmg">Download free trial</a>
@@ -600,8 +600,8 @@ footer .fine{max-width:880px}
           <li>Shows how much you dictate compared to typing.</li>
         </ul>
       </div>
-      <h3 class="sc-cap">It notices, then it nudges<span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></h3>
-      <div class="scene tr" role="img" aria-label="Animation: someone types a long note, TalkRemind slides in the nudge Your dictation app is waiting with the shortcut Option R, and the rest of the note arrives by dictation.">
+      <h3 class="sc-cap">It notices, then it nudges<span class="pd"><span class="pd-t">.</span><i class="pd-b"></i></span></h3>
+      <div class="scene tr" data-dot-edge=".5" role="img" aria-label="Animation: someone types a long note, TalkRemind slides in the nudge Your dictation app is waiting with the shortcut Option R, and the rest of the note arrives by dictation.">
         <img class="sc-wall wl" src="/assets/v2/wall-ember-light.webp" alt="" width="1600" height="893" loading="lazy"><img class="sc-wall wd" src="/assets/v2/wall-ember.webp" alt="" width="1600" height="893" loading="lazy">
         <div class="sc-bar" aria-hidden="true"><span class="sc-app">Notes</span><span>File</span><span>Edit</span><span>Format</span><span class="sc-gap"></span><img src="/talkremind/assets/app-icon.png" alt="" width="16" height="16"><span>9:41</span></div>
         <div class="sc-win" aria-hidden="true">
@@ -621,9 +621,9 @@ footer .fine{max-width:880px}
 
     <article class="tile rise" id="tonecue" aria-labelledby="tc-h">
       <div class="head">
-        <img src="/assets/v2/tonecue-icon.png" alt="" width="64" height="64">
+        <img src="/assets/v2/tonecue-icon.png" alt="" width="64" height="64" data-dot-edge=".5">
         <h2 id="tc-h">ToneCue</h2>
-        <h3 class="hook">Your Mac, with the microphone you meant<span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></h3>
+        <h3 class="hook">Your Mac, with the microphone you meant<span class="pd"><span class="pd-t">.</span><i class="pd-b"></i></span></h3>
         <p class="what">A menu bar app that picks your microphone and speakers by situation: a dock, a calendar meeting, an open app. It tells you why it switched, and you can undo it.</p>
         <div class="actions">
           <a class="btn btn-primary" href="https://github.com/4IngoJ/tonecue/releases/latest/download/ToneCue.dmg">Download free trial</a>
@@ -636,8 +636,8 @@ footer .fine{max-width:880px}
           <li>Works from Raycast too.</li>
         </ul>
       </div>
-      <h3 class="sc-cap">It switches, and it says why<span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></h3>
-      <div class="scene tc" role="img" aria-label="Animation: a meeting starts in the calendar. ToneCue switches input and output to AirPods Pro, names the scene Calls and the reason, a meeting is on, and offers Undo. When the meeting ends, it goes back to the desk setup.">
+      <h3 class="sc-cap">It switches, and it says why<span class="pd"><span class="pd-t">.</span><i class="pd-b"></i></span></h3>
+      <div class="scene tc" data-dot-edge=".5" role="img" aria-label="Animation: a meeting starts in the calendar. ToneCue switches input and output to AirPods Pro, names the scene Calls and the reason, a meeting is on, and offers Undo. When the meeting ends, it goes back to the desk setup.">
         <img class="sc-wall wl" src="/assets/v2/wall-morning.webp" alt="" width="1600" height="893" loading="lazy"><img class="sc-wall wd" src="/assets/v2/wall-morning-dark.webp" alt="" width="1600" height="893" loading="lazy">
         <div class="sc-bar" aria-hidden="true"><span class="sc-app">Calendar</span><span>File</span><span>Edit</span><span>View</span><span class="sc-gap"></span><img src="/assets/v2/tonecue-icon.png" alt="" width="16" height="16"><span class="tc-clock">10:59</span></div>
         <div class="tc-cal" aria-hidden="true">
@@ -662,8 +662,8 @@ footer .fine{max-width:880px}
 
 
   <section aria-labelledby="compare-h">
-    <div class="sec-head wrap"><h2 id="compare-h">Three apps, side by side<span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></h2><p>What each one does, where it lives and what it costs.</p></div>
-    <div class="compare rise">
+    <div class="sec-head wrap"><h2 id="compare-h">Three apps, side by side<span class="pd"><span class="pd-t">.</span><i class="pd-b"></i></span></h2><p>What each one does, where it lives and what it costs.</p></div>
+    <div class="compare rise" data-dot-edge=".5">
       <table>
         <thead><tr><td></td>
           <th scope="col"><img src="/sideschedule/assets/app-icon.png" alt="" width="56" height="56"><b>SideSchedule</b></th>
@@ -685,31 +685,31 @@ footer .fine{max-width:880px}
 
   <div class="tagline" aria-label="Each app does one job and then gets out of the way.">
     <div class="wrap">
-      <p aria-hidden="true"><span class="line"><span class="lt">Each app does one job</span></span><span class="line"><span class="lt">and then gets out of the way</span><span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></span></p>
+      <p aria-hidden="true"><span class="line"><span class="lt">Each app does one job</span></span><span class="line"><span class="lt">and then gets out of the way</span><span class="pd"><span class="pd-t">.</span><i class="pd-b"></i></span></span></p>
     </div>
   </div>
 
   <div aria-labelledby="promise-h">
-    <div class="sec-head wrap"><h2 id="promise-h">What every app comes with<span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></h2></div>
-    <div class="promises">
+    <div class="sec-head wrap"><h2 id="promise-h">What every app comes with<span class="pd"><span class="pd-t">.</span><i class="pd-b"></i></span></h2></div>
+    <div class="promises" data-dot-edge=".25">
       <div class="promise rise">
         <p class="label">Price</p>
-        <h3>You pay once<span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></h3>
+        <h3>You pay once<span class="pd"><span class="pd-t">.</span><i class="pd-b"></i></span></h3>
         <p>No subscription. After 14 free days the license is yours, for two Macs with SideSchedule or ToneCue and three with TalkRemind.</p>
       </div>
       <div class="promise rise">
         <p class="label">Account</p>
-        <h3>There is none<span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></h3>
+        <h3>There is none<span class="pd"><span class="pd-t">.</span><i class="pd-b"></i></span></h3>
         <p>Nothing to sign up for. You enter a license key and that’s it.</p>
       </div>
       <div class="promise rise">
         <p class="label">Privacy</p>
-        <h3>Nothing watches you<span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></h3>
+        <h3>Nothing watches you<span class="pd"><span class="pd-t">.</span><i class="pd-b"></i></span></h3>
         <p>No analytics, no telemetry in any app. The only network calls are license and update checks, plus a diagnostic report if you choose to send one. Details in the <a href="/sideschedule/privacy.html">SideSchedule</a>, <a href="/talkremind/privacy.html">TalkRemind</a> and <a href="/tonecue/privacy.html">ToneCue</a> privacy notes.</p>
       </div>
       <div class="promise rise">
         <p class="label">Install</p>
-        <h3>Signed and notarized<span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></h3>
+        <h3>Signed and notarized<span class="pd"><span class="pd-t">.</span><i class="pd-b"></i></span></h3>
         <p>Notarized by Apple, updated through Sparkle. Or use Homebrew:</p>
         <div class="cmd"><code>brew install --cask 4ingoj/tap/sideschedule</code><button type="button" aria-label="Copy command"><svg class="cp" viewBox="0 0 256 256" aria-hidden="true"><path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"/></svg><svg class="ok" viewBox="0 0 256 256" aria-hidden="true"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg></button></div>
         <div class="cmd"><code>brew install --cask 4ingoj/tap/tonecue</code><button type="button" aria-label="Copy command"><svg class="cp" viewBox="0 0 256 256" aria-hidden="true"><path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"/></svg><svg class="ok" viewBox="0 0 256 256" aria-hidden="true"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg></button></div>
@@ -721,8 +721,8 @@ footer .fine{max-width:880px}
   <!-- Release step 13: one article.release per app, newest release only; the previous one goes into details.before. -->
   <section id="changelog" aria-labelledby="log-h">
     <div class="wrap">
-      <div class="sec-head"><h2 id="log-h">What’s new<span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></h2><p>The newest release of each app.</p></div>
-      <div class="log">
+      <div class="sec-head"><h2 id="log-h">What’s new<span class="pd"><span class="pd-t">.</span><i class="pd-b"></i></span></h2><p>The newest release of each app.</p></div>
+      <div class="log" data-dot-edge=".17">
         <article class="release rise" lang="en">
           <header><img src="/sideschedule/assets/app-icon.png" alt="" width="40" height="40"><div><h3>SideSchedule<span class="mono">1.2.0</span></h3><time datetime="2026-10-20">20 Oct 2026</time></div></header>
           <ul class="notes">
@@ -768,8 +768,8 @@ footer .fine{max-width:880px}
 
   <section id="faq" aria-labelledby="faq-h">
     <div class="wrap narrow">
-      <div class="sec-head"><h2 id="faq-h">Questions, answered<span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></h2></div>
-      <div class="faq">
+      <div class="sec-head"><h2 id="faq-h">Questions, answered<span class="pd"><span class="pd-t">.</span><i class="pd-b"></i></span></h2></div>
+      <div class="faq" data-dot-edge=".03">
         <details><summary>Is this a subscription?</summary><p>No. You pay once per app: €12.99 for SideSchedule, €9.99 each for TalkRemind and ToneCue.</p></details>
         <details><summary>How does the trial work?</summary><p>Every app runs for 14 days with every feature switched on. No account and no card.</p></details>
         <details><summary>On how many Macs can I use a license?</summary><p>Two Macs with SideSchedule or ToneCue, three with TalkRemind.</p></details>
@@ -787,12 +787,12 @@ footer .fine{max-width:880px}
   <section aria-labelledby="news-h">
     <div class="wrap split">
       <div class="rise">
-        <h2 id="news-h">One email when something ships<span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></h2>
+        <h2 id="news-h">One email when something ships<span class="pd"><span class="pd-t">.</span><i class="pd-b"></i></span></h2>
         <p>A short note when an app gets something worth reading about, when there’s a launch price, or when a new app is on the way. At most once a month, written by me.</p>
         <p class="label" style="margin-top:24px">Form by Brevo (EU), spam check by Cloudflare Turnstile</p>
       </div>
       <div class="rise">
-        <div class="signup-wrap"><iframe class="signup" title="Subscribe to didact.digital news" src="https://4dd93bf3.sibforms.com/serve/MUIFAAxjfk4SfjnsBviBPjfD2lXFaBbc07ge-hCp-v-i32R0TJzwtsyn46msoyZ4GVzC-1AWjzPUMPJWJvwPIz3d_H61Hr7h7PUrjsj-6_3DT0PyXnd7CvP_5ujypIz3x0rl4al8Qrxy7F-H8hW1Uf9ylu_ANFW9Bz7yyCx3rvOcYIwegZYb4Tt2k1jm3GIvDcFaE_lX8iHTPA12rA==" loading="lazy" scrolling="no"></iframe></div>
+        <div class="signup-wrap" data-dot-edge=".5"><iframe class="signup" title="Subscribe to didact.digital news" src="https://4dd93bf3.sibforms.com/serve/MUIFAAxjfk4SfjnsBviBPjfD2lXFaBbc07ge-hCp-v-i32R0TJzwtsyn46msoyZ4GVzC-1AWjzPUMPJWJvwPIz3d_H61Hr7h7PUrjsj-6_3DT0PyXnd7CvP_5ujypIz3x0rl4al8Qrxy7F-H8hW1Uf9ylu_ANFW9Bz7yyCx3rvOcYIwegZYb4Tt2k1jm3GIvDcFaE_lX8iHTPA12rA==" loading="lazy" scrolling="no"></iframe></div>
         <p class="label" style="margin-top:12px">Form not showing? <a href="https://4dd93bf3.sibforms.com/serve/MUIFAAxjfk4SfjnsBviBPjfD2lXFaBbc07ge-hCp-v-i32R0TJzwtsyn46msoyZ4GVzC-1AWjzPUMPJWJvwPIz3d_H61Hr7h7PUrjsj-6_3DT0PyXnd7CvP_5ujypIz3x0rl4al8Qrxy7F-H8hW1Uf9ylu_ANFW9Bz7yyCx3rvOcYIwegZYb4Tt2k1jm3GIvDcFaE_lX8iHTPA12rA==" target="_blank" rel="noopener">Open it in its own tab</a></p>
       </div>
     </div>
@@ -803,11 +803,11 @@ footer .fine{max-width:880px}
   <section id="partners" aria-labelledby="partners-h">
     <div class="wrap split">
       <div class="rise">
-        <h2 id="partners-h">Partners, press and reviewers<span class="pd" data-dot><span class="pd-t">.</span><i class="pd-b"></i></span></h2>
+        <h2 id="partners-h">Partners, press and reviewers<span class="pd"><span class="pd-t">.</span><i class="pd-b"></i></span></h2>
         <p>Share an app and earn 30 percent of each sale. Tracking runs for 30 days, payouts start at €10, and Lemon Squeezy handles the paperwork.</p>
         <p>Want to review an app first? Write to me and I’ll send you a license.</p>
         <div class="actions" style="margin-top:24px">
-          <a class="btn btn-primary" href="https://4ingoj.lemonsqueezy.com/affiliates">Apply as an affiliate</a>
+          <a class="btn btn-primary" href="https://4ingoj.lemonsqueezy.com/affiliates" data-dot-edge=".5">Apply as an affiliate</a>
           <a class="btn btn-ghost" href="mailto:hello@didact.digital">Write to me</a>
         </div>
       </div>
@@ -828,7 +828,7 @@ footer .fine{max-width:880px}
 
 <footer>
   <div class="wrap">
-    <div class="top">
+    <div class="top" data-dot-edge=".5">
       <img class="wm-ink" src="/assets/didact-digital-wordmark-ink.svg" alt="didact.digital" width="90" height="16">
       <img class="wm-paper" src="/assets/didact-digital-wordmark-paper.svg" alt="didact.digital" width="90" height="16">
       <a href="mailto:hello@didact.digital">hello@didact.digital</a>
@@ -961,23 +961,30 @@ footer .fine{max-width:880px}
     function hopTo0() { busy = true; hop(spot(0), false, function () { busy = false; settle(); step(); }); }
 
     function fs(el) { return parseFloat(getComputedStyle(el).fontSize); }
-    var h2ref = document.querySelector('.sec-head h2');
-    function h2size() { return h2ref ? fs(h2ref) : 36; }
+    var h1 = document.querySelector('.hero h1');
+    // the dot keeps the size of the headline's full stop wherever it goes
+    function size() { return fs(h1) * .17 / 20; }
+    // and its colour: the headline gradient at the point where the full stop sits, in either theme
+    function tint() {
+      var hb = h1.getBoundingClientRect(), pd = h1.querySelector('[data-dot] .pd-t').getBoundingClientRect();
+      var pct = Math.round(Math.min(Math.max((pd.left + pd.width / 2 - hb.left) / hb.width, 0), 1) * 100);
+      return 'color-mix(in srgb, var(--head-b) ' + pct + '%, var(--head-a))';
+    }
     function colorOf(el) { var c = getComputedStyle(el).color; return /,\s*0\)$/.test(c) ? '' : c; }
     // x = centre, y = bottom of the dot, s = scale of the 20px body
     function spot(i) {
       if (i < 0) {
         var g = ihost.querySelector('.i-less').getBoundingClientRect(), b = ihost.querySelector('.pd-b').getBoundingClientRect(), f = fs(ihost);
-        return { x: g.left + g.width / 2 + scrollX, y: b.top - f * .675 + f * .085 + scrollY, s: f * .17 / 20, c: '' };
+        return { x: g.left + g.width / 2 + scrollX, y: b.top - f * .675 + f * .085 + scrollY, s: f * .17 / 20, c: tint() };
       }
       var t = stops[i];
       if (t.dataset.dotEdge) {
         // resting on the top edge of a box, the size of a heading's full stop
         var e = t.getBoundingClientRect();
-        return { x: e.left + e.width * parseFloat(t.dataset.dotEdge) + scrollX, y: e.top + scrollY, s: .7, c: '' };
+        return { x: e.left + e.width * parseFloat(t.dataset.dotEdge) + scrollX, y: e.top + scrollY, s: size(), c: tint() };
       }
       var gt = t.querySelector('.pd-t').getBoundingClientRect(), bt = t.querySelector('.pd-b').getBoundingClientRect();
-      return { x: gt.left + gt.width / 2 + scrollX, y: bt.top + scrollY, s: Math.max(fs(t), h2size()) * .17 / 20, c: colorOf(t), f: fs(t) };
+      return { x: gt.left + gt.width / 2 + scrollX, y: bt.top + scrollY, s: size(), c: tint() };
     }
     var sh = document.querySelector('.dot-sh'), REST = .3;
     function setTo(p) {
@@ -1018,22 +1025,20 @@ footer .fine{max-width:880px}
     // nearest the middle. With nothing visible, rest mid screen at the right edge of the content.
     function inView(p) { return p.y > scrollY + innerHeight * .06 && p.y < scrollY + innerHeight * .94; }
     function pick() {
-      // the tallest visible heading wins; among equals, the one nearest the eye line
-      var eye = scrollY + innerHeight * .4, best = null, bestF = 0, bestD = Infinity, cur = null;
+      var eye = scrollY + innerHeight * .4, best = null, bestD = Infinity, curD = Infinity;
       stops.forEach(function (t, i) {
         var p = spot(i);
         if (!inView(p)) return;
-        var f = Math.round(p.f), d = Math.abs(p.y - eye);
-        if (i === at) cur = { f: f, d: d };
-        if (f > bestF || (f === bestF && d < bestD)) { best = i; bestF = f; bestD = d; }
+        var d = Math.abs(p.y - eye);
+        if (i === at) curD = d;
+        if (d < bestD) { bestD = d; best = i; }
       });
       if (best === null) return 'park';
-      if (cur && cur.f === bestF && cur.d - bestD < innerHeight * .12) return at;
-      return best;
+      return curD !== Infinity && curD - bestD < innerHeight * .12 ? at : best;
     }
     function parkSpot() {
       var w = document.querySelector('main .wrap').getBoundingClientRect();
-      return { x: w.right - 24 + scrollX, y: scrollY + innerHeight * .5, s: .6, c: '', park: true };
+      return { x: w.right - 24 + scrollX, y: scrollY + innerHeight * .5, s: size(), c: tint(), park: true };
     }
     function step() {
       if (busy || !hopped) return;
