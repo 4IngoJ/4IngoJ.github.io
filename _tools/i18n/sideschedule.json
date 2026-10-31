@@ -1,5 +1,6 @@
 {
  "de": {
+  "nav.allapps": "Alle Apps",
   "hero.h1b": "Nicht mehr.",
   "cmp.sbcPrice": "4,99 $ (Mac App Store)",
   "cmp.sbcReserves": "Kann über Fenstern schweben",
@@ -155,6 +156,7 @@
   "nav.download": "Download"
  },
  "fr": {
+  "nav.allapps": "Toutes les apps",
   "hero.h1b": "Plus maintenant.",
   "cmp.sbcPrice": "4,99 $ (Mac App Store)",
   "cmp.sbcReserves": "Peut flotter au-dessus des fenêtres",
@@ -310,6 +312,7 @@
   "nav.download": "Télécharger"
  },
  "es": {
+  "nav.allapps": "Todas las apps",
   "hero.h1b": "Ya no.",
   "cmp.sbcPrice": "4,99 $ (Mac App Store)",
   "cmp.sbcReserves": "Puede flotar sobre las ventanas",
@@ -465,6 +468,7 @@
   "nav.download": "Descargar"
  },
  "it": {
+  "nav.allapps": "Tutte le app",
   "hero.h1b": "Non più.",
   "cmp.sbcPrice": "4,99 $ (Mac App Store)",
   "cmp.sbcReserves": "Può restare sopra le finestre",
@@ -620,6 +624,7 @@
   "nav.download": "Scarica"
  },
  "pt": {
+  "nav.allapps": "Todas as aplicações",
   "hero.h1b": "Isso acabou.",
   "cmp.sbcPrice": "4,99 $ (Mac App Store)",
   "cmp.sbcReserves": "Pode flutuar sobre as janelas",

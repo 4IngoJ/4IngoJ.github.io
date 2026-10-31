@@ -18,5 +18,20 @@
       "dict": "i18n/home.json",
       "mode": "html"
     }
+  ],
+  "runtime_var": "HOME_I18N",
+  "runtime_keys": [
+    "rt.dark",
+    "rt.light",
+    "rt.open",
+    "rt.close",
+    "rt.copied",
+    "rt.copyfail",
+    "rt.typed",
+    "rt.dict",
+    "rt.desk",
+    "rt.connected",
+    "rt.calls",
+    "rt.meeting"
   ]
 }
