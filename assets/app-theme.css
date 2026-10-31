@@ -62,9 +62,12 @@ nav::after{content:"";position:absolute;inset:1px;border-radius:inherit;pointer-
 :root[data-theme=dark] nav::after{background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,0) 55%)}
 nav .wrap{display:flex;align-items:center;justify-content:space-between;height:auto;max-width:none;gap:16px;padding:6px 6px 6px 20px}
 .nav-left{display:flex;align-items:center;gap:12px;min-width:0}
+/* the wordmark is Onest Bold drawn at about 20px, so the app name is set the same way and both sit on one baseline */
+.didact-mark{display:flex;align-items:center;height:20px}
 .didact-mark img{height:20px;width:auto}
-.nav-left .sep{color:var(--line)}
-nav .wordmark{display:flex;align-items:center;gap:8px;color:var(--ink);font-size:14px;line-height:20px;font-weight:600;letter-spacing:-.01em;text-decoration:none;white-space:nowrap}
+.didact-mark img.wm-ink{display:block}
+.nav-left .sep{color:var(--line);font-size:20px;line-height:20px}
+nav .wordmark{display:flex;align-items:center;gap:8px;color:var(--ink);font-size:20px;line-height:20px;font-weight:700;letter-spacing:-.04em;text-decoration:none;white-space:nowrap}
 nav .wordmark img{width:24px;height:24px;border-radius:6px}
 .nav-links{display:flex;align-items:center;gap:4px}
 nav .nav-links a{display:block;font:500 14px/20px var(--sans);padding:8px 12px;border-radius:9999px;text-decoration:none;color:var(--muted);transition:color .3s var(--ease),background-color .3s var(--ease)}
