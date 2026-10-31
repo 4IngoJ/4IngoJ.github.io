@@ -2,6 +2,7 @@
   "root": "../sideschedule",
   "site_url": "https://didact.digital/sideschedule/",
   "local_pages": [
+    "./",
     "index.html",
     "privacy.html"
   ],

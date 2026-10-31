@@ -2,6 +2,7 @@
   "root": "../talkremind",
   "site_url": "https://didact.digital/talkremind/",
   "local_pages": [
+    "./",
     "index.html",
     "privacy.html"
   ],

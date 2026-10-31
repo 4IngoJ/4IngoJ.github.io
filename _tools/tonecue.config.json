@@ -2,6 +2,7 @@
   "root": "../tonecue",
   "site_url": "https://didact.digital/tonecue/",
   "local_pages": [
+    "./",
     "index.html",
     "privacy.html"
   ],
