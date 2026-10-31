@@ -64,7 +64,8 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:a
 .nav-left{display:flex;align-items:center;gap:12px;min-width:0}
 /* the wordmark is Onest Bold drawn at about 20px, so the app name is set the same way and both sit on one baseline */
 .didact-mark{display:flex;align-items:center;height:20px}
-.didact-mark img{height:20px;width:auto}
+/* the drawn baseline sits 107/141 down the 20px image (15.2px); Onest's baseline in a 20px line sits at 16.5px */
+.didact-mark img{height:20px;width:auto;position:relative;top:calc(16.5px - 20px * 107 / 141)}
 .didact-mark img.wm-ink{display:block}
 .nav-left .sep{color:var(--line);font-size:20px;line-height:20px}
 nav .wordmark{display:flex;align-items:center;gap:8px;color:var(--ink);font-size:20px;line-height:20px;font-weight:700;letter-spacing:-.04em;text-decoration:none;white-space:nowrap}
