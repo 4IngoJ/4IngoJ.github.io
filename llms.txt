@@ -1,0 +1,25 @@
+# didact.digital
+
+> didact.digital makes three native Mac apps for days full of calls and writing: SideSchedule, TalkRemind and ToneCue. Each is a one-time purchase through Lemon Squeezy with a 14-day free trial, no account and no tracking. One license covers up to three Macs. Made by didact.digital Software e.U. in Graz, Austria. Launch offer: 50% off for the first 100 buyers.
+
+## Apps
+
+- [SideSchedule](https://didact.digital/sideschedule/): a calendar sidebar that keeps its strip of screen like the Dock, so no window can cover it. Meeting notes become Markdown files, one click joins the call. €12.99 once, macOS 13 or later, also on Homebrew. Details: [llms.txt](https://didact.digital/sideschedule/llms.txt)
+- [TalkRemind](https://didact.digital/talkremind/): a menu bar app that notices a long stretch of typing and nudges you to the dictation app you already own (Wispr Flow, superwhisper, VoiceInk and 14 more). It never reads what you type. €9.99 once, macOS 14 or later.
+- [ToneCue](https://didact.digital/tonecue/): a menu bar app that picks your microphone and speakers by situation (a dock, a calendar meeting, an open app), says why it switched and lets you undo it. €9.99 once, macOS 13 or later, also on Homebrew.
+
+## Privacy
+
+- No analytics and no telemetry in any app. The only network calls are license and update checks, plus a diagnostic report if the user chooses to send one.
+- Updates arrive inside the apps through Sparkle. Builds are signed and notarized by Apple. Not on the Mac App Store.
+
+## Downloads
+
+- [SideSchedule DMG](https://github.com/4IngoJ/sideschedule/releases/latest/download/SideSchedule.dmg)
+- [TalkRemind DMG](https://github.com/4IngoJ/TalkRemind/releases/latest/download/TalkRemind.dmg)
+- [ToneCue DMG](https://github.com/4IngoJ/tonecue/releases/latest/download/ToneCue.dmg)
+
+## Contact
+
+- hello@didact.digital
+- Affiliate program: 30 percent of each sale, 30-day tracking, [apply on Lemon Squeezy](https://4ingoj.lemonsqueezy.com/affiliates)

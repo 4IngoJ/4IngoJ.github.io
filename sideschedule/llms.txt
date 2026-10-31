@@ -1,6 +1,6 @@
 # SideSchedule
 
-> SideSchedule is a day-calendar sidebar for macOS 13 or later. It reserves a strip at the left or right screen edge the way the Dock does, so other windows can't cover it. Free for 14 days, then €12.99 once (two Macs per licence). Made by didact.digital in Austria. Launch offer: 50% off for the first 100 buyers.
+> SideSchedule is a day-calendar sidebar for macOS 13 or later. It reserves a strip at the left or right screen edge the way the Dock does, so other windows can't cover it. Free for 14 days, then €12.99 once (three Macs per licence). Made by didact.digital in Austria. Launch offer: 50% off for the first 100 buyers.
 
 ## What it does
 

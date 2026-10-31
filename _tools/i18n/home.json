@@ -1,7 +1,7 @@
 {
   "de": {
     "meta.title": "SideSchedule, TalkRemind & ToneCue: Mac-Apps von didact.digital",
-    "meta.desc": "Drei native Mac-Apps aus Österreich: SideSchedule, eine Kalender-Sidebar; TalkRemind, ein Hinweis zum Diktieren; ToneCue, Szenen für Audiogeräte. Einmalkauf, kein Konto, kein Tracking.",
+    "meta.desc": "Drei native Mac-Apps: SideSchedule, eine Kalender-Sidebar; TalkRemind, ein Diktier-Hinweis; ToneCue, Audio-Szenen. Einmal zahlen, kein Konto, kein Tracking.",
     "skip": "Zum Inhalt springen",
     "nav.aria": "Hauptmenü",
     "nav.home": "didact.digital Startseite",
@@ -163,7 +163,7 @@
   },
   "fr": {
     "meta.title": "SideSchedule, TalkRemind et ToneCue : apps Mac par didact.digital",
-    "meta.desc": "Trois apps Mac natives d’Autriche : SideSchedule, une barre latérale de calendrier ; TalkRemind, une relance pour dicter ; ToneCue, des scènes pour tes appareils audio. Achat unique, sans compte, sans suivi.",
+    "meta.desc": "Trois apps Mac natives : SideSchedule, calendrier latéral ; TalkRemind, relance pour dicter ; ToneCue, scènes audio. Achat unique, sans compte, sans suivi.",
     "skip": "Aller au contenu",
     "nav.aria": "Menu principal",
     "nav.home": "Accueil didact.digital",
@@ -325,7 +325,7 @@
   },
   "es": {
     "meta.title": "SideSchedule, TalkRemind y ToneCue: apps para Mac de didact.digital",
-    "meta.desc": "Tres apps nativas para Mac desde Austria: SideSchedule, un calendario lateral; TalkRemind, un aviso para dictar; ToneCue, escenas para dispositivos de audio. Compra única, sin cuenta, sin seguimiento.",
+    "meta.desc": "Tres apps nativas para Mac: SideSchedule, calendario lateral; TalkRemind, aviso para dictar; ToneCue, escenas de audio. Pago único, sin cuenta ni seguimiento.",
     "skip": "Ir al contenido",
     "nav.aria": "Menú principal",
     "nav.home": "Inicio de didact.digital",
@@ -487,7 +487,7 @@
   },
   "it": {
     "meta.title": "SideSchedule, TalkRemind e ToneCue: app per Mac di didact.digital",
-    "meta.desc": "Tre app native per Mac dall’Austria: SideSchedule, un calendario laterale; TalkRemind, un invito a dettare; ToneCue, scene per i dispositivi audio. Acquisto una tantum, nessun account, nessun tracciamento.",
+    "meta.desc": "Tre app native per Mac: SideSchedule, calendario laterale; TalkRemind, invito a dettare; ToneCue, scene audio. Paghi una volta, niente account né tracciamento.",
     "skip": "Vai al contenuto",
     "nav.aria": "Menu principale",
     "nav.home": "Home di didact.digital",
@@ -649,7 +649,7 @@
   },
   "pt": {
     "meta.title": "SideSchedule, TalkRemind e ToneCue: aplicações para Mac da didact.digital",
-    "meta.desc": "Três aplicações nativas para Mac, da Áustria: SideSchedule, um calendário lateral; TalkRemind, um aviso para ditar; ToneCue, cenas para dispositivos de áudio. Compra única, sem conta, sem rastreio.",
+    "meta.desc": "Três aplicações nativas para Mac: SideSchedule, calendário lateral; TalkRemind, aviso para ditar; ToneCue, cenas de áudio. Compra única, sem conta nem rastreio.",
     "skip": "Saltar para o conteúdo",
     "nav.aria": "Menu principal",
     "nav.home": "Página inicial da didact.digital",
