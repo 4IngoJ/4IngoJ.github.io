@@ -78,12 +78,18 @@
   .lang-switcher .lang-menu a.active { background: var(--band); font-weight: 600; }
   .lang-switcher .lang-menu a.active .lang-code { color: var(--ink); }
 </style>
+<meta name="theme-color" content="#FAF9F7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<script>try{var t=localStorage.getItem('didact-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
+<link rel="stylesheet" href="/assets/fonts.css">
+<link rel="stylesheet" href="/assets/app-theme.css">
+<script src="/assets/app-theme.js" defer></script>
 </head>
 <body>
 <nav>
   <div class="wrap">
-    <a class="wordmark" href="index.html"><img src="assets/app-icon.png" alt="">SideSchedule</a>
-    <div class="lang-switcher" id="lang-switcher">
+    <div class="nav-left"><a class="didact-mark" href="/" aria-label="didact.digital home"><img class="wm-ink" src="/assets/didact-wordmark-ink.svg" alt="didact.digital" width="113" height="20"><img class="wm-paper" src="/assets/didact-wordmark-paper.svg" alt="didact.digital" width="113" height="20"></a><span class="sep" aria-hidden="true">/</span><a class="wordmark" href="index.html"><img src="assets/app-icon.png" alt="" width="24" height="24">SideSchedule</a></div>
+    <div class="nav-links"><button class="theme-btn" type="button" aria-label="Dark mode" data-i18n-aria-label="theme.toggle" aria-pressed="false"><svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.1A8.5 8.5 0 1 1 9.9 3.5a6.6 6.6 0 0 0 10.6 10.6Z"/></svg></button><div class="lang-switcher" id="lang-switcher">
       <button class="lang-toggle" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Change language" data-i18n-aria-label="lang.ariaLabel">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
         <span id="lang-current">EN</span>
@@ -91,11 +97,10 @@
       </button>
       <div class="lang-menu" role="menu" id="lang-menu"><a role="menuitem" href="https://didact.digital/sideschedule/privacy.html" hreflang="en" lang="en" class="active" aria-current="true"><span>English</span><span class="lang-code">EN</span></a><a role="menuitem" href="https://didact.digital/sideschedule/de/privacy.html" hreflang="de" lang="de"><span>Deutsch</span><span class="lang-code">DE</span></a><a role="menuitem" href="https://didact.digital/sideschedule/fr/privacy.html" hreflang="fr" lang="fr"><span>Français</span><span class="lang-code">FR</span></a><a role="menuitem" href="https://didact.digital/sideschedule/es/privacy.html" hreflang="es" lang="es"><span>Español</span><span class="lang-code">ES</span></a><a role="menuitem" href="https://didact.digital/sideschedule/it/privacy.html" hreflang="it" lang="it"><span>Italiano</span><span class="lang-code">IT</span></a><a role="menuitem" href="https://didact.digital/sideschedule/pt/privacy.html" hreflang="pt" lang="pt"><span>Português</span><span class="lang-code">PT</span></a></div>
     </div>
-  </div>
-</nav>
+  </div></div></nav>
 <main class="wrap">
   <h1 data-i18n="h1">Privacy Policy</h1>
-  <p class="updated" data-i18n="updated">Last updated: 30 October 2026</p>
+  <p class="updated" data-i18n="updated">Last updated: 31 October 2026</p>
 
   <p data-i18n="intro">SideSchedule is a macOS app made by Ingo Jurz, Graz, Austria. This page explains what data the app touches, what leaves your Mac, and what never does.</p>
 
@@ -111,7 +116,7 @@
   <p data-i18n="website.p1">We count visits with GoatCounter (see “Visit statistics” below); apart from that script, this site loads no third-party scripts. If you arrive through a partner's link (a URL containing <code>?aff=</code>), we add the partner's ID to the Buy links on that page, so Lemon Squeezy, our payment provider, can credit the partner if you buy. Reading the ID from the link stores nothing on your device. If you also agree in the notice, we keep the ID in your browser's local storage for 60 days, so the partner is credited for a later purchase too. When you start the app for the first time, it opens a welcome page on didact.digital once. If you had agreed, that page hands the ID to the app, which stores it in the macOS Keychain and adds it only to its Buy link. A click on a Buy link takes you to Lemon Squeezy, where their privacy policy applies. The legal basis for keeping the ID is your consent (Art. 6(1)(a) GDPR, § 165(3) TKG 2021). You can withdraw it at any time with the button below, which removes the stored ID from your browser. To have it removed from the app as well, write to <a href="mailto:hello@didact.digital">hello@didact.digital</a>. The app itself never loads a tracking script.</p>
   <p><button type="button" id="aff-withdraw" data-i18n="website.w">Withdraw consent for partner tracking</button> <span id="aff-withdraw-msg" role="status"></span></p>
   <p data-i18n="website.p2">The script is loaded from Lemon Squeezy’s servers, so their privacy policy applies to that request. The app itself never loads it.</p>
-  <p data-i18n="website.theme">The home page remembers whether you chose light or dark mode, in an entry called <code>didact-theme</code> in your browser's local storage. It holds only that choice, stays on your device and is never sent to us. Because it only serves the switch you pressed, no consent is needed (§ 165(3) TKG 2021); clearing your browser data removes it. The animations on the home page use GSAP, which we host on this site ourselves, so no other server is contacted.</p>
+  <p data-i18n="website.theme">This website remembers whether you chose light or dark mode, in an entry called <code>didact-theme</code> in your browser's local storage. It holds only that choice, stays on your device and is never sent to us. Because it only serves the switch you pressed, no consent is needed (§ 165(3) TKG 2021); clearing your browser data removes it. The animations on the home page use GSAP, which we host on this site ourselves, so no other server is contacted.</p>
 
   <h2 data-i18n="visits.h2">Visit statistics</h2>
   <p data-i18n="visits.p">This website counts visits with GoatCounter, an analytics service that works without cookies. We use it to see which pages are read, which links bring visitors here, and how often the download and purchase buttons are clicked. The data is not used for advertising and not to build profiles of individual people. When you open a page, your browser sends GoatCounter the page address, the referring site, the campaign tags in the link (for example utm_source), your browser and screen size, and your approximate location. According to GoatCounter, it stores no IP addresses or user-agent strings and sets no cookies, so you are not recognised across visits or across sites. A click on a download or purchase link is counted as an event with a fixed name, without anything about you. GoatCounter is run by Martin Tournoij (Ireland); its servers are at Hetzner Online GmbH in Finland and Germany. The legal basis is our legitimate interest in understanding how the website is used (Art. 6(1)(f) GDPR). You can object at any time: hello@didact.digital. Blocking the script in your browser also works, and the site stays fully usable. The apps are separate: they contain no analytics and send no usage data.</p>

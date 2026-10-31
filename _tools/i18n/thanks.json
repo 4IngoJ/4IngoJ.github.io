@@ -22,7 +22,8 @@
     "x019": "Drei Macs",
     "x020": "Drei Macs",
     "x021": "Mac gewechselt? In SideSchedule gibt „Diesen Mac deaktivieren“ den Platz wieder frei.",
-    "x017": "Eine Lizenz ist für deine eigene Nutzung. Gib deinen Schlüssel bitte nicht an andere weiter."
+    "x017": "Eine Lizenz ist für deine eigene Nutzung. Gib deinen Schlüssel bitte nicht an andere weiter.",
+    "theme.toggle": "Dunkelmodus"
   },
   "fr": {
     "meta.title": "Merci · didact.digital",
@@ -47,7 +48,8 @@
     "x019": "Trois Mac",
     "x020": "Trois Mac",
     "x021": "Tu changes de machine ? Dans SideSchedule, « Désactiver ce Mac » libère de nouveau la place.",
-    "x017": "Une licence est pour ton usage personnel. Ne donne pas ta clé à d'autres personnes, s'il te plaît."
+    "x017": "Une licence est pour ton usage personnel. Ne donne pas ta clé à d'autres personnes, s'il te plaît.",
+    "theme.toggle": "Mode sombre"
   },
   "es": {
     "meta.title": "Gracias · didact.digital",
@@ -72,7 +74,8 @@
     "x019": "Tres Mac",
     "x020": "Tres Mac",
     "x021": "¿Cambias de equipo? En SideSchedule, «Desactivar este Mac» libera de nuevo la plaza.",
-    "x017": "Una licencia es para tu uso personal. Por favor, no pases tu clave a otras personas."
+    "x017": "Una licencia es para tu uso personal. Por favor, no pases tu clave a otras personas.",
+    "theme.toggle": "Modo oscuro"
   },
   "it": {
     "meta.title": "Grazie · didact.digital",
@@ -97,7 +100,8 @@
     "x019": "Tre Mac",
     "x020": "Tre Mac",
     "x021": "Cambi computer? In SideSchedule, «Disattiva questo Mac» libera di nuovo il posto.",
-    "x017": "Una licenza è per il tuo uso personale. Per favore, non passare la tua chiave ad altri."
+    "x017": "Una licenza è per il tuo uso personale. Per favore, non passare la tua chiave ad altri.",
+    "theme.toggle": "Modalità scura"
   },
   "pt": {
     "meta.title": "Obrigado · didact.digital",
@@ -122,6 +126,7 @@
     "x019": "Três Mac",
     "x020": "Três Mac",
     "x021": "Mudaste de computador? No SideSchedule, «Desativar este Mac» liberta o lugar outra vez.",
-    "x017": "Uma licença é para o teu uso pessoal. Por favor, não passes a tua chave a outras pessoas."
+    "x017": "Uma licença é para o teu uso pessoal. Por favor, não passes a tua chave a outras pessoas.",
+    "theme.toggle": "Modo escuro"
   }
 }

@@ -12,7 +12,8 @@
     "w009": "Partner-Link gefunden und an die App übergeben.",
     "w010": "Kein Partner-Link gefunden. Es ist nichts weiter zu tun.",
     "w011": "von didact.digital",
-    "w012": "Newsletter abbestellen"
+    "w012": "Newsletter abbestellen",
+    "theme.toggle": "Dunkelmodus"
   },
   "fr": {
     "w000": "didact.digital",
@@ -27,7 +28,8 @@
     "w009": "Lien partenaire trouvé et transmis à l'app.",
     "w010": "Aucun lien partenaire trouvé. Rien d'autre à faire.",
     "w011": "par didact.digital",
-    "w012": "Se désabonner de la newsletter"
+    "w012": "Se désabonner de la newsletter",
+    "theme.toggle": "Mode sombre"
   },
   "es": {
     "w000": "didact.digital",
@@ -42,7 +44,8 @@
     "w009": "Enlace de socio encontrado y entregado a la app.",
     "w010": "No se encontró ningún enlace de socio. No hay nada más que hacer.",
     "w011": "de didact.digital",
-    "w012": "Cancelar la suscripción al boletín"
+    "w012": "Cancelar la suscripción al boletín",
+    "theme.toggle": "Modo oscuro"
   },
   "it": {
     "w000": "didact.digital",
@@ -57,7 +60,8 @@
     "w009": "Link del partner trovato e passato all'app.",
     "w010": "Nessun link del partner trovato. Non c'è altro da fare.",
     "w011": "di didact.digital",
-    "w012": "Annulla l’iscrizione alla newsletter"
+    "w012": "Annulla l’iscrizione alla newsletter",
+    "theme.toggle": "Modalità scura"
   },
   "pt": {
     "w000": "didact.digital",
@@ -72,6 +76,7 @@
     "w009": "Link de parceiro encontrado e entregue à app.",
     "w010": "Nenhum link de parceiro encontrado. Não há mais nada a fazer.",
     "w011": "da didact.digital",
-    "w012": "Cancelar a subscrição da newsletter"
+    "w012": "Cancelar a subscrição da newsletter",
+    "theme.toggle": "Modo escuro"
   }
 }

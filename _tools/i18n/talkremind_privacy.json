@@ -1,7 +1,7 @@
 {
  "de": {
   "p001": "Datenschutz",
-  "p002": "Zuletzt aktualisiert: 30. Oktober 2026",
+  "p002": "Zuletzt aktualisiert: 31. Oktober 2026",
   "p003": "TalkRemind ist eine macOS-App von Ingo Jurz, Graz, Österreich. Diese Seite erklärt, welche Daten die App berührt, was deinen Mac verlässt und was nie.",
   "p004": "Die Kurzfassung",
   "p005": "Tipp- und Diktierereignisse bleiben auf deinem Mac. TalkRemind beobachtet, wann du tippst und wie viel, nie die Zeichen. Die App hat keine Analytics und kein Tracking. Ihre einzigen Netzwerkzugriffe sind die Lizenzprüfung (Lemon Squeezy) und die Update-Suche (Sparkle, über GitHub). Dazu kommt, nur wenn du es willst, der Diagnosebericht (siehe unten).",
@@ -46,11 +46,12 @@
   "dr.deletion.p": "Schreib an hello@didact.digital und nenne die Berichts-ID. Wir löschen den Bericht und bestätigen dir das. Ohne Berichts-ID können wir einen Bericht nicht zuordnen, weil wir keine Kennung speichern.",
   "dr.location.h": "Wo die Daten liegen:",
   "dr.location.p": "Bei Cloudflare, Inc. (Workers und D1). Die Datenbank liegt in der EU. Die Anfrage selbst kann Cloudflare weltweit an seinen Servern am Rand verarbeiten; dafür gelten die Standardvertragsklauseln im Vertrag zur Auftragsverarbeitung mit Cloudflare. Cloudflare kann Anfragen in eigenen Betriebsprotokollen führen.",
-  "p017t": "Die Startseite merkt sich, ob du den hellen oder dunklen Modus gewählt hast, im Eintrag <code>didact-theme</code> im lokalen Speicher deines Browsers. Er enthält nur diese Wahl, bleibt auf deinem Gerät und wird nie an uns gesendet. Weil er nur dem Schalter dient, den du gedrückt hast, ist keine Einwilligung nötig (§ 165 Abs. 3 TKG 2021); löschst du deine Browserdaten, ist er weg. Die Animationen der Startseite nutzen GSAP, das wir selbst auf dieser Website bereitstellen; dabei wird kein anderer Server kontaktiert."
+  "p017t": "Diese Website merkt sich, ob du den hellen oder dunklen Modus gewählt hast, im Eintrag <code>didact-theme</code> im lokalen Speicher deines Browsers. Er enthält nur diese Wahl, bleibt auf deinem Gerät und wird nie an uns gesendet. Weil er nur dem Schalter dient, den du gedrückt hast, ist keine Einwilligung nötig (§ 165 Abs. 3 TKG 2021); löschst du deine Browserdaten, ist er weg. Die Animationen der Startseite nutzen GSAP, das wir selbst auf dieser Website bereitstellen; dabei wird kein anderer Server kontaktiert.",
+  "theme.toggle": "Dunkelmodus"
  },
  "fr": {
   "p001": "Confidentialité",
-  "p002": "Dernière mise à jour : 30 octobre 2026",
+  "p002": "Dernière mise à jour : 31 octobre 2026",
   "p003": "TalkRemind est une application macOS développée par Ingo Jurz, Graz, Autriche. Cette page explique quelles données l’application touche, ce qui quitte ton Mac et ce qui ne le quitte jamais.",
   "p004": "La version courte",
   "p005": "Les événements de frappe et de dictée restent sur ton Mac. TalkRemind observe quand tu tapes et combien, jamais les caractères. L’application n’a ni analytique ni suivi. Ses seuls appels réseau sont la validation de la licence (Lemon Squeezy) et la recherche de mises à jour (Sparkle, via GitHub). S’y ajoute, seulement si tu le veux, le rapport de diagnostic (voir plus bas).",
@@ -95,11 +96,12 @@
   "dr.deletion.p": "Écris à hello@didact.digital en indiquant l’identifiant de rapport. Nous supprimons le rapport et te le confirmons. Sans identifiant de rapport, nous ne pouvons pas associer un rapport à toi, car nous ne conservons aucun identifiant.",
   "dr.location.h": "Où se trouvent les données :",
   "dr.location.p": "Chez Cloudflare, Inc. (Workers et D1). La base de données se trouve dans l’UE. Cloudflare peut traiter la requête elle-même sur ses serveurs dans le monde entier, en périphérie du réseau ; les clauses contractuelles types du contrat de sous-traitance avec Cloudflare s’appliquent. Cloudflare peut consigner les requêtes dans ses propres journaux d’exploitation.",
-  "p017t": "La page d'accueil retient si tu as choisi le mode clair ou sombre, dans une entrée nommée <code>didact-theme</code> du stockage local de ton navigateur. Elle ne contient que ce choix, reste sur ton appareil et ne nous est jamais envoyée. Comme elle sert uniquement au bouton sur lequel tu as appuyé, aucun consentement n'est nécessaire (§ 165, al. 3, TKG 2021) ; effacer les données de ton navigateur la supprime. Les animations de la page d'accueil utilisent GSAP, que nous hébergeons nous-mêmes sur ce site ; aucun autre serveur n'est contacté."
+  "p017t": "Ce site retient si tu as choisi le mode clair ou sombre, dans une entrée nommée <code>didact-theme</code> du stockage local de ton navigateur. Elle ne contient que ce choix, reste sur ton appareil et ne nous est jamais envoyée. Comme elle sert uniquement au bouton sur lequel tu as appuyé, aucun consentement n'est nécessaire (§ 165, al. 3, TKG 2021) ; effacer les données de ton navigateur la supprime. Les animations de la page d'accueil utilisent GSAP, que nous hébergeons nous-mêmes sur ce site ; aucun autre serveur n'est contacté.",
+  "theme.toggle": "Mode sombre"
  },
  "es": {
   "p001": "Privacidad",
-  "p002": "Última actualización: 30 de octubre de 2026",
+  "p002": "Última actualización: 31 de octubre de 2026",
   "p003": "TalkRemind es una app de macOS desarrollada por Ingo Jurz, Graz, Austria. Esta página explica qué datos toca la app, qué sale de tu Mac y qué no sale nunca.",
   "p004": "La versión corta",
   "p005": "Los eventos de escritura y dictado se quedan en tu Mac. TalkRemind observa cuándo escribes y cuánto, nunca los caracteres. La app no tiene analíticas ni seguimiento. Sus únicas llamadas de red son la validación de la licencia (Lemon Squeezy) y la búsqueda de actualizaciones (Sparkle, a través de GitHub). A eso se suma, solo si tú quieres, el informe de diagnóstico (ver más abajo).",
@@ -144,11 +146,12 @@
   "dr.deletion.p": "Escribe a hello@didact.digital e indica el ID de informe. Borramos el informe y te lo confirmamos. Sin el ID de informe no podemos asociar un informe contigo, porque no guardamos ningún identificador.",
   "dr.location.h": "Dónde se almacenan los datos:",
   "dr.location.p": "En Cloudflare, Inc. (Workers y D1). La base de datos está en la UE. Cloudflare puede procesar la solicitud en sus servidores de todo el mundo, en el borde de la red; se aplican las cláusulas contractuales tipo del contrato de encargado del tratamiento con Cloudflare. Cloudflare puede registrar las solicitudes en sus propios registros de funcionamiento.",
-  "p017t": "La página de inicio recuerda si elegiste el modo claro u oscuro, en una entrada llamada <code>didact-theme</code> del almacenamiento local de tu navegador. Solo guarda esa elección, se queda en tu dispositivo y nunca se nos envía. Como solo sirve para el botón que pulsaste, no hace falta consentimiento (§ 165, apdo. 3, TKG 2021); si borras los datos de tu navegador, desaparece. Las animaciones de la página de inicio usan GSAP, que alojamos nosotros mismos en este sitio, así que no se contacta con ningún otro servidor."
+  "p017t": "Este sitio recuerda si elegiste el modo claro u oscuro, en una entrada llamada <code>didact-theme</code> del almacenamiento local de tu navegador. Solo guarda esa elección, se queda en tu dispositivo y nunca se nos envía. Como solo sirve para el botón que pulsaste, no hace falta consentimiento (§ 165, apdo. 3, TKG 2021); si borras los datos de tu navegador, desaparece. Las animaciones de la página de inicio usan GSAP, que alojamos nosotros mismos en este sitio, así que no se contacta con ningún otro servidor.",
+  "theme.toggle": "Modo oscuro"
  },
  "it": {
   "p001": "Privacy",
-  "p002": "Ultimo aggiornamento: 30 ottobre 2026",
+  "p002": "Ultimo aggiornamento: 31 ottobre 2026",
   "p003": "TalkRemind è un’app per macOS sviluppata da Ingo Jurz, Graz, Austria. Questa pagina spiega quali dati l’app tocca, cosa lascia il tuo Mac e cosa non lo lascia mai.",
   "p004": "In breve",
   "p005": "Gli eventi di scrittura e dettatura restano sul tuo Mac. TalkRemind osserva quando scrivi e quanto, mai i caratteri. L’app non ha analytics né tracciamento. Le sue uniche chiamate di rete sono la convalida della licenza (Lemon Squeezy) e il controllo degli aggiornamenti (Sparkle, tramite GitHub). A questo si aggiunge, solo se vuoi, il rapporto diagnostico (vedi sotto).",
@@ -193,11 +196,12 @@
   "dr.deletion.p": "Scrivi a hello@didact.digital indicando l’ID rapporto. Eliminiamo il rapporto e te lo confermiamo. Senza l’ID rapporto non possiamo associare un rapporto a te, perché non conserviamo alcun identificativo.",
   "dr.location.h": "Dove si trovano i dati:",
   "dr.location.p": "Presso Cloudflare, Inc. (Workers e D1). Il database si trova nell’UE. Cloudflare può elaborare la richiesta stessa sui suoi server in tutto il mondo, ai margini della rete; si applicano le clausole contrattuali tipo dell’accordo sul trattamento dei dati con Cloudflare. Cloudflare può registrare le richieste nei propri log operativi.",
-  "p017t": "La pagina iniziale ricorda se hai scelto la modalità chiara o scura, in una voce chiamata <code>didact-theme</code> nella memoria locale del tuo browser. Contiene solo questa scelta, resta sul tuo dispositivo e non ci viene mai inviata. Poiché serve solo al pulsante che hai premuto, non è necessario alcun consenso (§ 165, comma 3, TKG 2021); cancellando i dati del browser la elimini. Le animazioni della pagina iniziale usano GSAP, che ospitiamo noi stessi su questo sito, quindi nessun altro server viene contattato."
+  "p017t": "Questo sito ricorda se hai scelto la modalità chiara o scura, in una voce chiamata <code>didact-theme</code> nella memoria locale del tuo browser. Contiene solo questa scelta, resta sul tuo dispositivo e non ci viene mai inviata. Poiché serve solo al pulsante che hai premuto, non è necessario alcun consenso (§ 165, comma 3, TKG 2021); cancellando i dati del browser la elimini. Le animazioni della pagina iniziale usano GSAP, che ospitiamo noi stessi su questo sito, quindi nessun altro server viene contattato.",
+  "theme.toggle": "Modalità scura"
  },
  "pt": {
   "p001": "Privacidade",
-  "p002": "Última atualização: 30 de outubro de 2026",
+  "p002": "Última atualização: 31 de outubro de 2026",
   "p003": "O TalkRemind é uma aplicação para macOS desenvolvida por Ingo Jurz, Graz, Áustria. Esta página explica que dados a aplicação toca, o que sai do teu Mac e o que nunca sai.",
   "p004": "A versão curta",
   "p005": "Os eventos de escrita e de ditado ficam no teu Mac. O TalkRemind observa quando escreves e quanto, nunca os caracteres. A aplicação não tem análises nem rastreio. As suas únicas chamadas de rede são a validação da licença (Lemon Squeezy) e a verificação de atualizações (Sparkle, através do GitHub). A isto soma-se, só se quiseres, o relatório de diagnóstico (ver abaixo).",
@@ -242,6 +246,7 @@
   "dr.deletion.p": "Escreve para hello@didact.digital e indica o ID do relatório. Apagamos o relatório e confirmamos-te isso. Sem o ID do relatório não conseguimos associar um relatório a ti, porque não guardamos nenhum identificador.",
   "dr.location.h": "Onde ficam os dados:",
   "dr.location.p": "Junto da Cloudflare, Inc. (Workers e D1). A base de dados está na UE. A Cloudflare pode tratar o próprio pedido nos seus servidores em todo o mundo, na periferia da rede; aplicam-se as cláusulas contratuais-tipo do contrato de subcontratação com a Cloudflare. A Cloudflare pode guardar os pedidos nos seus próprios registos de funcionamento.",
-  "p017t": "A página inicial lembra-se se escolheste o modo claro ou escuro, numa entrada chamada <code>didact-theme</code> no armazenamento local do teu navegador. Guarda apenas essa escolha, fica no teu dispositivo e nunca nos é enviada. Como serve apenas o botão que carregaste, não é necessário consentimento (§ 165, n.º 3, TKG 2021); ao apagares os dados do navegador, desaparece. As animações da página inicial usam o GSAP, que alojamos nós próprios neste site, por isso nenhum outro servidor é contactado."
+  "p017t": "Este site lembra-se se escolheste o modo claro ou escuro, numa entrada chamada <code>didact-theme</code> no armazenamento local do teu navegador. Guarda apenas essa escolha, fica no teu dispositivo e nunca nos é enviada. Como serve apenas o botão que carregaste, não é necessário consentimento (§ 165, n.º 3, TKG 2021); ao apagares os dados do navegador, desaparece. As animações da página inicial usam o GSAP, que alojamos nós próprios neste site, por isso nenhum outro servidor é contactado.",
+  "theme.toggle": "Modo escuro"
  }
 }

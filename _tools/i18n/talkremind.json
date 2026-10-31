@@ -167,7 +167,8 @@
   "ta163": "TalkRemind-ScreenBlock-Hinweis auf einem abgedunkelten Mac-Bildschirm",
   "t164": "Ton einschalten",
   "t165": "Wie bekomme ich Support?",
-  "t166": "Ich lese hello@didact.digital selbst und antworte innerhalb von zwei Werktagen (Mo bis Fr, österreichische Zeit). Wird es länger, sage ich das gleich in der ersten Antwort.\n\nLizenzschlüssel weg? Er steht in der Kaufbestätigung. Ist die auch weg, schreib mir von der Adresse, mit der du gekauft hast.\n\nNeuer Mac? Wähle zuerst „Diesen Mac deaktivieren“ in den Einstellungen und aktiviere den Schlüssel dann auf dem neuen. Hängt ein Platz fest, schreib mir, ich gebe ihn frei.\n\nEtwas ist kaputt? Schreib mir, was passiert ist und welche macOS-Version du hast. Einen Behebungstermin kann ich nicht versprechen, eine Antwort schon."
+  "t166": "Ich lese hello@didact.digital selbst und antworte innerhalb von zwei Werktagen (Mo bis Fr, österreichische Zeit). Wird es länger, sage ich das gleich in der ersten Antwort.\n\nLizenzschlüssel weg? Er steht in der Kaufbestätigung. Ist die auch weg, schreib mir von der Adresse, mit der du gekauft hast.\n\nNeuer Mac? Wähle zuerst „Diesen Mac deaktivieren“ in den Einstellungen und aktiviere den Schlüssel dann auf dem neuen. Hängt ein Platz fest, schreib mir, ich gebe ihn frei.\n\nEtwas ist kaputt? Schreib mir, was passiert ist und welche macOS-Version du hast. Einen Behebungstermin kann ich nicht versprechen, eine Antwort schon.",
+  "theme.toggle": "Dunkelmodus"
  },
  "fr": {
   "t001": "Fonctionnalités",
@@ -337,7 +338,8 @@
   "ta163": "Rappel ScreenBlock de TalkRemind sur un écran de Mac assombri",
   "t164": "Activer le son",
   "t165": "Comment obtenir de l’aide ?",
-  "t166": "Je lis hello@didact.digital moi-même et je réponds sous deux jours ouvrés (du lundi au vendredi, heure d’Autriche). Si ça traîne, je te le dis dès ma première réponse.\n\nClé de licence perdue ? Elle figure dans l’e-mail de confirmation d’achat. Si celui-ci a disparu aussi, écris-moi depuis l’adresse avec laquelle tu as acheté.\n\nNouveau Mac ? Choisis d’abord « Désactiver ce Mac » dans les réglages, puis active la clé sur le nouveau. Si une place reste bloquée, écris-moi et je la libère.\n\nQuelque chose est cassé ? Dis-moi ce qui s’est passé et quelle version de macOS tu utilises. Je ne peux pas promettre de date de correction, mais je promets une réponse."
+  "t166": "Je lis hello@didact.digital moi-même et je réponds sous deux jours ouvrés (du lundi au vendredi, heure d’Autriche). Si ça traîne, je te le dis dès ma première réponse.\n\nClé de licence perdue ? Elle figure dans l’e-mail de confirmation d’achat. Si celui-ci a disparu aussi, écris-moi depuis l’adresse avec laquelle tu as acheté.\n\nNouveau Mac ? Choisis d’abord « Désactiver ce Mac » dans les réglages, puis active la clé sur le nouveau. Si une place reste bloquée, écris-moi et je la libère.\n\nQuelque chose est cassé ? Dis-moi ce qui s’est passé et quelle version de macOS tu utilises. Je ne peux pas promettre de date de correction, mais je promets une réponse.",
+  "theme.toggle": "Mode sombre"
  },
  "es": {
   "t001": "Funciones",
@@ -507,7 +509,8 @@
   "ta163": "Aviso ScreenBlock de TalkRemind en una pantalla de Mac oscurecida",
   "t164": "Activar el sonido",
   "t165": "¿Cómo consigo soporte?",
-  "t166": "Leo hello@didact.digital personalmente y respondo en un plazo de dos días laborables (de lunes a viernes, hora de Austria). Si tardo más, te lo diré en la primera respuesta.\n\n¿Has perdido la clave de licencia? Está en el correo de confirmación de compra. Si ese también se perdió, escríbeme desde la dirección con la que compraste.\n\n¿Mac nuevo? Elige primero «Desactivar este Mac» en las preferencias y luego activa la clave en el nuevo. Si una plaza se queda atascada, escríbeme y la libero.\n\n¿Algo no funciona? Cuéntame qué ha pasado y qué versión de macOS usas. No puedo prometer una fecha de arreglo, pero sí una respuesta."
+  "t166": "Leo hello@didact.digital personalmente y respondo en un plazo de dos días laborables (de lunes a viernes, hora de Austria). Si tardo más, te lo diré en la primera respuesta.\n\n¿Has perdido la clave de licencia? Está en el correo de confirmación de compra. Si ese también se perdió, escríbeme desde la dirección con la que compraste.\n\n¿Mac nuevo? Elige primero «Desactivar este Mac» en las preferencias y luego activa la clave en el nuevo. Si una plaza se queda atascada, escríbeme y la libero.\n\n¿Algo no funciona? Cuéntame qué ha pasado y qué versión de macOS usas. No puedo prometer una fecha de arreglo, pero sí una respuesta.",
+  "theme.toggle": "Modo oscuro"
  },
  "it": {
   "t001": "Funzioni",
@@ -677,7 +680,8 @@
   "ta163": "Promemoria ScreenBlock di TalkRemind su uno schermo Mac oscurato",
   "t164": "Attiva l’audio",
   "t165": "Come ottengo supporto?",
-  "t166": "Leggo hello@didact.digital di persona e rispondo entro due giorni lavorativi (dal lunedì al venerdì, ora austriaca). Se ci metto di più, te lo dico già nella prima risposta.\n\nHai perso la chiave di licenza? È nell’email di conferma dell’acquisto. Se anche quella è sparita, scrivimi dall’indirizzo con cui hai comprato.\n\nMac nuovo? Scegli prima «Disattiva questo Mac» nelle preferenze, poi attiva la chiave sul nuovo. Se un posto resta bloccato, scrivimi e lo libero.\n\nQualcosa non funziona? Raccontami cos’è successo e quale versione di macOS usi. Una data per la correzione non posso prometterla, una risposta sì."
+  "t166": "Leggo hello@didact.digital di persona e rispondo entro due giorni lavorativi (dal lunedì al venerdì, ora austriaca). Se ci metto di più, te lo dico già nella prima risposta.\n\nHai perso la chiave di licenza? È nell’email di conferma dell’acquisto. Se anche quella è sparita, scrivimi dall’indirizzo con cui hai comprato.\n\nMac nuovo? Scegli prima «Disattiva questo Mac» nelle preferenze, poi attiva la chiave sul nuovo. Se un posto resta bloccato, scrivimi e lo libero.\n\nQualcosa non funziona? Raccontami cos’è successo e quale versione di macOS usi. Una data per la correzione non posso prometterla, una risposta sì.",
+  "theme.toggle": "Modalità scura"
  },
  "pt": {
   "t001": "Funcionalidades",
@@ -847,6 +851,7 @@
   "ta163": "Lembrete ScreenBlock do TalkRemind num ecrã de Mac escurecido",
   "t164": "Ativar o som",
   "t165": "Como obtenho suporte?",
-  "t166": "Leio o hello@didact.digital pessoalmente e respondo em dois dias úteis (de segunda a sexta, hora da Áustria). Se demorar mais, digo-to logo na primeira resposta.\n\nPerdeste a chave de licença? Está no e-mail de confirmação da compra. Se esse também se perdeu, escreve-me a partir do endereço com que compraste.\n\nMac novo? Escolhe primeiro «Desativar este Mac» nas preferências e depois ativa a chave no novo. Se um lugar ficar preso, escreve-me e eu liberto-o.\n\nAlgo avariado? Diz-me o que aconteceu e que versão do macOS usas. Não posso prometer uma data de correção, mas prometo uma resposta."
+  "t166": "Leio o hello@didact.digital pessoalmente e respondo em dois dias úteis (de segunda a sexta, hora da Áustria). Se demorar mais, digo-to logo na primeira resposta.\n\nPerdeste a chave de licença? Está no e-mail de confirmação da compra. Se esse também se perdeu, escreve-me a partir do endereço com que compraste.\n\nMac novo? Escolhe primeiro «Desativar este Mac» nas preferências e depois ativa a chave no novo. Se um lugar ficar preso, escreve-me e eu liberto-o.\n\nAlgo avariado? Diz-me o que aconteceu e que versão do macOS usas. Não posso prometer uma data de correção, mas prometo uma resposta.",
+  "theme.toggle": "Modo escuro"
  }
 }
