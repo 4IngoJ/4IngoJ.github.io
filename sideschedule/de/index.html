@@ -180,6 +180,14 @@
     padding: 6px 14px; margin-bottom: 24px;
     background: var(--white);
   }
+  .ph-pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 13px; font-weight: 600; color: var(--ink); text-decoration: none;
+    border: 1px solid var(--line); border-radius: 999px;
+    padding: 6px 14px; margin-bottom: 14px; background: var(--white);
+  }
+  .ph-pill::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: #FF6154; }
+  .ph-pill:hover { border-color: var(--ink); }
   h1 {
     font-family: var(--sans);
     font-size: clamp(38px, 6vw, 64px);
@@ -743,6 +751,9 @@
   <canvas id="field" aria-hidden="true"></canvas>
   <div class="wrap hero-body">
     <img class="icon" src="../assets/app-icon.png" alt="SideSchedule app icon" width="84" height="84">
+    <div class="hero-meta">
+      <a class="ph-pill" data-goatcounter-click="ph-sideschedule-hero" href="https://www.producthunt.com/products/sideschedule-sidebar-calendar?utm_source=didact&amp;utm_medium=site" target="_blank" rel="noopener" data-i18n="hero.ph">SideSchedule ist heute auf Product Hunt →</a>
+    </div>
     <div class="hero-meta">
       <span class="eyebrow" data-i18n="hero.eyebrow">Kalender-Sidebar für Mac · macOS 13+</span>
     </div>

@@ -153,7 +153,8 @@
   "faq10.q": "Wie bekomme ich Support?",
   "faq10.a": "Ich lese hello@didact.digital selbst und antworte innerhalb von zwei Werktagen (Mo bis Fr, österreichische Zeit). Wird es länger, sage ich das gleich in der ersten Antwort.\n\nLizenzschlüssel weg? Er steht in der Kaufbestätigung. Ist die auch weg, schreib mir von der Adresse, mit der du gekauft hast.\n\nNeuer Mac? Wähle zuerst „Diesen Mac deaktivieren“ in den Einstellungen und aktiviere dann auf dem neuen. Hängt ein Platz fest, schreib mir, ich gebe ihn frei.\n\nEtwas ist kaputt? Schick mir den Diagnosebericht aus den Einstellungen, wenn du kannst. Einen Behebungstermin kann ich nicht versprechen, eine Antwort schon.",
   "theme.toggle": "Dunkelmodus",
-  "nav.download": "Download"
+  "nav.download": "Download",
+  "hero.ph": "SideSchedule ist heute auf Product Hunt →"
  },
  "fr": {
   "nav.allapps": "Toutes les apps",
@@ -309,7 +310,8 @@
   "faq10.q": "Comment obtenir de l’aide ?",
   "faq10.a": "Je lis hello@didact.digital moi-même et je réponds sous deux jours ouvrés (du lundi au vendredi, heure d’Autriche). Si ça traîne, je te le dis dès ma première réponse.\n\nClé de licence perdue ? Elle figure dans l’e-mail de confirmation d’achat. Si celui-ci a disparu aussi, écris-moi depuis l’adresse avec laquelle tu as acheté.\n\nNouveau Mac ? Choisis d’abord « Désactiver ce Mac » dans les préférences, puis active la licence sur le nouveau. Si une place reste bloquée, écris-moi et je la libère.\n\nQuelque chose est cassé ? Envoie-moi le rapport de diagnostic des préférences si tu peux. Je ne peux pas promettre de date de correction, mais je promets une réponse.",
   "theme.toggle": "Mode sombre",
-  "nav.download": "Télécharger"
+  "nav.download": "Télécharger",
+  "hero.ph": "SideSchedule est aujourd’hui sur Product Hunt →"
  },
  "es": {
   "nav.allapps": "Todas las apps",
@@ -465,7 +467,8 @@
   "faq10.q": "¿Cómo consigo soporte?",
   "faq10.a": "Leo hello@didact.digital yo mismo y respondo en un plazo de dos días laborables (de lunes a viernes, hora de Austria). Si tardo más, te lo diré en la primera respuesta.\n\n¿Perdiste la clave de licencia? Está en el correo de confirmación de compra. Si ese también se perdió, escríbeme desde la dirección con la que compraste.\n\n¿Mac nuevo? Elige primero «Desactivar este Mac» en las preferencias y luego activa la licencia en el nuevo. Si una plaza se queda atascada, escríbeme y la libero.\n\n¿Algo no funciona? Mándame el informe de diagnóstico de las preferencias si puedes. No puedo prometer una fecha de arreglo, pero sí una respuesta.",
   "theme.toggle": "Modo oscuro",
-  "nav.download": "Descargar"
+  "nav.download": "Descargar",
+  "hero.ph": "SideSchedule está hoy en Product Hunt →"
  },
  "it": {
   "nav.allapps": "Tutte le app",
@@ -621,7 +624,8 @@
   "faq10.q": "Come ottengo supporto?",
   "faq10.a": "Leggo hello@didact.digital di persona e rispondo entro due giorni lavorativi (dal lunedì al venerdì, ora austriaca). Se ci metto di più, te lo dico già nella prima risposta.\n\nHai perso la chiave di licenza? È nell’email di conferma dell’acquisto. Se anche quella è sparita, scrivimi dall’indirizzo con cui hai comprato.\n\nMac nuovo? Scegli prima «Disattiva questo Mac» nelle impostazioni, poi attiva la licenza sul nuovo. Se un posto resta bloccato, scrivimi e lo libero.\n\nQualcosa non funziona? Mandami il rapporto diagnostico dalle impostazioni, se puoi. Una data per la correzione non posso prometterla, una risposta sì.",
   "theme.toggle": "Modalità scura",
-  "nav.download": "Scarica"
+  "nav.download": "Scarica",
+  "hero.ph": "SideSchedule oggi è su Product Hunt →"
  },
  "pt": {
   "nav.allapps": "Todas as aplicações",
@@ -777,6 +781,7 @@
   "faq10.q": "Como obtenho suporte?",
   "faq10.a": "Leio o hello@didact.digital pessoalmente e respondo em dois dias úteis (de segunda a sexta, hora da Áustria). Se demorar mais, digo-to logo na primeira resposta.\n\nPerdeste a chave de licença? Está no e-mail de confirmação da compra. Se esse também se perdeu, escreve-me a partir do endereço com que compraste.\n\nMac novo? Escolhe primeiro «Desativar este Mac» nas preferências e depois ativa a licença no novo. Se um lugar ficar preso, escreve-me e eu liberto-o.\n\nAlgo avariado? Envia-me o relatório de diagnóstico das preferências, se puderes. Não posso prometer uma data de correção, mas prometo uma resposta.",
   "theme.toggle": "Modo escuro",
-  "nav.download": "Transferir"
+  "nav.download": "Transferir",
+  "hero.ph": "O SideSchedule está hoje no Product Hunt →"
  }
 }
