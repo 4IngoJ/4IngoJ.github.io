@@ -22,9 +22,9 @@
   s.setAttribute('data-goatcounter', 'https://didact.goatcounter.com/count');
   s.onload = function () {
     try { window.goatcounter.count({ path: '/dl/' + app, title: 'download ' + app + ' via ' + src, referrer: 'src-' + src }); } catch (e) {}
-    setTimeout(go, 500);
+    setTimeout(go, 1500);
   };
   s.onerror = go;
   document.head.appendChild(s);
-  setTimeout(go, 2500);
+  setTimeout(go, 3000);
 })();
